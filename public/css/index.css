@@ -26,11 +26,14 @@ a:hover {
 }
 
 nav {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-family: 'Poppins', sans-serif;
-  background: #23232e;
+  background: #151515;
   height: 10vh;
 }
 
@@ -56,6 +59,55 @@ nav {
   background: #fff;
   margin: 8px;
   transition: 0.3s;
+}
+
+/* sobre nós */
+
+
+/* Event location */
+#location {
+  height: 400px;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../assets/embalagem-de-caixa-de-papel-para-conceito-de-entrega.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--text-color);
+  margin-bottom: 3em;
+}
+
+#address,
+#about-location {
+  max-width: 30%;
+}
+
+#address {
+  display: flex;
+}
+
+#address i {
+  color: var(--primary);
+  font-size: 4em;
+  margin-right: 0.5em;
+}
+
+#address-details {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+#about-location h3 {
+  color: #FFC300;
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+#about-location p {
+  line-height: 1.5em;
+  color: #fff;
 }
 
 /* mobile navegação */
@@ -124,7 +176,7 @@ nav {
 #cta {
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../img/hrz-6.jpg");
+    url("../assets/bunner.png");
   background-position: center;
   background-size: cover;
 
@@ -164,6 +216,58 @@ nav {
   background-color: #FFD60A;
 }
 
+
+/* Benefits section */
+#key-benefits h2 {
+  color: #fff;
+  background-color: #003566;
+  text-align: center;
+  padding: 2em;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.benefits {
+  display: flex;
+  justify-content: space-around;
+  padding: 4em;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.benefit {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 20%;
+  color: var(--text-tertiary);
+
+
+}
+
+.benefit .benefit-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1em;
+}
+
+#benefit-1 {
+  background-image: url("../assets/06.jpg");
+}
+
+#benefit-2 {
+  background-image: url("../assets/06.jpg");
+}
+
+#benefit-3 {
+  background-image: url("../assets/06.jpg");
+}
+
 /* Mobile */
 @media (max-width: 450px) {
 
@@ -188,4 +292,207 @@ nav {
   #cta .btn:hover {
     background-color: #FFD60A;
   }
+
+  /* Benefits section */
+  .benefits {
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 2em;
+  }
+
+  .benefit {
+    max-width: 100%;
+    margin-bottom: 2em;
+  }
+
+  /* footer */
+  footer {
+
+    bottom: 0px;
+  }
+
+  .main-content {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .main-content .box {
+    margin: 5px 0;
+  }
+}
+
+/* footer */
+
+footer {
+  bottom: 0px;
+  width: 100%;
+  background: #003566;
+  color: #fff;
+}
+
+.main-content {
+  display: flex;
+}
+
+.main-content .box {
+  flex-basis: 50%;
+  padding: 10px 20px;
+}
+
+.box h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.box .content {
+  margin: 20px 0 0 0;
+  position: relative;
+}
+
+.box .content:after {
+  position: absolute;
+  content: '';
+  width: 15%;
+  height: 2px;
+  background: #FFC300;
+  top: -10px;
+}
+
+.box .content:before {
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 100%;
+  background: #1a1a1a;
+  top: -10px;
+}
+
+/* social */
+.left .content .social {
+  margin: 20px 0 0 0;
+}
+
+.left .content .social a {
+  padding: 0 2px;
+}
+
+.left .content .social a span {
+  width: 40px;
+  height: 40px;
+
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.left .content .social a span:hover {
+  background: #FFC300;
+}
+
+.left .content p {
+  text-align: justify;
+}
+
+.center .content .fas {
+  font-size: 23px;
+  background: #FFC300;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.center .content .fas:hover {
+  background: #f12020;
+}
+
+.center .content .text {
+  font-size: 17px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.center .content .phone {
+  margin: 10px 0;
+}
+
+.center .content .msg {
+  margin-top: 10px;
+}
+
+/* forms footer */
+.right form input,
+.right form textarea {
+  width: 100%;
+  font-size: 17px;
+  background: #fff;
+  padding-left: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.right form input {
+  height: 35px;
+}
+
+.right form input:focus,
+.right form textarea:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+  border-bottom: #FFC300 5px solid;
+}
+
+.right form .text {
+  font-size: 17px;
+  margin-bottom: 2px;
+  color: #fff;
+}
+
+.right form .btn {
+  margin-top: 10px;
+}
+
+.right form .btn button {
+  width: 50%;
+  height: 10%;
+  margin: 0 auto;
+  font-weight: 400;
+  font-size: 1.2em;
+  border-radius: 5px;
+  border-style: none;
+  cursor: pointer;
+  background-color: #FFC300;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.right form .btn button:hover {
+  background: #FFD60A;
+}
+
+/* <!--main-content--> */
+.bottom .center {
+  padding: 5px;
+  font-size: 15px;
+  background: #151515;
+  text-align: center;
+}
+
+.bottom .center span {
+  color: #656565;
+}
+
+.bottom .center a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.bottom .center a:hover {
+  text-decoration: underline;
 }
