@@ -269,7 +269,7 @@ nav {
 }
 
 /* Mobile */
-@media (max-width: 450px) {
+@media (max-width: 1050px) {
 
   /* Call to Action Section */
   #cta .btn {
