@@ -5,6 +5,27 @@
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+/*Targets*/
+#target-benefits{
+  position: absolute;
+  bottom: 90px;
+}
+#target-location{
+  position: relative;
+  bottom: 40px;
+}
+#target-footer{
+  position: relative;
+  bottom: -115px;
+}
+
+@media (max-width: 999px) {
+  #target-benefits{
+    position: absolute;
+    bottom: 65px;
+  }
 }
 
 /* navegação */
@@ -75,7 +96,6 @@ nav {
   align-items: center;
   justify-content: space-around;
   color: var(--text-color);
-  margin-bottom: 3em;
 }
 
 #address,
@@ -108,6 +128,7 @@ nav {
 #about-location p {
   line-height: 1.5em;
   color: #fff;
+  text-align: justify;
 }
 
 /* mobile navegação */
@@ -138,6 +159,19 @@ nav {
 
   .mobile-menu {
     display: block;
+  }
+  #location {
+    display: block;
+    padding: 50px;
+  }
+  #about-location {
+  margin: -15px 0;
+  max-width: 100%;
+  text-align: center;
+}
+  #about-location p {
+    text-align: justify;
+
   }
 }
 
@@ -273,7 +307,7 @@ nav {
 
   /* Call to Action Section */
   #cta .btn {
-    width: 30%;
+    width: 50%;
     height: 10%;
 
   }
@@ -318,7 +352,7 @@ nav {
   }
 
   .main-content .box {
-    margin: 5px 0;
+    margin: 5px 0 !important;
   }
 }
 
@@ -338,6 +372,7 @@ footer {
 .main-content .box {
   flex-basis: 50%;
   padding: 10px 20px;
+  margin: 50px;
 }
 
 .box h2 {
