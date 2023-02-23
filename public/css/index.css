@@ -92,7 +92,7 @@ nav {
 
   .nav-list {
     position: absolute;
-    top: 8vh;
+    top: 10vh;
     right: 0;
     width: 50vw;
     height: 92vh;
@@ -667,7 +667,6 @@ footer {
 }
 
 .image1 img{
-
   width: 100%;
   margin: 2em 0;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
@@ -717,12 +716,7 @@ footer {
   cursor: pointer;
 }
 
-.image1 img{
-  width: 460px;
-  height: auto;
-  margin-top: 20px;
-  margin-left: 55px;
-}
+
   
 @media (max-width: 1050px){
 
