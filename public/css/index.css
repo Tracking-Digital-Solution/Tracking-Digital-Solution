@@ -576,7 +576,7 @@ footer {
 
 
 /* section1 */
-.section-1{
+.about-project{
   display: flex;
   justify-content: center;
   margin-top: 100px;
@@ -622,7 +622,7 @@ footer {
 
 
 @media (max-width: 1050px) {
-  .section-1{
+  .about-project{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -679,7 +679,7 @@ footer {
   
 
 
-.section-1{
+.about-project{
   display: flex;
   justify-content: center;
   margin-top: 100px;
@@ -727,7 +727,7 @@ footer {
 @media (max-width: 1050px){
 
   
-.section-1{
+.about-project{
   display: flex;
   justify-content: center;
   flex-direction: column;
