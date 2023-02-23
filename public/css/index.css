@@ -580,8 +580,8 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: 100px;
-  height: 100vh;
-
+  height: auto;
+  padding-bottom: 150px;
 }
 
 .area-title h3{
