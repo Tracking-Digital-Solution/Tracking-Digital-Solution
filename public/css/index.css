@@ -623,18 +623,22 @@ footer {
 
 @media (max-width: 1050px) {
   .about-project{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
     width: auto;
     padding: 2em;
-    height: 100vh;
-    margin: 5em 0;
-
-  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-
+  
+  @media (max-width: 700px) {
+    .about-project{
+      display: flex;
+      justify-content: center;
+      flex-direction: column !important;
+      align-items: center;
+ 
+    }
+  }
   
 .area-title h3{
   color: #23232e;
@@ -725,10 +729,7 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  margin: 5em 0;
-
-  
+  align-items: center;    
 }
 
 .area-title h3{
@@ -763,8 +764,9 @@ footer {
 }
 
 .image1 img{
-  width: 100%;
-  margin: 2em 0;
+  left: 13%;
+  position: relative;
+  width: 75%;
 }
 
 }
