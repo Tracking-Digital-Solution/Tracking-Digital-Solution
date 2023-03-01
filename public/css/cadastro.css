@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap");
-.mobile{
-    display: none !important;
+.mobile {
+  display: none !important;
 }
 * {
   margin: 0;
@@ -64,25 +64,26 @@ body {
 
 /*Inputs de cadastro e texto de formulários*/
 .form {
-    width: 100%;
-    height: auto;
-    display: flex;
-    /* align-content: space-between; */
-    /* flex-wrap: nowrap !important; */
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 5%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  /* align-content: space-between; */
+  /* flex-wrap: nowrap !important; */
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5%;
+  align-items: center;
 }
 
 .input-gerais {
-    width: 25%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 60px;
-    padding: 0 20px;
-    margin-left: 70px;
-    justify-content: center;
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 60px;
+  padding: 0 20px;
+  /* margin-left: 70px; */
+  justify-content: center;
 }
 
 .campo-input input {
@@ -93,24 +94,29 @@ body {
 }
 
 .btn-cadastrar {
-   padding: 10px 12px;
+  padding: 10px 12px;
   border: none;
   border-radius: 15px;
   width: 300px;
   margin-top: 30px;
-  font-size: 54px;  
+  font-size: 2.45 vh !important;
   display: block;
   cursor: pointer;
   background-color: #ffc300;
-  font-size: 10px; 
   margin-bottom: 20px;
+  transition: 0.5s ease-in-out;
+  color: #fff;
+}
+.btn-cadastrar:hover {
+  background-color: #ffdd6d;
+  color: black;
 }
 
 .form-text {
-    text-align: justify;
-    width: 25%;
-    margin-top: 50px;
-    margin-left: 20px;
+  text-align: justify;
+  width: 25%;
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 .titulo-cadastro {
@@ -127,7 +133,6 @@ body {
 
 .text-cadastro {
   font-size: 15px;
-  
 }
 
 .icon-cadastro {
@@ -140,6 +145,38 @@ label {
   font-weight: 600;
   color: #ffc300;
 }
+/*RESPONSIVIDADE LAPTOP*/
+@media (max-width: 1795px) {
+  .input-gerais {
+    width: 35%;
+  }
+}
+@media (max-width: 1440px) {
+  .input-gerais {
+    width: 40%;
+  }
+  @media (max-width: 1024px) {
+    .input-gerais {
+      width: 50%;
+    }
+  }
+}
+/* RESPONSIVIDADE IPAD*/
+
+@media (max-width: 1120px) {
+  .campo-input input {
+    border: none;
+    border-bottom: 2px solid #ffc300;
+    background-color: white;
+    padding: 15px 0;
+  }
+}
+@media (max-width: 768px) {
+  .campo-input input {
+    padding: 15px 35px;
+    
+  }
+}
 
 /* RESPONSIVIDADE MÓVEL */
 
@@ -148,7 +185,7 @@ label {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
+    padding: 15px 55px;
   }
   .mobile {
     display: flex !important;
@@ -173,13 +210,12 @@ label {
     height: auto;
     justify-content: center;
   }
-  .form-text{
+  .form-text {
     width: 66%;
     padding: 45px;
     flex-wrap: wrap;
   }
   .titulo-cadastro {
-
     position: relative;
     font-size: 36px;
     font-weight: 600;
@@ -187,8 +223,8 @@ label {
     color: #ffc300;
   }
   .input-gerais {
-    width: 100%;
+    width: 65%;
     margin: 0 !important;
     padding: 0 !important;
-}
+  }
 }
