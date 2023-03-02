@@ -7,22 +7,25 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
+
 /*Targets*/
-#target-benefits{
+#target-benefits {
   position: absolute;
   bottom: 90px;
 }
-#target-location{
+
+#target-location {
   position: relative;
   bottom: 40px;
 }
-#target-footer{
+
+#target-footer {
   position: relative;
   bottom: -115px;
 }
 
 @media (max-width: 999px) {
-  #target-benefits{
+  #target-benefits {
     position: absolute;
     bottom: 65px;
   }
@@ -56,6 +59,23 @@ nav {
   font-family: 'Poppins', sans-serif;
   background: #151515;
   height: 10vh;
+}
+
+.icone {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 6px;
+  /* width: 82px; */
+  display: flex;
+  flex-direction: row-reverse;
+  color: #fff;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.icone:hover{
+  background-color: #fff;
+  color: black;
 }
 
 
@@ -112,15 +132,18 @@ nav {
   .mobile-menu {
     display: block;
   }
+
   #location {
     display: block;
     padding: 50px;
   }
+
   #about-location {
-  margin: -15px 0;
-  max-width: 100%;
-  text-align: center;
-}
+    margin: -15px 0;
+    max-width: 100%;
+    text-align: center;
+  }
+
   #about-location p {
     text-align: justify;
 
@@ -196,7 +219,7 @@ nav {
   cursor: pointer;
   background-color: #FFC300;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  
+
 }
 
 
@@ -352,7 +375,7 @@ nav {
     height: auto;
     text-align: center;
     padding: 2em 0;
-    
+
   }
 
   #about {
@@ -375,7 +398,7 @@ nav {
     margin-bottom: 0;
   }
 
-  #about-div p{
+  #about-div p {
     margin-top: 5vh;
     text-align: justify;
     width: 250px;
@@ -576,7 +599,7 @@ footer {
 
 
 /* section1 */
-.about-project{
+.about-project {
   display: flex;
   justify-content: center;
   margin-top: 100px;
@@ -584,22 +607,22 @@ footer {
   padding-bottom: 150px;
 }
 
-.area-title h3{
+.area-title h3 {
   color: #23232e;
   font-weight: normal;
   margin-bottom: 20px;
-  
+
 }
 
-.area-title h1{
+.area-title h1 {
   color: #23232e;
   font-size: 45px;
   line-height: 50px;
   margin-top: -16px;
- 
+
 }
 
-.area-title a{
+.area-title a {
   display: inline-block;
   background-color: #FFC300;
   margin-top: 20px;
@@ -611,7 +634,7 @@ footer {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.image1 img{
+.image1 img {
   width: 460px;
   height: auto;
   margin-top: 20px;
@@ -622,80 +645,80 @@ footer {
 
 
 @media (max-width: 1050px) {
-  .about-project{
+  .about-project {
     width: auto;
     padding: 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   @media (max-width: 700px) {
-    .about-project{
+    .about-project {
       display: flex;
       justify-content: center;
       flex-direction: column !important;
       align-items: center;
- 
+
     }
   }
-  
-.area-title h3{
-  color: #23232e;
-  font-weight: normal;
-  margin-bottom: 20px;
-  font-size: 1em;
 
-  
+  .area-title h3 {
+    color: #23232e;
+    font-weight: normal;
+    margin-bottom: 20px;
+    font-size: 1em;
+
+
+  }
+
+  .area-title h1 {
+    color: #23232e;
+    font-size: 1.5;
+    line-height: 50px;
+    margin-top: -16px;
+
+  }
+
+  .area-title a {
+    display: inline-block;
+    background-color: #FFC300;
+    margin-top: 20px;
+    padding: 15px 60px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+  }
+
+  .image1 img {
+    width: 100%;
+    margin: 2em 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    border-radius: 5%;
+  }
+
+
 }
 
-.area-title h1{
-  color: #23232e;
-  font-size: 1.5;
-  line-height: 50px;
-  margin-top: -16px;
- 
-}
-
-.area-title a{
-  display: inline-block;
-  background-color: #FFC300;
-  margin-top: 20px;
-  padding: 15px 60px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.2em;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 5px;
-}
-
-.image1 img{
-  width: 100%;
-  margin: 2em 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  border-radius: 5%;
-}
 
 
-}
-  
-
-
-.about-project{
+.about-project {
   display: flex;
   justify-content: center;
   margin-top: 100px;
-  
+
 }
 
-.area-title h3{
+.area-title h3 {
   color: #003566;
   font-weight: normal;
   margin-bottom: 20px;
 }
 
-.area-title h1{
+.area-title h1 {
   color: #003566;
   font-size: 45px;
   line-height: 50px;
@@ -703,8 +726,8 @@ footer {
   margin-bottom: 50px;
 }
 
-.area-title a{
- 
+.area-title a {
+
   margin: 0 auto;
   font-weight: 600;
   font-size: 1.2em;
@@ -721,52 +744,52 @@ footer {
 }
 
 
-  
-@media (max-width: 1050px){
 
-  
-.about-project{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;    
-}
+@media (max-width: 1050px) {
 
-.area-title h3{
-  color: #003566;
-  font-weight: normal;
-  margin-bottom: 20px;
-}
 
-.area-title h1{
-  color: #003566;
-  font-size: 45px;
-  line-height: 50px;
-  margin-top: -16px;
-  margin-bottom: 50px;
-}
+  .about-project {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.area-title a{
- 
-  margin: 0 auto;
-  font-weight: 600;
-  font-size: 1.2em;
-  border-radius: 5px;
-  border-style: none;
-  cursor: pointer;
-  background-color: #FFC300;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: inline-block;
-  padding: 15px 60px;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
+  .area-title h3 {
+    color: #003566;
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
 
-.image1 img{
-  left: 13%;
-  position: relative;
-  width: 75%;
-}
+  .area-title h1 {
+    color: #003566;
+    font-size: 45px;
+    line-height: 50px;
+    margin-top: -16px;
+    margin-bottom: 50px;
+  }
+
+  .area-title a {
+
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border-style: none;
+    cursor: pointer;
+    background-color: #FFC300;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: inline-block;
+    padding: 15px 60px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .image1 img {
+    left: 13%;
+    position: relative;
+    width: 75%;
+  }
 
 }
