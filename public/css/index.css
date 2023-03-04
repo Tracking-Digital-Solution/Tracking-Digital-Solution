@@ -44,9 +44,10 @@ a:hover {
 }
 
 .logo {
-  font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 4px;
+  width: 40px;
+  height: 40px;
 }
 
 nav {
@@ -226,7 +227,6 @@ nav {
 #cta .btn:hover {
   background-color: #FFD60A;
 }
-
 
 /* Benefits section */
 #key-benefits h2 {

@@ -18,10 +18,10 @@ body {
   flex-wrap: wrap;
 }
 
-.caixa-amarela {
+.caixa-header {
   height: 120px;
   width: 100%;
-  background-color: #808080;
+  background-color: #003566;
 }
 
 .caixas-infos {
