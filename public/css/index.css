@@ -80,7 +80,7 @@ nav {
 }
 
 .icone:hover {
-  background-color: #FFD60A;
+  background-color: #fff;
   color: black;
 }
 
@@ -138,6 +138,11 @@ nav {
   .mobile-menu {
     display: block;
   }
+
+  .ancora{
+    display: none;
+  }
+  
 
   #location {
     display: block;
