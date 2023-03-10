@@ -43,6 +43,10 @@ a:hover {
   opacity: 0.7;
 }
 
+.login-mobile{
+  display: none;
+}
+
 .logo {
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -141,6 +145,10 @@ nav {
 
   .ancora{
     display: none;
+  }
+
+  .login-mobile{
+    display: block;
   }
   
 
