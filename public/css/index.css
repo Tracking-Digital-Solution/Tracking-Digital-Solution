@@ -9,6 +9,10 @@
 }
 
 /*Targets*/
+#target-solution{
+  position: relative;
+  bottom: 40px;
+}
 #target-benefits {
   position: absolute;
   bottom: 90px;
