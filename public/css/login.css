@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap");
+
 .mobile {
   display: none !important;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +12,7 @@
   font: inherit;
   vertical-align: baseline;
 }
+
 body {
   background-color: white;
   font-family: "Poppins", sans-serif;
@@ -18,10 +21,30 @@ body {
   flex-wrap: wrap;
 }
 
-.caixa-amarela {
+a {
+  display: flex;
+  text-decoration: none;
+}
+
+.caixa-header {
   height: 120px;
   width: 100%;
-  background-color: #808080;
+  background-color: #003566;
+}
+
+.ancora-logo {
+  display: flex !important;
+  color: #fff;
+}
+
+.logo {
+  padding: 25px;
+  /* width: 82px; */
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  transition: 0.4s;
+  font-size: 25px;
 }
 
 .caixas-infos {
@@ -49,6 +72,7 @@ body {
   margin-left: 70px;
   margin-bottom: 10px;
 }
+
 .icon,
 .titulo-contatos,
 .descricao-contato {
@@ -93,6 +117,12 @@ body {
   background-color: white;
 }
 
+.ancora-cadastrar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .btn-login {
   padding: 10px 12px;
   border: none;
@@ -107,6 +137,7 @@ body {
   transition: 0.5s ease-in-out;
   color: #fff;
 }
+
 .btn-login:hover {
   background-color: #ffdd6d;
   color: black;
@@ -145,22 +176,26 @@ label {
   font-weight: 600;
   color: #ffc300;
 }
+
 /*RESPONSIVIDADE LAPTOP*/
 @media (max-width: 1795px) {
   .input-gerais {
     width: 35%;
   }
 }
+
 @media (max-width: 1440px) {
   .input-gerais {
     width: 40%;
   }
+
   @media (max-width: 1024px) {
     .input-gerais {
       width: 50%;
     }
   }
 }
+
 /* RESPONSIVIDADE IPAD*/
 
 @media (max-width: 1120px) {
@@ -171,10 +206,11 @@ label {
     padding: 15px 0;
   }
 }
+
 @media (max-width: 768px) {
   .campo-input input {
     padding: 15px 35px;
-    
+
   }
 }
 
@@ -187,12 +223,15 @@ label {
     flex-direction: column;
     padding: 15px 55px;
   }
+
   .mobile {
     display: flex !important;
   }
+
   .desktop {
     display: none;
   }
+
   .contatos {
     margin-bottom: 50px;
     background-color: white;
@@ -210,11 +249,13 @@ label {
     height: auto;
     justify-content: center;
   }
+
   .form-text {
     width: 50%;
     padding: 45px;
     flex-wrap: wrap;
   }
+
   .titulo-login {
     position: relative;
     font-size: 36px;
@@ -222,6 +263,7 @@ label {
     top: -50px;
     color: #ffc300;
   }
+
   .input-gerais {
     width: 65%;
     margin: 0 !important;
