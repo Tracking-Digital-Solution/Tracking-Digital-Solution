@@ -11,6 +11,7 @@
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+ 
 }
 
 body {
@@ -19,6 +20,8 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 20vh;
+  
 }
 
 a {
@@ -29,7 +32,7 @@ a {
 .caixa-header {
   height: 120px;
   width: 100%;
-  background-color: #003566;
+  background-color: #031d44;
 }
 
 .ancora-logo {
@@ -127,7 +130,7 @@ a {
   display: block;
   cursor: pointer;
   background-color: #ffc300;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   transition: 0.5s ease-in-out;
   color: #fff;
 }
@@ -169,6 +172,12 @@ label {
   font-size: 18px;
   font-weight: 600;
   color: #ffc300;
+}
+
+.ancora-cadastrar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 /*RESPONSIVIDADE LAPTOP*/

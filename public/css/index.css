@@ -311,7 +311,7 @@ nav {
 #about-us {
   height: 400px;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../assets/embalagem-de-caixa-de-papel-para-conceito-de-entrega.jpg");
+    url("../assets/about-us-bunner-oficial.png");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -450,7 +450,7 @@ nav {
 footer {
   bottom: 0px;
   width: 100%;
-  background: #003566;
+  background: #031d44;
   color: #fff;
 }
 
@@ -629,6 +629,14 @@ footer {
   margin-top: 100px;
   height: auto;
   padding-bottom: 150px;
+}
+
+.area-title p{
+  color: #23232e;
+  font-weight: normal;
+  margin-bottom: 20px;
+  width: 500px;
+  text-align: justify;
 }
 
 .area-title h3 {
