@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="css/validation.css">
     <link type="image/icon" rel="icon" href="../public/assets/Symbol_tracking.png">
     <script src="https://kit.fontawesome.com/a48f27e6c3.js" crossorigin="anonymous"></script>
     <title>Login</title>
@@ -60,16 +61,16 @@
 
             <div class="campo-input">
                 <label for="email">E-mail</label> <br>
-                <input id="email_input" type="email" placeholder="Digite seu e-mail">
+                <input id="email_input" type="email" placeholder="Digite seu e-mail" onblur="validarEmail()" required>
             </div>
 
             <div class="campo-input">
                 <label for="senha">Senha</label> <br>
-                <input id="senha_input" type="password" placeholder="Digite sua senha">
+                <input id="senha_input" type="password" placeholder="Digite sua senha" onblur="validarSenha()" required>
             </div>
 
             <div class="campo-input">
-                <button class="btn-login">ENVIAR</button>
+                <button class="btn-login" onclick="validarLogin()">ENVIAR</button>
                 <div class="ancora-cadastrar">
                     Não tem uma conta ? <a style="margin-left: 3px;" href="cadastro.html"> Cadastre-se</a>
                 </div>
@@ -116,3 +117,5 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script src="js/validation.js"></script>
