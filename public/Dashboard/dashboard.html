@@ -45,15 +45,19 @@
             
             <div class="sidebar-title">
                 <div class="sidebar-brand">
-                    <img src="./images/logo-dash-removebg-preview.png" id="logo">
+                    <a href="dashboard.html">
+                        <img src="./images/logotipo-dash-removebg-preview.png" id="logo">
+                    </a>
+                   
                 </div>
                 <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
             </div>
+            
 
             <ul class="sidebar-list">
                 <li class="sidebar-list-item">
                     <a href="#" target="_blank">
-                        <span class="material-icons-outlined">dashboard</span> Dashboard
+                        <span class="material-icons-outlined">dashboard</span> <span class="span-iten">Dashboard</span>
                     </a>
                 </li>
                 <li class="sidebar-list-item">
@@ -98,18 +102,22 @@
 
                 <div class="card">
                     <div class="card-inner">
-                        <p class="text-primary">RAM</p>
-                        <span class="material-icons-outlined text-blue">memory</span>
+                        <p class="text-primary">CPU</p>
+                        <span class="material-icons-outlined text-blue">memory_alt</span>
+                        
                     </div>
-                    <span class="text-primary font-weight-bold">249</span>
+                    <span class="hard-info cpu"> <span style="color: red;">5.4</span> <span class="metric">%</span> <span class="material-icons-outlined text-red">warning</span></span>
+                 
                 </div>
 
                 <div class="card">
                     <div class="card-inner">
-                        <p class="text-primary">CPU</p>
+                        <p class="text-primary">RAM</p>
                         <span class="material-icons-outlined text-orange">trending_up</span>
+                      
+                     
                     </div>
-                    <span class="text-primary font-weight-bold">83</span>
+                   <span class="hard-info">5.4 <span class="metric">Ghz</span></span>
                 </div>
 
                 <div class="card">
@@ -117,15 +125,15 @@
                         <p class="text-primary">HD</p>
                         <span class="material-icons-outlined text-green">hd</span>
                     </div>
-                    <span class="text-primary font-weight-bold">79</span>
+                    <span class="hard-info">5.4 <span class="metric">%</span></span>
                 </div>
 
                 <div class="card">
                     <div class="card-inner">
-                        <p class="text-primary">ALERTS</p>
-                        <span class="material-icons-outlined text-red">notification_important</span>
+                        <p class="text-primary">Processos</p>
+                        <span class="material-icons-outlined text-red">line_axis</span>
                     </div>
-                    <span class="text-primary font-weight-bold">56</span>
+                    <span class="hard-info">125</span>
                 </div>
 
                 
