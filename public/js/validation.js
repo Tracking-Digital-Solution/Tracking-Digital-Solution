@@ -110,11 +110,12 @@ function validarCadastro() {
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Seu cadastro foi realizado com sucesso!",
+      title: "Cadastrado!",
+      text: "Cadastrado com sucesso",
       showConfirmButton: false,
-      timer: 1350,
+      timer: 1600,
     });
-    setInterval(() => realizarCadastro(), 1350);
+    setInterval(() => realizarCadastro(), 1600);
   } else {
     Swal.fire({
       icon: "error",
@@ -134,4 +135,13 @@ function validarLogin() {
       text: "Autenticação inválida!",
     });
   }
+}
+
+
+function realizarCadastro(){
+//aqui vai o código da função que realiza o cadastro no banco
+}
+
+function realizarLogin(){
+  //aqui vai o código da função que realiza a consulta no banco
 }
