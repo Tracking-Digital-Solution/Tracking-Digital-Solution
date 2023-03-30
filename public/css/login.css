@@ -117,6 +117,11 @@ a {
   background-color: white;
 }
 
+.campo-input input:focus {
+  box-shadow: 0px 0px 0px 0px;
+  outline: 0;
+}
+
 .ancora-cadastrar {
   display: flex;
   align-items: flex-start;
