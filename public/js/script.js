@@ -72,12 +72,14 @@ function closeSidebar() {
 var areaChartOptions = {
   series: [{
     name: 'Purchase Orders',
-    data: [31, 40, 28, 51, 42, 109, 100]
+    data: [31, 40, 28, 51, 42, 109, 100],
+    colors: 'white',
   }, {
     name: 'Sales Orders',
     data: [11, 32, 45, 32, 34, 52, 41]
   }],
   chart: {
+    width: 650,
     height: 280,
     type: 'area',
     toolbar: {
