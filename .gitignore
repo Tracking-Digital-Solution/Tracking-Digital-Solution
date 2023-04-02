@@ -1,7 +1,7 @@
 node_modules
 package-lock.json
 
-site/node_modules
-site/package-lock.json
+aplication/node_modules
+aplication/package-lock.json
 
 .github
