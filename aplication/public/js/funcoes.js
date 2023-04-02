@@ -25,9 +25,8 @@ function limparSessao() {
 }
 
 // carregamento (loading)
-function aguardar() {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "flex";
+function loading() {
+    document.getElementById("modal").classList.add("active");
 }
 
 function finalizarAguardar(texto) {

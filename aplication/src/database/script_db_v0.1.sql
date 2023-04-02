@@ -1,14 +1,13 @@
--- Active: 1663943194633@@127.0.0.1@3306@aquatech
+-- Active: 1663943194633@@127.0.0.1@3306@trackingdigitalsolution
 CREATE DATABASE TrackingDigitalSolution;
-
 USE TrackingDigitalSolution;
 
 CREATE TABLE IF NOT EXISTS Perfil (
- idPerfil INT,
+ idPerfil INT AUTO_INCREMENT,
  nome VARCHAR(255),
  email VARCHAR(255),
  senha VARCHAR(255),
- cpf CHAR(11),
+ cpf CHAR(14),
  PRIMARY KEY (idPerfil),
  perfilAdministrador INT,
  FOREIGN KEY(perfilAdministrador)
