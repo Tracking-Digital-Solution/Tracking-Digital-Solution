@@ -88,19 +88,19 @@ function validarCpf() {
 }
 
 //Mascara CPF
-function mascara(i,t){
+function mascara(i, t) {
 
   var v = i.value;
 
-  if(isNaN(v[v.length-1])){ 
-     i.value = v.substring(0, v.length-1);
-     return;
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
   }
 
-  if(t == "cpf"){
-     i.setAttribute("maxlength", "14");
-     if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
-     if (v.length == 11) i.value += "-";
+  if (t == "cpf") {
+    i.setAttribute("maxlength", "14");
+    if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
+    if (v.length == 11) i.value += "-";
   }
 }
 
@@ -125,6 +125,16 @@ function validarCadastro() {
   }
 }
 
+function inputInfo() {
+  if (ta.style.display == "none") {
+    ta.style.display = "block";
+    body.style.opacity = 0.8;
+  } else {
+    ta.style.display = "none";
+    body.style.opacity = 1;
+  }
+}
+
 function validarLogin() {
   if (validar_email && validar_senha) {
     realizarLogin();
@@ -138,10 +148,10 @@ function validarLogin() {
 }
 
 
-function realizarCadastro(){
-//aqui vai o código da função que realiza o cadastro no banco
+function realizarCadastro() {
+  //aqui vai o código da função que realiza o cadastro no banco
 }
 
-function realizarLogin(){
+function realizarLogin() {
   //aqui vai o código da função que realiza a consulta no banco
 }

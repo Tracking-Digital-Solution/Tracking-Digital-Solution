@@ -15,13 +15,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/servidores.css">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body>
+<body id="body">
     <div class="grid-container">
 
         <!-- Header -->
@@ -31,8 +31,8 @@
             </div>
             <div class="header-left">
                 <p class="client-name-p">Olá, <b id="clientName">Leonardo Gomes</b></p>
-                
-              
+
+
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
@@ -44,17 +44,17 @@
 
         <!-- Sidebar -->
         <aside id="sidebar">
-            
+
             <div class="sidebar-title">
                 <div class="sidebar-brand">
                     <a href="dashboard.html">
                         <img src="./assets/images/logotipo-dash-removebg-preview.png" id="logo">
                     </a>
-                   
+
                 </div>
                 <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
             </div>
-            
+
 
             <ul class="sidebar-list">
                 <li class="sidebar-list-item">
@@ -100,10 +100,53 @@
                 <p class="font-weight-bold">Servidores</p>
             </div>
 
-           
+            <div class="add-serv">
+                <span>Adicionar servidores</span>
+                <span class="material-icons-outlined">library_add</span>
+            </div>
+
+            <div class="container-serv">
+
+                <button class="btn-serv" id="btns" onclick="inputInfo()">
+                    Servidor 01
+                    <div class="info-serv">
+                        Infos
+                    </div>
+                </button>
+
+                <button class="btn-serv" id="btns" onclick="inputInfo()">
+                    Servidor 02
+                    <div class="info-serv">
+                        Infos
+                    </div>
+                </button>
+
+                <button class="btn-serv" id="btns" onclick="inputInfo()">
+                    Servidor 03
+                    <div class="info-serv">
+                        Infos
+                    </div>
+                </button>
+
+                <button class="ta" id="ta" onclick="inputInfo()">
+                    Servidor 01
+                    <br>
+                    Nome: Servidor 01
+                    ID: 0011333
+                    <br>
+                    Endereço
+                    <br>
+                    Cidade São paulo, Capital
+                    Estado: São paulo
+                    <br>
+                    Hardware
+                    <br>
+                    Processador: Intel Xeon
+                    HD: 15.000 RPM
+                </button>
+            </div>
         </main>
         <!-- End Main -->
-
     </div>
 
     <!-- Scripts -->
@@ -114,3 +157,4 @@
 </body>
 
 </html>
+<script src="js/validation.js"></script>
