@@ -75,14 +75,14 @@ function validarSenha() {
 //Validando cpf da empresa com os 11 caracteres
 var validar_cpf = false;
 function validarCpf() {
-  var cpf = cpf_cnpj.value;
+  var cpf = cpf_input.value;
   /* Verifica se o usuario tem mais de 6 caractéres */
   if (cpf.length != 14) { // 14 por causa dos pontos e traços
-    cpf_cnpj.classList.add("red");
-    cpf_cnpj.classList.remove("green");
+    cpf_input.classList.add("red");
+    cpf_input.classList.remove("green");
   } else {
-    cpf_cnpj.classList.remove("red");
-    cpf_cnpj.classList.add("green");
+    cpf_input.classList.remove("red");
+    cpf_input.classList.add("green");
     validar_cpf = true;
   }
 }
@@ -115,13 +115,14 @@ function validarCadastro() {
       showConfirmButton: false,
       timer: 1600,
     });
-    setInterval(() => realizarCadastro(), 1600);
+    return true;
   } else {
     Swal.fire({
       icon: "error",
       title: "Ops...",
       text: "Cadastro inválido!",
     });
+    return false;
   }
 }
 
@@ -135,13 +136,4 @@ function validarLogin() {
       text: "Autenticação inválida!",
     });
   }
-}
-
-
-function realizarCadastro(){
-//aqui vai o código da função que realiza o cadastro no banco
-}
-
-function realizarLogin(){
-  //aqui vai o código da função que realiza a consulta no banco
 }
