@@ -125,12 +125,22 @@ function validarCadastro() {
   }
 }
 
-function inputInfo() {
-  if (ta.style.display == "none") {
-    ta.style.display = "block";
+function outputInfo() {
+  if (outputInfoServe.style.display == "none") {
+    outputInfoServe.style.display = "block";
     body.style.opacity = 0.8;
   } else {
-    ta.style.display = "none";
+    outputInfoServe.style.display = "none";
+    body.style.opacity = 1;
+  }
+}
+
+function outputForm() {
+  if (formAddServe.style.display == "none") {
+    formAddServe.style.display = "block";
+    body.style.opacity = 0.8;
+  } else {
+    formAddServe.style.display = "none";
     body.style.opacity = 1;
   }
 }

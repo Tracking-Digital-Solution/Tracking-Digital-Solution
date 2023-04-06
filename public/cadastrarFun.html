@@ -15,14 +15,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/generalRegisterDash.css">
     <link rel="stylesheet" href="./css/generalDash.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body>
+<body id="body">
     <div class="grid-container">
 
         <!-- Header -->
@@ -110,60 +110,75 @@
         <!-- Main -->
         <main class="main-container">
             <div class="main-title">
-                <p class="font-weight-bold">DASHBOARD</p>
+                <p class="font-weight-bold">Servidores</p>
             </div>
 
-            <div class="main-cards">
+            <button class="btn-add-serv" onclick="outputForm()">
+                <span>Adicionar servidores</span>
+                <span class="material-icons-outlined">library_add</span>
+            </button>
 
-                <div class="card flex-tam1">
-                    <span class="name-card">
-                        CPU
-                    </span>
-                </div>
-                <div class="card flex-tam1">
-                    <span class="name-card">
-                        CPU
-                    </span>
-                </div>
-                <div class="card flex-tam1">
-                    <span class="name-card">
-                        CPU
-                    </span>
-                </div>
+            <div class="container-serv">
 
+                <button class="btn-serv" id="btns" onclick="outputInfo()">
+                    funcionário 01
+                    <div class="mini-card-info">
+                        Infos
+                    </div>
+                </button>
+
+                <button class="btn-serv" id="btns" onclick="outputInfo()">
+                    funcionário 02
+                    <div class="mini-card-info">
+                        Infos
+                    </div>
+                </button>
+
+                <button class="btn-serv" id="btns" onclick="outputInfo()">
+                    funcionário 03
+                    <div class="mini-card-info">
+                        Infos
+                    </div>
+                </button>
+
+                <button class="output-info-serve" id="outputInfoServe" onclick="outputInfo()">
+                    Servidor 01
+                    <br>
+                    Nome: Servidor 01
+                    ID: 0011333
+                    <br>
+                    Endereço
+                    <br>
+                    Cidade São paulo, Capital
+                    Estado: São paulo
+                    <br>
+                    Hardware
+                    <br>
+                    Processador: Intel Xeon
+                    HD: 15.000 RPM
+                </button>
+
+                <div class="form-add-serve" id="formAddServe">
+                    <b>Cadastro de Funcionários</b>
+                    <ul>
+                        <li>
+                            <b>Nome do funcionário:</b> <input id="inputNameServer">
+                        </li>
+                        <li>
+                            <b>email:</b> <input id="inputCidadeServe">
+                        </li>
+                        <li>
+                            <b>Senha:</b> <input id="inputEstado">
+                        </li>
+                        <li>
+                            <b>CPF:</b> <input id="processadorServe">
+                        </li>
+                    </ul>
+                    <button onclick="registerServer()">Cadastrar</button>
+                </div>
             </div>
-
-            <div class="container-chart">
-
-                <div class="chart01">
-                    <span id="nome-hardware">
-                        CPU
-                    </span>
-                    <span id="data">
-                        Total cases: 5
-                    </span>
-                    <span id="data">
-                        Running: 4
-                    </span>
-                    <span id="data">
-                        Sleeping: 1
-                    </span>
-                    <span id="data">
-                        Stopped: 0
-                    </span>
-                    <span id="data">
-                        Zombie: 0
-                    </span>
-                </div>
-
-                <div class="chart02">
-                    <div id="area-chart"></div>
-                </div>
-            </div>
-
         </main>
         <!-- End Main -->
-
     </div>
 
     <!-- Scripts -->
@@ -174,3 +189,4 @@
 </body>
 
 </html>
+<script src="js/validation.js"></script>
