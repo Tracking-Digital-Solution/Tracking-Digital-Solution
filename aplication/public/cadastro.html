@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="css/validation.css">
     <link type="image/icon" rel="icon" href="../public/assets/Symbol_tracking.png">
     <script src="https://kit.fontawesome.com/a48f27e6c3.js" crossorigin="anonymous"></script>
-
+ 
+    <script src="./js/funcoes.js"></script>
     <title>Cadastre-se</title>
 </head>
 
@@ -61,26 +63,26 @@
         <div class="input-gerais">
             <div class="campo-input">
                 <label for="nome">Nome</label> <br>
-                <input id="nome_input" type="text" placeholder="Digite seu nome">
+                <input id="nome_input" type="text" placeholder="Digite seu nome" onblur="validarNome()" required >
             </div>
 
             <div class="campo-input">
                 <label for="email">E-mail</label> <br>
-                <input id="email_input" type="email" placeholder="Digite seu e-mail">
+                <input id="email_input" type="email" placeholder="Digite seu e-mail" onblur="validarEmail()" required>
             </div>
 
             <div class="campo-input">
                 <label for="senha">Senha</label> <br>
-                <input id="senha_input" type="password" placeholder="Digite sua senha">
+                <input id="senha_input" type="password" placeholder="Digite sua senha" onblur="validarSenha()" required>
             </div>
 
             <div class="campo-input">
-                <label for="cpf_cnpj">CPF</label> <br>
-                <input id="cpf_cnpj" type="text" placeholder="Digite seu cpf">
+                <label for="cpf_input">CPF</label> <br>
+                <input id="cpf_input" type="text" placeholder="Digite seu cpf" oninput="mascara(this, 'cpf')" autocomplete="off" onblur="validarCpf()" required>
 
             </div>
 
-            <button class="btn-cadastrar">Enviar</button>
+            <button class="btn-cadastrar" onclick="cadastrar()">Enviar</button>
             <div class="ancora-cadastrar">
                 Já tem uma conta ? <a style="margin-left: 3px;" href="login.html"> Acesse já</a>
             </div>
@@ -127,3 +129,57 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script src="js/validation.js"></script>
+
+<script>
+    function cadastrar() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var cpfVar = cpf_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            // finalizarAguardar();
+            return false;          
+            
+        }else if(validarCadastro()){
+        // Enviando o valor da nova input
+        fetch("/perfil/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cpfServer: cpfVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "1600")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+}
+</script>

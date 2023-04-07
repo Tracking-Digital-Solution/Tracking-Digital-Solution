@@ -20,6 +20,23 @@ body {
   justify-content: center;
   flex-wrap: wrap;
 }
+.modal{
+  position: absolute;
+  display: none;
+  top: 30vh;
+  width: 360px;
+  background-color: #031d4438;
+  box-shadow:0 5px 10px rgba(0,0,0,0.3);
+  border-radius: 50%;
+  transition: .2s ease-out;
+}
+.active{
+  display: block !important;
+}
+.modal img{
+  position: relative;
+  right: 4rem;
+}
 
 a {
   display: flex;
