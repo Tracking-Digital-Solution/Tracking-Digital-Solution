@@ -127,21 +127,20 @@ function validarCadastro() {
 
 function outputInfo() {
   if (outputInfoServe.style.display == "none") {
-    outputInfoServe.style.display = "block";
-    body.style.opacity = 0.8;
+    outputInfoServe.style.display = "flex";
   } else {
     outputInfoServe.style.display = "none";
-    body.style.opacity = 1;
   }
 }
 
 function outputForm() {
   if (formAddServe.style.display == "none") {
-    formAddServe.style.display = "block";
-    body.style.opacity = 0.8;
+    formAddServe.style.display = "flex";
+    gridContainer.style.opacity = 0.8;
+    formAddServe.style.color = "flex";
   } else {
     formAddServe.style.display = "none";
-    body.style.opacity = 1;
+    gridContainer.style.opacity = 1;
   }
 }
 

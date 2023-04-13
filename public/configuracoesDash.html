@@ -15,38 +15,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/generalRegisterDash.css">
     <link rel="stylesheet" href="./css/generalDash.css">
-
+    <link rel="stylesheet" href="css/configDadsh.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body id="body">
-    <!-- Formulario de cadastro de máquina -->
-    <div class="form-add-serve" id="formAddServe" onclick="outputForm()">
-        <b>Cadastro de Máquinas</b>
-        <ul>
-            <li>
-                <b>Nome:</b> <input id="inputNameServer">
-            </li>
-            <li>
-                <b>IPV4:</b> <input id="inputCidadeServe">
-            </li>
-            <li>
-                <b>Sistema operacional:</b> <input id="inputEstado">
-            </li>
-            <li>
-                <b>Processador:</b> <input id="processadorServe">
-            </li>
-            <li>
-                <b>Memória ram:</b> <input id="hdServe">
-            </li>
-        </ul>
-        <button onclick="registerServer()">Cadastrar</button>
-    </div>
-    <!-- --------------- -->
-    <div class="grid-container" id="gridContainer">
+<body>
+    <div class="grid-container">
 
         <!-- Header -->
         <header class="header">
@@ -124,59 +100,44 @@
         <!-- End Sidebar -->
 
         <!-- Main -->
-        <main class="mainContainer" id="mainContainer">
-            <div class="main-title">
-                <p class="font-weight-bold">Servidores</p>
-            </div>
+        <main class="main-container">
+            <span class="titulo">Recursos monitorados</span>
+            <div class="container-config">
 
-            <button class="btn-add-serv" onclick="outputForm()">
-                <span>Adicionar servidores</span>
-                <span class="material-icons-outlined">library_add</span>
+                <div class="bloco-hardware tam01">
+                    <span class="nome-hardware tam01">
+                        CPU
+                    </span>
+                    <span class="nome-hardware tam01">
+                        RAM
+                    </span>
+                    <span class="nome-hardware tam01">
+                        HD
+                    </span>
+                </div>
+                <div class="bloco-hardware tam01">
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                </div>
+                <div class="bloco-hardware diferente tam01">
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                </div>
+            </div>
+            <button class="btn-salvar">
+                salvar
             </button>
-
-            <div class="container-serv">
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Funcionário 01
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Funcionário 02
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Funcionário 03
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="output-info-serve" id="outputInfoServe" onclick="outputInfo()">
-                    Servidor 01
-                    <br>
-                    Nome: Servidor 01
-                    ID: 0011333
-                    <br>
-                    Endereço
-                    <br>
-                    Cidade São paulo, Capital
-                    Estado: São paulo
-                    <br>
-                    Hardware
-                    <br>
-                    Processador: Intel Xeon
-                    HD: 15.000 RPM
-                </button>
-
-            </div>
         </main>
         <!-- End Main -->
+
     </div>
 
     <!-- Scripts -->
@@ -187,4 +148,3 @@
 </body>
 
 </html>
-<script src="js/validation.js"></script>

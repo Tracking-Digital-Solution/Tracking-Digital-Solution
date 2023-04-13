@@ -15,38 +15,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/generalRegisterDash.css">
     <link rel="stylesheet" href="./css/generalDash.css">
-
+    <link rel="stylesheet" href="css/relatoriosDash.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body id="body">
-    <!-- Formulario de cadastro de máquina -->
-    <div class="form-add-serve" id="formAddServe" onclick="outputForm()">
-        <b>Cadastro de Máquinas</b>
-        <ul>
-            <li>
-                <b>Nome:</b> <input id="inputNameServer">
-            </li>
-            <li>
-                <b>IPV4:</b> <input id="inputCidadeServe">
-            </li>
-            <li>
-                <b>Sistema operacional:</b> <input id="inputEstado">
-            </li>
-            <li>
-                <b>Processador:</b> <input id="processadorServe">
-            </li>
-            <li>
-                <b>Memória ram:</b> <input id="hdServe">
-            </li>
-        </ul>
-        <button onclick="registerServer()">Cadastrar</button>
-    </div>
-    <!-- --------------- -->
-    <div class="grid-container" id="gridContainer">
+<body>
+    <div class="grid-container">
 
         <!-- Header -->
         <header class="header">
@@ -124,59 +100,30 @@
         <!-- End Sidebar -->
 
         <!-- Main -->
-        <main class="mainContainer" id="mainContainer">
-            <div class="main-title">
-                <p class="font-weight-bold">Servidores</p>
-            </div>
+        <main class="main-container">
+            <div class="container-relatorios">
 
-            <button class="btn-add-serv" onclick="outputForm()">
-                <span>Adicionar servidores</span>
-                <span class="material-icons-outlined">library_add</span>
-            </button>
-
-            <div class="container-serv">
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Funcionário 01
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Funcionário 02
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Funcionário 03
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="output-info-serve" id="outputInfoServe" onclick="outputInfo()">
-                    Servidor 01
-                    <br>
-                    Nome: Servidor 01
-                    ID: 0011333
-                    <br>
-                    Endereço
-                    <br>
-                    Cidade São paulo, Capital
-                    Estado: São paulo
-                    <br>
-                    Hardware
-                    <br>
-                    Processador: Intel Xeon
-                    HD: 15.000 RPM
-                </button>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
 
             </div>
         </main>
         <!-- End Main -->
+
     </div>
 
     <!-- Scripts -->
@@ -187,4 +134,3 @@
 </body>
 
 </html>
-<script src="js/validation.js"></script>

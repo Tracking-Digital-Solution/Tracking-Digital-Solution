@@ -1,0 +1,41 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-chamados {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    border: 1.5px black solid;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    align-items: center;
+}
+
+.tam01 {
+    flex-grow: 1;
+}
+
+.titulo-coluna {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: black;
+    background-color: rgb(188, 188, 188);
+}
+
+.dados{
+    color: black;
+    font-size: 15px;
+}
+
+.titulo{
+    color: black;
+    font-size: 20px;
+}

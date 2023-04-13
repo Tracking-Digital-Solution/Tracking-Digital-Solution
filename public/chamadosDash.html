@@ -15,14 +15,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/generalRegisterDash.css">
     <link rel="stylesheet" href="./css/generalDash.css">
-
+    <link rel="stylesheet" href="css/chamadosDash.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body id="body">
+<body>
     <div class="grid-container">
 
         <!-- Header -->
@@ -64,20 +63,13 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="./servidores.html" target="_blank">
-                        <span class="material-icons-outlined">storage</span> Servidores
+                    <a href="./cadastrarMaq.html" target="_blank">
+                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
                     </a>
                 </li>
                 <li class="sidebar-list-item">
                     <a href="./cadastrarFun.html" target="_blank">
                         <span class="material-icons-outlined">fact_check</span> Cadastrar funcionário
-                    </a>
-                </li>
-
-
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarMaq.html" target="_blank">
-                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
                     </a>
                 </li>
                 <li class="sidebar-list-item">
@@ -109,81 +101,31 @@
 
         <!-- Main -->
         <main class="main-container">
-            <div class="main-title">
-                <p class="font-weight-bold">Servidores</p>
-            </div>
-
-            <button class="btn-add-serv" onclick="outputForm()">
-                <span>Adicionar servidores</span>
-                <span class="material-icons-outlined">library_add</span>
-            </button>
-
-            <div class="container-serv">
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Servidor 01
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Servidor 02
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="btn-serv" id="btns" onclick="outputInfo()">
-                    Servidor 03
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
-                </button>
-
-                <button class="output-info-serve" id="outputInfoServe" onclick="outputInfo()">
-                    Servidor 01
-                    <br>
-                    Nome: Servidor 01
-                    ID: 0011333
-                    <br>
-                    Endereço
-                    <br>
-                    Cidade São paulo, Capital
-                    Estado: São paulo
-                    <br>
-                    Hardware
-                    <br>
-                    Processador: Intel Xeon
-                    HD: 15.000 RPM
-                </button>
-
-                <div class="form-add-serve" id="formAddServe">
-                    <b>Cadastro de servidores</b>
-                    <ul>
-                        <li>
-                            <b>Nome:</b> <input id="inputNameServer">
-                        </li>
-                        <span>Endereço</span>
-                        <li>
-                            <b>Cidade:</b> <input id="inputCidadeServe">
-                        </li>
-                        <li>
-                            <b>Estado:</b> <input id="inputEstado">
-                        </li>
-                        Hardware
-                        <li>
-                            <b>Processador:</b> <input id="processadorServe">
-                        </li>
-                        <li>
-                            <b>HD:</b> <input id="hdServe">
-                        </li>
-                    </ul>
-                    <button onclick="registerServer()">Cadastrar</button>
+            <span class="titulo">Suporte técnico</span>
+            <div class="container-chamados">
+                <div class="coluna tam01">
+                    <span class="titulo-coluna">id chamado</span>
+                    <span class="dados">dados</span>
                 </div>
+                <div class="coluna tam01">
+                    <span class="titulo-coluna">id chamado</span>
+                    <span class="dados">dados</span>
+                </div>
+                <div class="coluna tam01">
+                    <span class="titulo-coluna">id chamado</span>
+                    <span class="dados">dados</span>
+                </div>
+                <div class="coluna tam01">
+                    <span class="titulo-coluna">id chamado</span>
+                    <span class="dados">dados</span>
+                </div>
+
             </div>
-        </main>
-        <!-- End Main -->
+
+    </div>
+    </main>
+    <!-- End Main -->
+
     </div>
 
     <!-- Scripts -->
@@ -194,4 +136,3 @@
 </body>
 
 </html>
-<script src="js/validation.js"></script>

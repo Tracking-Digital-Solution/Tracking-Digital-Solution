@@ -23,7 +23,30 @@
 </head>
 
 <body id="body">
-    <div class="grid-container">
+    <!-- Formulario de cadastro de máquina -->
+    <div class="form-add-serve" id="formAddServe" onclick="outputForm()">
+        <b>Cadastro de Máquinas</b>
+        <ul>
+            <li>
+                <b>Nome:</b> <input id="inputNameServer">
+            </li>
+            <li>
+                <b>IPV4:</b> <input id="inputCidadeServe">
+            </li>
+            <li>
+                <b>Sistema operacional:</b> <input id="inputEstado">
+            </li>
+            <li>
+                <b>Processador:</b> <input id="processadorServe">
+            </li>
+            <li>
+                <b>Memória ram:</b> <input id="hdServe">
+            </li>
+        </ul>
+        <button onclick="registerServer()">Cadastrar</button>
+    </div>
+    <!-- --------------- -->
+    <div class="grid-container" id="gridContainer">
 
         <!-- Header -->
         <header class="header">
@@ -64,20 +87,13 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="./servidores.html" target="_blank">
-                        <span class="material-icons-outlined">storage</span> Servidores
+                    <a href="./cadastrarMaq.html" target="_blank">
+                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
                     </a>
                 </li>
                 <li class="sidebar-list-item">
                     <a href="./cadastrarFun.html" target="_blank">
                         <span class="material-icons-outlined">fact_check</span> Cadastrar funcionário
-                    </a>
-                </li>
-
-
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarMaq.html" target="_blank">
-                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
                     </a>
                 </li>
                 <li class="sidebar-list-item">
@@ -108,7 +124,7 @@
         <!-- End Sidebar -->
 
         <!-- Main -->
-        <main class="main-container">
+        <main class="mainContainer" id="mainContainer">
             <div class="main-title">
                 <p class="font-weight-bold">Servidores</p>
             </div>
@@ -158,27 +174,6 @@
                     HD: 15.000 RPM
                 </button>
 
-                <div class="form-add-serve" id="formAddServe">
-                    <b>Cadastro de Máquinas</b>
-                    <ul>
-                        <li>
-                            <b>Nome:</b> <input id="inputNameServer">
-                        </li>
-                        <li>
-                            <b>IPV4:</b> <input id="inputCidadeServe">
-                        </li>
-                        <li>
-                            <b>Sistema operacional:</b> <input id="inputEstado">
-                        </li>
-                        <li>
-                            <b>Processador:</b> <input id="processadorServe">
-                        </li>
-                        <li>
-                            <b>Memória ram:</b> <input id="hdServe">
-                        </li>
-                    </ul>
-                    <button onclick="registerServer()">Cadastrar</button>
-                </div>
             </div>
         </main>
         <!-- End Main -->
