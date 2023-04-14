@@ -15,8 +15,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/generalDash.css">
-    <link rel="stylesheet" href="css/relatoriosDash.css">
+    <link rel="stylesheet" href="./css/usoGeralDash.css">
+    <link rel="stylesheet" href="./css/dashboardTi.css">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
@@ -62,14 +63,17 @@
                         <span class="material-icons-outlined">dashboard</span> <span class="span-iten">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarMaq.html" target="_blank">
-                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
-                    </a>
-                </li>
+
                 <li class="sidebar-list-item">
                     <a href="./cadastrarFun.html" target="_blank">
                         <span class="material-icons-outlined">fact_check</span> Cadastrar funcionário
+                    </a>
+                </li>
+
+
+                <li class="sidebar-list-item">
+                    <a href="./cadastrarMaq.html" target="_blank">
+                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
                     </a>
                 </li>
                 <li class="sidebar-list-item">
@@ -101,25 +105,39 @@
 
         <!-- Main -->
         <main class="main-container">
-            <div class="container-relatorios">
-
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
+            <div class="container-dashboard">
+                <div class="titulo">
+                    DASHBOARD
                 </div>
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
+         
+                <div class="container-cards">
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            CPU
+                        </span>
+                            <div class="chart-svg">
+                                <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                    <path class="circle-bg" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                    <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                    <text x="18" y="20.35" class="percentage">30%</text>
+                                </svg>
+                            </div>
+                    </div>
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            CPU
+                        </span>
+                    </div>
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            CPU
+                        </span>
+                    </div>
                 </div>
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
-                </div>
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
-                </div>
-
             </div>
         </main>
         <!-- End Main -->

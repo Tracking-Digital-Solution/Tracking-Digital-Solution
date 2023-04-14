@@ -17,7 +17,8 @@
     /* justify-content: center; */
     flex-direction: column;
     border-radius: 20px;
-    border: 1px black solid;
+    box-shadow: 3px 3px 10px 2px #a9a1a1;
+    cursor: pointer;
 }
 
 .material-icons-outlined{
