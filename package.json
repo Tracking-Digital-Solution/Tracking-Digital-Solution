@@ -8,5 +8,3 @@
     "postinstall": "cd aplication && npm install"
   }
 }
-
-
