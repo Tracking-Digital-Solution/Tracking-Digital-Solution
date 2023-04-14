@@ -20,6 +20,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .modal{
   position: absolute;
   display: none;
@@ -37,7 +38,6 @@ body {
   position: relative;
   right: 4rem;
 }
-
 a {
   display: flex;
   text-decoration: none;

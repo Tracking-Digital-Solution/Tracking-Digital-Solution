@@ -88,19 +88,19 @@ function validarCpf() {
 }
 
 //Mascara CPF
-function mascara(i,t){
+function mascara(i, t) {
 
   var v = i.value;
 
-  if(isNaN(v[v.length-1])){ 
-     i.value = v.substring(0, v.length-1);
-     return;
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
   }
 
-  if(t == "cpf"){
-     i.setAttribute("maxlength", "14");
-     if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
-     if (v.length == 11) i.value += "-";
+  if (t == "cpf") {
+    i.setAttribute("maxlength", "14");
+    if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
+    if (v.length == 11) i.value += "-";
   }
 }
 
@@ -115,6 +115,7 @@ function validarCadastro() {
       showConfirmButton: false,
       timer: 1600,
     });
+
     return true;
   } else {
     Swal.fire({
@@ -123,6 +124,25 @@ function validarCadastro() {
       text: "Cadastro inválido!",
     });
     return false;
+  }
+}
+
+function outputInfo() {
+  if (outputInfoServe.style.display == "none") {
+    outputInfoServe.style.display = "flex";
+  } else {
+    outputInfoServe.style.display = "none";
+  }
+}
+
+function outputForm() {
+  if (formAddServe.style.display == "none") {
+    formAddServe.style.display = "flex";
+    gridContainer.style.opacity = 0.8;
+    formAddServe.style.color = "flex";
+  } else {
+    formAddServe.style.display = "none";
+    gridContainer.style.opacity = 1;
   }
 }
 
@@ -136,4 +156,5 @@ function validarLogin() {
       text: "Autenticação inválida!",
     });
   }
+
 }

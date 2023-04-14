@@ -1,0 +1,59 @@
+.container-maquinas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    gap: 20px;
+    /* height: auto; */
+}
+
+.caixa-maquina{
+    display: flex;
+    height: 250px;
+    align-items: center;
+    margin-left: 10px;
+    /* justify-content: center; */
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px 2px #a9a1a1;
+    cursor: pointer;
+}
+
+.material-icons-outlined{
+    line-height: normal;
+    text-transform: none;
+    transform: none;
+    font-style: normal;
+    display: block;
+    transition: none;
+}
+
+.kpi{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    background-color: red;
+    margin-top: 3px !important;
+    margin-left: 95px;
+    position: absolute;
+}
+
+.kpi02{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    background-color: green;
+    margin-top: 3px !important;
+    margin-left: 95px;
+    position: absolute;
+}
+
+.computer{
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    font-size: 120px;
+    position: relative;
+    
+}
