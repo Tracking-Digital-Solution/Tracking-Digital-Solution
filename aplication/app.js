@@ -8,8 +8,8 @@ var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 
 var app = express();
 
-var indexRouter = require("./aplication/src/routes/index");
-var perfilRouter = require("./aplication/src/routes/perfil");
+var indexRouter = require("./src/routes/index");
+var perfilRouter = require("./src/routes/perfil");
 
 
 app.use(express.json());
