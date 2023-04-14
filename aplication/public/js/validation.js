@@ -88,19 +88,19 @@ function validarCpf() {
 }
 
 //Mascara CPF
-function mascara(i,t){
+function mascara(i, t) {
 
   var v = i.value;
 
-  if(isNaN(v[v.length-1])){ 
-     i.value = v.substring(0, v.length-1);
-     return;
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
   }
 
-  if(t == "cpf"){
-     i.setAttribute("maxlength", "14");
-     if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
-     if (v.length == 11) i.value += "-";
+  if (t == "cpf") {
+    i.setAttribute("maxlength", "14");
+    if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
+    if (v.length == 11) i.value += "-";
   }
 }
 
@@ -123,6 +123,7 @@ function validarCadastro() {
       title: "Ops...",
       text: "Cadastro inválido!",
     });
+    return false;
   }
 }
 
