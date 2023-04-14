@@ -75,32 +75,32 @@ function validarSenha() {
 //Validando cpf da empresa com os 11 caracteres
 var validar_cpf = false;
 function validarCpf() {
-  var cpf = cpf_cnpj.value;
+  var cpf = cpf_input.value;
   /* Verifica se o usuario tem mais de 6 caractéres */
   if (cpf.length != 14) { // 14 por causa dos pontos e traços
-    cpf_cnpj.classList.add("red");
-    cpf_cnpj.classList.remove("green");
+    cpf_input.classList.add("red");
+    cpf_input.classList.remove("green");
   } else {
-    cpf_cnpj.classList.remove("red");
-    cpf_cnpj.classList.add("green");
+    cpf_input.classList.remove("red");
+    cpf_input.classList.add("green");
     validar_cpf = true;
   }
 }
 
 //Mascara CPF
-function mascara(i, t) {
+function mascara(i,t){
 
   var v = i.value;
 
-  if (isNaN(v[v.length - 1])) {
-    i.value = v.substring(0, v.length - 1);
-    return;
+  if(isNaN(v[v.length-1])){ 
+     i.value = v.substring(0, v.length-1);
+     return;
   }
 
-  if (t == "cpf") {
-    i.setAttribute("maxlength", "14");
-    if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
-    if (v.length == 11) i.value += "-";
+  if(t == "cpf"){
+     i.setAttribute("maxlength", "14");
+     if (v.length == 3 || v.length == 7) i.value += "."; //verfica posição numero para adcionar o "."
+     if (v.length == 11) i.value += "-";
   }
 }
 
@@ -115,7 +115,8 @@ function validarCadastro() {
       showConfirmButton: false,
       timer: 1600,
     });
-    setInterval(() => realizarCadastro(), 1600);
+
+    return true;
   } else {
     Swal.fire({
       icon: "error",
@@ -154,13 +155,5 @@ function validarLogin() {
       text: "Autenticação inválida!",
     });
   }
-}
 
-
-function realizarCadastro() {
-  //aqui vai o código da função que realiza o cadastro no banco
-}
-
-function realizarLogin() {
-  //aqui vai o código da função que realiza a consulta no banco
 }
