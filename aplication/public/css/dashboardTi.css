@@ -6,11 +6,12 @@
   padding: 20px 20px;
 }
 
-.container-dashboard{
+.container-dashboard {
   /* display: flex; */
-  background-color: aqua;
-  height: 100%;
+  height: auto;
   border-radius: 30px;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  padding: 10px;
 }
 
 .titulo {
@@ -32,17 +33,19 @@
   width: 100%;
   gap: 20px;
   margin-bottom: 20px;
+  border-top:1px black solid ;
 }
 
 .flex-tam1 {
   flex-grow: 1;
 }
 
-.name-card{
+.name-card {
   display: flex;
   flex-direction: row;
   width: auto;
-  color: green;
+  color: blue;
+  font-size: 30px !important;
 }
 
 .card {
@@ -51,10 +54,34 @@
   align-items: center;
   padding: 15px;
   background-color: #ffffff;
-  border: 1px solid #d2d2d3;
-  border-radius: 5px;
-  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
-  height: 200px;
+  /* border: 1px solid #d2d2d3; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2); */
+  height: auto;
+  gap: 10px;
+  border-right: 1px black solid;
+}
+
+.identificacao-maquina {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 100px;
+  gap: 700px;
+  width: 100%;
+}
+
+.bloco-identificacao{
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.infos {
+  display: flex;
+  width:100%;
+  align-items: flex-start;
+  font-size: 15px !important;
 }
 
 .card .hard-info {
@@ -65,6 +92,14 @@
   font-size: 1.5rem;
 }
 
+.computer{
+  padding: 20px;
+  font-size: 120px;
+  position: relative;
+  
+}
+
+/* 
 .card:first-child {
   border-left: 7px solid #246dec;
 }
@@ -79,7 +114,7 @@
 
 .card:nth-child(4) {
   border-left: 7px solid #cc3c43;
-}
+} */
 
 .card>span {
   font-size: 20px;
@@ -101,14 +136,14 @@
 }
 
 
-.container-chart{
+.container-chart {
   display: flex;
   height: 100%;
   gap: 30px;
 
 }
 
-.chart01{
+/* .chart01{
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 29, 59, 1);
@@ -116,25 +151,25 @@
   height: 350px;
   border-radius: 30px;
   box-shadow: -5px 3px 8px -1.5px aliceblue;
-}
-
+} */
+/* 
 #nome-hardware{
   margin-left: 10px;
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
   color: #001233;
-}
+} */
 
-#data{
+/* #data{
   margin-left: 10px;
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
   color: aliceblue;
-}
+} */
 
-.chart02 {
+/* .chart02 {
   display: flex;
   background-color: rgba(0, 29, 59, 0.5);
   color: aliceblue;
@@ -144,7 +179,7 @@
   height: 350px;
   border-radius: 30px;
   box-shadow: -5px 5px 7px aliceblue;
-}
+} */
 
 /* Teste */
 
@@ -153,6 +188,7 @@
   stroke: #eee;
   stroke-width: 1.2;
 }
+
 .percentage {
   fill: #000000;
   font-size: 0.5em;
@@ -165,29 +201,52 @@
   stroke-width: 1.6;
   stroke-linecap: round;
   animation: progress 1s ease-out forwards;
+  color: #000000;
 }
 
 .chart-svg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   max-width: 90px;
   min-width: 40px;
   flex: 1;
   height: 80px;
 }
+
 .circular-chart {
-  height: 120px;
+  padding: 10px;
+  height: 140px;
+  margin: 12px 0 12px 0;
+
   &.orange {
-    .circle { stroke: #ff9f00; }
-    .circle-bg {stroke: #776547; }
+    .circle {
+      stroke: #ff9f00
+    }
+
+    .circle-bg {
+      stroke: #776547
+    }
   }
-  
+
   &.blue {
-    .circle { stroke: #00cfde; }
-    .circle-bg { stroke: #557b88; }
+    .circle {
+      stroke: #00cfde
+    }
+
+    .circle-bg {
+      stroke: #557b88
+    }
   }
-  
+
   &.pink {
-    .circle { stroke: #ff7dcb; }
-    .circle-bg { stroke: #6f5684; }
+    .circle {
+      stroke: #ff7dcb
+    }
+
+    .circle-bg {
+      stroke: #6f5684;
+    }
   }
 }
