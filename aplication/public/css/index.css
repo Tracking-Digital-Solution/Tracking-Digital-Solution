@@ -290,8 +290,12 @@ nav {
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
 }
+
+.p-bn{
+  text-align: center;
+  }
 
 #benefit-1 {
   background-image: url("../assets/icon-security.png");
@@ -393,6 +397,8 @@ nav {
     max-width: 100%;
     margin-bottom: 2em;
   }
+
+
 
   /* sobre nós/ about us */
   #about-us {
