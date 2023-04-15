@@ -95,7 +95,6 @@
 
         <!-- Main -->
         <main class="main-container">
-            <span>Máquinas</span>
             <div class="container-maquinas" id="containerMaquinas">
                 <div class="caixa-maquina" onclick="mostrarDashboard()">
                     <div class="material-icons-outlined computer">
@@ -242,7 +241,7 @@
                     <span class="titulo-coluna">Data</span>
                     <span class="dados">13/02/2002</span>
                 </div>
-                <div class="coluna tam1">
+                <div class="coluna tam1" style="border-right: none;">
                     <span class="titulo-coluna">Data</span>
                     <span class="dados">13/02/2002</span>
                 </div>
@@ -251,9 +250,9 @@
             <!-- Container configurações -->
             <div class="container-config" id="containerConfig">
                 <div class="bloco-hardware tam01">
-                    <span class="nome-hardware tam01">
-                        CPU
-                    </span>
+                        <span class="nome-hardware tam01">
+                            CPU
+                        </span>
                     <span class="nome-hardware tam01">
                         RAM
                     </span>
@@ -261,26 +260,17 @@
                         HD
                     </span>
                 </div>
-                <div class="bloco-hardware tam01">
-                    <span class="nome-hardware tam01">
-                        Métrica
-                    </span>
-                    <span class="nome-hardware tam01">
-                        Métrica
-                    </span>
-                    <span class="nome-hardware tam01">
-                        Métrica
-                    </span>
-                </div>
                 <div class="bloco-hardware diferente tam01">
                     <div class="auxiliar-input tam01"><input class="input-metrica"></div>
                     <div class="auxiliar-input tam01"><input class="input-metrica"></div>
                     <div class="auxiliar-input tam01"><input class="input-metrica"></div>
                 </div>
+                <div class="container-btn-salvar" id="btnConfig">
+                    <button class="btn-salvar">
+                        salvar
+                    </button>
+                </div>
             </div>
-            <button class="btn-salvar" id="btnConfig">
-                salvar
-            </button>
 
         </main>
         <!-- End Main -->

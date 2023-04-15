@@ -131,9 +131,24 @@
 
         <!-- Main -->
         <main class="main-container">
-            <span>Máquinas</span>
             <!-- Container dashboard -->
             <div class="container-maquinas" id="containerMaquinas">
+                <div class="caixa-maquina">
+                    <div class="material-icons-outlined computer">
+                        <div class="kpi"></div>
+                        desktop_windows
+                    </div>
+                    <Span>Caixa 01</Span>
+                    <span>Estado: Inativo</span>
+                </div>
+                <div class="caixa-maquina">
+                    <div class="material-icons-outlined computer">
+                        <div class="kpi"></div>
+                        desktop_windows
+                    </div>
+                    <Span>Caixa 01</Span>
+                    <span>Estado: Inativo</span>
+                </div>
                 <div class="caixa-maquina">
                     <div class="material-icons-outlined computer">
                         <div class="kpi"></div>
@@ -145,108 +160,210 @@
             </div>
 
             <!-- Container cadastrar Máquinas -->
-            <button class="btn-add-maq" onclick="cadastrarMaq()" id="btnMaqAdd">
-                <span>Adicionar servidores</span>
-                <span class="material-icons-outlined">library_add</span>
-            </button>
-
-            <div class="container-cadastrar-maq" id="containerCadastrarMaq">
-                <div class="btn-maq" id="btns" onclick="outputInfo()">
-                    Máquina 01
-                    <div class="mini-card-info">
-                        Infos
-                    </div>
+            <div class="container-cadastro maquina" id="containerCadastroMaq">
+                <div class="caixa-botao-add">
+                    <span class="material-icons-outlined btn-add">
+                        add_box
+                    </span>
+                    Cadastrar Máquina
                 </div>
-                <div class="btn-maq" id="btns" onclick="outputInfo()">
-                    Máquina 01
-                    <div class="mini-card-info">
-                        Infos
+                <div class="container-das-infos">
+                    <div class="caixa-infos tam01">
+                        <span class="material-icons-outlined computer">
+                            desktop_windows
+                        </span>
+                        <span class="caracteristicas">
+                            Nome:
+                        </span>
+                        <span class="caracteristicas">
+                            Internet:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
                     </div>
-                </div>
-                <div class="btn-maq" id="btns" onclick="outputInfo()">
-                    Máquina 01
-                    <div class="mini-card-info">
-                        Infos
+                    <div class="caixa-infos tam01">
+                        <span class="material-icons-outlined computer">
+                            desktop_windows
+                        </span>
+                        <span class="caracteristicas">
+                            Nome:
+                        </span>
+                        <span class="caracteristicas">
+                            Internet:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
                     </div>
-                </div>
-                
-                <!-- Card que aparece as informações da máquina com o clik -->
-                <div class="mostrar-dados-maq" id="mostrarDadosMaq" onclick="outputInfo()">
-                    Servidor 01
-                    <br>
-                    Nome: Servidor 01
-                    ID: 0011333
-                    <br>
-                    Endereço
-                    <br>
-                    Cidade São paulo, Capital
-                    Estado: São paulo
-                    <br>
-                    Hardware
-                    <br>
-                    Processador: Intel Xeon
-                    HD: 15.000 RPM
+                    <div class="caixa-infos tam01">
+                        <span class="material-icons-outlined computer">
+                            desktop_windows
+                        </span>
+                        <span class="caracteristicas">
+                            Nome:
+                        </span>
+                        <span class="caracteristicas">
+                            Internet:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                    </div>
                 </div>
             </div>
 
-                <!-- Container cadastar func -->
-                <!--  -->
-                <!--  -->
-                <!--  -->
-
-                <!-- Container relatorios -->
-                <div class="container-relatorios" id="containerRelatorios">
-                    <div class="coluna tam1">
-                        <span class="titulo-coluna">Data</span>
-                        <span class="dados">13/02/2002</span>
+            <!-- Container cadastar func -->
+            <div class="container-cadastro maquina" id="containerCadastroFunc">
+                <div class="caixa-botao-add">
+                    <span class="material-icons-outlined btn-add">
+                        add_box
+                    </span>
+                    Cadastrar funcionário
+                </div>
+                <div class="container-das-infos">
+                    <div class="caixa-infos tam01">
+                        <span class="material-icons-outlined computer">
+                            person
+                        </span>
+                        <span class="caracteristicas">
+                            Nome:
+                        </span>
+                        <span class="caracteristicas">
+                            Internet:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
                     </div>
-                    <div class="coluna tam1">
-                        <span class="titulo-coluna">Data</span>
-                        <span class="dados">13/02/2002</span>
+                    <div class="caixa-infos tam01">
+                        <span class="material-icons-outlined computer">
+                            person
+                        </span>
+                        <span class="caracteristicas">
+                            Nome:
+                        </span>
+                        <span class="caracteristicas">
+                            Internet:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
                     </div>
-                    <div class="coluna tam1">
-                        <span class="titulo-coluna">Data</span>
-                        <span class="dados">13/02/2002</span>
-                    </div>
-                    <div class="coluna tam1">
-                        <span class="titulo-coluna">Data</span>
-                        <span class="dados">13/02/2002</span>
+                    <div class="caixa-infos tam01">
+                        <span class="material-icons-outlined computer">
+                            person
+                        </span>
+                        <span class="caracteristicas">
+                            Nome:
+                        </span>
+                        <span class="caracteristicas">
+                            Internet:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
+                        <span class="caracteristicas">
+                            Temperatura:
+                        </span>
                     </div>
                 </div>
+            </div>
+            <!-- Container formulario de cadastros -->
+            <!-- <div class="container-formularios-cadas">
+                <div class="">
 
-                <!-- Container configurações -->
-                <div class="container-config" id="containerConfig">
-                    <div class="bloco-hardware tam01">
-                        <span class="nome-hardware tam01">
-                            CPU
-                        </span>
-                        <span class="nome-hardware tam01">
-                            RAM
-                        </span>
-                        <span class="nome-hardware tam01">
-                            HD
-                        </span>
-                    </div>
-                    <div class="bloco-hardware tam01">
-                        <span class="nome-hardware tam01">
-                            Métrica
-                        </span>
-                        <span class="nome-hardware tam01">
-                            Métrica
-                        </span>
-                        <span class="nome-hardware tam01">
-                            Métrica
-                        </span>
-                    </div>
-                    <div class="bloco-hardware diferente tam01">
-                        <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                        <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                        <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                    </div>
                 </div>
-                    <button class="btn-salvar" id="btnConfig">
+            </div> -->
+
+            <!-- Container relatorios -->
+            <div class="container-relatorios" id="containerRelatorios">
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1" style="border-right: none;">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+            </div>
+
+            <!-- Container configurações -->
+            <div class="container-config" id="containerConfig">
+                <div class="bloco-hardware tam01">
+                    <span class="nome-hardware tam01">
+                        CPU
+                    </span>
+                    <span class="nome-hardware tam01">
+                        RAM
+                    </span>
+                    <span class="nome-hardware tam01">
+                        HD
+                    </span>
+                </div>
+                <div class="bloco-hardware tam01">
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                </div>
+                <div class="bloco-hardware diferente tam01">
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                </div>
+                <div class="container-btn-salvar" id="btnConfig">
+                    <button class="btn-salvar">
                         salvar
                     </button>
+                </div>
+            </div>
 
         </main>
         <!-- End Main -->

@@ -3,6 +3,7 @@ function mostrarPainelDeControle() {
     containerMaquinas.style.display = "flex";
     containerConfig.style.display = "none";
     btnConfig.style.display = "none";
+    containerDashboard.style.display = "none";
 }
 
 function mostrarCadastroMaq() {
@@ -10,6 +11,7 @@ function mostrarCadastroMaq() {
     containerMaquinas.style.display = "none";
     containerConfig.style.display = "none";
     btnConfig.style.display = "none";
+    containerDashboard.style.display = "none";
 }
 
 function mostrarCadastroFunc() {
@@ -17,7 +19,7 @@ function mostrarCadastroFunc() {
     containerMaquinas.style.display = "none";
     containerConfig.style.display = "none";
     btnConfig.style.display = "none";
-
+    containerDashboard.style.display = "none";
 }
 
 function mostrarRelatorios() {
@@ -25,6 +27,7 @@ function mostrarRelatorios() {
     containerMaquinas.style.display = "none";
     containerConfig.style.display = "none"
     btnConfig.style.display = "none";
+    containerDashboard.style.display = "none";
 }
 
 function mostrarConfig() {
@@ -32,6 +35,7 @@ function mostrarConfig() {
     btnConfig.style.display = "flex";
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
+    containerDashboard.style.display = "none";
 }
 
 function mostrarSuporte() {

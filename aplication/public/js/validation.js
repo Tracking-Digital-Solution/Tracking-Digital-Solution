@@ -127,14 +127,6 @@ function validarCadastro() {
   }
 }
 
-// function outputInfo() {
-//   if (mostrarDadosMaq.style.display == "none") {
-//     mostrarDadosMaq.style.display = "flex";
-//   } else {
-//     mostrarDadosMaq.style.display = "none";
-//   }
-// }
-
 // function outputForm() {
 //   if (formAddServe.style.display == "none") {
 //     formAddServe.style.display = "flex";

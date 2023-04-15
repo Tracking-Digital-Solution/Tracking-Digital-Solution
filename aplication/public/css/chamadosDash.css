@@ -5,7 +5,7 @@
 }
 
 .container-chamados {
-    display: none;
+    display: flex;
     height: 300px;
     width: 100%;
     border: 1.5px black solid;

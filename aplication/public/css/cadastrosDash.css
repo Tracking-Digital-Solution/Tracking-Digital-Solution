@@ -1,73 +1,54 @@
-li {
-  display: flex;
-  text-decoration: none;
-}
-
-.mostrar-dados-maq {
-  display: flex;
-  cursor: pointer;
-  position: absolute;
-  height: 320px;
-  width: 450px;
-  border: solid 1px black;
-  background-color: #ffffff;
-}
-
-.btn-add-maq {
+.container-cadastro{
   display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  height: auto;
-  margin-bottom: 30px;
-  height: 30px;
-}
-
-.container-cadastrar-maq {
-  display: none;
-  flex-direction: row;
-  overflow-wrap: normal;
-  gap: 20px;
   width: 100%;
-  height: min-content;
-  justify-content: center;
-  flex-wrap: wrap;
+  height: auto;
 }
 
-.btn-maq {
+.caixa-botao-add{
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  border-radius: 10px;
+  padding: 3px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  width: 30%;
-  height: 300px;
-  border: solid 1px #000000;
+  margin: 10px 0px 15px 0px;
+  background-color: #a9a1a1;
 }
 
-.form-add-serve {
-  height: 350px;
-  width: 550px;
-  position: absolute;
-  margin: 150px 100px 100px 400px;
+.container-das-infos{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  border: solid 1px black;
-  border-radius: 20px;
-  background-color: #ffffff;
-  z-index: 10;
-  padding: 10px;
-  align-items: center;
+  width: 100%;
+  height: auto;
+  gap: 20px;
 }
 
-.mini-card-info {
-  border: solid 1px black;
-  padding: 70px;
-  margin-top: 60px;
-}
-
-.btn-side{
+.caixa-infos{
+  background-color: antiquewhite;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
   display: flex;
+  height: auto;
   flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.caracteristicas{
+  font-size: 20px;
+  color: black;
+  width: 100%;
+}
+
+.tam01{
+  flex-grow: 1;
+}
+
+/* Formulario de cadastros  */
+.container-formularios-cadas{
+  width: 100%;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  height: auto;
 }
