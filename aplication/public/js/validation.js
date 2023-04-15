@@ -127,24 +127,26 @@ function validarCadastro() {
   }
 }
 
-function outputInfo() {
-  if (outputInfoServe.style.display == "none") {
-    outputInfoServe.style.display = "flex";
-  } else {
-    outputInfoServe.style.display = "none";
-  }
-}
+// function outputInfo() {
+//   if (mostrarDadosMaq.style.display == "none") {
+//     mostrarDadosMaq.style.display = "flex";
+//   } else {
+//     mostrarDadosMaq.style.display = "none";
+//   }
+// }
 
-function outputForm() {
-  if (formAddServe.style.display == "none") {
-    formAddServe.style.display = "flex";
-    gridContainer.style.opacity = 0.8;
-    formAddServe.style.color = "flex";
-  } else {
-    formAddServe.style.display = "none";
-    gridContainer.style.opacity = 1;
-  }
-}
+// function outputForm() {
+//   if (formAddServe.style.display == "none") {
+//     formAddServe.style.display = "flex";
+//     gridContainer.style.opacity = 0.8;
+//     formAddServe.style.color = "flex";
+//   } else {
+//     formAddServe.style.display = "none";
+//     gridContainer.style.opacity = 1;
+//   }
+// }
+
+
 
 function validarLogin() {
   if (validar_email && validar_senha) {

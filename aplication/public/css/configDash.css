@@ -5,7 +5,7 @@
 }
 
 .container-config {
-    display: flex;
+    display: none;
     height: 300px;
     width: 100%;
 }
@@ -47,6 +47,7 @@
 }
 
 .btn-salvar{
+    display: none;
     padding: 5px;
     font-size: 20px;
     background-color: black;

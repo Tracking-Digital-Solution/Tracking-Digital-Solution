@@ -3,8 +3,8 @@ li {
   text-decoration: none;
 }
 
-.output-info-serve {
-  display: none;
+.mostrar-dados-maq {
+  display: flex;
   cursor: pointer;
   position: absolute;
   height: 320px;
@@ -13,7 +13,8 @@ li {
   background-color: #ffffff;
 }
 
-.btn-add-serv {
+.btn-add-maq {
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -22,18 +23,18 @@ li {
   height: 30px;
 }
 
-.container-serv {
-  display: flex;
+.container-cadastrar-maq {
+  display: none;
   flex-direction: row;
   overflow-wrap: normal;
   gap: 20px;
   width: 100%;
-  height: 1000px;
+  height: min-content;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.btn-serv {
+.btn-maq {
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -64,4 +65,9 @@ li {
   border: solid 1px black;
   padding: 70px;
   margin-top: 60px;
+}
+
+.btn-side{
+  display: flex;
+  flex-direction: column;
 }

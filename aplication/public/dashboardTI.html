@@ -17,6 +17,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/usoGeralDash.css">
     <link rel="stylesheet" href="./css/dashboardTi.css">
+    <link rel="stylesheet" href="./css/configDash.css">
+    <link rel="stylesheet" href="./css/relatoriosDash.css">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
@@ -24,7 +26,6 @@
 
 <body>
     <div class="grid-container">
-
         <!-- Header -->
         <header class="header">
             <div class="menu-icon" onclick="openSidebar()">
@@ -56,48 +57,37 @@
                 <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
             </div>
 
-
+            <!-- :BARRA DE NAVEGAÇÃO -->
             <ul class="sidebar-list">
-                <li class="sidebar-list-item">
-                    <a href="./dashboard.html" target="_blank">
-                        <span class="material-icons-outlined">dashboard</span> <span class="span-iten">Dashboard</span>
-                    </a>
+                <li class="sidebar-list-item" onclick="mostrarPainelDeControle()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">poll</span>
+                        Painel de controle
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">description</span>
+                        Relatórios
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="mostrarConfig()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">settingst</span>Configurações
+                    </div>
                 </li>
 
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarFun.html" target="_blank">
-                        <span class="material-icons-outlined">fact_check</span> Cadastrar funcionário
-                    </a>
-                </li>
-
-
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarMaq.html" target="_blank">
-                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
-                    </a>
+                <li class="sidebar-list-item" onclick="mostrarSuporte()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">call</span>
+                        Suporte
+                    </div>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">settings</span> Relatórios
-                    </a>
-                </li>
-
-                <li class="sidebar-list-item">
-                    <a href="../index.html" target="_top">
-                        <span class="material-icons-outlined">logout</span> Configurações
-                    </a>
-                </li>
-
-                <li class="sidebar-list-item">
-                    <a href="../index.html" target="_top">
-                        <span class="material-icons-outlined">logout</span> Suporte
-                    </a>
-                </li>
-
-                <li class="sidebar-list-item">
-                    <a href="../index.html" target="_top">
-                        <span class="material-icons-outlined">logout</span> Exit
-                    </a>
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">logout</span>
+                        Exit
+                    </div>
                 </li>
             </ul>
         </aside>
@@ -105,7 +95,38 @@
 
         <!-- Main -->
         <main class="main-container">
-            <div class="container-dashboard">
+            <span>Máquinas</span>
+            <div class="container-maquinas" id="containerMaquinas">
+                <div class="caixa-maquina" onclick="mostrarDashboard()">
+                    <div class="material-icons-outlined computer">
+                        <div class="kpi"></div>
+                        desktop_windows
+                    </div>
+                    <Span>Caixa 01</Span>
+                    <span>Estado: Inativo</span>
+                </div>
+
+                <div class="caixa-maquina" onclick="mostrarDashboard()">
+                    <div class="material-icons-outlined computer">
+                        <div class="kpi"></div>
+                        desktop_windows
+                    </div>
+                    <Span>Caixa 01</Span>
+                    <span>Estado: Inativo</span>
+                </div>
+
+                <div class="caixa-maquina" onclick="mostrarDashboard()">
+                    <div class="material-icons-outlined computer">
+                        <div class="kpi"></div>
+                        desktop_windows
+                    </div>
+                    <Span>Caixa 01</Span>
+                    <span>Estado: Inativo</span>
+                </div>
+
+            </div>
+            <!-- Container dashboard TI -->
+            <div class="container-dashboard" id="containerDashboard" onclick="mostrarDashboard()">
                 <div class="titulo">
                     DASHBOARD
                 </div>
@@ -136,11 +157,11 @@
                         <div class="chart-svg">
                             <svg viewBox="0 0 36 36" class="circular-chart pink">
                                 <path class="circle-bg" d="M18 2.0845
-                              a 15.9155 15.9155 0 0 1 0 31.831
-                              a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                                 <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                              a 15.9155 15.9155 0 0 1 0 31.831
-                              a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                                 <text x="18" y="20.35" class="percentage">30%</text>
                             </svg>
                         </div>
@@ -161,11 +182,11 @@
                         <div class="chart-svg">
                             <svg viewBox="0 0 36 36" class="circular-chart pink">
                                 <path class="circle-bg" d="M18 2.0845
-                          a 15.9155 15.9155 0 0 1 0 31.831
-                          a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                                 <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                          a 15.9155 15.9155 0 0 1 0 31.831
-                          a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                                 <text x="18" y="20.35" class="percentage">30%</text>
                             </svg>
                         </div>
@@ -186,11 +207,11 @@
                         <div class="chart-svg">
                             <svg viewBox="0 0 36 36" class="circular-chart pink">
                                 <path class="circle-bg" d="M18 2.0845
-                          a 15.9155 15.9155 0 0 1 0 31.831
-                          a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                                 <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                          a 15.9155 15.9155 0 0 1 0 31.831
-                          a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                                 <text x="18" y="20.35" class="percentage">30%</text>
                             </svg>
                         </div>
@@ -206,16 +227,70 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Container relatorios -->
+            <div class="container-relatorios" id="containerRelatorios">
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+                <div class="coluna tam1">
+                    <span class="titulo-coluna">Data</span>
+                    <span class="dados">13/02/2002</span>
+                </div>
+            </div>
+
+            <!-- Container configurações -->
+            <div class="container-config" id="containerConfig">
+                <div class="bloco-hardware tam01">
+                    <span class="nome-hardware tam01">
+                        CPU
+                    </span>
+                    <span class="nome-hardware tam01">
+                        RAM
+                    </span>
+                    <span class="nome-hardware tam01">
+                        HD
+                    </span>
+                </div>
+                <div class="bloco-hardware tam01">
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                    <span class="nome-hardware tam01">
+                        Métrica
+                    </span>
+                </div>
+                <div class="bloco-hardware diferente tam01">
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                </div>
+            </div>
+            <button class="btn-salvar" id="btnConfig">
+                salvar
+            </button>
+
         </main>
         <!-- End Main -->
 
-    </div>
 
-    <!-- Scripts -->
-    <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-    <!-- Custom JS -->
-    <script src="./js/script.js"></script>
+        <!-- Scripts -->
+        <!-- ApexCharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+        <!-- Custom JS -->
+        <script src="./js/sidebarTi.js"></script>
 </body>
 
 </html>
