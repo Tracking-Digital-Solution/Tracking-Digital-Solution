@@ -3,7 +3,7 @@ USE trackingdigitalsolution ;
 
 -- Table Perfil
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
-  idPerfil INT NOT NULL AUTO_INCREMENT,
+  idPerfil INT NOT NULL IDENTITY(1,1),
   nome VARCHAR(255) NULL,
   email VARCHAR(255) NULL,
   senha VARCHAR(255) NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
 
 -- Table EnderecoMaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.EnderecoMaquinaCorporativa (
-  idEndereco INT NOT NULL AUTO_INCREMENT,
+  idEndereco INT NOT NULL IDENTITY(1,1),
   cep CHAR(8) NOT NULL,
   estado VARCHAR(255) NOT NULL,
   cidade VARCHAR(255) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.EnderecoMaquinaCorporativa (
 
 -- Table MaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.MaquinaCorporativa (
-  idMaquinaCorporativa INT NOT NULL AUTO_INCREMENT,
+  idMaquinaCorporativa INT NOT NULL IDENTITY(1,1), 
   IP VARCHAR(255) NULL,
   sistemaOperacional VARCHAR(255) NOT NULL,
   fkPerfil INT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.MaquinaCorporativa (
 
 -- Table ColetaCPU
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaCPU (
-  idCPU INT NOT NULL AUTO_INCREMENT,
+  idCPU INT NOT NULL IDENTITY(1,1),
   usoAtual DOUBLE NOT NULL,
   fkMaquinaCorporativa INT NOT NULL,
   dataHota DATETIME NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaCPU (
 
 -- Table CpuMaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.CpuMaquinaCorporativa (
-  idColetaCPU INT NOT NULL AUTO_INCREMENT,
+  idColetaCPU INT NOT NULL IDENTITY(1,1),
   riscoCPU INT NULL,
   fkCPU INT NOT NULL,
   identificador VARCHAR(45) NULL,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.CpuMaquinaCorporativa (
 
 -- Table ColetaHD
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaHD (
-  idHD INT NOT NULL AUTO_INCREMENT,
+  idHD INT NOT NULL IDENTITY(1,1),
   disponivel VARCHAR(45) NULL,
   fkMaquinaCorporativa INT NOT NULL,
   dataHora DATETIME NULL,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaHD (
 
 -- Table HdMaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.HdMaquinaCorporativa (
-  idColetaHD INT NOT NULL AUTO_INCREMENT,
+  idColetaHD INT NOT NULL IDENTITY(1,1),
   riscoHD INT NULL,
   fkHD INT NOT NULL,
   modelo VARCHAR(45) NULL,
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.HdMaquinaCorporativa (
 
 -- Table coletaRAM
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.coletaRAM (
-  idRAM INT NOT NULL AUTO_INCREMENT,
+  idRAM INT NOT NULL IDENTITY(1,1),
   usoAtual INT NOT NULL,
   disponivel INT NOT NULL,
   dataHora DATETIME NULL,
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.coletaRAM (
 
 -- Table RamMaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.RamMaquinaCorporativa (
-  idColetaRAM INT NOT NULL AUTO_INCREMENT,
+  idColetaRAM INT NOT NULL IDENTITY(1,1),
   riscoRAM INT NULL,
   fkRAM INT NOT NULL,
   total VARCHAR(45) NULL,
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.RamMaquinaCorporativa (
 
 -- Table Logs
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Logs (
-  idLogs INT NOT NULL AUTO_INCREMENT,
+  idLogs INT NOT NULL IDENTITY(1,1),
   descricao VARCHAR(255) NULL,
   dtLog DATETIME NULL,
   fkMaquinaCorporativa INT NOT NULL,
@@ -122,14 +122,3 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Logs (
   CONSTRAINT fk_Logs_MaquinaCorporativa1
     FOREIGN KEY (fkMaquinaCorporativa)
     REFERENCES trackingdigitalsolution.MaquinaCorporativa (idMaquinaCorporativa));
-
-
--- CRIANDO USUÁRIO Padrão
-CREATE USER 'grupo10user'@'localhost' IDENTIFIED BY 'grupo10user';
-
--- DANDO PERMISSÕES
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP
-ON sprint2.* TO 'grupo10user'@'localhost';
-
--- GARANTINDO AS PERMISSÕES
-FLUSH PRIVILEGES;
