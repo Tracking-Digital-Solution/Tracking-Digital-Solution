@@ -1,11 +1,13 @@
-.container-relatorios{
-    display: flex;
-    background-color: aqua;
+.container-relatorios {
+    display: none;
+    background-color: rgb(236, 236, 236);
     height: 300px;
     width: 100%;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px 2px #d6d6d6;
 }
 
-.titulo{
+.titulo {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -13,26 +15,29 @@
     color: black;
 }
 
-.coluna{
+.coluna {
     display: flex;
     flex-direction: column;
-    border: 1px black solid;
     height: auto;
     width: auto;
+    gap: 5px;
+    border-right: 1px black solid;
 }
 
-.tam1{
+.tam1 {
     flex-grow: 1;
 }
 
-.titulo-coluna{
+.titulo-coluna {
     display: flex;
     width: 100%;
     justify-content: center;
+    background-color: #a1dce2;
+    border-bottom: 1px black solid;
 }
 
-.dados{
-    width: auto;
-    border:1px black solid;
-    padding-left: 10px;
+.dados {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
