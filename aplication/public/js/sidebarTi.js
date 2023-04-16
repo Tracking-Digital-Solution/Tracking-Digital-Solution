@@ -38,6 +38,10 @@ function mostrarConfig() {
     containerDashboard.style.display = "none";
 }
 
+function fecharForm(){
+  
+}
+
 function mostrarSuporte() {
 
 }

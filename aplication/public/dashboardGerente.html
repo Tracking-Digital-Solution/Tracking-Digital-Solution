@@ -161,7 +161,7 @@
 
             <!-- Container cadastrar Máquinas -->
             <div class="container-cadastro maquina" id="containerCadastroMaq">
-                <div class="caixa-botao-add">
+                <div class="caixa-botao-add" onclick="adicionarMaquina()">
                     <span class="material-icons-outlined btn-add">
                         add_box
                     </span>
@@ -232,8 +232,8 @@
             </div>
 
             <!-- Container cadastar func -->
-            <div class="container-cadastro maquina" id="containerCadastroFunc">
-                <div class="caixa-botao-add">
+            <div class="container-cadastro" id="containerCadastroFunc">
+                <div class="caixa-botao-add" onclick="adicionarFunc()">
                     <span class="material-icons-outlined btn-add">
                         add_box
                     </span>
@@ -302,12 +302,66 @@
                     </div>
                 </div>
             </div>
-            <!-- Container formulario de cadastros -->
-            <!-- <div class="container-formularios-cadas">
-                <div class="">
-
+            <!-- Container formulario de cadastros Máquina-->
+            <div class="form-cadastro" id="mostrarFormMaq">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarCadastroMaq()">
+                        voltar
+                    </button>
                 </div>
-            </div> -->
+                <div class="primeiro-bloco-cadas tam01">
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                </div>
+                <div class="primeiro-bloco-cadas tam01" style="align-items: flex-start;">
+                    <span class="material-icons-outlined user">
+                        desktop_windows
+                    </span>
+                    <button class="btn-confirmar-cadastro">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+            <!-- Container formulario de cadastros Funcionário -->
+            <div class="form-cadastro" id="mostrarFormFunc">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
+                        voltar
+                    </button>
+                </div>
+                <div class="primeiro-bloco-cadas tam01">
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                </div>
+                <div class="primeiro-bloco-cadas tam01" style="align-items: flex-start;">
+                    <span class="material-icons-outlined user">
+                        person
+                    </span>
+                    <button class="btn-confirmar-cadastro">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
 
             <!-- Container relatorios -->
             <div class="container-relatorios" id="containerRelatorios">

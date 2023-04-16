@@ -5,6 +5,8 @@ function mostrarPainelDeControle() {
     btnConfig.style.display = "none";
     containerCadastroMaq.style.display = "none";
     containerCadastroFunc.style.display = "none";
+    mostrarFormMaq.style.display = "none";
+    mostrarFormFunc.style.display = "none";
 }
 
 function mostrarCadastroMaq() {
@@ -14,6 +16,8 @@ function mostrarCadastroMaq() {
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
     containerCadastroFunc.style.display = "none";
+    mostrarFormMaq.style.display = "none";
+    mostrarFormFunc.style.display = "none";
 }
 
 function mostrarCadastroFunc() {
@@ -23,6 +27,8 @@ function mostrarCadastroFunc() {
     btnConfig.style.display = "none";
     containerCadastroMaq.style.display = "none";
     containerCadastroFunc.style.display = "block";
+    mostrarFormMaq.style.display = "none";
+    mostrarFormFunc.style.display = "none";
 }
 
 function mostrarRelatorios() {
@@ -32,6 +38,8 @@ function mostrarRelatorios() {
     btnConfig.style.display = "none";
     containerCadastroMaq.style.display = "none";
     containerCadastroFunc.style.display = "none";
+    mostrarFormMaq.style.display = "none";
+    mostrarFormFunc.style.display = "none";
 }
 
 function mostrarConfig() {
@@ -41,6 +49,8 @@ function mostrarConfig() {
     containerMaquinas.style.display = "none";
     containerCadastroMaq.style.display = "none";
     containerCadastroFunc.style.display = "none";
+    mostrarFormMaq.style.display = "none";
+    mostrarFormFunc.style.display = "none";
 }
 
 function mostrarSuporte() {
@@ -51,7 +61,42 @@ function mostrarSuporte() {
     containerMaquinas.style.display = "none";
     containerCadastroMaq.style.display = "none";
     containerCadastroFunc.style.display = "none";
+    mostrarFormMaq.style.display = "none";
+    mostrarFormFunc.style.display = "none";
 }
+
+function adicionarMaquina(){
+    mostrarFormMaq.style.display = "flex";
+    containerCadastroMaq.style.display = "none";
+    containerConfig.style.display = "none"
+    btnConfig.style.display = "none";
+    containerRelatorios.style.display = "none";
+    containerMaquinas.style.display = "none";
+    containerCadastroMaq.style.display = "none";
+    containerCadastroFunc.style.display = "none";
+    mostrarFormFunc.style.display = "none";
+}
+
+function adicionarFunc(){
+    mostrarFormFunc.style.display = "flex";
+    containerCadastroFunc.style.display = "none";
+    containerCadastroMaq.style.display = "none";
+    containerConfig.style.display = "none"
+    btnConfig.style.display = "none";
+    containerRelatorios.style.display = "none";
+    containerMaquinas.style.display = "none";
+    containerCadastroMaq.style.display = "none";
+}
+
+// function fecharForm(){
+//     mostrarFormMaq.style.display = "none";
+//     containerCadastroMaq.style.display = "block";
+//     containerConfig.style.display = "none"
+//     btnConfig.style.display = "none";
+//     containerRelatorios.style.display = "none";
+//     containerMaquinas.style.display = "none";
+//     containerCadastroFunc.style.display = "none";
+// }
 
 function outputInfo() {
     if( mostrarDadosMaq.style.display == "none"){
@@ -60,6 +105,7 @@ function outputInfo() {
         btnConfig.style.display = "none";
         containerRelatorios.style.display = "none";
         containerMaquinas.style.display = "none";
+        mostrarFormMaq.style.display = "none";
     }else{
         mostrarDadosMaq.style.display = "none";
         mostrarDadosMaq.style.display = "flex"
@@ -67,6 +113,7 @@ function outputInfo() {
         btnConfig.style.display = "none";
         containerRelatorios.style.display = "none";
         containerMaquinas.style.display = "none";
+        mostrarFormMaq.style.display = "none";
     }
    
 }
