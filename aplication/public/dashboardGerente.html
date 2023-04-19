@@ -161,79 +161,53 @@
 
             <!-- Container cadastrar Máquinas -->
             <div class="container-cadastro maquina" id="containerCadastroMaq">
-                <div class="caixa-botao-add">
+                <div class="caixa-botao-add" onclick="adicionarMaquina()">
                     <span class="material-icons-outlined btn-add">
                         add_box
                     </span>
-                    Cadastrar Máquina
+                     Cadastrar Máquina
                 </div>
                 <div class="container-das-infos">
                     <div class="caixa-infos tam01">
                         <span class="material-icons-outlined computer">
                             desktop_windows
                         </span>
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-                        <span class="caracteristicas">
-                            Internet:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
+                        <label for="span-nome-maquina">Nome:</label>
+                        <span class="caracteristicas" id="span-nome-maquina"></span>
+
+                        <label for="span-ip-máquina">Cidade:</label>
+                        <span class="caracteristicas"></span>
+
                         </span>
                     </div>
                     <div class="caixa-infos tam01">
                         <span class="material-icons-outlined computer">
                             desktop_windows
                         </span>
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-                        <span class="caracteristicas">
-                            Internet:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
+
+                        <label for="span-nome-maquina">Nome:</label>
+                        <span class="caracteristicas" id="span-nome-maquina"></span>
+
+                        <label for="span-ip-máquina">Cidade:</label>
+                        <span class="caracteristicas"></span>
+                        
                     </div>
                     <div class="caixa-infos tam01">
                         <span class="material-icons-outlined computer">
                             desktop_windows
                         </span>
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-                        <span class="caracteristicas">
-                            Internet:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
+                        <label for="span-nome-maquina">Nome:</label>
+                        <span class="caracteristicas" id="span-nome-maquina"></span>
+
+                        <label for="span-ip-máquina">Cidade:</label>
+                        <span class="caracteristicas"></span>
                     </div>
                 </div>
             </div>
 
             <!-- Container cadastar func -->
-            <div class="container-cadastro maquina" id="containerCadastroFunc">
-                <div class="caixa-botao-add">
+            <div class="container-cadastro" id="containerCadastroFunc">
+                <div class="caixa-botao-add" onclick="adicionarFunc()">
                     <span class="material-icons-outlined btn-add">
                         add_box
                     </span>
@@ -241,23 +215,16 @@
                 </div>
                 <div class="container-das-infos">
                     <div class="caixa-infos tam01">
-                        <span class="material-icons-outlined computer">
-                            person
-                        </span>
                         <span class="caracteristicas">
                             Nome:
                         </span>
+
                         <span class="caracteristicas">
-                            Internet:
+                            Email:
                         </span>
+
                         <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
+                            Maquina associada:
                         </span>
                     </div>
                     <div class="caixa-infos tam01">
@@ -267,18 +234,15 @@
                         <span class="caracteristicas">
                             Nome:
                         </span>
+
                         <span class="caracteristicas">
-                            Internet:
+                            Email:
                         </span>
+
                         <span class="caracteristicas">
-                            Temperatura:
+                            Maquina associada:
                         </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
+
                     </div>
                     <div class="caixa-infos tam01">
                         <span class="material-icons-outlined computer">
@@ -287,51 +251,182 @@
                         <span class="caracteristicas">
                             Nome:
                         </span>
+
                         <span class="caracteristicas">
-                            Internet:
+                            Email:
                         </span>
+
                         <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
-                        </span>
-                        <span class="caracteristicas">
-                            Temperatura:
+                            Maquina associada:
                         </span>
                     </div>
                 </div>
             </div>
-            <!-- Container formulario de cadastros -->
-            <!-- <div class="container-formularios-cadas">
-                <div class="">
-
+            <!-- Container formulario de cadastros Máquina-->
+            <div class="form-cadastro" id="mostrarFormMaq">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarCadastroMaq()">
+                        &#171;
+                    </button>
                 </div>
-            </div> -->
+                <div class="primeiro-bloco-cadas tam01">
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        CEP: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Estado: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Cidade: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        logradouro: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Numero: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Complemento: <Input></Input>
+                    </span>
+                </div>
+                <div class="primeiro-bloco-cadas tam01" style="align-items: flex-start;">
+                    <!-- <span class="material-icons-outlined user">
+                        desktop_windows
+                    </span> -->
+                    <button class="btn-confirmar-cadastro">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+            <!-- Container formulario de cadastros Funcionário -->
+            <div class="form-cadastro" id="mostrarFormFunc">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
+                        voltar
+                    </button>
+                </div>
+                <div class="primeiro-bloco-cadas tam01">
+                    <span style="color: blue;">
+                        Nome: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        CPF: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Email: <Input></Input>
+                    </span>
+                    <span style="color: blue;">
+                        Cargo: <Input></Input>
+                    </span>
+                </div>
+                <div class="primeiro-bloco-cadas tam01" style="align-items: flex-start;">
+                    <span class="material-icons-outlined user">
+                        person
+                    </span>
+                    <button class="btn-confirmar-cadastro">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
 
             <!-- Container relatorios -->
             <div class="container-relatorios" id="containerRelatorios">
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
-                </div>
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
-                </div>
-                <div class="coluna tam1">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
-                </div>
-                <div class="coluna tam1" style="border-right: none;">
-                    <span class="titulo-coluna">Data</span>
-                    <span class="dados">13/02/2002</span>
-                </div>
+                <table>
+                    <caption>Relatórios</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">ID Máquina</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Max CPU</th>
+                        <th scope="col">Min CPU</th>
+                        <th scope="col">Max HD</th>
+                        <th scope="col">Min HD</th>
+        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+
+                      <tr>
+                        <td data-label="Account">001</td>
+                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Amount">90%</td>
+                        <td data-label="Period">15%</td>
+                        <td data-label="Period">100%</td>
+                        <td data-label="Period">15%</td>
+                      </tr>
+
+                      
+                    </tbody>
+                  </table>
             </div>
 
             <!-- Container configurações -->
             <div class="container-config" id="containerConfig">
+        
                 <div class="bloco-hardware tam01">
+                   
                     <span class="nome-hardware tam01">
                         CPU
                     </span>

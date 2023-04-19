@@ -1,21 +1,24 @@
-.container-cadastro{
+.container-cadastro {
   display: none;
   width: 100%;
   height: auto;
 }
 
-.caixa-botao-add{
+.caixa-
+otao-add {
   display: flex;
   flex-direction: row;
   width: max-content;
-  border-radius: 10px;
-  padding: 3px;
+  border-radius: 5px;
+  padding: 5px;
   cursor: pointer;
   margin: 10px 0px 15px 0px;
-  background-color: #a9a1a1;
+  background-color: #ffc300;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  color: #fff;
 }
 
-.container-das-infos{
+.container-das-infos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,31 +27,202 @@
   gap: 20px;
 }
 
-.caixa-infos{
-  background-color: antiquewhite;
-  box-shadow: 3px 3px 10px 2px #a9a1a1;
+.caixa-infos {
   display: flex;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   height: auto;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 5px;
-  border-radius: 20px;
+  padding: 2px;
+  border-radius: 5px;
 }
 
-.caracteristicas{
+.caracteristicas {
   font-size: 20px;
   color: black;
   width: 100%;
 }
 
-.tam01{
+.tam01 {
   flex-grow: 1;
 }
 
 /* Formulario de cadastros  */
-.container-formularios-cadas{
+.container-formularios-cadas {
   width: 100%;
   box-shadow: 3px 3px 10px 2px #a9a1a1;
   height: auto;
 }
+
+.form-cadastro {
+  background-color: #fff;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  margin-top: 40px;
+}
+
+.primeiro-bloco-cadas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  height: 90%;
+  margin: 5px 5px 5px 50px;
+  font-size: 25px;
+}
+
+.btn-confirmar-cadastro{
+  background-color: rgb(45, 157, 255);
+  color: white;
+  font-weight: bold;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.div-voltar{
+  margin-top: 15px;
+  width: 100%;
+}
+
+.btn-voltar{
+  width:auto ;
+  border: none;
+  border-radius: 2px;
+  background-color: #d6d5d5;
+  color: #fff;
+  font-size: 25px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.user{
+  font-size: 150px;
+  color: black;
+}
+/* 
+tabela */
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* general styling */
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+
+.container-config input{
+  padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
