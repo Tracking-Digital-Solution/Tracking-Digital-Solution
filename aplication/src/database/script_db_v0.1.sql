@@ -1,6 +1,13 @@
+-- Active: 1663943194633@@127.0.0.1@3306@trackingdigitalsolution
 CREATE SCHEMA IF NOT EXISTS trackingdigitalsolution DEFAULT CHARACTER SET utf8 ;
 USE trackingdigitalsolution ;
+INSERT INTO trackingdigitalsolution.Perfil (nome, email, senha, cpf, cargo, perfilAdministrador)
+VALUES ('Maria', 'maria@example.com', 'senha123', '12345678900', 'Gerente', NULL),
+       ('João', 'joao@example.com', 'senha456', '09876543210', 'Analista', 1),
+       ('Pedro', 'pedro@example.com', 'senha789', '56789012345', 'Desenvolvedor', 2);
 
+
+select * from maquinacorporativa;
 -- Table Perfil
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
   idPerfil INT NOT NULL AUTO_INCREMENT,
@@ -9,8 +16,8 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
   senha VARCHAR(255) NULL,
   cpf CHAR(11) NULL,
   cargo VARCHAR(45) NULL,
-  perfilAdministrador INT NOT NULL,
-  PRIMARY KEY (idPerfil, perfilAdministrador),
+  perfilAdministrador INT NULL,
+  PRIMARY KEY (idPerfil),
   CONSTRAINT fk_administrador
     FOREIGN KEY (perfilAdministrador)
     REFERENCES trackingdigitalsolution.Perfil (idPerfil)
@@ -31,11 +38,11 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.EnderecoMaquinaCorporativa (
 -- Table MaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.MaquinaCorporativa (
   idMaquinaCorporativa INT NOT NULL AUTO_INCREMENT,
-  IP VARCHAR(255) NULL,
+  IP VARCHAR(255) NOT NULL,
   sistemaOperacional VARCHAR(255) NOT NULL,
-  fkPerfil INT NOT NULL,
-  fkEndereco INT NOT NULL,
-  nomeMaquina VARCHAR(45) NULL,
+  fkPerfil INT NULL,
+  fkEndereco INT NULL,
+  nomeMaquina VARCHAR(45) NOT NULL,
   PRIMARY KEY (idMaquinaCorporativa),
   CONSTRAINT fk_MaquinaCorporativa_Perfil1
     FOREIGN KEY (fkPerfil) REFERENCES trackingdigitalsolution.Perfil (idPerfil),
