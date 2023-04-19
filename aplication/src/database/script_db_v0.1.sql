@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
   nome VARCHAR(255) NULL,
   email VARCHAR(255) NULL,
   senha VARCHAR(255) NULL,
-  cpf CHAR(11) NULL,
+  cpf CHAR(14) NULL,
   cargo VARCHAR(45) NULL,
   perfilAdministrador INT NULL,
   PRIMARY KEY (idPerfil),
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
 -- Table EnderecoMaquinaCorporativa
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.EnderecoMaquinaCorporativa (
   idEndereco INT NOT NULL AUTO_INCREMENT,
-  cep CHAR(8) NOT NULL,
+  cep CHAR(9) NOT NULL,
   estado VARCHAR(255) NOT NULL,
   cidade VARCHAR(255) NOT NULL,
   bairro VARCHAR(255) NOT NULL,
@@ -40,9 +40,9 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.MaquinaCorporativa (
   idMaquinaCorporativa INT NOT NULL AUTO_INCREMENT,
   IP VARCHAR(255) NOT NULL,
   sistemaOperacional VARCHAR(255) NOT NULL,
-  fkPerfil INT NULL,
-  fkEndereco INT NULL,
   nomeMaquina VARCHAR(45) NOT NULL,
+  fkPerfil INT NOT NULL,
+  fkEndereco INT NOT NULL,
   PRIMARY KEY (idMaquinaCorporativa),
   CONSTRAINT fk_MaquinaCorporativa_Perfil1
     FOREIGN KEY (fkPerfil) REFERENCES trackingdigitalsolution.Perfil (idPerfil),
@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.MaquinaCorporativa (
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaCPU (
   idCPU INT NOT NULL AUTO_INCREMENT,
   usoAtual DOUBLE NOT NULL,
-  fkMaquinaCorporativa INT NOT NULL,
   dataHota DATETIME NULL,
+  fkMaquinaCorporativa INT NOT NULL,
   PRIMARY KEY (idCPU),
   CONSTRAINT fk_CPUServidor_MaquinaCorporativa1
     FOREIGN KEY (fkMaquinaCorporativa)
@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaCPU (
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.CpuMaquinaCorporativa (
   idColetaCPU INT NOT NULL AUTO_INCREMENT,
   riscoCPU INT NULL,
+  tempoAtivo VARCHAR(45) NULL,
   fkCPU INT NOT NULL,
-  identificador VARCHAR(45) NULL,
   PRIMARY KEY (idColetaCPU),
   CONSTRAINT fk_coletaCpu_CPUServidor1
     FOREIGN KEY (fkCPU)
@@ -75,8 +75,8 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.CpuMaquinaCorporativa (
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaHD (
   idHD INT NOT NULL AUTO_INCREMENT,
   disponivel VARCHAR(45) NULL,
-  fkMaquinaCorporativa INT NOT NULL,
   dataHora DATETIME NULL,
+  fkMaquinaCorporativa INT NOT NULL,
   PRIMARY KEY (idHD),
   CONSTRAINT fk_HD_MaquinaCorporativa1
     FOREIGN KEY (fkMaquinaCorporativa)
@@ -86,11 +86,10 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaHD (
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.HdMaquinaCorporativa (
   idColetaHD INT NOT NULL AUTO_INCREMENT,
   riscoHD INT NULL,
-  fkHD INT NOT NULL,
   modelo VARCHAR(45) NULL,
-  tamanho INT NULL,
+  tamanho INT NULL,  
+  fkHD INT NOT NULL,
   PRIMARY KEY (idColetaHD),
-  INDEX fk_coletaHd_HD1_idx (fkHD ASC) VISIBLE,
   CONSTRAINT fk_coletaHd_HD1
     FOREIGN KEY (fkHD)
     REFERENCES trackingdigitalsolution.ColetaHD (idHD));
@@ -111,8 +110,8 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.coletaRAM (
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.RamMaquinaCorporativa (
   idColetaRAM INT NOT NULL AUTO_INCREMENT,
   riscoRAM INT NULL,
+  total VARCHAR(45) NULL,  
   fkRAM INT NOT NULL,
-  total VARCHAR(45) NULL,
   PRIMARY KEY (idColetaRAM),
   CONSTRAINT fk_coletaRam_RAMServidor1
     FOREIGN KEY (fkRAM)
