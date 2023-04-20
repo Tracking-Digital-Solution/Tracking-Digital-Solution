@@ -1,9 +1,7 @@
-
-
 .container-config {
     display: none;
-    height:100%;
-    width: 100%;
+    height:400px;
+    width: 350px;
     box-shadow: 3px 3px 10px 2px #d6d6d6;
     border-radius: 20px;
     flex-wrap: wrap;
@@ -13,6 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .diferente {
@@ -20,24 +19,23 @@
 }
 
 .nome-hardware {
-    font-size: 30px;
-    color: blue;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 25px;
+    color: blue;
     align-items: center;
+    justify-content: center;
+    font-weight: 600;
 }
 
 .tam01 {
     flex-grow: 1;
 }
 
-.auxiliar-input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.input-metrica {
+.input{
     height: 30px;
+    width: 120px !important;
 }
 
 .titulo-container {

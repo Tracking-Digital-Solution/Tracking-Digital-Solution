@@ -72,11 +72,6 @@
                         Relatórios
                     </div>
                 </li>
-                <li class="sidebar-list-item" onclick="mostrarConfig()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">settingst</span>Configurações
-                    </div>
-                </li>
 
                 <li class="sidebar-list-item" onclick="mostrarSuporte()">
                     <div class="btn-side">
@@ -97,6 +92,14 @@
         <main class="main-container">
             <!-- Container dashboard -->
             <div class="container-maquinas" id="containerMaquinas">
+                <div style="width: 100%;">
+                    <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
+                        <span class="material-icons-outlined btn-add">
+                            settings
+                        </span>
+                        Alertas
+                    </div>
+                </div>
                 <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
                     <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
@@ -314,22 +317,43 @@
 
             <!-- Container configurações -->
             <div class="container-config" id="containerConfig">
-                <div class="bloco-hardware tam01">
-                    <span class="nome-hardware tam01">
-                        CPU
-                    </span>
-                    <span class="nome-hardware tam01">
-                        RAM
-                    </span>
-                    <span class="nome-hardware tam01">
-                        HD
-                    </span>
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarPainelDeControle()">
+                        &#171;
+                    </button>
                 </div>
-                <div class="bloco-hardware diferente tam01">
-                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
+                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
+                    <div class="bloco-hardware">
+                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
+                            <Span>
+                                Cpu:
+                            </Span>
+                            <Span>
+                                Ram:
+                            </Span>
+                            <Span>
+                                Ssd:
+                            </Span>
+                        </div>
+                    </div>
+                    <div class="bloco-hardware">
+                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
+                            Limite %
+                        </Span>
+                        <div class="nome-hardware">
+                            <Span>
+                                <input class="input" placeholder="Porcentagem">
+                            </Span>
+                            <Span>
+                                <input class="input" placeholder="">
+                            </Span>
+                            <Span>
+                                <input class="input" placeholder="">
+                            </Span>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="container-btn-salvar" id="btnConfig">
                     <button class="btn-salvar">
                         salvar
