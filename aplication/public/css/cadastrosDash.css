@@ -4,8 +4,7 @@
   height: auto;
 }
 
-.caixa-
-otao-add {
+.caixa-botao-add {
   display: flex;
   flex-direction: row;
   width: max-content;
@@ -34,7 +33,7 @@ otao-add {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 2px;
+  padding: 10px;
   border-radius: 5px;
 }
 
@@ -56,26 +55,22 @@ otao-add {
 }
 
 .form-cadastro {
-  background-color: #fff;
   display: none;
-  flex-direction: row;
-  flex-wrap: wrap;
+  background-color: #fff;
   align-items: center;
-  width: 100%;
-  height: 350px;
+  justify-content: center;
+  flex-wrap: wrap;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  margin-top: 40px;
+  width: 500px;
+  height: 470px;
 }
 
 .primeiro-bloco-cadas {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-  height: 90%;
-  margin: 5px 5px 5px 50px;
-  font-size: 25px;
+  gap: 10px;
+
 }
 
 .btn-confirmar-cadastro{
@@ -97,132 +92,25 @@ otao-add {
 }
 
 .btn-voltar{
-  width:auto ;
+  width:45px ;
   border: none;
   border-radius: 2px;
   background-color: #d6d5d5;
   color: #fff;
-  font-size: 25px;
+  font-size: 30px;
   margin-left: 15px;
   cursor: pointer;
+  background-color: #ffc300;
+}
+
+.div-confirmar-cadastro{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .user{
   font-size: 150px;
   color: black;
 }
-/* 
-tabela */
-
-table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
-}
-
-table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
-}
-
-table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: .35em;
-}
-
-table th,
-table td {
-  padding: .625em;
-  text-align: center;
-}
-
-table th {
-  font-size: .85em;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
-  }
-  
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-  
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-  
-  table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  table td:last-child {
-    border-bottom: 0;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* general styling */
-body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.25;
-}
-
-.container-config input{
-  padding: 15px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	margin-bottom: 10px;
-	width: 100%;
-	box-sizing: border-box;
-	font-family: montserrat;
-	color: #2C3E50;
-	font-size: 13px;
-}
-

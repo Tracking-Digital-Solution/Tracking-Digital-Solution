@@ -21,33 +21,11 @@
     <link rel="stylesheet" href="./css/chamadosDash.css">
     <link rel="stylesheet" href="./css/relatoriosDash.css">
     <link rel="stylesheet" href="./css/configDash.css">
-    <link rel="stylesheet" href="./css/.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
 <body>
-    <!-- <div class="form-add-serve" id="formAddServe" onclick="outputForm()">
-        <b>Cadastro de Máquinas</b>
-        <ul>
-            <li>
-                <b>Nome:</b> <input id="inputNameServer">
-            </li>
-            <li>
-                <b>IPV4:</b> <input id="inputCidadeServe">
-            </li>
-            <li>
-                <b>Sistema operacional:</b> <input id="inputEstado">
-            </li>
-            <li>
-                <b>Processador:</b> <input id="processadorServe">
-            </li>
-            <li>
-                <b>Memória ram:</b> <input id="hdServe">
-            </li>
-        </ul>
-        <button onclick="registerServer()">Cadastrar</button>
-    </div> -->
     <div class="grid-container">
         <!-- Header -->
         <header class="header">
@@ -61,8 +39,7 @@
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
-                <a href="#"><span class="material-icons-outlined">email</span></a>
-                <a href="#"><span class="material-icons-outlined">account_circle</span></a>
+                <a href="#"><span class="material-icons-outlined perfil">person</span></a>
             </div>
         </header>
         <!-- End Header -->
@@ -88,12 +65,6 @@
                         Painel de controle
                     </div>
                 </li>
-                <li class="sidebar-list-item" onclick="mostrarCadastroMaq()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">install_desktop</span>
-                        Cadastrar máquina
-                    </div>
-                </li>
                 <li class="sidebar-list-item" onclick="mostrarCadastroFunc()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">person_add</span>
@@ -106,13 +77,6 @@
                         Relatórios
                     </div>
                 </li>
-
-                <li class="sidebar-list-item" onclick="mostrarConfig()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">settingst</span>Configurações
-                    </div>
-                </li>
-
                 <li class="sidebar-list-item" onclick="mostrarSuporte()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">call</span>
@@ -133,76 +97,36 @@
         <main class="main-container">
             <!-- Container dashboard -->
             <div class="container-maquinas" id="containerMaquinas">
-                <div class="caixa-maquina">
-                    <div class="material-icons-outlined computer">
-                        <div class="kpi"></div>
-                        desktop_windows
+                <div style="width: 100%;">
+                    <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
+                        <span class="material-icons-outlined btn-add">
+                            add_box
+                        </span>
+                        Cadastrar Máquina
                     </div>
-                    <Span>Caixa 01</Span>
+                </div>
+                <div class="caixa-maquina tam01">
+                    <Span style="font-size: 20px;">Caixa 01</Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
+                    <span>Internet: Ok</span>
                 </div>
-                <div class="caixa-maquina">
-                    <div class="material-icons-outlined computer">
-                        <div class="kpi"></div>
-                        desktop_windows
-                    </div>
-                    <Span>Caixa 01</Span>
+                <div class="caixa-maquina tam01">
+                    <Span style="font-size: 20px;">Caixa 02</Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
+                    <span>Internet: Ok</span>
                 </div>
-                <div class="caixa-maquina">
-                    <div class="material-icons-outlined computer">
-                        <div class="kpi"></div>
-                        desktop_windows
-                    </div>
-                    <Span>Caixa 01</Span>
+                <div class="caixa-maquina tam01">
+                    <Span style="font-size: 20px;">Caixa 03</Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
+                    <span>Internet: Ok</span>
                 </div>
-            </div>
 
-            <!-- Container cadastrar Máquinas -->
-            <div class="container-cadastro maquina" id="containerCadastroMaq">
-                <div class="caixa-botao-add" onclick="adicionarMaquina()">
-                    <span class="material-icons-outlined btn-add">
-                        add_box
-                    </span>
-                     Cadastrar Máquina
-                </div>
-                <div class="container-das-infos">
-                    <div class="caixa-infos tam01">
-                        <span class="material-icons-outlined computer">
-                            desktop_windows
-                        </span>
-                        <label for="span-nome-maquina">Nome:</label>
-                        <span class="caracteristicas" id="span-nome-maquina"></span>
-
-                        <label for="span-ip-máquina">Cidade:</label>
-                        <span class="caracteristicas"></span>
-
-                        </span>
-                    </div>
-                    <div class="caixa-infos tam01">
-                        <span class="material-icons-outlined computer">
-                            desktop_windows
-                        </span>
-
-                        <label for="span-nome-maquina">Nome:</label>
-                        <span class="caracteristicas" id="span-nome-maquina"></span>
-
-                        <label for="span-ip-máquina">Cidade:</label>
-                        <span class="caracteristicas"></span>
-                        
-                    </div>
-                    <div class="caixa-infos tam01">
-                        <span class="material-icons-outlined computer">
-                            desktop_windows
-                        </span>
-                        <label for="span-nome-maquina">Nome:</label>
-                        <span class="caracteristicas" id="span-nome-maquina"></span>
-
-                        <label for="span-ip-máquina">Cidade:</label>
-                        <span class="caracteristicas"></span>
-                    </div>
-                </div>
             </div>
 
             <!-- Container cadastar func -->
@@ -215,6 +139,8 @@
                 </div>
                 <div class="container-das-infos">
                     <div class="caixa-infos tam01">
+                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
+                            class="func">
                         <span class="caracteristicas">
                             Nome:
                         </span>
@@ -228,9 +154,8 @@
                         </span>
                     </div>
                     <div class="caixa-infos tam01">
-                        <span class="material-icons-outlined computer">
-                            person
-                        </span>
+                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
+                            class="func">
                         <span class="caracteristicas">
                             Nome:
                         </span>
@@ -242,12 +167,10 @@
                         <span class="caracteristicas">
                             Maquina associada:
                         </span>
-
                     </div>
                     <div class="caixa-infos tam01">
-                        <span class="material-icons-outlined computer">
-                            person
-                        </span>
+                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
+                            class="func">
                         <span class="caracteristicas">
                             Nome:
                         </span>
@@ -260,6 +183,7 @@
                             Maquina associada:
                         </span>
                     </div>
+
                 </div>
             </div>
             <!-- Container formulario de cadastros Máquina-->
@@ -269,63 +193,66 @@
                         &#171;
                     </button>
                 </div>
-                <div class="primeiro-bloco-cadas tam01">
-                    <span style="color: blue;">
-                        Nome: <Input></Input>
+                <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
+                    <span class="campo">
+                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
                     </span>
-                    <span style="color: blue;">
-                        CEP: <Input></Input>
+                    <span class="campo">
+                        Cep <Input class="campo-input" placeholder="Digite o cep"></Input>
                     </span>
-                    <span style="color: blue;">
-                        Estado: <Input></Input>
+                    <span class="campo">
+                        Estado <Input class="campo-input" placeholder="Digite o estado"></Input>
                     </span>
-                    <span style="color: blue;">
-                        Cidade: <Input></Input>
-                    </span>
-                    <span style="color: blue;">
-                        logradouro: <Input></Input>
-                    </span>
-                    <span style="color: blue;">
-                        Numero: <Input></Input>
-                    </span>
-                    <span style="color: blue;">
-                        Complemento: <Input></Input>
+                    <span class="campo">
+                        Cidade <Input class="campo-input" placeholder="Digite a cidade"></Input>
                     </span>
                 </div>
-                <div class="primeiro-bloco-cadas tam01" style="align-items: flex-start;">
-                    <!-- <span class="material-icons-outlined user">
-                        desktop_windows
-                    </span> -->
+                <div class="primeiro-bloco-cadas"
+                    style="align-items: flex-start; justify-content: flex-start; margin-bottom: 70px;">
+                    <span class="campo">
+                        logradouro <Input class="campo-input" placeholder="Digite o logradouro"></Input>
+                    </span>
+                    <span class="campo">
+                        Número <Input class="campo-input" placeholder="Digite o número"></Input>
+                    </span>
+                    <span class="campo">
+                        Complemento <Input class="campo-input" placeholder="opcional"></Input>
+                    </span>
+                </div>
+                <div class="div-confirmar-cadastro">
                     <button class="btn-confirmar-cadastro">
                         Cadastrar
                     </button>
                 </div>
             </div>
             <!-- Container formulario de cadastros Funcionário -->
-            <div class="form-cadastro" id="mostrarFormFunc">
+            <!-- <div class="form-cadastro" id="mostrarFormFunc">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarCadastroFunc()">
                         voltar
                     </button>
+                </div> -->
+            <div class="form-cadastro" id="mostrarFormFunc">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
+                        &#171;
+                    </button>
                 </div>
-                <div class="primeiro-bloco-cadas tam01">
-                    <span style="color: blue;">
-                        Nome: <Input></Input>
+                <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
+                    <span class="campo">
+                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
                     </span>
-                    <span style="color: blue;">
-                        CPF: <Input></Input>
+                    <span class="campo">
+                        Email <Input class="campo-input" placeholder="Digite o cep"></Input>
                     </span>
-                    <span style="color: blue;">
-                        Email: <Input></Input>
+                    <span class="campo">
+                        Cpf <Input class="campo-input" placeholder="Digite o estado"></Input>
                     </span>
-                    <span style="color: blue;">
-                        Cargo: <Input></Input>
+                    <span class="campo">
+                        Senha <Input class="campo-input" placeholder="Digite a cidade"></Input>
                     </span>
                 </div>
-                <div class="primeiro-bloco-cadas tam01" style="align-items: flex-start;">
-                    <span class="material-icons-outlined user">
-                        person
-                    </span>
+                <div class="div-confirmar-cadastro">
                     <button class="btn-confirmar-cadastro">
                         Cadastrar
                     </button>
@@ -337,138 +264,100 @@
                 <table>
                     <caption>Relatórios</caption>
                     <thead>
-                      <tr>
-                        <th scope="col">ID Máquina</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Max CPU</th>
-                        <th scope="col">Min CPU</th>
-                        <th scope="col">Max HD</th>
-                        <th scope="col">Min HD</th>
-        
-                      </tr>
+                        <tr>
+                            <th scope="col">ID Máquina</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Max CPU</th>
+                            <th scope="col">Min CPU</th>
+                            <th scope="col">Max HD</th>
+                            <th scope="col">Min HD</th>
+
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
 
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
 
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
 
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
 
-                      <tr>
-                        <td data-label="Account">001</td>
-                        <td data-label="Due Date">04/01/2016</td>
-                        <td data-label="Amount">90%</td>
-                        <td data-label="Period">15%</td>
-                        <td data-label="Period">100%</td>
-                        <td data-label="Period">15%</td>
-                      </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
 
-                      
+
                     </tbody>
-                  </table>
+                </table>
             </div>
 
             <!-- Container configurações -->
-            <div class="container-config" id="containerConfig">
-        
-                <div class="bloco-hardware tam01">
-                   
-                    <span class="nome-hardware tam01">
-                        CPU
-                    </span>
-                    <span class="nome-hardware tam01">
-                        RAM
-                    </span>
-                    <span class="nome-hardware tam01">
-                        HD
-                    </span>
-                </div>
-                <div class="bloco-hardware tam01">
-                    <span class="nome-hardware tam01">
-                        Métrica
-                    </span>
-                    <span class="nome-hardware tam01">
-                        Métrica
-                    </span>
-                    <span class="nome-hardware tam01">
-                        Métrica
-                    </span>
-                </div>
-                <div class="bloco-hardware diferente tam01">
-                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                    <div class="auxiliar-input tam01"><input class="input-metrica"></div>
-                </div>
-                <div class="container-btn-salvar" id="btnConfig">
-                    <button class="btn-salvar">
-                        salvar
-                    </button>
-                </div>
-            </div>
-
-        </main>
-        <!-- End Main -->
+            <!-- End Main -->
 
 
-        <!-- Scripts -->
-        <!-- ApexCharts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-        <!-- Custom JS -->
-        <script src="./js/sidebarGerente.js"></script>
+            <!-- Scripts -->
+            <!-- ApexCharts -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+            <!-- Custom JS -->
+            <script src="./js/sidebarGerente.js"></script>
 </body>
 
 </html>
