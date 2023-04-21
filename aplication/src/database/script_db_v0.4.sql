@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
   senha VARCHAR(255) NOT NULL,
   cpf CHAR(14) NOT NULL,
   cargo VARCHAR(45) NULL,
-  perfilAdministrador INT UNIQUE,
+  perfilAdministrador INT UNIQUE NOT NULL,
   PRIMARY KEY (idPerfil, perfilAdministrador),
   CONSTRAINT fk_Perfil_Perfil1
     FOREIGN KEY (perfilAdministrador)
