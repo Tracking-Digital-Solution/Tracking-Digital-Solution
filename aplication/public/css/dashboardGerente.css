@@ -1,34 +1,22 @@
 /* ---------- MAIN ---------- */
 
-.main-container {
-  grid-area: main;
-  overflow-y: auto;
-  padding: 20px 20px;
-}
 
 /* Dashboard */
-.container-maquinas{
+
+
+.campo{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-  height: 300px;
-  gap: 20px;
-  /* height: auto; */
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffc300;
 }
 
-.caixa-maquina{
-  display: flex;
-  height: 250px;
-  align-items: center;
-  margin-left: 10px;
-  /* width: min-content; */
-  /* justify-content: center; */
-  flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 3px 3px 10px 2px #a9a1a1;
-  cursor: pointer;
+.campo-input{
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 2px solid #ffc300;
+  background-color: white;
 }
 
 .material-icons-outlined{
@@ -40,33 +28,12 @@
   transition: none;
 }
 
-.computer{
-  color: rgb(0, 0, 0);
-  padding: 20px;
-  font-size: 120px;
+.func{
   position: relative;
+  height: 130px;
+  margin: 20px 0 40px 0;
 }
-
-.kpi{
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
-  background-color: green;
-  margin-top: 3px !important;
-  margin-left: 95px;
-  position: absolute;
-}
-
 /* Cadastrar Máquinas */
-
-
-
-
-
-
-
-
-
 
 
 .container-dashboard {
@@ -155,12 +122,6 @@
   font-size: 1.5rem;
 }
 
-.computer {
-  padding: 20px;
-  font-size: 120px;
-  position: relative;
-
-}
 
 /* 
 .card:first-child {
