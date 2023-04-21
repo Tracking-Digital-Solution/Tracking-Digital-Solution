@@ -1,5 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS trackingdigitalsolution DEFAULT CHARACTER SET utf8 ;
-USE trackingdigitalsolution;
+use trackingdigitalsolution;
 
 -- Table trackingdigitalsolution.Perfil
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
   senha VARCHAR(255) NOT NULL,
   cpf CHAR(14) NOT NULL,
   cargo VARCHAR(45) NULL,
-  perfilAdministrador INT UNIQUE NOT NULL,
-  PRIMARY KEY (idPerfil, perfilAdministrador),
+  perfilAdministrador INT NULL,
+  PRIMARY KEY (idPerfil),
   CONSTRAINT fk_Perfil_Perfil1
     FOREIGN KEY (perfilAdministrador)
     REFERENCES trackingdigitalsolution.Perfil (idPerfil));
@@ -70,19 +70,18 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.coletaRAM (
     REFERENCES trackingdigitalsolution.RamDadosEstaticos (idColetaRAM));
     
 
-
 -- Table trackingdigitalsolution.CpuDadosEstaticos
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.CpuDadosEstaticos (
-  idColetaCPU INT NOT NULL AUTO_INCREMENT,
+  idCpuDadosEstaticos INT NOT NULL AUTO_INCREMENT,
   riscoCPU INT NULL,
   nomeProcessador VARCHAR(255) NULL,
-  PRIMARY KEY (idColetaCPU));
+  PRIMARY KEY (idCpuDadosEstaticos));
 
 
 -- Table trackingdigitalsolution.ColetaCPU
 CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaCPU (
   idCPU INT NOT NULL AUTO_INCREMENT,
-  usoAtual DOUBLE NULL,
+  usoAtual INT NULL,
   dataHota DATETIME NULL,
   fkMaquina INT NOT NULL,
   fkEstaticaCPU INT NOT NULL,
@@ -92,7 +91,7 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaCPU (
     REFERENCES trackingdigitalsolution.MaquinaCorporativa (idMaquinaCorporativa),
   CONSTRAINT fk_ColetaCPU_CpuMaquinaCorporativa1
     FOREIGN KEY (fkEstaticaCPU)
-    REFERENCES trackingdigitalsolution.CpuDadosEstaticos (idColetaCPU));
+    REFERENCES trackingdigitalsolution.CpuDadosEstaticos (idCpuDadosEstaticos));
     
 
 
@@ -133,3 +132,5 @@ CREATE TABLE IF NOT EXISTS trackingdigitalsolution.ColetaHD (
     FOREIGN KEY (fkEstaticaHD)
     REFERENCES trackingdigitalsolution.HdDadosEstaticos (idColetaHD));
     
+
+    select `idMaquinaCorporativa` from MaquinaCorporativa WHERE ip = "[192.168.15.1]";
