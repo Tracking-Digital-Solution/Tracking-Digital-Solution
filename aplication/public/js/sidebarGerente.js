@@ -1,4 +1,5 @@
 function mostrarPainelDeControle() {
+  
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "flex";
     containerCadastroFunc.style.display = "none";
@@ -8,6 +9,7 @@ function mostrarPainelDeControle() {
 }
 
 function mostrarCadastroMaq() {
+   
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "flex";
     containerCadastroFunc.style.display = "none";
@@ -17,6 +19,7 @@ function mostrarCadastroMaq() {
 }
 
 function mostrarCadastroFunc() {
+
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
     containerCadastroFunc.style.display = "block";
@@ -26,6 +29,7 @@ function mostrarCadastroFunc() {
 }
 
 function mostrarRelatorios() {
+    
     containerRelatorios.style.display = "flex";
     containerMaquinas.style.display = "none";
     containerCadastroFunc.style.display = "none";
@@ -35,6 +39,7 @@ function mostrarRelatorios() {
 }
 
 function mostrarConfig() {
+  
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
     containerCadastroFunc.style.display = "none";
@@ -53,6 +58,7 @@ function mostrarSuporte() {
 }
 
 function adicionarMaquina() {
+  
     mostrarFormMaq.style.display = "flex";
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
@@ -62,6 +68,7 @@ function adicionarMaquina() {
 }
 
 function adicionarFunc() {
+ 
     mostrarFormFunc.style.display = "flex";
     containerCadastroFunc.style.display = "none";
     containerRelatorios.style.display = "none";
