@@ -16,15 +16,18 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/usoGeralDash.css">
+    <link rel="stylesheet" href="./css/dashboardGerente.css">
+    <link rel="stylesheet" href="./css/cadastrosDash.css">
+    <link rel="stylesheet" href="./css/chamadosDash.css">
+    <link rel="stylesheet" href="./css/relatoriosDash.css">
+    <link rel="stylesheet" href="./css/configDash.css">
     <link rel="stylesheet" href="./css/dashboardTi.css">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
 <body>
     <div class="grid-container">
-
         <!-- Header -->
         <header class="header">
             <div class="menu-icon" onclick="openSidebar()">
@@ -37,8 +40,7 @@
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
-                <a href="#"><span class="material-icons-outlined">email</span></a>
-                <a href="#"><span class="material-icons-outlined">account_circle</span></a>
+                <a href="#"><span class="material-icons-outlined perfil">person</span></a>
             </div>
         </header>
         <!-- End Header -->
@@ -56,99 +58,319 @@
                 <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
             </div>
 
-
+            <!-- :BARRA DE NAVEGAÇÃO -->
             <ul class="sidebar-list">
-                <li class="sidebar-list-item">
-                    <a href="./dashboard.html" target="_blank">
-                        <span class="material-icons-outlined">dashboard</span> <span class="span-iten">Dashboard</span>
-                    </a>
+                <li class="sidebar-list-item" onclick="mostrarPainelDeControle()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">poll</span>
+                        Painel de controle
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">description</span>
+                        Relatórios
+                    </div>
                 </li>
 
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarFun.html" target="_blank">
-                        <span class="material-icons-outlined">fact_check</span> Cadastrar funcionário
-                    </a>
-                </li>
-
-
-                <li class="sidebar-list-item">
-                    <a href="./cadastrarMaq.html" target="_blank">
-                        <span class="material-icons-outlined">poll</span> Cadastrar máquina
-                    </a>
+                <li class="sidebar-list-item" onclick="mostrarSuporte()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">call</span>
+                        Suporte
+                    </div>
                 </li>
                 <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">settings</span> Relatórios
-                    </a>
-                </li>
-
-                <li class="sidebar-list-item">
-                    <a href="../index.html" target="_top">
-                        <span class="material-icons-outlined">logout</span> Configurações
-                    </a>
-                </li>
-
-                <li class="sidebar-list-item">
-                    <a href="../index.html" target="_top">
-                        <span class="material-icons-outlined">logout</span> Suporte
-                    </a>
-                </li>
-
-                <li class="sidebar-list-item">
-                    <a href="../index.html" target="_top">
-                        <span class="material-icons-outlined">logout</span> Exit
-                    </a>
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">logout</span>
+                        Exit
+                    </div>
                 </li>
             </ul>
         </aside>
-        <!-- End Sidebar -->
 
         <!-- Main -->
         <main class="main-container">
-            <div class="container-dashboard">
+            <!-- Container dashboard -->
+            <div class="container-maquinas" id="containerMaquinas">
+                <div style="width: 100%;">
+                    <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
+                        <span class="material-icons-outlined btn-add">
+                            settings
+                        </span>
+                        Alertas
+                    </div>
+                </div>
+                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                    <Span style="font-size: 20px;">Caixa 01</Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                    <span>Estado: Inativo</span>
+                    <span>Internet: Ok</span>
+                </div>
+                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                    <Span style="font-size: 20px;">Caixa 01</Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                    <span>Estado: Inativo</span>
+                    <span>Internet: Ok</span>
+                </div>
+                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                    <Span style="font-size: 20px;">Caixa 01</Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                    <span>Estado: Inativo</span>
+                    <span>Internet: Ok</span>
+                </div>
+            </div>
+            <!-- Container dashboard TI -->
+            <div class="container-dashboard" id="containerDashboard" onclick="mostrarDashboard()">
                 <div class="titulo">
                     DASHBOARD
                 </div>
-         
+                <div class="identificacao-maquina">
+                    <div class="bloco-identificacao">
+                        <span>
+                            Nome:
+                        </span>
+                        <span>
+                            Marca:
+                        </span>
+                        <span>
+                            Modelo:
+                        </span>
+                        <span>
+                            Id:
+                        </span>
+                    </div>
+                    <div class="material-icons-outlined computer">
+                        desktop_windows
+                    </div>
+                </div>
                 <div class="container-cards">
                     <div class="card flex-tam1">
                         <span class="name-card">
                             CPU
                         </span>
-                            <div class="chart-svg">
-                                <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                    <path class="circle-bg" d="M18 2.0845
-                              a 15.9155 15.9155 0 0 1 0 31.831
-                              a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                    <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                              a 15.9155 15.9155 0 0 1 0 31.831
-                              a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                    <text x="18" y="20.35" class="percentage">30%</text>
-                                </svg>
-                            </div>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
                     </div>
                     <div class="card flex-tam1">
                         <span class="name-card">
-                            CPU
+                            RAM
                         </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
                     </div>
-                    <div class="card flex-tam1">
+                    <div class="card flex-tam1" style="border: none;">
                         <span class="name-card">
-                            CPU
+                            HD
                         </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
                     </div>
                 </div>
             </div>
-        </main>
-        <!-- End Main -->
 
-    </div>
 
-    <!-- Scripts -->
-    <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-    <!-- Custom JS -->
-    <script src="./js/script.js"></script>
+            <!-- Container relatorios -->
+            <div class="container-relatorios" id="containerRelatorios">
+                <table>
+                    <caption>Relatórios</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID Máquina</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Max CPU</th>
+                            <th scope="col">Min CPU</th>
+                            <th scope="col">Max HD</th>
+                            <th scope="col">Min HD</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+
+                        <tr>
+                            <td data-label="Account">001</td>
+                            <td data-label="Due Date">04/01/2016</td>
+                            <td data-label="Amount">90%</td>
+                            <td data-label="Period">15%</td>
+                            <td data-label="Period">100%</td>
+                            <td data-label="Period">15%</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Container configurações -->
+            <div class="container-config" id="containerConfig">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarPainelDeControle()">
+                        &#171;
+                    </button>
+                </div>
+                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
+                    <div class="bloco-hardware">
+                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
+                            <Span>
+                                Cpu:
+                            </Span>
+                            <Span>
+                                Ram:
+                            </Span>
+                            <Span>
+                                Ssd:
+                            </Span>
+                        </div>
+                    </div>
+                    <div class="bloco-hardware">
+                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
+                            Limite %
+                        </Span>
+                        <div class="nome-hardware">
+                            <Span>
+                                <input class="input" placeholder="Porcentagem">
+                            </Span>
+                            <Span>
+                                <input class="input" placeholder="">
+                            </Span>
+                            <Span>
+                                <input class="input" placeholder="">
+                            </Span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-btn-salvar" id="btnConfig">
+                    <button class="btn-salvar">
+                        salvar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Container suporte -->
+
+            <!-- End Main -->
+
+
+            <!-- Scripts -->
+            <!-- ApexCharts -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+            <!-- Custom JS -->
+            <script src="./js/sidebarTi.js"></script>
 </body>
 
 </html>

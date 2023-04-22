@@ -1,67 +1,116 @@
-li {
-  display: flex;
-  text-decoration: none;
-}
-
-.output-info-serve {
+.container-cadastro {
   display: none;
-  cursor: pointer;
-  position: absolute;
-  height: 320px;
-  width: 450px;
-  border: solid 1px black;
-  background-color: #ffffff;
-}
-
-.btn-add-serv {
-  background: none;
-  border: none;
-  cursor: pointer;
+  width: 100%;
   height: auto;
-  margin-bottom: 30px;
-  height: 30px;
 }
 
-.container-serv {
+.caixa-botao-add {
   display: flex;
   flex-direction: row;
-  overflow-wrap: normal;
-  gap: 20px;
+  width: max-content;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 10px 0px 15px 0px;
+  background-color: #ffc300;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  color: #fff;
+}
+
+.container-das-infos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
-  height: 1000px;
+  height: auto;
+  gap: 20px;
+}
+
+.caixa-infos {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.caracteristicas {
+  font-size: 20px;
+  color: black;
+  width: 100%;
+}
+
+.tam01 {
+  flex-grow: 1;
+}
+
+/* Formulario de cadastros  */
+.container-formularios-cadas {
+  width: 100%;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  height: auto;
+}
+
+.form-cadastro {
+  display: none;
+  background-color: #fff;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  width: 500px;
+  height: 470px;
 }
 
-.btn-serv {
-  cursor: pointer;
+.primeiro-bloco-cadas {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: white;
-  width: 30%;
-  height: 300px;
-  border: solid 1px #000000;
+  gap: 10px;
+
 }
 
-.form-add-serve {
-  height: 350px;
-  width: 550px;
-  position: absolute;
-  margin: 150px 100px 100px 400px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  border: solid 1px black;
-  border-radius: 20px;
-  background-color: #ffffff;
-  z-index: 10;
+.btn-confirmar-cadastro{
+  background-color: rgb(45, 157, 255);
+  color: white;
+  font-weight: bold;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  width: 150px;
   padding: 10px;
-  align-items: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.mini-card-info {
-  border: solid 1px black;
-  padding: 70px;
-  margin-top: 60px;
+.div-voltar{
+  margin-top: 15px;
+  width: 100%;
+}
+
+.btn-voltar{
+  width:45px ;
+  border: none;
+  border-radius: 2px;
+  background-color: #d6d5d5;
+  color: #fff;
+  font-size: 30px;
+  margin-left: 15px;
+  cursor: pointer;
+  background-color: #ffc300;
+}
+
+.div-confirmar-cadastro{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.user{
+  font-size: 150px;
+  color: black;
 }
