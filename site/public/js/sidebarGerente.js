@@ -75,3 +75,21 @@ function adicionarFunc() {
     containerMaquinas.style.display = "none";
     botaoMaquina.style.display = "none";
 }
+
+function logout() {
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "Deseja sair do perfil?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, sair!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+          sessionStorage.clear()
+          window.location = "index.html"
+      }
+    })
+  }
+  
