@@ -21,8 +21,9 @@
     <link rel="stylesheet" href="./css/chamadosDash.css">
     <link rel="stylesheet" href="./css/relatoriosDash.css">
     <link rel="stylesheet" href="./css/configDash.css">
+    <link rel="stylesheet" href="./css/dashboardTi.css">
     <!-- Favicon -->
-   <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
 <body>
@@ -39,7 +40,7 @@
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
-                <a href="perfil.html"><span class="material-icons-outlined perfil">person</span></a>
+                <a href="#"><span class="material-icons-outlined perfil">person</span></a>
             </div>
         </header>
         <!-- End Header -->
@@ -50,7 +51,7 @@
             <div class="sidebar-title">
                 <div class="sidebar-brand">
                     <a href="dashboard.html">
-                        <img src="./logo-tracking-monitor__1_-removebg-preview.png" id="logo">
+                        <img src="assets/logo-tracking-monitor__1_-removebg-preview.png" id="logo">
                     </a>
 
                 </div>
@@ -65,193 +66,162 @@
                         Painel de controle
                     </div>
                 </li>
-                <li class="sidebar-list-item" onclick="mostrarCadastroFunc()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">person_add</span>
-                        Cadastrar funcionário
-                    </div>
-                </li>
                 <li class="sidebar-list-item" onclick="mostrarRelatorios()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">description</span>
                         Relatórios
                     </div>
                 </li>
+
                 <li class="sidebar-list-item" onclick="mostrarSuporte()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">call</span>
                         Suporte
                     </div>
                 </li>
-                <li class="sidebar-list-item">
+                <li class="sidebar-list-item" id="from1" onclick="logout()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">logout</span>
-                        Exit
+                        Sair
                     </div>
                 </li>
             </ul>
         </aside>
-        <!-- End Sidebar -->
 
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
             <div class="container-maquinas" id="containerMaquinas">
                 <div style="width: 100%;">
-                    <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
+                    <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
                         <span class="material-icons-outlined btn-add">
-                            add_box
+                            settings
                         </span>
-                        Cadastrar Máquina
+                        Alertas
                     </div>
                 </div>
-                <div class="caixa-maquina tam01">
+                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
                     <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
                     <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
-                    <span>Internet: Off</span>
+                    <span>Internet: Ok</span>
                 </div>
-                <div class="caixa-maquina tam01">
-                    <Span style="font-size: 20px;">Caixa 02</Span>
+                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                    <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
                     <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
-                    <span>Internet: Off</span>
+                    <span>Internet: Ok</span>
                 </div>
-                <div class="caixa-maquina tam01">
-                    <Span style="font-size: 20px;">Caixa 03</Span>
+                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                    <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
                     <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
-                    <span>Internet: Off</span>
+                    <span>Internet: Ok</span>
                 </div>
-
             </div>
-
-            <!-- Container cadastar func -->
-            <div class="container-cadastro" id="containerCadastroFunc">
-                <div class="caixa-botao-add" onclick="adicionarFunc()">
-                    <span class="material-icons-outlined btn-add">
-                        add_box
-                    </span>
-                    Cadastrar funcionário
+            <!-- Container dashboard TI -->
+            <div class="container-dashboard" id="containerDashboard" onclick="mostrarDashboard()">
+                <div class="titulo">
+                    DASHBOARD
                 </div>
-                <div class="container-das-infos">
-                    <div class="caixa-infos tam01">
-                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
-                            class="func">
-                        <span class="caracteristicas">
-                            Nome:
+                <div class="identificacao-maquina">
+                    <div class="bloco-identificacao">
+                        <span>
+                            Nome da máquina:
                         </span>
-
-                        <span class="caracteristicas">
-                            Email:
+                        <span>
+                            Sistema oeracional:
                         </span>
+                        <span>
+                            Ip:
                         </span>
                     </div>
-                    <div class="caixa-infos tam01">
-                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
-                            class="func">
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-
-                        <span class="caracteristicas">
-                            Email:
-                        </span>
-                        </span>
+                    <div class="material-icons-outlined" style="font-size: 75px;">
+                        desktop_windows
                     </div>
-                    <div class="caixa-infos tam01">
-                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
-                            class="func">
-                        <span class="caracteristicas">
-                            Nome:
+                </div>
+                <div class="container-cards">
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            CPU
                         </span>
-
-                        <span class="caracteristicas">
-                            Email:
-                        </span>
-                        </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
                     </div>
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            RAM
+                        </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
+                    </div>
+                    <div class="card flex-tam1" style="border: none;">
+                        <span class="name-card">
+                            HD
+                        </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
+                    </div>
+                </div>
+            </div>
 
-                </div>
-            </div>
-            <!-- Container formulario de cadastros Máquina-->
-            <div class="form-cadastro" id="mostrarFormMaq">
-                <div class="div-voltar">
-                    <button class="btn-voltar" onclick="mostrarCadastroMaq()">
-                        &#171;
-                    </button>
-                </div>
-                <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
-                    <span class="campo">
-                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
-                    </span>
-                    <span class="campo">
-                        Ip <Input class="campo-input" placeholder="Digite o ip da máquina"></Input>
-                    </span>
-                    <span class="campo">
-                        Sistema operacional <Input class="campo-input"
-                            placeholder="Digite o sistema operacional"></Input>
-                    </span>
-                    <span class="campo">
-                        Cep <Input class="campo-input" placeholder="Digite o cep"></Input>
-                    </span>
-                </div>
-                <div class="primeiro-bloco-cadas" style="align-items: flex-start; justify-content: flex-start;;">
-                    <span class="campo">
-                        Estado <Input class="campo-input" placeholder="Digite o estado"></Input>
-                    </span>
-                    <span class="campo">
-                        Cidade <Input class="campo-input" placeholder="Digite a cidade"></Input>
-                    </span>
-                    <span class="campo">
-                        logradouro <Input class="campo-input" placeholder="Digite o logradouro"></Input>
-                    </span>
-                    <span class="campo">
-                        Número <Input class="campo-input" placeholder="Digite o número"></Input>
-                    </span>
-                </div>
-                <div class="div-confirmar-cadastro">
-                    <button class="btn-confirmar-cadastro">
-                        Cadastrar
-                    </button>
-                </div>
-            </div>
-            <!-- Container formulario de cadastros Funcionário -->
-            <!-- <div class="form-cadastro" id="mostrarFormFunc">
-                <div class="div-voltar">
-                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
-                        voltar
-                    </button>
-                </div> -->
-            <div class="form-cadastro" id="mostrarFormFunc">
-                <div class="div-voltar">
-                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
-                        &#171;
-                    </button>
-                </div>
-                <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
-                    <span class="campo">
-                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
-                    </span>
-                    <span class="campo">
-                        Email <Input class="campo-input" placeholder="Digite o cep"></Input>
-                    </span>
-                    <span class="campo">
-                        Cpf <Input class="campo-input" placeholder="Digite o estado"></Input>
-                    </span>
-                    <span class="campo">
-                        Senha <Input class="campo-input" placeholder="Digite a cidade"></Input>
-                    </span>
-                </div>
-                <div class="div-confirmar-cadastro">
-                    <button class="btn-confirmar-cadastro">
-                        Cadastrar
-                    </button>
-                </div>
-            </div>
 
             <!-- Container relatorios -->
             <div class="container-relatorios" id="containerRelatorios">
@@ -333,6 +303,52 @@
                 </table>
             </div>
 
+            <!-- Container configurações -->
+            <div class="container-config" id="containerConfig">
+                <div class="div-voltar">
+                    <button class="btn-voltar" onclick="mostrarPainelDeControle()">
+                        &#171;
+                    </button>
+                </div>
+                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
+                    <div class="bloco-hardware">
+                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
+                            <Span>
+                                Cpu:
+                            </Span>
+                            <Span>
+                                Ram:
+                            </Span>
+                            <Span>
+                                Ssd:
+                            </Span>
+                        </div>
+                    </div>
+                    <div class="bloco-hardware">
+                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
+                            Limite %
+                        </Span>
+                        <div class="nome-hardware">
+                            <Span>
+                                <input class="input" placeholder="Porcentagem">
+                            </Span>
+                            <Span>
+                                <input class="input" placeholder="Porcentagem">
+                            </Span>
+                            <Span>
+                                <input class="input" placeholder="Porcentagem">
+                            </Span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-btn-salvar" id="btnConfig">
+                    <button class="btn-salvar">
+                        salvar
+                    </button>
+                </div>
+            </div>
+
             <!-- Container suporte -->
             <div class="container-suporte" id="containerSuporte">
                 <table>
@@ -352,7 +368,6 @@
                 </table>
             </div>
 
-            <!-- container suporte -->
             <!-- End Main -->
 
 
@@ -360,7 +375,8 @@
             <!-- ApexCharts -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <!-- Custom JS -->
-            <script src="./js/sidebarGerente.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+            <script src="./js/sidebarTi.js"></script>
 </body>
 
 </html>

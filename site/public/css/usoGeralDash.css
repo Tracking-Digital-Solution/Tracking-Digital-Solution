@@ -140,7 +140,7 @@ body {
   border-top-left-radius: 50px;
   background-color: #003566;
   cursor: pointer;
-
+  transition: 0.2s ease;
 }
 
 .material-icons-outlined:hover {
