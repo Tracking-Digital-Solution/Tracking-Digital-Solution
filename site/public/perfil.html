@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Perfil
+    </title>
+
+    <!-- Montserrat Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/usoGeralDash.css">
+    <link rel="stylesheet" href="./css/dashboardGerente.css">
+    <link rel="stylesheet" href="./css/cadastrosDash.css">
+    <link rel="stylesheet" href="./css/chamadosDash.css">
+    <link rel="stylesheet" href="./css/relatoriosDash.css">
+    <link rel="stylesheet" href="./css/configDash.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="material-icons-outlined">menu</span>
+            </div>
+            <div class="header-left">
+                <p class="client-name-p">Olá, <b id="clientName">Leonardo Marques</b></p>
+
+
+            </div>
+            <div class="header-right">
+                <!-- <span class="material-icons-outlined">notifications</span> -->
+                <a href="#"><span class="material-icons-outlined perfil">person</span></a>
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                    <a href="dashboard.html">
+                        <img src="./assets/logo-tracking-monitor__1_-removebg-preview.png" id="logo">
+                    </a>
+
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
+
+            <!-- :BARRA DE NAVEGAÇÃO -->
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item" onclick="mostrarPainelDeControle()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">poll</span>
+                        Painel de controle
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="mostrarCadastroFunc()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">person_add</span>
+                        Cadastrar funcionário
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">description</span>
+                        Relatórios
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="mostrarSuporte()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">call</span>
+                        Suporte
+                    </div>
+                </li>
+                <li class="sidebar-list-item" onclick="logout()">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">logout</span>
+                        Sair
+                    </div>
+                </li>
+            </ul>
+        </aside>
+        <!-- End Sidebar -->
+
+        <!-- Main -->
+        <main class="main-container">
+
+        
+
+    
+        </main>
+            <!-- Scripts -->
+            <!-- ApexCharts -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+            <!-- Custom JS -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+            <script src="./js/sidebarGerente.js"></script>
+</body>
+
+</html>

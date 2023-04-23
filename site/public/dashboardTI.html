@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./css/configDash.css">
     <link rel="stylesheet" href="./css/dashboardTi.css">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/Symbol_tracking.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
 <body>
@@ -34,14 +34,7 @@
                 <span class="material-icons-outlined">menu</span>
             </div>
             <div class="header-left">
-                <p class="client-name-p">Olá, <b id="clientName">Leonardo Gomes</b></p>
-
-
-            </div>
-            <div class="header-right">
-                <!-- <span class="material-icons-outlined">notifications</span> -->
-                <a href="#"><span class="material-icons-outlined perfil">person</span></a>
-            </div>
+                <p class="client-name-p">Olá, <b id="clientName">Leonardo Marques</b></p>
         </header>
         <!-- End Header -->
 
@@ -51,7 +44,7 @@
             <div class="sidebar-title">
                 <div class="sidebar-brand">
                     <a href="dashboard.html">
-                        <img src="./assets/images/logotipo-dash-removebg-preview.png" id="logo">
+                        <img src="assets/logo-tracking-monitor__1_-removebg-preview.png" id="logo">
                     </a>
 
                 </div>
@@ -79,10 +72,10 @@
                         Suporte
                     </div>
                 </li>
-                <li class="sidebar-list-item">
+                <li class="sidebar-list-item" id="from1" onclick="logout()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">logout</span>
-                        Exit
+                        Sair
                     </div>
                 </li>
             </ul>
@@ -130,19 +123,16 @@
                 <div class="identificacao-maquina">
                     <div class="bloco-identificacao">
                         <span>
-                            Nome:
+                            Nome da máquina:
                         </span>
                         <span>
-                            Marca:
+                            Sistema oeracional:
                         </span>
                         <span>
-                            Modelo:
-                        </span>
-                        <span>
-                            Id:
+                            Ip:
                         </span>
                     </div>
-                    <div class="material-icons-outlined computer">
+                    <div class="material-icons-outlined" style="font-size: 75px;">
                         desktop_windows
                     </div>
                 </div>
@@ -232,12 +222,11 @@
                     <caption>Relatórios</caption>
                     <thead>
                         <tr>
-                            <th scope="col">ID Máquina</th>
+                            <th scope="col">Ip Máquina</th>
                             <th scope="col">Data</th>
                             <th scope="col">Max CPU</th>
-                            <th scope="col">Min CPU</th>
+                            <th scope="col">Max RAM</th>
                             <th scope="col">Max HD</th>
-                            <th scope="col">Min HD</th>
 
                         </tr>
                     </thead>
@@ -247,7 +236,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
                         <tr>
@@ -255,7 +243,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
                         <tr>
@@ -263,7 +250,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
                         <tr>
@@ -271,7 +257,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
 
@@ -280,7 +265,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
 
@@ -289,7 +273,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
 
@@ -298,7 +281,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
 
@@ -307,7 +289,6 @@
                             <td data-label="Due Date">04/01/2016</td>
                             <td data-label="Amount">90%</td>
                             <td data-label="Period">15%</td>
-                            <td data-label="Period">100%</td>
                             <td data-label="Period">15%</td>
                         </tr>
 
@@ -345,10 +326,10 @@
                                 <input class="input" placeholder="Porcentagem">
                             </Span>
                             <Span>
-                                <input class="input" placeholder="">
+                                <input class="input" placeholder="Porcentagem">
                             </Span>
                             <Span>
-                                <input class="input" placeholder="">
+                                <input class="input" placeholder="Porcentagem">
                             </Span>
                         </div>
                     </div>
@@ -362,6 +343,23 @@
             </div>
 
             <!-- Container suporte -->
+            <div class="container-suporte" id="containerSuporte">
+                <table>
+                    <caption>Suporte</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID Chamado</th>
+                            <th scope="col">Hostname</th>
+                            <th scope="col">Localidade</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Situação</th>
+                            <th scope="col">Overview</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
 
             <!-- End Main -->
 
@@ -370,6 +368,7 @@
             <!-- ApexCharts -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <!-- Custom JS -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
             <script src="./js/sidebarTi.js"></script>
 </body>
 

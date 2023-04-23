@@ -51,6 +51,7 @@ body {
 
 .perfil {
   font-size: 50px;
+  cursor: pointer;
 }
 
 
@@ -140,7 +141,7 @@ body {
   border-top-left-radius: 50px;
   background-color: #003566;
   cursor: pointer;
-
+  transition: 0.2s ease;
 }
 
 .material-icons-outlined:hover {
@@ -179,11 +180,15 @@ body {
   /* height: auto; */
 }
 
+.container-suporte{
+  display: none;
+}
+
 .kpi {
   height: 30px;
   width: 30px;
   border-radius: 15px;
-  background-color: green;
+  background-color: tomato;
   margin-top: 50px !important;
   margin-left: 165px;
   position: absolute;
