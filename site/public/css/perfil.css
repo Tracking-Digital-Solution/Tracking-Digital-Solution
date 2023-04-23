@@ -20,7 +20,7 @@
 
 
 .box_account {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     min-height: 80vh;
     width: 100%;

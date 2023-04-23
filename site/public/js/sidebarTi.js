@@ -3,6 +3,7 @@ function mostrarPainelDeControle() {
   containerMaquinas.style.display = "flex";
   containerConfig.style.display = "none";
   containerDashboard.style.display = "none";
+  containerSuporte.style.display = "none";
 }
 
 function mostrarRelatorios() {
@@ -10,6 +11,7 @@ function mostrarRelatorios() {
   containerMaquinas.style.display = "none";
   containerConfig.style.display = "none";
   containerDashboard.style.display = "none";
+  containerSuporte.style.display = "none";
 }
 
 function mostrarConfig() {
@@ -17,9 +19,11 @@ function mostrarConfig() {
   containerMaquinas.style.display = "none";
   containerConfig.style.display = "flex";
   containerDashboard.style.display = "none";
+  containerSuporte.style.display = "none";
 }
 
 function mostrarSuporte() {
+  containerSuporte.style.display = "flex";
   containerRelatorios.style.display = "none";
   containerMaquinas.style.display = "none";
   containerConfig.style.display = "none";
@@ -32,11 +36,13 @@ function mostrarDashboard() {
     containerMaquinas.style.display = "none";
     containerRelatorios.style.display = "none";
     containerConfig.style.display = "none";
+    containerSuporte.style.display = "none";
   } else {
     containerDashboard.style.display = "none";
     containerMaquinas.style.display = "flex";
     containerRelatorios.style.display = "none";
     containerConfig.style.display = "none";
+    containerSuporte.style.display = "none";
   }
 }
 

@@ -51,6 +51,7 @@ body {
 
 .perfil {
   font-size: 50px;
+  cursor: pointer;
 }
 
 
@@ -177,6 +178,10 @@ body {
   height: 300px;
   gap: 20px;
   /* height: auto; */
+}
+
+.container-suporte{
+  display: none;
 }
 
 .kpi {
