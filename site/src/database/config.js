@@ -3,9 +3,9 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "", // SERVER CONFIG
-    database: "", // DATABASE CONFIG
-    user: "", // USER CONFIG
+    server: "bd-tracking-digital-solution.database.windows.net", // SERVER CONFIG
+    database: "trackingdigitalsolution", // DATABASE CONFIG
+    user: "admin-tracking-digital-solution", // USER CONFIG
     password: "#Gfgrupo10",
     pool: {
         max: 10,
