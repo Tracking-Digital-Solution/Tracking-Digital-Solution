@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +12,12 @@
     <title>Login</title>
 </head>
 <script src="./js/funcoes.js"></script>
+
 <body>
     <div id="modal" class="modal">
         <img src="assets/load.gif" alt="">
     </div>
-    
+
     <div class="caixa-header">
         <div class="logo">
             <a class="ancora-logo" href="index.html">
@@ -125,66 +127,70 @@
 <script src="js/validation.js"></script>
 
 <script>
-     function entrar() {
-        loading();
+    function entrar() {
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {    
+        if (emailVar == "" || senhaVar == "") {
             return false;
         }
         else {
-        fetch("/perfil/entrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+            fetch("/perfil/entrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    loading();
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.EMAIL_PERFIL = json.email;
+                        sessionStorage.NOME_PERFIL = json.nome;
+                        sessionStorage.ID_PERFIL = json.id;
+
+                        setTimeout(function () {
+                            if (sessionStorage.FK_ADMIN == null) {
+                                window.location = "dashboardGerente.html";
+                            } else {
+                                window.location = "dashboardTi.html";
+                            }
+
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Houve um erro ao tentar realizar o login!!'
+                    })
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        // finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
             })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_PERFIL = json.email;
-                    sessionStorage.NOME_PERFIL = json.nome;
-                    sessionStorage.ID_PERFIL = json.idPerfil;
-                    sessionStorage.FK_ADMIN = json.perfilAdministrador;
-
-                    setTimeout(function () {
-                        if(sessionStorage.FK_ADMIN == null){
-                            window.location = "dashboardGerente.html";
-                        }else{
-                            window.location = "dashboardTi.html";
-                        }
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    // finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+            return false;
+        }
     }
-}
 
 </script>
