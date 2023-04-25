@@ -126,7 +126,6 @@
 
 <script>
      function entrar() {
-        loading();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -144,10 +143,12 @@
                 emailServer: emailVar,
                 senhaServer: senhaVar
             })
+            
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
+                loading();
                 console.log(resposta);
 
                 resposta.json().then(json => {
@@ -156,22 +157,20 @@
 
                     sessionStorage.EMAIL_PERFIL = json.email;
                     sessionStorage.NOME_PERFIL = json.nome;
-                    sessionStorage.ID_PERFIL = json.idPerfil;
-                    sessionStorage.FK_ADMIN = json.perfilAdministrador;
+                    sessionStorage.ID_PERFIL = json.id;
 
                     setTimeout(function () {
-                        if(sessionStorage.FK_ADMIN == null){
-                            window.location = "dashboardTi.html";
-                        }else{
-                            window.location = "dashboardGerente.html";
-                        }
+                        window.location = "dashboardGerente.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
 
             } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Houve um erro ao tentar realizar o login!!'
+                })
 
                 resposta.text().then(texto => {
                     console.error(texto);
