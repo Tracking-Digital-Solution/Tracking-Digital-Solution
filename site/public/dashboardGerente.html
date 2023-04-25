@@ -235,35 +235,35 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
+                        Ip <Input class="campo-input" id="ip_input" placeholder="Digite o ip da máquina"></Input>
                     </span>
                     <span class="campo">
-                        Ip <Input class="campo-input" placeholder="Digite o ip da máquina"></Input>
+                        Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro"></Input>
                     </span>
                     <span class="campo">
-                        Sistema operacional <Input class="campo-input"
-                            placeholder="Digite o sistema operacional"></Input>
+                        Complemento <Input class="campo-input" id="complemento_input"
+                            placeholder="Digite o complemento"></Input>
                     </span>
                     <span class="campo">
-                        Cep <Input class="campo-input" placeholder="Digite o cep"></Input>
+                        Cep <Input class="campo-input" id="cep_input" placeholder="Digite o cep"></Input>
                     </span>
                 </div>
                 <div class="primeiro-bloco-cadas" style="align-items: flex-start; justify-content: flex-start;;">
                     <span class="campo">
-                        Estado <Input class="campo-input" placeholder="Digite o estado"></Input>
+                        Estado <Input class="campo-input" id="estado_input" placeholder="Digite o estado"></Input>
                     </span>
                     <span class="campo">
-                        Cidade <Input class="campo-input" placeholder="Digite a cidade"></Input>
+                        Cidade <Input class="campo-input" id="cidade_input" placeholder="Digite a cidade"></Input>
                     </span>
                     <span class="campo">
-                        logradouro <Input class="campo-input" placeholder="Digite o logradouro"></Input>
+                        Logradouro <Input class="campo-input" id="logradouro_input" placeholder="Digite o logradouro"></Input>
                     </span>
                     <span class="campo">
-                        Número <Input class="campo-input" placeholder="Digite o número"></Input>
+                        Número <Input class="campo-input" id="numero_input" placeholder="Digite o número"></Input>
                     </span>
                 </div>
                 <div class="div-confirmar-cadastro">
-                    <button class="btn-confirmar-cadastro">
+                    <button class="btn-confirmar-cadastro" onclick="cadastrarMaquina()">
                         Cadastrar
                     </button>
                 </div>
@@ -423,6 +423,114 @@
 
 <script>
     clientName.innerHTML = sessionStorage.NOME_PERFIL;
+
+    function cadastrarMaquina() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var cepVar = cep_input.value;
+        var estadoVar = estado_input.value;
+        var cidadeVar = cidade_input.value;
+        var bairroVar = bairro_input.value;
+        var logradouroVar = logradouro_input.value;
+        var numeroVar = numero_input.value;
+        var complementoVar = complemento_input.value;
+
+        if (
+            cepVar == ""        || 
+            estadoVar == ""     || 
+            cidadeVar == ""     || 
+            logradouroVar == "" ||
+            numeroVar == ""     ||
+            bairroVar   == ""   ||
+            complementoVar == ""
+        ) {
+            // finalizarAguardar();
+            return false;          
+            
+        }else if(validarMaquina()){
+        // Enviando o valor da nova input
+        fetch("/maquina/cadastrarEndereco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                cepServer: cepVar,
+                estadoServer: estadoVar,
+                cidadeServer: cidadeVar,
+                logradouroServer: logradouroVar,
+                numeroServer: numeroVar,
+                bairroServer: bairroVar,
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log("CHEGUEI AQUII");
+                // nextFetch();
+                
+                Swal.fire({
+                    position: 'center',
+                    icon: "success",
+                    title: 'Maquina cadastrada com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+
+              console.log(resposta);
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+}
+
+function nextFetch(){
+    var ipVar = ip_input.value;
+    fetch("/maquina/cadastrarMaquina", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ipServer : ipVar,
+                fkPerfilServer: sessionStorage.ID_PERFIL,
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+
+              console.log(resposta);
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+}
+
+
     function cadastrarFuncionario() {
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo

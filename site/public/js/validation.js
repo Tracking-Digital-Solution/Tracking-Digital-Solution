@@ -152,3 +152,7 @@ function validarLogin() {
   }
 
 }
+
+function validarMaquina(){
+  return true;
+}
