@@ -15,6 +15,10 @@ router.post("/cadastrar", function (req, res) {
     perfilController.cadastrar(req, res);
 })
 
+router.post("/cadastrarFuncionario", function (req, res) {
+    perfilController.cadastrarFuncionario(req, res);
+})
+
 router.post("/entrar", function (req, res) {
     perfilController.entrar(req, res);
 });

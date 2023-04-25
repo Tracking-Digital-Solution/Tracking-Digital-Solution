@@ -41,7 +41,7 @@
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
-              <span class="material-icons-outlined perfil" onclick="mostrarPerfil()">person</span>
+                <span class="material-icons-outlined perfil" onclick="mostrarPerfil()">person</span>
             </div>
         </header>
         <!-- End Header -->
@@ -285,20 +285,20 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
+                        Nome <Input class="campo-input" id="nome_input" placeholder="Digite o nome da máquina"></Input>
                     </span>
                     <span class="campo">
-                        Email <Input class="campo-input" placeholder="Digite o cep"></Input>
+                        Email <Input class="campo-input" id="email_input" placeholder="Digite o cep"></Input>
                     </span>
                     <span class="campo">
-                        Cpf <Input class="campo-input" placeholder="Digite o estado"></Input>
+                        Cpf <Input class="campo-input" id="cpf_input" placeholder="Digite o estado"></Input>
                     </span>
                     <span class="campo">
-                        Senha <Input class="campo-input" placeholder="Digite a cidade"></Input>
+                        Senha <Input class="campo-input" id="senha_input" placeholder="Digite a cidade"></Input>
                     </span>
                 </div>
                 <div class="div-confirmar-cadastro">
-                    <button class="btn-confirmar-cadastro">
+                    <button class="btn-confirmar-cadastro" onclick="cadastrarFuncionario()">
                         Cadastrar
                     </button>
                 </div>
@@ -417,3 +417,55 @@
 </body>
 
 </html>
+
+<script>
+    function cadastrarFuncionario() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var cpfVar = cpf_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            // finalizarAguardar();
+            return false;
+
+        } else if (validarCadastro()) {
+            // Enviando o valor da nova input
+            fetch("/perfil/cadastrarFuncionario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    cpfServer: cpfVar
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "1600")
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+            return false;
+        }
+    }
+</script>
