@@ -35,9 +35,7 @@
                 <span class="material-icons-outlined">menu</span>
             </div>
             <div class="header-left">
-                <p class="client-name-p">Olá, <b id="clientName">Leonardo Marques</b></p>
-
-
+                <p class="client-name-p">Olá, <b id="clientName"></b></p>
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
@@ -418,11 +416,13 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <!-- Custom JS -->
             <script src="./js/sidebarGerente.js"></script>
+            <script src="./js/validation.js"></script>
 </body>
 
 </html>
 
 <script>
+    clientName.innerHTML = sessionStorage.NOME_PERFIL;
     function cadastrarFuncionario() {
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
@@ -448,7 +448,9 @@
                     nomeServer: nomeVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
-                    cpfServer: cpfVar
+                    cpfServer: cpfVar,
+                    fkPerfilServer: sessionStorage.ID_PERFIL
+
                 })
             }).then(function (resposta) {
 

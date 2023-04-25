@@ -105,7 +105,7 @@ function cadastrarFuncionario(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
-    var fkPerfil = req.params.ID_PERFIL;
+    var fkPerfil = req.body.fkPerfilServer;
     
     // Faça as validações dos valores
     if (nome == undefined) {
