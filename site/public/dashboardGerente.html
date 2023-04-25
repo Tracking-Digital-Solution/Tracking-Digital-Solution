@@ -470,8 +470,8 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                console.log("CHEGUEI AQUII");
-                // nextFetch();
+                console.log('chegou');
+                cadastrarFetchMaquina();
                 
                 Swal.fire({
                     position: 'center',
@@ -482,7 +482,7 @@
                 })
                 setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 500);
 
               console.log(resposta);
                 // limparFormulario();
@@ -499,9 +499,16 @@
     }
 }
 
-function nextFetch(){
-    var ipVar = ip_input.value;
-    fetch("/maquina/cadastrarMaquina", {
+function cadastrarFetchMaquina(){
+        var cepVar = cep_input.value;
+        var estadoVar = estado_input.value;
+        var cidadeVar = cidade_input.value;
+        var bairroVar = bairro_input.value;
+        var logradouroVar = logradouro_input.value;
+        var numeroVar = numero_input.value;
+        var complementoVar = complemento_input.value;
+        var ipVar = ip_input.value;
+    fetch(`/maquina/cadastrarMaquina/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -509,7 +516,13 @@ function nextFetch(){
             body: JSON.stringify({
                 ipServer : ipVar,
                 fkPerfilServer: sessionStorage.ID_PERFIL,
-                
+                cepServer: cepVar,
+                estadoServer: estadoVar,
+                cidadeServer: cidadeVar,
+                logradouroServer: logradouroVar,
+                numeroServer: numeroVar,
+                bairroServer: bairroVar,
+                complementoServer: complementoVar
             })
         }).then(function (resposta) {
 

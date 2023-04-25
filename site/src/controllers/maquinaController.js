@@ -29,9 +29,16 @@ function cadastrarMaquina(req, res) {
 
     //Cadastrar lugar 
     var ip = req.body.ipServer;
-    var fkPerfil = req.params.idPerfil;  
+    var fkPerfil = req.body.fkPerfilServer; 
+    var cep = req.body.cepServer;
+    var estado = req.body.estadoServer;
+    var cidade = req.body.cidadeServer;
+    var bairro = req.body.bairroServer;
+    var logradouro = req.body.logradouroServer;
+    var numero = req.body.numeroServer;
+    var complemento = req.body.complementoServer;
         // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-        maquinaModel.cadastrarMaquina(ip, fkPerfil)
+        maquinaModel.cadastrarMaquina(ip, fkPerfil,cep, estado,cidade, bairro, logradouro, numero, complemento)
             .then(
                 function (resultado) {
                     res.json(resultado);
