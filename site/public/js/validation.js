@@ -156,3 +156,6 @@ function validarLogin() {
 function validarMaquina(){
   return true;
 }
+
+function validarIp(){
+}
