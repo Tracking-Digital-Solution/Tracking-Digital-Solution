@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./css/relatoriosDash.css">
     <link rel="stylesheet" href="./css/configDash.css">
     <link rel="stylesheet" href="./css/perfil.css">
-
+    <link rel="stylesheet" href="./css/validation.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
@@ -35,13 +35,11 @@
                 <span class="material-icons-outlined">menu</span>
             </div>
             <div class="header-left">
-                <p class="client-name-p">Olá, <b id="clientName">Leonardo Marques</b></p>
-
-
+                <p class="client-name-p">Olá, <b id="clientName"></b></p>
             </div>
             <div class="header-right">
                 <!-- <span class="material-icons-outlined">notifications</span> -->
-              <span class="material-icons-outlined perfil" onclick="mostrarPerfil()">person</span>
+                <span class="material-icons-outlined perfil" onclick="mostrarPerfil()">person</span>
             </div>
         </header>
         <!-- End Header -->
@@ -237,35 +235,35 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
+                        Ip <Input class="campo-input" id="ip_input" placeholder="Digite o ip da máquina" oninput="mascaraIP(this, 'ip')" autocomplete="on" onblur="validarIp()"></Input>
                     </span>
                     <span class="campo">
-                        Ip <Input class="campo-input" placeholder="Digite o ip da máquina"></Input>
+                        Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro" maxlength="45" onblur="validarBairro()"></Input>
                     </span>
                     <span class="campo">
-                        Sistema operacional <Input class="campo-input"
-                            placeholder="Digite o sistema operacional"></Input>
+                        Complemento <Input class="campo-input" id="complemento_input"
+                            placeholder="Digite o complemento" maxlength="45" onblur="validarComplemento()"></Input>
                     </span>
                     <span class="campo">
-                        Cep <Input class="campo-input" placeholder="Digite o cep"></Input>
+                        Cep <Input class="campo-input" id="cep_input" placeholder="Digite o cep" maxlength="9" oninput="mascaraCEP(this, 'cep')" autocomplete="on" onblur="validarCep()"></Input>
                     </span>
                 </div>
                 <div class="primeiro-bloco-cadas" style="align-items: flex-start; justify-content: flex-start;;">
                     <span class="campo">
-                        Estado <Input class="campo-input" placeholder="Digite o estado"></Input>
+                        Estado <Input class="campo-input" id="estado_input" placeholder="Digite o estado" maxlength="45" onblur="validarEstado()"></Input>
                     </span>
                     <span class="campo">
-                        Cidade <Input class="campo-input" placeholder="Digite a cidade"></Input>
+                        Cidade <Input class="campo-input" id="cidade_input" placeholder="Digite a cidade" maxlength="45" onblur="validarCidade()"></Input>
                     </span>
                     <span class="campo">
-                        logradouro <Input class="campo-input" placeholder="Digite o logradouro"></Input>
+                        Logradouro <Input class="campo-input" id="logradouro_input" placeholder="Digite o logradouro" maxlength="45" onblur="validarLogradouro()"></Input>
                     </span>
                     <span class="campo">
-                        Número <Input class="campo-input" placeholder="Digite o número"></Input>
+                        Número <Input class="campo-input" id="numero_input" placeholder="Digite o número" maxlength="6" onblur="validarNumero()"></Input>
                     </span>
                 </div>
                 <div class="div-confirmar-cadastro">
-                    <button class="btn-confirmar-cadastro">
+                    <button class="btn-confirmar-cadastro" onclick="cadastrarMaquina()">
                         Cadastrar
                     </button>
                 </div>
@@ -285,20 +283,24 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Nome <Input class="campo-input" placeholder="Digite o nome da máquina"></Input>
+                        Nome <Input class="campo-input" id="nome_input" placeholder="Digite o nome da máquina"
+                            onblur="validarNome()"></Input>
                     </span>
                     <span class="campo">
-                        Email <Input class="campo-input" placeholder="Digite o cep"></Input>
+                        Email <Input class="campo-input" id="email_input" placeholder="Digite o cep"
+                            onblur="validarEmail()"></Input>
                     </span>
                     <span class="campo">
-                        Cpf <Input class="campo-input" placeholder="Digite o estado"></Input>
+                        Cpf <Input class="campo-input" id="cpf_input" placeholder="Digite o estado"
+                            onblur="validarCpf()"></Input>
                     </span>
                     <span class="campo">
-                        Senha <Input class="campo-input" placeholder="Digite a cidade"></Input>
+                        Senha <Input class="campo-input" id="senha_input" placeholder="Digite a cidade"
+                            onblur="validarSenha()"></Input>
                     </span>
                 </div>
                 <div class="div-confirmar-cadastro">
-                    <button class="btn-confirmar-cadastro">
+                    <button class="btn-confirmar-cadastro" onclick="cadastrarFuncionario()">
                         Cadastrar
                     </button>
                 </div>
@@ -310,74 +312,46 @@
                     <caption>Relatórios</caption>
                     <thead>
                         <tr>
-                            <th scope="col">Ip Máquina</th>
                             <th scope="col">Data</th>
-                            <th scope="col">Max CPU</th>
-                            <th scope="col">Max RAM</th>
-                            <th scope="col">Max HD</th>
-
+                            <th scope="col">Qtd máquinas que atingiram o limite</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
 
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
 
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
 
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
 
                         <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
+                            <td data-label="Due Date">26/04/2023</td>
+                            <td data-label="Amount">7</td>
                         </tr>
 
                     </tbody>
@@ -414,6 +388,182 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <!-- Custom JS -->
             <script src="./js/sidebarGerente.js"></script>
+            <script src="./js/validation.js"></script>
 </body>
 
 </html>
+
+<script>
+    clientName.innerHTML = sessionStorage.NOME_PERFIL;
+
+    function cadastrarMaquina() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var cepVar = cep_input.value;
+        var estadoVar = estado_input.value;
+        var cidadeVar = cidade_input.value;
+        var bairroVar = bairro_input.value;
+        var logradouroVar = logradouro_input.value;
+        var numeroVar = numero_input.value;
+        var complementoVar = complemento_input.value;
+
+        if (
+            cepVar == ""        || 
+            estadoVar == ""     || 
+            cidadeVar == ""     || 
+            logradouroVar == "" ||
+            numeroVar == ""     ||
+            bairroVar   == ""   ||
+            complementoVar == ""
+        ) {
+            // finalizarAguardar();
+            return false;          
+            
+        }else if(validarMaquina()){
+        // Enviando o valor da nova input
+        fetch("/maquina/cadastrarEndereco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                cepServer: cepVar,
+                estadoServer: estadoVar,
+                cidadeServer: cidadeVar,
+                logradouroServer: logradouroVar,
+                numeroServer: numeroVar,
+                bairroServer: bairroVar,
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cadastrarFetchMaquina();
+                
+                Swal.fire({
+                    position: 'center',
+                    icon: "success",
+                    title: 'Maquina cadastrada com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+
+              console.log(resposta);
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+}
+
+function cadastrarFetchMaquina(){
+        var cepVar = cep_input.value;
+        var estadoVar = estado_input.value;
+        var cidadeVar = cidade_input.value;
+        var bairroVar = bairro_input.value;
+        var logradouroVar = logradouro_input.value;
+        var numeroVar = numero_input.value;
+        var complementoVar = complemento_input.value;
+        var ipVar = ip_input.value;
+    fetch(`/maquina/cadastrarMaquina/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ipServer : ipVar,
+                fkPerfilServer: sessionStorage.ID_PERFIL,
+                cepServer: cepVar,
+                estadoServer: estadoVar,
+                cidadeServer: cidadeVar,
+                logradouroServer: logradouroVar,
+                numeroServer: numeroVar,
+                bairroServer: bairroVar,
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+
+              console.log(resposta);
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+}
+
+
+    function cadastrarFuncionario() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var cpfVar = cpf_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            // finalizarAguardar();
+            return false;
+
+        } else if (validarCadastro()) {
+            // Enviando o valor da nova input
+            fetch("/perfil/cadastrarFuncionario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    cpfServer: cpfVar,
+                    fkPerfilServer: sessionStorage.ID_PERFIL
+
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "1600")
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+            return false;
+        }
+    }
+</script>
