@@ -28,7 +28,7 @@ function cadastrarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
-    var ip = req.body.ipServer;
+    var nomeMaquina = req.body.nomeMaquinaServer;
     var fkPerfil = req.body.fkPerfilServer; 
     var cep = req.body.cepServer;
     var estado = req.body.estadoServer;
@@ -38,7 +38,7 @@ function cadastrarMaquina(req, res) {
     var numero = req.body.numeroServer;
     var complemento = req.body.complementoServer;
         // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-        maquinaModel.cadastrarMaquina(ip, fkPerfil,cep, estado,cidade, bairro, logradouro, numero, complemento)
+        maquinaModel.cadastrarMaquina(nomeMaquina, fkPerfil,cep, estado,cidade, bairro, logradouro, numero, complemento)
             .then(
                 function (resultado) {
                     res.json(resultado);

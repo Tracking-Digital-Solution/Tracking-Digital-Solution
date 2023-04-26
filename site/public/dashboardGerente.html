@@ -235,7 +235,7 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Ip <Input class="campo-input" id="ip_input" placeholder="Digite o ip da máquina" oninput="mascaraIP(this, 'ip')" autocomplete="on" onblur="validarIp()"></Input>
+                        Nome da Maquina <Input class="campo-input" id="host_input" placeholder="Digite o nome da máquina" onblur="validarNomeMaquina()""></Input>
                     </span>
                     <span class="campo">
                         Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro" maxlength="45" onblur="validarBairro()"></Input>
@@ -478,14 +478,14 @@ function cadastrarFetchMaquina(){
         var logradouroVar = logradouro_input.value;
         var numeroVar = numero_input.value;
         var complementoVar = complemento_input.value;
-        var ipVar = ip_input.value;
+        var nomeMaquinaVar = host_input.value;
     fetch(`/maquina/cadastrarMaquina/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                ipServer : ipVar,
+                nomeMaquinaServer : nomeMaquinaVar,
                 fkPerfilServer: sessionStorage.ID_PERFIL,
                 cepServer: cepVar,
                 estadoServer: estadoVar,
