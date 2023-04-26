@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./css/relatoriosDash.css">
     <link rel="stylesheet" href="./css/configDash.css">
     <link rel="stylesheet" href="./css/perfil.css">
-
+    <link rel="stylesheet" href="./css/validation.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
@@ -235,31 +235,31 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Ip <Input class="campo-input" id="ip_input" placeholder="Digite o ip da máquina"></Input>
+                        Ip <Input class="campo-input" id="ip_input" placeholder="Digite o ip da máquina" oninput="mascaraIP(this, 'ip')" autocomplete="on" onblur="validarIp()"></Input>
                     </span>
                     <span class="campo">
-                        Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro"></Input>
+                        Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro" maxlength="45" onblur="validarBairro()"></Input>
                     </span>
                     <span class="campo">
                         Complemento <Input class="campo-input" id="complemento_input"
-                            placeholder="Digite o complemento"></Input>
+                            placeholder="Digite o complemento" maxlength="45" onblur="validarComplemento()"></Input>
                     </span>
                     <span class="campo">
-                        Cep <Input class="campo-input" id="cep_input" placeholder="Digite o cep"></Input>
+                        Cep <Input class="campo-input" id="cep_input" placeholder="Digite o cep" maxlength="9" oninput="mascaraCEP(this, 'cep')" autocomplete="on" onblur="validarCep()"></Input>
                     </span>
                 </div>
                 <div class="primeiro-bloco-cadas" style="align-items: flex-start; justify-content: flex-start;;">
                     <span class="campo">
-                        Estado <Input class="campo-input" id="estado_input" placeholder="Digite o estado"></Input>
+                        Estado <Input class="campo-input" id="estado_input" placeholder="Digite o estado" maxlength="45" onblur="validarEstado()"></Input>
                     </span>
                     <span class="campo">
-                        Cidade <Input class="campo-input" id="cidade_input" placeholder="Digite a cidade"></Input>
+                        Cidade <Input class="campo-input" id="cidade_input" placeholder="Digite a cidade" maxlength="45" onblur="validarCidade()"></Input>
                     </span>
                     <span class="campo">
-                        Logradouro <Input class="campo-input" id="logradouro_input" placeholder="Digite o logradouro"></Input>
+                        Logradouro <Input class="campo-input" id="logradouro_input" placeholder="Digite o logradouro" maxlength="45" onblur="validarLogradouro()"></Input>
                     </span>
                     <span class="campo">
-                        Número <Input class="campo-input" id="numero_input" placeholder="Digite o número"></Input>
+                        Número <Input class="campo-input" id="numero_input" placeholder="Digite o número" maxlength="6" onblur="validarNumero()"></Input>
                     </span>
                 </div>
                 <div class="div-confirmar-cadastro">

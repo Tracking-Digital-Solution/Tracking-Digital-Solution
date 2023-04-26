@@ -154,8 +154,151 @@ function validarLogin() {
 }
 
 function validarMaquina(){
-  return true;
+  if(
+    validar_ip &&
+    validar_bairro &&
+    validar_complemento &&
+    validar_cep  &&
+    validar_estado &&
+    validar_cidade &&
+    validar_logradouro &&
+    validar_numero
+  ){
+    return true;
+  }
+  return false;
+}
+var validar_ip = false;
+function validarIp(){
+  var ip = ip_input.value;
+  if (ip.length > 16) {
+    ip_input.classList.add("red");
+    ip_input.classList.remove("green");
+  } else {
+    ip_input.classList.remove("red");
+    ip_input.classList.add("green");
+    validar_ip = true;
+  }
 }
 
-function validarIp(){
+//Mascara IP
+function mascaraIP(i, t) {
+
+  var v = i.value;
+
+  if (t == "ip") {
+    i.setAttribute("maxlength", "16");
+    if (v.length == 4) i.value += ".";
+    if (v.length == 8) i.value += ".";
+    if (v.length == 11) i.value += ".";
+  }
+}
+
+var validar_bairro = false;
+function validarBairro() {
+  var bairro = bairro_input.value;
+  if (bairro.length <= 3) {
+    bairro_input.classList.add("red");
+    bairro_input.classList.remove("green");
+  } else {
+    bairro_input.classList.remove("red");
+    bairro_input.classList.add("green");
+    validar_bairro = true;
+  }
+}
+
+var validar_complemento = false;
+function validarComplemento() {
+  var complemento = complemento_input.value;
+  if (complemento.length <= 2) {
+    complemento_input.classList.add("red");
+    complemento_input.classList.remove("green");
+  } else {
+    complemento_input.classList.remove("red");
+    complemento_input.classList.add("green");
+    validar_complemento = true;
+  }
+}
+
+var validar_cep = false;
+function validarCep() {
+  var cep = cep_input.value;
+  if (cep.length == 9) {
+    cep_input.classList.remove("red");
+    cep_input.classList.add("green");
+    validar_cep = true;
+  } else {
+    cep_input.classList.add("red");
+    cep_input.classList.remove("green");
+  }
+}
+
+//Mascara CEP
+function mascaraCEP(i, t) {
+
+  var v = i.value;
+
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
+  }
+
+  if (t == "cep") {
+    i.setAttribute("maxlength", "9");
+    if (v.length == 5) i.value += "-"; //verfica posição numero para adcionar o "-"
+    
+  }
+}
+
+
+var validar_estado = false;
+function validarEstado() {
+  var estado = estado_input.value;
+  if (estado.length == 2) {
+    estado_input.classList.add("red");
+    estado_input.classList.remove("green");
+  } else {
+    estado_input.classList.remove("red");
+    estado_input.classList.add("green");
+    validar_estado = true;
+  }
+}
+
+var validar_cidade = false;
+function validarCidade() {
+  var cidade = cidade_input.value;
+  if (cidade.length <= 2) {
+    cidade_input.classList.add("red");
+    cidade_input.classList.remove("green");
+  } else {
+    cidade_input.classList.remove("red");
+    cidade_input.classList.add("green");
+    validar_cidade = true;
+  }
+}
+
+var validar_logradouro = false;
+function validarLogradouro() {
+  var logradouro = logradouro_input.value;
+  if (logradouro.length <= 3) {
+    logradouro_input.classList.add("red");
+    logradouro_input.classList.remove("green");
+  } else {
+    logradouro_input.classList.remove("red");
+    logradouro_input.classList.add("green");
+    validar_logradouro = true;
+  }
+}
+
+var validar_numero = false;
+function validarNumero() {
+  var numero = numero_input.value;
+  if (numero.length <= 0) {
+    numero_input.classList.add("red");
+    numero_input.classList.remove("green");
+  } else {
+    numero_input.classList.remove("red");
+    numero_input.classList.add("green");
+    validar_numero = true;
+  }
 }
