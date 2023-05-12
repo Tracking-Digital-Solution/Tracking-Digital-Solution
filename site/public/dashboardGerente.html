@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="buscarDados()">
     <div class="grid-container">
         <!-- Header -->
         <header class="header">
@@ -104,27 +104,6 @@
                         </span>
                         Cadastrar Máquina
                     </div>
-                </div>
-                <div class="caixa-maquina tam01">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Off</span>
-                </div>
-                <div class="caixa-maquina tam01">
-                    <Span style="font-size: 20px;">Caixa 02</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Off</span>
-                </div>
-                <div class="caixa-maquina tam01">
-                    <Span style="font-size: 20px;">Caixa 03</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Off</span>
                 </div>
             </div>
 
@@ -235,31 +214,38 @@
                 </div>
                 <div class="primeiro-bloco-cadas" style="margin-right: 30px;">
                     <span class="campo">
-                        Nome da Maquina <Input class="campo-input" id="host_input" placeholder="Digite o nome da máquina" onblur="validarNomeMaquina()""></Input>
+                        Nome da Maquina <Input class="campo-input" id="host_input"
+                            placeholder="Digite o nome da máquina" onblur="validarNomeMaquina()""></Input>
+                    </span>
+                    <span class=" campo">
+                        Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro" maxlength="45"
+                            onblur="validarBairro()"></Input>
                     </span>
                     <span class="campo">
-                        Bairro <Input class="campo-input" id="bairro_input" placeholder="Digite o bairro" maxlength="45" onblur="validarBairro()"></Input>
+                        Complemento <Input class="campo-input" id="complemento_input" placeholder="Digite o complemento"
+                            maxlength="45" onblur="validarComplemento()"></Input>
                     </span>
                     <span class="campo">
-                        Complemento <Input class="campo-input" id="complemento_input"
-                            placeholder="Digite o complemento" maxlength="45" onblur="validarComplemento()"></Input>
-                    </span>
-                    <span class="campo">
-                        Cep <Input class="campo-input" id="cep_input" placeholder="Digite o cep" maxlength="9" oninput="mascaraCEP(this, 'cep')" autocomplete="on" onblur="validarCep()"></Input>
+                        Cep <Input class="campo-input" id="cep_input" placeholder="Digite o cep" maxlength="9"
+                            oninput="mascaraCEP(this, 'cep')" autocomplete="on" onblur="validarCep()"></Input>
                     </span>
                 </div>
                 <div class="primeiro-bloco-cadas" style="align-items: flex-start; justify-content: flex-start;;">
                     <span class="campo">
-                        Estado <Input class="campo-input" id="estado_input" placeholder="Digite o estado" maxlength="45" onblur="validarEstado()"></Input>
+                        Estado <Input class="campo-input" id="estado_input" placeholder="Digite o estado" maxlength="45"
+                            onblur="validarEstado()"></Input>
                     </span>
                     <span class="campo">
-                        Cidade <Input class="campo-input" id="cidade_input" placeholder="Digite a cidade" maxlength="45" onblur="validarCidade()"></Input>
+                        Cidade <Input class="campo-input" id="cidade_input" placeholder="Digite a cidade" maxlength="45"
+                            onblur="validarCidade()"></Input>
                     </span>
                     <span class="campo">
-                        Logradouro <Input class="campo-input" id="logradouro_input" placeholder="Digite o logradouro" maxlength="45" onblur="validarLogradouro()"></Input>
+                        Logradouro <Input class="campo-input" id="logradouro_input" placeholder="Digite o logradouro"
+                            maxlength="45" onblur="validarLogradouro()"></Input>
                     </span>
                     <span class="campo">
-                        Número <Input class="campo-input" id="numero_input" placeholder="Digite o número" maxlength="6" onblur="validarNumero()"></Input>
+                        Número <Input class="campo-input" id="numero_input" placeholder="Digite o número" maxlength="6"
+                            onblur="validarNumero()"></Input>
                     </span>
                 </div>
                 <div class="div-confirmar-cadastro">
@@ -408,69 +394,69 @@
         var complementoVar = complemento_input.value;
 
         if (
-            cepVar == ""        || 
-            estadoVar == ""     || 
-            cidadeVar == ""     || 
+            cepVar == "" ||
+            estadoVar == "" ||
+            cidadeVar == "" ||
             logradouroVar == "" ||
-            numeroVar == ""     ||
-            bairroVar   == ""   ||
+            numeroVar == "" ||
+            bairroVar == "" ||
             complementoVar == ""
         ) {
             // finalizarAguardar();
-            return false;          
-            
-        }else if(validarMaquina()){
-        // Enviando o valor da nova input
-        fetch("/maquina/cadastrarEndereco", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                cepServer: cepVar,
-                estadoServer: estadoVar,
-                cidadeServer: cidadeVar,
-                logradouroServer: logradouroVar,
-                numeroServer: numeroVar,
-                bairroServer: bairroVar,
-                complementoServer: complementoVar
-            })
-        }).then(function (resposta) {
+            return false;
 
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                cadastrarFetchMaquina();
-                
-                Swal.fire({
-                    position: 'center',
-                    icon: "success",
-                    title: 'Maquina cadastrada com sucesso!',
-                    showConfirmButton: false,
-                    timer: 1500
+        } else if (validarMaquina()) {
+            // Enviando o valor da nova input
+            fetch("/maquina/cadastrarEndereco", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    cepServer: cepVar,
+                    estadoServer: estadoVar,
+                    cidadeServer: cidadeVar,
+                    logradouroServer: logradouroVar,
+                    numeroServer: numeroVar,
+                    bairroServer: bairroVar,
+                    complementoServer: complementoVar
                 })
-                setTimeout(() => {
-                    window.location.reload();
-                }, 500);
+            }).then(function (resposta) {
 
-              console.log(resposta);
-                // limparFormulario();
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cadastrarFetchMaquina();
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: "success",
+                        title: 'Maquina cadastrada com sucesso!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 500);
+
+                    console.log(resposta);
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
                 // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
+            });
 
-        return false;
+            return false;
+        }
     }
-}
 
-function cadastrarFetchMaquina(){
+    function cadastrarFetchMaquina() {
         var cepVar = cep_input.value;
         var estadoVar = estado_input.value;
         var cidadeVar = cidade_input.value;
@@ -479,13 +465,13 @@ function cadastrarFetchMaquina(){
         var numeroVar = numero_input.value;
         var complementoVar = complemento_input.value;
         var nomeMaquinaVar = host_input.value;
-    fetch(`/maquina/cadastrarMaquina/`, {
+        fetch(`/maquina/cadastrarMaquina/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nomeMaquinaServer : nomeMaquinaVar,
+                nomeMaquinaServer: nomeMaquinaVar,
                 fkPerfilServer: sessionStorage.ID_PERFIL,
                 cepServer: cepVar,
                 estadoServer: estadoVar,
@@ -502,7 +488,7 @@ function cadastrarFetchMaquina(){
             if (resposta.ok) {
 
 
-              console.log(resposta);
+                console.log(resposta);
                 // limparFormulario();
                 // finalizarAguardar();
             } else {
@@ -512,8 +498,7 @@ function cadastrarFetchMaquina(){
             console.log(`#ERRO: ${resposta}`);
             // finalizarAguardar();
         });
-}
-
+    }
 
     function cadastrarFuncionario() {
         //Recupere o valor da nova input pelo nome do id
@@ -565,5 +550,57 @@ function cadastrarFetchMaquina(){
 
             return false;
         }
+
+    }
+    
+
+    function buscarDados() {
+
+        fetch(`/maquina/buscarDados/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkIdGerente: sessionStorage.ID_PERFIL
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+
+                        containerMaquinas.innerHTML += `
+                    <div class="caixa-maquina tam01">
+                        <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
+                        <div class="kpi"></div>
+                        <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                        <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
+                        <span>IP: ${resposta[i].IP}</span>
+                        <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+                    </div>
+                                `
+                        // var idCluster = resposta[i].id
+
+                        // buscarDadosMaquina(idCluster);
+                    }
+                });
+
+
+                console.log(resposta);
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
     }
 </script>

@@ -26,7 +26,7 @@
     <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="buscarDados()">
     <div class="grid-container">
         <!-- Header -->
         <header class="header">
@@ -376,3 +376,54 @@
 </body>
 
 </html>
+
+<script>
+    function buscarDados() {
+        fetch(`/maquina/buscarDadosTi/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkIdTi: sessionStorage.ID_PERFIL
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+
+                        containerMaquinas.innerHTML += `
+            <div class="caixa-maquina tam01">
+                <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
+                <div class="kpi"></div>
+                <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
+                <span>IP: ${resposta[i].IP}</span>
+                <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+            </div>
+                        `
+                        // var idCluster = resposta[i].id
+
+                        // buscarDadosMaquina(idCluster);
+                    }
+                });
+
+
+                console.log(resposta);
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+    }
+</script>

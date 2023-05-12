@@ -55,6 +55,52 @@ function cadastrarMaquina(req, res) {
             );
     }
 
+function buscarDados(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    //Cadastrar lugar 
+    var fkPerfil = req.body.fkIdGerente; 
+        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+        maquinaModel.buscarDados(fkPerfil)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+function buscarDadosTi(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    //Cadastrar lugar 
+    var fkPerfil = req.body.fkIdTi; 
+        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+        maquinaModel.buscarDadosTi(fkPerfil)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 
 function cadastrarEndereco(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -118,5 +164,7 @@ module.exports = {
     listar,
     testar,
     cadastrarEndereco,
-    cadastrarMaquina
+    cadastrarMaquina,
+    buscarDados,
+    buscarDadosTi
 }

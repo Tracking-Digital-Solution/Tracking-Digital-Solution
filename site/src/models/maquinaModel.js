@@ -1,9 +1,18 @@
 var database = require("../database/config")
 
-function listar() {
+function buscarDados(fkPerfil) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT * FROM MaquinaCorporativa;
+        SELECT * FROM MaquinaCorporativa where fkPerfil = ${fkPerfil};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscarDadosTi(fkPerfil) {
+    // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM MaquinaCorporativa join Perfil where fkPerfil = ${fkPerfil};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -45,7 +54,8 @@ function cadastrarMaquina(nomeMaquina, fkPerfil, cep, estado,cidade, bairro, log
 }
 
 module.exports = {
-    listar,
     cadastrarEndereco,
-    cadastrarMaquina
+    cadastrarMaquina,
+    buscarDados,
+    buscarDadosTi
 };
