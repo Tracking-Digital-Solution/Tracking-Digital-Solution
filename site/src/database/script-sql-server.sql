@@ -1,9 +1,11 @@
-CREATE SCHEMA IF NOT EXISTS trackingdigitalsolution ;
+
 GO
 USE trackingdigitalsolution;
-
--- Table trackingdigitalsolution.Perfil
-CREATE TABLE IF NOT EXISTS trackingdigitalsolution.Perfil (
+-- Select rows from a Table or View '[Perfil]' in schema '[dbo]'
+SELECT * FROM [dbo].[ColetaCPU];
+GO
+-- Table Perfil
+CREATE TABLE  Perfil (
 idPerfil INT NOT NULL IDENTITY(1,1),
 nome VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL,
@@ -14,10 +16,10 @@ perfilAdministrador INT NULL,
 PRIMARY KEY (idPerfil),
 CONSTRAINT fk_Perfil_Perfil1
 FOREIGN KEY (perfilAdministrador)
-REFERENCES trackingdigitalsolution.Perfil (idPerfil));
+REFERENCES Perfil (idPerfil));
 
--- Table trackingdigitalsolution.EnderecoMaquina
-CREATE TABLE IF NOT EXISTS trackingdigitalsolution.EnderecoMaquina (
+-- Table EnderecoMaquina
+CREATE TABLE  EnderecoMaquina (
 idEndereco INT NOT NULL IDENTITY(1,1),
 cep CHAR(9) NOT NULL,
 estado VARCHAR(255) NOT NULL,
@@ -28,8 +30,8 @@ numero INT NOT NULL,
 complemento VARCHAR(255) NULL,
 PRIMARY KEY (idEndereco));
 
--- Table trackingdigitalsolution.MaquinaCorporativa
-CREATE TABLE IF NOT EXISTS trackingdigitalsolution.MaquinaCorporativa (
+-- Table MaquinaCorporativa
+CREATE TABLE  MaquinaCorporativa (
 idMaquinaCorporativa INT NOT NULL IDENTITY(1,1),
 IP VARCHAR(255) NULL,
 sistemaOperacional VARCHAR(255) NULL,
@@ -38,19 +40,19 @@ fkPerfil INT NOT NULL,
 fkEndereco INT NOT NULL,
 PRIMARY KEY (idMaquinaCorporativa),
 CONSTRAINT fk_MaquinaCorporativa_Perfil1
-FOREIGN KEY (fkPerfil) REFERENCES trackingdigitalsolution.Perfil (idPerfil),
+FOREIGN KEY (fkPerfil) REFERENCES Perfil (idPerfil),
 CONSTRAINT fk_MaquinaCorporativa_EnderecoServidor1
-FOREIGN KEY (fkEndereco) REFERENCES trackingdigitalsolution.EnderecoMaquina (idEndereco));
+FOREIGN KEY (fkEndereco) REFERENCES EnderecoMaquina (idEndereco));
 
--- Table trackingdigitalsolution.RamDadosEstaticos
-CREATE TABLE IF NOT EXISTS trackingdigitalsolution.RamDadosEstaticos (
-idColetaRAM INT NOT NULL IDENTITY(1,1),
+-- Table RamDadosEstaticos
+CREATE TABLE  RamDadosEstaticos (
+idRamDadosEstaticos INT NOT NULL IDENTITY(1,1),
 riscoRAM INT NULL,
 total VARCHAR(45) NULL,
-PRIMARY KEY (idColetaRAM));
+PRIMARY KEY (idRamDadosEstaticos));
 
--- Table trackingdigitalsolution.coletaRAM
-CREATE TABLE IF NOT EXISTS trackingdigitalsolution.coletaRAM (
+-- Table coletaRAM
+CREATE TABLE  coletaRAM (
 idRAM INT NOT NULL IDENTITY(1,1),
 usoAtual INT NULL,
 disponivel INT NULL,
@@ -60,20 +62,20 @@ fkEstaticaRAM INT NOT NULL,
 PRIMARY KEY (idRAM, fkEstaticaRAM),
 CONSTRAINT fk_RAMMaquinaCorporativa_MaquinaCorporativa1
 FOREIGN KEY (fkMaquina)
-REFERENCES trackingdigitalsolution.MaquinaCorporativa (idMaquinaCorporativa),
+REFERENCES MaquinaCorporativa (idMaquinaCorporativa),
 CONSTRAINT fk_coletaRAM_RamMaquinaCorporativa1
 FOREIGN KEY (fkEstaticaRAM)
-REFERENCES trackingdigitalsolution.RamDadosEstaticos (idColetaRAM));
+REFERENCES RamDadosEstaticos (idRamDadosEstaticos));
 
--- Table trackingdigitalsolution.CpuDadosEstaticos
-CREATE TABLE IF NOT EXISTS trackingdigitalsolution.CpuDadosEstaticos (
+-- Table CpuDadosEstaticos
+CREATE TABLE  CpuDadosEstaticos (
 idCpuDadosEstaticos INT NOT NULL IDENTITY(1,1),
 riscoCPU INT NULL,
 nomeProcessador VARCHAR(255) NULL,
 PRIMARY KEY (idCpuDadosEstaticos));
 
--- Table trackingdigitalsolution.ColetaCPU
-CREATE TABLE trackingdigitalsolution.ColetaCPU (
+-- Table ColetaCPU
+CREATE TABLE ColetaCPU (
 idCPU INT NOT NULL IDENTITY(1,1),
 usoAtual INT NULL,
 dataHota DATETIME NULL,
@@ -82,13 +84,13 @@ fkEstaticaCPU INT NOT NULL,
 PRIMARY KEY (idCPU, fkEstaticaCPU),
 CONSTRAINT fk_CPUServidor_MaquinaCorporativa1
 FOREIGN KEY (fkMaquina)
-REFERENCES trackingdigitalsolution.MaquinaCorporativa (idMaquinaCorporativa),
+REFERENCES MaquinaCorporativa (idMaquinaCorporativa),
 CONSTRAINT fk_ColetaCPU_CpuMaquinaCorporativa1
 FOREIGN KEY (fkEstaticaCPU)
-REFERENCES trackingdigitalsolution.CpuDadosEstaticos (idCpuDadosEstaticos));
+REFERENCES CpuDadosEstaticos (idCpuDadosEstaticos));
 
--- Table trackingdigitalsolution.Logs
-CREATE TABLE trackingdigitalsolution.Logs (
+-- Table Logs
+CREATE TABLE Logs (
 idLogs INT NOT NULL IDENTITY(1,1),
 descricao VARCHAR(255) NULL,
 dtLog DATETIME NULL,
@@ -96,27 +98,27 @@ fkMaquina INT NOT NULL,
 PRIMARY KEY (idLogs),
 CONSTRAINT fk_Logs_MaquinaCorporativa1
 FOREIGN KEY (fkMaquina)
-REFERENCES trackingdigitalsolution.MaquinaCorporativa (idMaquinaCorporativa));
+REFERENCES MaquinaCorporativa (idMaquinaCorporativa));
 
--- Table trackingdigitalsolution.HdDadosEstaticos
-CREATE TABLE trackingdigitalsolution.HdDadosEstaticos (
-idColetaHD INT NOT NULL IDENTITY(1,1),
+-- Table HdDadosEstaticos
+CREATE TABLE HdDadosEstaticos (
+idHdDadosEstaticos INT NOT NULL IDENTITY(1,1),
 riscoHD INT NULL,
 modelo VARCHAR(255) NULL,
-tamanho INT NULL,
-PRIMARY KEY (idColetaHD));
+tamanho BIGINT NULL,
+PRIMARY KEY (idHdDadosEstaticos));
 
--- Table trackingdigitalsolution.ColetaHD
-CREATE TABLE trackingdigitalsolution.ColetaHD (
+-- Table ColetaHD
+CREATE TABLE ColetaHD (
 idHD INT NOT NULL IDENTITY(1,1),
-disponivel VARCHAR(255) NULL,
+disponivel BIGINT NULL,
 dataHora DATETIME NULL,
 fkMaquina INT NOT NULL,
 fkEstaticaHD INT NOT NULL,
 PRIMARY KEY (idHD, fkEstaticaHD),
 CONSTRAINT fk_HD_MaquinaCorporativa1
 FOREIGN KEY (fkMaquina)
-REFERENCES trackingdigitalsolution.MaquinaCorporativa (idMaquinaCorporativa),
+REFERENCES MaquinaCorporativa (idMaquinaCorporativa),
 CONSTRAINT fk_ColetaHD_HdMaquinaCorporativa1
 FOREIGN KEY (fkEstaticaHD)
-REFERENCES trackingdigitalsolution.HdDadosEstaticos (idColetaHD));
+REFERENCES HdDadosEstaticos (idHdDadosEstaticos));""
