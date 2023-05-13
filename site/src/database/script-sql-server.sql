@@ -54,7 +54,7 @@ PRIMARY KEY (idRamDadosEstaticos));
 -- Table coletaRAM
 CREATE TABLE  coletaRAM (
 idRAM INT NOT NULL IDENTITY(1,1),
-usoAtual INT NULL,
+usoAtual BIGINT NULL,
 disponivel BIGINT NULL,
 dataHora DATETIME NULL,
 fkMaquina INT NOT NULL,
@@ -66,6 +66,7 @@ REFERENCES MaquinaCorporativa (idMaquinaCorporativa),
 CONSTRAINT fk_coletaRAM_RamMaquinaCorporativa1
 FOREIGN KEY (fkEstaticaRAM)
 REFERENCES RamDadosEstaticos (idRamDadosEstaticos));
+
 
 -- Table CpuDadosEstaticos
 CREATE TABLE  CpuDadosEstaticos (
@@ -121,4 +122,4 @@ FOREIGN KEY (fkMaquina)
 REFERENCES MaquinaCorporativa (idMaquinaCorporativa),
 CONSTRAINT fk_ColetaHD_HdMaquinaCorporativa1
 FOREIGN KEY (fkEstaticaHD)
-REFERENCES HdDadosEstaticos (idHdDadosEstaticos));""
+REFERENCES HdDadosEstaticos (idHdDadosEstaticos));
