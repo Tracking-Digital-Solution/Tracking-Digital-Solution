@@ -55,7 +55,7 @@ PRIMARY KEY (idRamDadosEstaticos));
 CREATE TABLE  coletaRAM (
 idRAM INT NOT NULL IDENTITY(1,1),
 usoAtual INT NULL,
-disponivel INT NULL,
+disponivel BIGINT NULL,
 dataHora DATETIME NULL,
 fkMaquina INT NOT NULL,
 fkEstaticaRAM INT NOT NULL,
