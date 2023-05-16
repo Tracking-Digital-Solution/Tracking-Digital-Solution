@@ -103,7 +103,7 @@ CREATE TABLE HdDadosEstaticos (
 idHdDadosEstaticos INT NOT NULL auto_increment,
 riscoHD INT NULL,
 modelo VARCHAR(255) NULL,
-tamanho INT NULL,
+tamanho BIGINT NULL,
 PRIMARY KEY (idHdDadosEstaticos));
 
 -- Table ColetaHD
