@@ -28,7 +28,7 @@ function cadastrarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
-    var ip = req.body.ipServer;
+    var nomeMaquina = req.body.nomeMaquinaServer;
     var fkPerfil = req.body.fkPerfilServer; 
     var cep = req.body.cepServer;
     var estado = req.body.estadoServer;
@@ -38,7 +38,53 @@ function cadastrarMaquina(req, res) {
     var numero = req.body.numeroServer;
     var complemento = req.body.complementoServer;
         // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-        maquinaModel.cadastrarMaquina(ip, fkPerfil,cep, estado,cidade, bairro, logradouro, numero, complemento)
+        maquinaModel.cadastrarMaquina(nomeMaquina, fkPerfil,cep, estado,cidade, bairro, logradouro, numero, complemento)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+function buscarDados(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    //Cadastrar lugar 
+    var fkPerfil = req.body.fkIdGerente; 
+        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+        maquinaModel.buscarDados(fkPerfil)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+function buscarDadosTi(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    //Cadastrar lugar 
+    var fkPerfil = req.body.fkIdTi; 
+        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+        maquinaModel.buscarDadosTi(fkPerfil)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -118,5 +164,7 @@ module.exports = {
     listar,
     testar,
     cadastrarEndereco,
-    cadastrarMaquina
+    cadastrarMaquina,
+    buscarDados,
+    buscarDadosTi
 }

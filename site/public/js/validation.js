@@ -155,7 +155,7 @@ function validarLogin() {
 
 function validarMaquina(){
   if(
-    validar_ip &&
+    validar_host &&
     validar_bairro &&
     validar_complemento &&
     validar_cep  &&
@@ -168,16 +168,16 @@ function validarMaquina(){
   }
   return false;
 }
-var validar_ip = false;
-function validarIp(){
-  var ip = ip_input.value;
-  if (ip.length > 16) {
-    ip_input.classList.add("red");
-    ip_input.classList.remove("green");
+var validar_host = false;
+function validarNomeMaquina(){
+  var host = host_input.value;
+  if (host.length < 4) {
+    host_input.classList.add("red");
+    host_input.classList.remove("green");
   } else {
-    ip_input.classList.remove("red");
-    ip_input.classList.add("green");
-    validar_ip = true;
+    host_input.classList.remove("red");
+    host_input.classList.add("green");
+    validar_host = true;
   }
 }
 

@@ -17,6 +17,14 @@ router.post("/cadastrarEndereco", function (req, res) {
 
 router.post("/cadastrarMaquina", function (req, res) {
     maquinaController.cadastrarMaquina(req, res);
+}
+)
+router.post("/buscarDados", function (req, res) {
+    maquinaController.buscarDados(req, res);
+})
+
+router.post("/buscarDadosTi", function (req, res) {
+    maquinaController.buscarDadosTi(req, res);
 })
 
 module.exports = router;

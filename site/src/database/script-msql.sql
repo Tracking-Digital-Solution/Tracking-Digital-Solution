@@ -1,10 +1,10 @@
-
+CREATE SCHEMA IF NOT EXISTS trackingdigitalsolution ;
 GO
 USE trackingdigitalsolution;
 
 -- Table Perfil
 CREATE TABLE IF NOT EXISTS Perfil (
-idPerfil INT NOT NULL IDENTITY(1,1),
+idPerfil INT NOT NULL auto_increment,
 nome VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL,
 senha VARCHAR(255) NOT NULL,
@@ -18,7 +18,7 @@ REFERENCES Perfil (idPerfil));
 
 -- Table EnderecoMaquina
 CREATE TABLE IF NOT EXISTS EnderecoMaquina (
-idEndereco INT NOT NULL IDENTITY(1,1),
+idEndereco INT NOT NULL auto_increment,
 cep CHAR(9) NOT NULL,
 estado VARCHAR(255) NOT NULL,
 cidade VARCHAR(255) NOT NULL,
@@ -30,7 +30,7 @@ PRIMARY KEY (idEndereco));
 
 -- Table MaquinaCorporativa
 CREATE TABLE IF NOT EXISTS MaquinaCorporativa (
-idMaquinaCorporativa INT NOT NULL IDENTITY(1,1),
+idMaquinaCorporativa INT NOT NULL auto_increment,
 IP VARCHAR(255) NULL,
 sistemaOperacional VARCHAR(255) NULL,
 nomeMaquina VARCHAR(255) NULL,
@@ -44,14 +44,14 @@ FOREIGN KEY (fkEndereco) REFERENCES EnderecoMaquina (idEndereco));
 
 -- Table RamDadosEstaticos
 CREATE TABLE IF NOT EXISTS RamDadosEstaticos (
-idRamdadosEstaticos INT NOT NULL IDENTITY(1,1),
+idRamdadosEstaticos INT NOT NULL auto_increment,
 riscoRAM INT NULL,
 total VARCHAR(45) NULL,
 PRIMARY KEY (idRamdadosEstaticos));
 
 -- Table coletaRAM
 CREATE TABLE IF NOT EXISTS coletaRAM (
-idRAM INT NOT NULL IDENTITY(1,1),
+idRAM INT NOT NULL auto_increment,
 usoAtual BIGINT NULL,
 disponivel BIGINT NULL,
 dataHora DATETIME NULL,
@@ -67,14 +67,14 @@ REFERENCES RamDadosEstaticos (idRamdadosEstaticos));
 
 -- Table CpuDadosEstaticos
 CREATE TABLE IF NOT EXISTS CpuDadosEstaticos (
-idCpuDadosEstaticos INT NOT NULL IDENTITY(1,1),
+idCpuDadosEstaticos INT NOT NULL auto_increment,
 riscoCPU INT NULL,
 nomeProcessador VARCHAR(255) NULL,
 PRIMARY KEY (idCpuDadosEstaticos));
 
 -- Table ColetaCPU
 CREATE TABLE ColetaCPU (
-idCPU INT NOT NULL IDENTITY(1,1),
+idCPU INT NOT NULL auto_increment,
 usoAtual INT NULL,
 dataHota DATETIME NULL,
 fkMaquina INT NOT NULL,
@@ -89,7 +89,7 @@ REFERENCES CpuDadosEstaticos (idCpuDadosEstaticos));
 
 -- Table Logs
 CREATE TABLE Logs (
-idLogs INT NOT NULL IDENTITY(1,1),
+idLogs INT NOT NULL auto_increment,
 descricao VARCHAR(255) NULL,
 dtLog DATETIME NULL,
 fkMaquina INT NOT NULL,
@@ -100,15 +100,15 @@ REFERENCES MaquinaCorporativa (idMaquinaCorporativa));
 
 -- Table HdDadosEstaticos
 CREATE TABLE HdDadosEstaticos (
-idHdDadosEstaticos INT NOT NULL IDENTITY(1,1),
+idHdDadosEstaticos INT NOT NULL auto_increment,
 riscoHD INT NULL,
 modelo VARCHAR(255) NULL,
-tamanho INT NULL,
+tamanho BIGINT NULL,
 PRIMARY KEY (idHdDadosEstaticos));
 
 -- Table ColetaHD
 CREATE TABLE ColetaHD (
-idHD INT NOT NULL IDENTITY(1,1),
+idHD INT NOT NULL auto_increment,
 disponivel BIGINT,
 dataHora DATETIME NULL,
 fkMaquina INT NOT NULL,
