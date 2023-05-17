@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS trackingdigitalsolution ;
+
 GO
 USE trackingdigitalsolution;
 
