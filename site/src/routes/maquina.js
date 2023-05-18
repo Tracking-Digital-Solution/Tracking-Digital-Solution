@@ -13,14 +13,22 @@ router.get("/listar", function (req, res) {
 
 router.post("/cadastrarEndereco", function (req, res) {
     maquinaController.cadastrarEndereco(req, res);
-})
+});
 
 router.post("/cadastrarMaquina", function (req, res) {
     maquinaController.cadastrarMaquina(req, res);
-}
-)
-router.post("/buscarDados", function (req, res) {
-    maquinaController.buscarDados(req, res);
+});
+
+router.delete("/deletar/:ID", function (req, res) {
+    maquinaController.deletarMaquina(req, res);
+});
+
+router.post("/buscarDadosFuncionario", function (req, res) {
+    maquinaController.buscarDadosFuncionario(req, res);
+})
+
+router.post("/buscarDadosMaquina/:idPerfil", function (req, res) {
+    maquinaController.buscarDadosMaquina(req, res);
 })
 
 router.post("/buscarDadosTi", function (req, res) {

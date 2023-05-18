@@ -29,7 +29,7 @@ function cadastrarMaquina(req, res) {
 
     //Cadastrar lugar 
     var nomeMaquina = req.body.nomeMaquinaServer;
-    var fkPerfil = req.body.fkPerfilServer; 
+    var fkPerfil = req.body.fkPerfilServer;
     var cep = req.body.cepServer;
     var estado = req.body.estadoServer;
     var cidade = req.body.cidadeServer;
@@ -37,69 +37,115 @@ function cadastrarMaquina(req, res) {
     var logradouro = req.body.logradouroServer;
     var numero = req.body.numeroServer;
     var complemento = req.body.complementoServer;
-        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-        maquinaModel.cadastrarMaquina(nomeMaquina, fkPerfil,cep, estado,cidade, bairro, logradouro, numero, complemento)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.cadastrarMaquina(nomeMaquina, fkPerfil, cep, estado, cidade, bairro, logradouro, numero, complemento)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
-function buscarDados(req, res) {
+function deletarMaquina(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+console.log("Controller")
+    //Cadastrar lugar 
+    var idFunc = req.body.ID;
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.deletarMaquina(idFunc)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function buscarDadosFuncionario(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    //Cadastrar lugar 
+    var fkPerfil = req.body.fkIdGerente;
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.buscarDadosFuncionario(fkPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nouve um erro ao Pesquisar o funcionario ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function buscarDadosMaquina(req, res) {
+    console.log('controller')
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
-    var fkPerfil = req.body.fkIdGerente; 
-        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-        maquinaModel.buscarDados(fkPerfil)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    var fkPerfil = req.body.fkIdGerente;
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.buscarDadosMaquina(fkPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 function buscarDadosTi(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
-    var fkPerfil = req.body.fkIdTi; 
-        // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-        maquinaModel.buscarDadosTi(fkPerfil)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    var fkPerfil = req.body.fkIdTi;
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.buscarDadosTi(fkPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 
 function cadastrarEndereco(req, res) {
@@ -129,13 +175,13 @@ function cadastrarEndereco(req, res) {
         res.status(400).send("Seu estado está undefined!");
     } else if (cidade == undefined) {
         res.status(400).send("Sua cidade está undefined!");
-    } else if(bairro == undefined){
+    } else if (bairro == undefined) {
         res.status(400).send("Seu bairro está undefined!");
-    }else if(logradouro == undefined){
+    } else if (logradouro == undefined) {
         res.status(400).send("Seu logradouro está undefined!");
-    }else if(numero == undefined){
+    } else if (numero == undefined) {
         res.status(400).send("Seu numero está undefined!");
-    }else if(complemento == undefined){
+    } else if (complemento == undefined) {
         res.status(400).send("Seu complemento está undefined!");
     }
 
@@ -165,6 +211,8 @@ module.exports = {
     testar,
     cadastrarEndereco,
     cadastrarMaquina,
-    buscarDados,
-    buscarDadosTi
+    buscarDadosFuncionario,
+    buscarDadosTi,
+    deletarMaquina,
+    buscarDadosMaquina
 }

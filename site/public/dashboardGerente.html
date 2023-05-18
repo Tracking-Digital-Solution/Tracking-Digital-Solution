@@ -27,14 +27,14 @@
     <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body onload="buscarDados()">
+<body>
     <div class="grid-container">
         <!-- Header -->
         <header class="header">
             <div class="menu-icon" onclick="openSidebar()">
                 <span class="material-icons-outlined">menu</span>
             </div>
-            <div class="header-left">
+            <div class="header-left" id="nome">
                 <p class="client-name-p">Olá, <b id="clientName"></b></p>
             </div>
             <div class="header-right">
@@ -96,7 +96,7 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
-            <div class="container-maquinas" id="containerMaquinas">
+            <div class="container-maquinas">
                 <div style="width: 100%;">
                     <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
                         <span class="material-icons-outlined btn-add">
@@ -104,8 +104,17 @@
                         </span>
                         Cadastrar Máquina
                     </div>
+                    <div class="caixa-botao-add" id="btn-excluir-maquina">
+                        <span class="material-icons-outlined btn-add">
+                            delete
+                        </span>
+                        Excluir
+                    </div>
+                    <div id="excluir-maquina-form"></div>
                 </div>
+
             </div>
+            <div class="container-maquinas" id="containerMaquinas"></div>
 
             <!-- Container perfil -->
             <div class="box_account" id="containerPerfil">
@@ -165,43 +174,7 @@
                     </span>
                     Cadastrar funcionário
                 </div>
-                <div class="container-das-infos">
-                    <div class="caixa-infos tam01">
-                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
-                            class="func">
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-
-                        <span class="caracteristicas">
-                            Email:
-                        </span>
-                        </span>
-                    </div>
-                    <div class="caixa-infos tam01">
-                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
-                            class="func">
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-
-                        <span class="caracteristicas">
-                            Email:
-                        </span>
-                        </span>
-                    </div>
-                    <div class="caixa-infos tam01">
-                        <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
-                            class="func">
-                        <span class="caracteristicas">
-                            Nome:
-                        </span>
-
-                        <span class="caracteristicas">
-                            Email:
-                        </span>
-                        </span>
-                    </div>
+                <div class="container-das-infos" id="containerFuncionario">
 
                 </div>
             </div>
@@ -373,7 +346,7 @@
             <!-- ApexCharts -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <!-- Custom JS -->
-            <script src="./js/sidebarGerente.js"></script>
+            <!-- <script src="./js/sidebarGerente.js"></script> -->
             <script src="./js/validation.js"></script>
 </body>
 
@@ -552,11 +525,11 @@
         }
 
     }
-    
 
-    function buscarDados() {
 
-        fetch(`/maquina/buscarDados/`, {
+    function buscarDadosFuncionario() {
+
+        fetch(`/maquina/buscarDadosFuncionario/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -575,32 +548,169 @@
 
                     for (let i = 0; i < resposta.length; i++) {
 
-                        containerMaquinas.innerHTML += `
-                    <div class="caixa-maquina tam01">
-                        <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                        <div class="kpi"></div>
-                        <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                        <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
-                        <span>IP: ${resposta[i].IP}</span>
-                        <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-                    </div>
-                                `
-                        // var idCluster = resposta[i].id
+                        containerFuncionario.innerHTML += `
+                            <div class="caixa-infos">
+                                <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
+                                    class="func">
+                                    <span class="caracteristicas">
+                                        id: ${resposta[i].idPerfil}
+                                    </span>
 
-                        // buscarDadosMaquina(idCluster);
+                                    <span class="caracteristicas">
+                                        
+                                        Nome:${resposta[i].nome}
+                                    </span>
+                                </span>
+                            </div >
+                            `;
                     }
                 });
-
-
                 console.log(resposta);
-                // limparFormulario();
-                // finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
         });
     }
+
+    function buscarDadosMaquina() {
+        console.log('html')
+        fetch(`/maquina/buscarDadosMaquina/${sessionStorage.ID_PERFIL}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkIdGerente: sessionStorage.ID_PERFIL
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+
+                        containerMaquinas.innerHTML += `
+            <div class="caixa-maquina">
+                <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
+                <div class="kpi"></div>
+                <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
+                <span>IP: ${resposta[i].IP}</span>
+                <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+            </div>
+                        `
+                    }
+                });
+
+
+                console.log(resposta);
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+
+    // function botaoDeletar() {
+        // if()
+        const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
+        const formExcluirMaquina = document.getElementById("excluir-maquina-form");
+
+        btnExcluirMaquina.addEventListener("click", function () {
+            // Exibe o formulário de exclusão de máquina
+            formExcluirMaquina.innerHTML = "";
+            if (formExcluirMaquina.style.display == "none") {
+                formExcluirMaquina.style.display = "block";
+                // Cria um campo de texto para o ID da máquina
+                const inputIdMaquina = document.createElement("input");
+                inputIdMaquina.setAttribute("type", "text");
+                inputIdMaquina.setAttribute("placeholder", "Digite o ID");
+                // Cria um botão para confirmar a exclusão da máquina
+                const btnConfirmarExclusao = document.createElement("button");
+                btnConfirmarExclusao.textContent = "Confirmar Exclusão";
+
+                // Adiciona o campo de texto e o botão ao formulário
+                formExcluirMaquina.appendChild(inputIdMaquina);
+                formExcluirMaquina.appendChild(btnConfirmarExclusao);
+                btnConfirmarExclusao.addEventListener("click", function () {
+                    const IdMaquina = inputIdMaquina.value;
+                    if(opcao == 0){
+                        deletarMaquina(IdMaquina);
+                    }else{
+                        deletarFunc(idMaquina);
+                    }
+                });
+            } else {
+                formExcluirMaquina.style.display = "none";
+            }
+        });
+    // }
+
+    function deletarMaquina(idMaquina) {
+        console.log("função")
+        fetch(`/maquina/deletar/${idMaquina}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ID: idMaquina
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                location.reload(); 
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                });
+                console.log(resposta);
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function deletarFunc(idFunc) {
+        fetch(`/perfil/deletarFunc`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ID: idFunc
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                location.reload(); s
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                });
+                console.log(resposta);
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    buscarDadosMaquina()
+    buscarDadosFuncionario()
 </script>
