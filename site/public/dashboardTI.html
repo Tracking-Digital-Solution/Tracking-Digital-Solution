@@ -92,22 +92,24 @@
                         </span>
                         Alertas
                     </div>
+                    <button id="btn-excluir-maquina">Excluir Máquina</button>
+                    <div id="excluir-maquina-form"></div>
                 </div>
-                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
                     <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
                     <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
                     <span>Internet: Ok</span>
                 </div>
-                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
                     <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
                     <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                     <span>Estado: Inativo</span>
                     <span>Internet: Ok</span>
                 </div>
-                <div class="caixa-maquina tam01" onclick="mostrarDashboard()" style="cursor: pointer;">
+                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
                     <Span style="font-size: 20px;">Caixa 01</Span>
                     <div class="kpi"></div>
                     <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
@@ -426,4 +428,37 @@
             // finalizarAguardar();
         });
     }
+
+    // const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
+    // const formExcluirMaquina = document.getElementById("excluir-maquina-form");
+
+    // btnExcluirMaquina.addEventListener("click", function () {
+    //     // Exibe o formulário de exclusão de máquina
+    //     formExcluirMaquina.innerHTML = "";
+    //     if (formExcluirMaquina.style.display == "none") {
+    //         formExcluirMaquina.style.display = "block";
+    //         // Cria um campo de texto para o ID da máquina
+    //         const inputIdMaquina = document.createElement("input");
+    //         inputIdMaquina.setAttribute("type", "text");
+    //         inputIdMaquina.setAttribute("placeholder", "Digite o ID da máquina");
+    //         // Cria um botão para confirmar a exclusão da máquina
+    //         const btnConfirmarExclusao = document.createElement("button");
+    //         btnConfirmarExclusao.textContent = "Confirmar Exclusão";
+
+    //         // Adiciona o campo de texto e o botão ao formulário
+    //         formExcluirMaquina.appendChild(inputIdMaquina);
+    //         formExcluirMaquina.appendChild(btnConfirmarExclusao);
+    //         btnConfirmarExclusao.addEventListener("click", function () {
+    //             const idMaquina = inputIdMaquina.value;
+    //             if (idMaquina) {
+    //                 // Coloque aqui o código que executa a função de excluir a máquina com o ID fornecido pelo usuário
+    //                 console.log(`Máquina com ID ${idMaquina} excluída com sucesso!`);
+    //                 formExcluirMaquina.style.display = "none";
+    //                 inputIdMaquina.value = "";
+    //             }
+    //         });
+    //     } else {
+    //         formExcluirMaquina.style.display = "none";
+    //     }
+    // });
 </script>

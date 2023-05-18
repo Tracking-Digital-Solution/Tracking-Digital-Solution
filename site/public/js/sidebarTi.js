@@ -57,8 +57,12 @@ function logout() {
     confirmButtonText: 'Sim, sair!'
   }).then((result) => {
     if (result.isConfirmed) {
-        sessionStorage.clear()
-        window.location = "index.html"
+      sessionStorage.clear()
+      window.location = "index.html"
     }
   })
 }
+
+
+
+

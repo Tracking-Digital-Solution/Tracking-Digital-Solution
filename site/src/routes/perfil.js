@@ -19,6 +19,10 @@ router.post("/cadastrarFuncionario", function (req, res) {
     perfilController.cadastrarFuncionario(req, res);
 })
 
+router.delete("/deletarFunc", function (req, res) {
+    perfilController.deletarFunc(req, res);
+})
+
 router.post("/entrar", function (req, res) {
     perfilController.entrar(req, res);
 });
