@@ -96,24 +96,22 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
-            <div class="container-maquinas">
-                <div style="width: 100%;">
-                    <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
-                        <span class="material-icons-outlined btn-add">
-                            add_box
-                        </span>
-                        Cadastrar Máquina
-                    </div>
-                    <div class="caixa-botao-add" id="btn-excluir-maquina">
-                        <span class="material-icons-outlined btn-add">
-                            delete
-                        </span>
-                        Excluir
-                    </div>
-                    <div id="excluir-maquina-form"></div>
+            <div style="width: 100%;">
+                <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
+                    <span class="material-icons-outlined btn-add">
+                        add_box
+                    </span>
+                    Cadastrar Máquina
                 </div>
-
+                <div class="caixa-botao-add" id="btn-excluir-maquina">
+                    <span class="material-icons-outlined btn-add">
+                        delete
+                    </span>
+                    Excluir
+                </div>
+                <div id="excluir-maquina-form"></div>
             </div>
+
             <div class="container-maquinas" id="containerMaquinas"></div>
 
             <!-- Container perfil -->
@@ -619,38 +617,38 @@
 
 
     // function botaoDeletar() {
-        // if()
-        const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
-        const formExcluirMaquina = document.getElementById("excluir-maquina-form");
+    // if()
+    const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
+    const formExcluirMaquina = document.getElementById("excluir-maquina-form");
 
-        btnExcluirMaquina.addEventListener("click", function () {
-            // Exibe o formulário de exclusão de máquina
-            formExcluirMaquina.innerHTML = "";
-            if (formExcluirMaquina.style.display == "none") {
-                formExcluirMaquina.style.display = "block";
-                // Cria um campo de texto para o ID da máquina
-                const inputIdMaquina = document.createElement("input");
-                inputIdMaquina.setAttribute("type", "text");
-                inputIdMaquina.setAttribute("placeholder", "Digite o ID");
-                // Cria um botão para confirmar a exclusão da máquina
-                const btnConfirmarExclusao = document.createElement("button");
-                btnConfirmarExclusao.textContent = "Confirmar Exclusão";
+    btnExcluirMaquina.addEventListener("click", function () {
+        // Exibe o formulário de exclusão de máquina
+        formExcluirMaquina.innerHTML = "";
+        if (formExcluirMaquina.style.display == "none") {
+            formExcluirMaquina.style.display = "block";
+            // Cria um campo de texto para o ID da máquina
+            const inputIdMaquina = document.createElement("input");
+            inputIdMaquina.setAttribute("type", "text");
+            inputIdMaquina.setAttribute("placeholder", "Digite o ID");
+            // Cria um botão para confirmar a exclusão da máquina
+            const btnConfirmarExclusao = document.createElement("button");
+            btnConfirmarExclusao.textContent = "Confirmar Exclusão";
 
-                // Adiciona o campo de texto e o botão ao formulário
-                formExcluirMaquina.appendChild(inputIdMaquina);
-                formExcluirMaquina.appendChild(btnConfirmarExclusao);
-                btnConfirmarExclusao.addEventListener("click", function () {
-                    const IdMaquina = inputIdMaquina.value;
-                    if(opcao == 0){
-                        deletarMaquina(IdMaquina);
-                    }else{
-                        deletarFunc(idMaquina);
-                    }
-                });
-            } else {
-                formExcluirMaquina.style.display = "none";
-            }
-        });
+            // Adiciona o campo de texto e o botão ao formulário
+            formExcluirMaquina.appendChild(inputIdMaquina);
+            formExcluirMaquina.appendChild(btnConfirmarExclusao);
+            btnConfirmarExclusao.addEventListener("click", function () {
+                const IdMaquina = inputIdMaquina.value;
+                if (opcao == 0) {
+                    deletarMaquina(IdMaquina);
+                } else {
+                    deletarFunc(idMaquina);
+                }
+            });
+        } else {
+            formExcluirMaquina.style.display = "none";
+        }
+    });
     // }
 
     function deletarMaquina(idMaquina) {
@@ -670,7 +668,7 @@
 
             if (resposta.ok) {
 
-                location.reload(); 
+                location.reload();
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
                 });
