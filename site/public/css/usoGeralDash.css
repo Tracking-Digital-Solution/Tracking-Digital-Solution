@@ -174,10 +174,11 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  width: 100%;
+  width: 80%;
   gap: 20px;
   height: auto;
-  margin-top: 10px;
+  margin-top: 25px;
+  justify-content: center;
 }
 
 #excluir-maquina-form {
@@ -220,12 +221,12 @@ body {
 .caixa-maquina {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  width: 470px;
+  width: 40%;
   height: auto;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 2px;
+  padding: 10px 0 10px 0 ;
   border-radius: 5px;
 }
 
