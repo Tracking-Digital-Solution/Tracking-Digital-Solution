@@ -95,28 +95,7 @@
                     <button id="btn-excluir-maquina">Excluir Máquina</button>
                     <div id="excluir-maquina-form"></div>
                 </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Ok</span>
-                </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Ok</span>
-                </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Ok</span>
-                </div>
-            </div>
+
             <!-- Container dashboard TI -->
             <div class="container-dashboard" id="containerDashboard" onclick="mostrarDashboard()">
                 <div class="titulo">
@@ -401,7 +380,7 @@
                     for (let i = 0; i < resposta.length; i++) {
 
                         containerMaquinas.innerHTML += `
-            <div class="caixa-maquina tam01">
+            <div id=${"id"+i} class="caixa-maquina tam01">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
@@ -411,7 +390,6 @@
             </div>
                         `
                         // var idCluster = resposta[i].id
-
                         // buscarDadosMaquina(idCluster);
                     }
                 });
