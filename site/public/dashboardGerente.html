@@ -96,16 +96,16 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
-            <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-                <div class="caixa-botao-add-n" id="botaoMaquina" onclick="adicionarMaquina() ">
-                    Cadastrar Máquina
-                    <span class="material-icons-outlined " style="font-size: 35px;">
-                        add_box
-                    </span>
-                </div>
+            <div style="width: 100%;"></div>
+            <div class="caixa-botao-add-n" id="botaoMaquina" onclick="adicionarMaquina() ">
+                Cadastrar Máquina
+                <span class="material-icons-outlined btn-add">
+                    add_box
+                </span>
             </div>
 
             <div class="container-maquinas" id="containerMaquinas">
+
             </div>
 
             <!-- Container perfil -->
@@ -585,6 +585,7 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     for (let i = 0; i < resposta.length; i++) {
+                        const maquina = resposta.IdMaquina;
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
@@ -593,7 +594,7 @@
                 <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
                 <span>IP: ${resposta[i].IP}</span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-                <div class="caixa-botao-add" onclick="deletarMaquina(${resposta[i].idMaquinaCorporativa}) ">
+                <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
                         <span class="material-icons-outlined btn-add">
                             delete
                         </span>
@@ -615,7 +616,8 @@
     }
 
     function deletarMaquina(idMaquina) {
-        if (confirm("Deseja mesmo deletar está máquina ??")) {
+        if (confirm("Deseja mesmo deletar está máquina???")) {
+
             console.log("função")
             fetch(`/maquina/deletar/${idMaquina}`, {
                 method: "DELETE",
