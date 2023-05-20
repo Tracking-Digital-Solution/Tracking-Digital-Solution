@@ -96,23 +96,17 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
-            <div style="width: 100%;">
-                <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
-                    <span class="material-icons-outlined btn-add">
+            <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                <div class="caixa-botao-add-n" id="botaoMaquina" onclick="adicionarMaquina() ">
+                    Cadastrar Máquina
+                    <span class="material-icons-outlined " style="font-size: 35px;">
                         add_box
                     </span>
-                    Cadastrar Máquina
                 </div>
-                <div class="caixa-botao-add" id="btn-excluir-maquina">
-                    <span class="material-icons-outlined btn-add">
-                        delete
-                    </span>
-                    Excluir
-                </div>
-                <div id="excluir-maquina-form"></div>
             </div>
 
-            <div class="container-maquinas" id="containerMaquinas"></div>
+            <div class="container-maquinas" id="containerMaquinas">
+            </div>
 
             <!-- Container perfil -->
             <div class="box_account" id="containerPerfil">
@@ -344,7 +338,7 @@
             <!-- ApexCharts -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <!-- Custom JS -->
-            <!-- <script src="./js/sidebarGerente.js"></script> -->
+            <script src="./js/sidebarGerente.js"></script>
             <script src="./js/validation.js"></script>
 </body>
 
@@ -591,7 +585,6 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     for (let i = 0; i < resposta.length; i++) {
-
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
@@ -600,6 +593,12 @@
                 <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
                 <span>IP: ${resposta[i].IP}</span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+                <div class="caixa-botao-add" onclick="deletarMaquina(${resposta[i].idMaquinaCorporativa}) ">
+                        <span class="material-icons-outlined btn-add">
+                            delete
+                        </span>
+                        Excluir Máquina
+                 </div>
             </div>
                         `
                     }
@@ -615,73 +614,36 @@
         });
     }
 
-
-    // function botaoDeletar() {
-    // if()
-    const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
-    const formExcluirMaquina = document.getElementById("excluir-maquina-form");
-
-    btnExcluirMaquina.addEventListener("click", function () {
-        // Exibe o formulário de exclusão de máquina
-        formExcluirMaquina.innerHTML = "";
-        if (formExcluirMaquina.style.display == "none") {
-            formExcluirMaquina.style.display = "block";
-            // Cria um campo de texto para o ID da máquina
-            const inputIdMaquina = document.createElement("input");
-            inputIdMaquina.setAttribute("type", "text");
-            inputIdMaquina.setAttribute("placeholder", "Digite o ID");
-            // Cria um botão para confirmar a exclusão da máquina
-            const btnConfirmarExclusao = document.createElement("button");
-            btnConfirmarExclusao.textContent = "Confirmar Exclusão";
-
-            // Adiciona o campo de texto e o botão ao formulário
-            formExcluirMaquina.appendChild(inputIdMaquina);
-            formExcluirMaquina.appendChild(btnConfirmarExclusao);
-            btnConfirmarExclusao.addEventListener("click", function () {
-                const IdMaquina = inputIdMaquina.value;
-                if (opcao == 0) {
-                    deletarMaquina(IdMaquina);
-                } else {
-                    deletarFunc(idMaquina);
-                }
-            });
-        } else {
-            formExcluirMaquina.style.display = "none";
-        }
-    });
-    // }
-
     function deletarMaquina(idMaquina) {
-        console.log("função")
-        fetch(`/maquina/deletar/${idMaquina}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                ID: idMaquina
+        if (confirm("Deseja mesmo deletar está máquina ??")) {
+            console.log("função")
+            fetch(`/maquina/deletar/${idMaquina}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    ID: idMaquina
 
-            })
-        }).then(function (resposta) {
+                })
+            }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+                console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
+                if (resposta.ok) {
 
-                location.reload();
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-                });
-                console.log(resposta);
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+                    location.reload();
+
+                } else {
+                    throw ("Houve um erro ao tentar deletar a máquina");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
     }
 
-    function deletarFunc(idFunc) {
+    function deletarFunc() {
         fetch(`/perfil/deletarFunc`, {
             method: "DELETE",
             headers: {

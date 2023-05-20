@@ -17,6 +17,20 @@
   color: #fff;
 }
 
+.caixa-botao-add-n {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 10px 0px 15px 0px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  color: black;
+  align-items: center;
+  font-size: 25px;
+}
+
 .container-das-infos {
   display: flex;
   flex-direction: row;
