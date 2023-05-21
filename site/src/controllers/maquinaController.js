@@ -57,11 +57,10 @@ function cadastrarMaquina(req, res) {
 
 function deletarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-console.log("Controller")
     //Cadastrar lugar 
-    var idFunc = req.body.ID;
+    var id = req.body.ID;
     // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-    maquinaModel.deletarMaquina(idFunc)
+    maquinaModel.deletarMaquina(id)
         .then(
             function (resultado) {
                 res.json(resultado);

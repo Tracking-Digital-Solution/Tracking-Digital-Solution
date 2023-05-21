@@ -96,7 +96,6 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
-            <div style="width: 100%;"></div>
             <div class="caixa-botao-add-n" id="botaoMaquina" onclick="adicionarMaquina() ">
                 Cadastrar Máquina
                 <span class="material-icons-outlined btn-add">
@@ -159,13 +158,13 @@
             <!-- Fim perfil -->
 
             <!-- Container cadastar func -->
+            <div class="caixa-botao-add-n" id="botaoFuncionario" onclick="adicionarFunc()">
+                Cadastrar funcionário
+                <span class="material-icons-outlined" style="font-size: 25px;">
+                    add_box
+                </span>
+            </div>
             <div class="container-cadastro" id="containerCadastroFunc">
-                <div class="caixa-botao-add" onclick="adicionarFunc()">
-                    <span class="material-icons-outlined btn-add">
-                        add_box
-                    </span>
-                    Cadastrar funcionário
-                </div>
                 <div class="container-das-infos" id="containerFuncionario">
 
                 </div>
@@ -500,7 +499,7 @@
 
                 if (resposta.ok) {
                     setTimeout(() => {
-                        window.location = "login.html";
+                        window.location.reload();
                     }, "1600")
 
                     // limparFormulario();
@@ -542,18 +541,24 @@
 
                         containerFuncionario.innerHTML += `
                             <div class="caixa-infos">
+                                ${resposta[i].nome}
                                 <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
                                     class="func">
-                                    <span class="caracteristicas">
+                                    <span>
                                         id: ${resposta[i].idPerfil}
                                     </span>
 
-                                    <span class="caracteristicas">
+                                    <span>
                                         
-                                        Nome:${resposta[i].nome}
                                     </span>
                                 </span>
-                            </div >
+                                <div class="caixa-botao-add" onclick="deletarFunc(${resposta[i].idPerfil}) ">
+                                        <span class="material-icons-outlined btn-add">
+                                            delete
+                                        </span>
+                                        Excluir funcionário
+                                </div>
+                            </div > 
                             `;
                     }
                 });
@@ -591,8 +596,7 @@
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
-                <span>IP: ${resposta[i].IP}</span>
+                <span>Estado de operação: </span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
                 <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
                         <span class="material-icons-outlined btn-add">
@@ -618,7 +622,6 @@
     function deletarMaquina(idMaquina) {
         if (confirm("Deseja mesmo deletar está máquina???")) {
 
-            console.log("função")
             fetch(`/maquina/deletar/${idMaquina}`, {
                 method: "DELETE",
                 headers: {
@@ -633,9 +636,7 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-
                     location.reload();
-
                 } else {
                     throw ("Houve um erro ao tentar deletar a máquina");
                 }
@@ -645,32 +646,30 @@
         }
     }
 
-    function deletarFunc() {
-        fetch(`/perfil/deletarFunc`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                ID: idFunc
-            })
-        }).then(function (resposta) {
+    function deletarFunc(idFunc) {
+        if (confirm("Deseja mesmo deletar este funcionário???")) {
 
-            console.log("resposta: ", resposta);
+            fetch(`/perfil/deletar/${idFunc}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    IDF: idFunc
+                })
+            }).then(function (resposta) {
 
-            if (resposta.ok) {
+                console.log("resposta: ", resposta);
 
-                location.reload(); s
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-                });
-                console.log(resposta);
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+                if (resposta.ok) {
+                    location.reload();
+                } else {
+                    throw ("Houve um erro ao tentar deletar o funcionário");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
     }
 
     buscarDadosMaquina()

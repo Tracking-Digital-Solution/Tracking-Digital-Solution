@@ -35,27 +35,24 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   width: 100%;
-  height: auto;
   gap: 20px;
+  height: auto;
+  justify-content: center;
 }
 
 .caixa-infos {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  width: 30%;
   height: auto;
-  width: 410px;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 10px 0 10px 0;
   border-radius: 5px;
-}
-
-.caracteristicas {
-  font-size: 20px;
-  color: black;
-  width: 100%;
 }
 
 .tam01 {
