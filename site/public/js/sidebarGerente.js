@@ -6,6 +6,7 @@ function mostrarPainelDeControle() {
     mostrarFormMaq.style.display = "none";
     mostrarFormFunc.style.display = "none";
     botaoMaquina.style.display = "flex";
+    botaoFuncionario.style.display = "none";
     containerPerfil.style.display = "none";
 }
 
@@ -18,10 +19,12 @@ function mostrarPerfil() {
     mostrarFormMaq.style.display = "none";
     mostrarFormFunc.style.display = "none";
     botaoMaquina.style.display = "none";
+    botaoFuncionario.style.display = "none";
 }
 
 
 function mostrarCadastroMaq() {
+    botaoFuncionario.style.display = "none";
     containerSuporte.style.display = "none";
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "flex";
@@ -41,9 +44,11 @@ function mostrarCadastroFunc() {
     mostrarFormFunc.style.display = "none";
     botaoMaquina.style.display = "none";
     containerPerfil.style.display = "none";
+    botaoFuncionario.style.display = "flex";
 }
 
 function mostrarRelatorios() {
+    botaoFuncionario.style.display = "none";
     containerSuporte.style.display = "none";
     containerRelatorios.style.display = "flex";
     containerMaquinas.style.display = "none";
@@ -55,6 +60,7 @@ function mostrarRelatorios() {
 }
 
 function mostrarConfig() {
+    botaoFuncionario.style.display = "none";
     containerSuporte.style.display = "none";
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
@@ -66,6 +72,7 @@ function mostrarConfig() {
 }
 
 function mostrarSuporte() {
+    botaoFuncionario.style.display = "none";
     containerSuporte.style.display = "flex";
     containerRelatorios.style.display = "none";
     containerMaquinas.style.display = "none";
@@ -77,6 +84,7 @@ function mostrarSuporte() {
 }
 
 function adicionarMaquina() {
+    botaoFuncionario.style.display = "none";
     containerSuporte.style.display = "none";
     mostrarFormMaq.style.display = "flex";
     containerRelatorios.style.display = "none";
@@ -88,6 +96,7 @@ function adicionarMaquina() {
 }
 
 function adicionarFunc() {
+    botaoFuncionario.style.display = "none";
     containerSuporte.style.display = "none";
     mostrarFormFunc.style.display = "flex";
     containerCadastroFunc.style.display = "none";

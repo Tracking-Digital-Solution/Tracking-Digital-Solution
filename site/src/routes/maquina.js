@@ -31,7 +31,7 @@ router.post("/buscarDadosMaquina/:idPerfil", function (req, res) {
     maquinaController.buscarDadosMaquina(req, res);
 })
 
-router.post("/buscarDadosTi", function (req, res) {
+router.post("/buscarDadosTi/:IDTI/:IDADMIN", function (req, res) {
     maquinaController.buscarDadosTi(req, res);
 })
 

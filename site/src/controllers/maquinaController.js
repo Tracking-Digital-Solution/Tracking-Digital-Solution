@@ -100,7 +100,6 @@ function buscarDadosFuncionario(req, res) {
 }
 
 function buscarDadosMaquina(req, res) {
-    console.log('controller')
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
@@ -127,9 +126,10 @@ function buscarDadosTi(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
-    var fkPerfil = req.body.fkIdTi;
+    var ID = req.params.IDTI;
+    var IDADM = req.params.IDADMIN;
     // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-    maquinaModel.buscarDadosTi(fkPerfil)
+    maquinaModel.buscarDadosTi(ID, IDADM)
         .then(
             function (resultado) {
                 res.json(resultado);

@@ -27,10 +27,10 @@ function deletarMaquina(id) {
     return database.executar(instrucao);
 }
 
-function buscarDadosTi(fkPerfil) {
+function buscarDadosTi(ID, IDADM) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT * FROM MaquinaCorporativa inner join Perfil ON perfilAdministrador = ${fkPerfil} where fkPerfil = ${fkPerfil};
+        SELECT * FROM MaquinaCorporativa as m inner join Perfil as p ON m.fkPerfil = ${IDADM} where p.idPerfil = ${ID};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
