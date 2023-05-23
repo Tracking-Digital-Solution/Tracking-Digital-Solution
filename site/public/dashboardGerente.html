@@ -674,3 +674,57 @@
     buscarDadosMaquina()
     buscarDadosFuncionario()
 </script>
+
+<!-- funções de alterar -->
+<script>
+    function alterarSenha() {
+        var senhaAntigaServer = ipt_senha_antiga.value;
+        var senhaNovaServer = ipt_senha_nova.value;
+        var senhaNovaConfirmServer = ipt_senha_nova_confirm.value;
+
+
+        if (senhaNovaServer !== senhaNovaConfirmServer) {
+            alert("As senhas não conferem");
+            return false;
+        }
+
+        fetch("/perfil/alterarsenha/" + sessionStorage.ID_USUARIO, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                senhaNovaServer,
+                senhaAntigaServer
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO atualizar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    alert("Senha alterada com sucesso! Faça o login novamente")
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar alterar a senha");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }

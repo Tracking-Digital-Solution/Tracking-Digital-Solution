@@ -54,10 +54,20 @@ function cadastrarFuncionario(nome, email, senha, cpf, perfilAdministrador) {
     return database.executar(instrucao);
 }
 
+function alterarSenha(idUsuario, senhaNova, senhaAntiga) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterarSenha():", idUsuario, senhaNova, senhaAntiga);
+    const instrucao = `
+        UPDATE perfil SET senha = '${senhaNova}' WHERE idPerfil = ${idUsuario} and senha = '${senhaAntiga}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     cadastrarFuncionario,
+    alterarSenha,
     deletarFunc
 };
