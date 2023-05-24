@@ -35,4 +35,9 @@ router.post("/buscarDadosTi/:IDTI/:IDADMIN", function (req, res) {
     maquinaController.buscarDadosTi(req, res);
 })
 
+router.post("/alterarParametroCPU", function (req, res) {
+    maquinaController.alterarParametroCPU(req, res);
+});
+
+
 module.exports = router;

@@ -286,7 +286,7 @@
             </div>
 
             <!-- Container configurações -->
-            <div class="container-config" id="containerConfig">
+        <div class="container-config" id="containerConfig" style="height: 530px;">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarPainelDeControle()">
                         &#171;
@@ -298,12 +298,22 @@
                 <div class="input-porcentagem">
                     <span>
                         CPU
-                        <input class="ipt-porcento" placeholder="Porcentagem">
+                        <input class="ipt_porcento_cpu" placeholder="Porcentagem">
                     </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroCPU()"class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
                     <span>
                         RAM
                         <input class="ipt-porcento" placeholder="Porcentagem">
                     </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
                     <span>
                         DISCO
                         <input class="ipt-porcento" placeholder="Porcentagem">
@@ -395,4 +405,34 @@
 
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
+    function alterarParametroCPU(){
+        var parametroCpuServer = ipt_porcento_cpu.value;
+
+        {
+        // Enviando o valor da nova input
+        fetch("/maquina/alterarParametroCPU", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroCpuServer
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                alert("Parâmetro alterado com sucesso.")
+
+            } else {
+                throw ("Houve um erro ao tentar alterar os parâmetros.");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+    }
 </script>

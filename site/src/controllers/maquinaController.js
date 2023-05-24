@@ -205,6 +205,27 @@ function cadastrarEndereco(req, res) {
     }
 }
 
+function alterarParametroCPU(req, res) {
+    var parametroCPU = req.body.parametroCpuServer;
+
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.alterarParametroCPU(parametroCPU)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     listar,
     testar,
@@ -213,5 +234,6 @@ module.exports = {
     buscarDadosFuncionario,
     buscarDadosTi,
     deletarMaquina,
-    buscarDadosMaquina
+    buscarDadosMaquina,
+    alterarParametroCPU
 }

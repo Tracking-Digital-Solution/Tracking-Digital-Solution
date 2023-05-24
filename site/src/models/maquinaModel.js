@@ -71,11 +71,24 @@ function cadastrarEndereco(cep, estado, cidade, bairro, logradouro, numero, comp
     return database.executar(instrucao);
 }
 
+function alterarParametroCPU(riscoCPU) {
+    // console.log("Acessando MaquinaCorporativa modal L \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, cpf);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO CpuDadosEstaticos VALUES 
+        ('${riscoCPU}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 module.exports = {
     cadastrarEndereco,
     cadastrarMaquina,
     buscarDadosFuncionario,
     buscarDadosTi,
     deletarMaquina,
-    buscarDadosMaquina
+    buscarDadosMaquina,
+    alterarParametroCPU
 };
