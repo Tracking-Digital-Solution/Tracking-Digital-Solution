@@ -20,8 +20,13 @@ router.post("/cadastrarFuncionario", function (req, res) {
 })
 
 // alterar senha
-router.put("/alterarsenha/:idUsuario", function (req, res) {
+router.put("/alterarsenha/:idPerfil", function (req, res) {
     perfilController.alterarSenha(req, res)
+})
+
+// deletar usuário
+router.delete("/deletar/:idPerfil", function (req, res) {
+    perfilController.deletar(req, res)
 })
 
 router.delete("/deletar/:IDF", function (req, res) {

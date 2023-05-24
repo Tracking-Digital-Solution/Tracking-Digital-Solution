@@ -145,11 +145,11 @@
 
                     <div class="deletar_conta">
                         <h2 class="tittle" id="tittle_delete">Deseja excluir sua conta?</h2>
-                        <button id="btn_delete" class="btn_del" onclick="deleteAcc()">Excluir conta</button>
-                        <div id="are_sure" style="display: none;" class="are_you_sure">
+                        <button id="btn_delete" class="btn_del" onclick="deletar()">Excluir conta</button>
+                        <!-- <div id="are_sure" style="display: none;" class="are_you_sure">
                             <button onclick="cancel()" class="btn_cancel">Cancelar</button>
                             <button onclick="deletar()" class="btn_delete">Excluir</button>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -688,7 +688,7 @@
             return false;
         }
 
-        fetch("/perfil/alterarsenha/" + sessionStorage.ID_USUARIO, {
+        fetch("/perfil/alterarsenha/" + sessionStorage.ID_PERFIL, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -728,3 +728,47 @@
         return false;
 
     }
+
+
+
+    function deletar() {
+
+        fetch("/perfil/deletar" + sessionStorage.ID_PERFIL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO deletar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    alert("Usuário deletado com sucesso! Faça o login com outro usuário")
+
+                
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar deletar o usuário");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
+</script>

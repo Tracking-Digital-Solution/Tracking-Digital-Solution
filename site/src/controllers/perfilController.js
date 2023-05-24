@@ -159,12 +159,12 @@ function cadastrarFuncionario(req, res) {
 }
 
 function alterarSenha(req, res) {
-    const idUsuario = req.params.idUsuario
+    const idPerfil = req.params.idPerfil
     const senhaNova = req.body.senhaNovaServer;
     const senhaAntiga = req.body.senhaAntigaServer;
 
 
-    if (idUsuario == undefined) {
+    if (idPerfil == undefined) {
         res.status(400).send("id do usuario está undefined!");
     } else if (senhaNova == undefined) {
         res.status(400).send("Sua senha nova está undefined!");
@@ -172,7 +172,7 @@ function alterarSenha(req, res) {
         res.status(400).send("Sua senha antiga está undefined!");
     } else {
 
-        usuarioModel.alterarSenha(idUsuario, senhaNova, senhaAntiga)
+        perfilModel.alterarSenha(idPerfil, senhaNova, senhaAntiga)
             .then(
                 function (resultado) {
                     res.json({ message: "Senha alterada com sucesso" });
@@ -190,6 +190,31 @@ function alterarSenha(req, res) {
     }
 }
 
+function deletar(req, res) {
+    const idPerfil= req.params.idPerfil
+
+    if (idPerfil == undefined) {
+        res.status(400).send("id do usuario está undefined!");
+    } else {
+        perfilModel.deletar(idPerfil)
+            .then(
+                function (resultado) {
+                    res.json({ message: "Usuário deletado com sucesso" });
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao deletar usuário! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -197,5 +222,6 @@ module.exports = {
     testar,
     cadastrarFuncionario,
     alterarSenha,
+    deletar,
     deletarFunc
 }
