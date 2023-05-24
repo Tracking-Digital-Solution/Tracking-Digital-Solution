@@ -18,6 +18,23 @@ function buscarDadosMaquina(fkPerfil) {
     return database.executar(instrucao);
 }
 
+function buscarDadosDinamicos(id) {
+    // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    select top(1) m.idMaquinaCorporativa, m.sistemaOperacional, 
+    cp.usoAtual as usoCPU,
+    hd.disponivel as disponivelHD,
+    rm.usoAtual usoRAM, rm.disponivel as disponivelRAM
+    from [dbo].[MaquinaCorporativa] as m 
+    join [dbo].[ColetaCPU] as cp on cp.fkMaquina = m.idMaquinaCorporativa
+    join [dbo].[ColetaHD] as hd on hd.fkMaquina = m.idMaquinaCorporativa 
+    join [dbo].[coletaRAM] as rm on rm.fkMaquina = m.idMaquinaCorporativa where m.idMaquinaCorporativa = ${id};  
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function deletarMaquina(id) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
@@ -77,5 +94,6 @@ module.exports = {
     buscarDadosFuncionario,
     buscarDadosTi,
     deletarMaquina,
-    buscarDadosMaquina
+    buscarDadosMaquina,
+    buscarDadosDinamicos
 };

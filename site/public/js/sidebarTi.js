@@ -30,8 +30,9 @@ function mostrarSuporte() {
   containerDashboard.style.display = "none";
 }
 
-function mostrarDashboard() {
+function mostrarDashboard(id) {
   if (containerDashboard.style.display == "none") {
+    buscarDadosDinamicos(id);
     containerDashboard.style.display = "flex";
     containerMaquinas.style.display = "none";
     containerRelatorios.style.display = "none";
@@ -62,7 +63,6 @@ function logout() {
     }
   })
 }
-
 
 
 
