@@ -292,38 +292,23 @@
                         &#171;
                     </button>
                 </div>
-                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
-                    <div class="bloco-hardware">
-                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
-                            <Span>
-                                Cpu:
-                            </Span>
-                            <Span>
-                                Ram:
-                            </Span>
-                            <Span>
-                                Ssd:
-                            </Span>
-                        </div>
-                    </div>
-                    <div class="bloco-hardware">
-                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
-                            Limite %
-                        </Span>
-                        <div class="nome-hardware">
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                        </div>
-                    </div>
+                <div class="bloco-hardware">
+                    <span class="limite-par">LIMITE (%)</span>
                 </div>
-
+                <div class="input-porcentagem">
+                    <span>
+                        CPU
+                        <input class="ipt-porcento" placeholder="Porcentagem">
+                    </span>
+                    <span>
+                        RAM
+                        <input class="ipt-porcento" placeholder="Porcentagem">
+                    </span>
+                    <span>
+                        DISCO
+                        <input class="ipt-porcento" placeholder="Porcentagem">
+                    </span>
+                </div>
                 <div class="container-btn-salvar" id="btnConfig">
                     <button class="btn-salvar">
                         salvar
@@ -351,8 +336,6 @@
             </div>
 
             <!-- End Main -->
-
-
             <!-- Scripts -->
             <!-- ApexCharts -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>

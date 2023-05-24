@@ -82,6 +82,27 @@
   flex-direction: column;
 }
 
+.limite-par {
+  margin-left: 140px;
+  margin-bottom: 220px;
+  color: #000000;
+}
+
+.ipt-porcento{
+  width: 40px;
+}
+  
+.input-porcentagem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -200px;
+  margin-left: 55px;
+}
+
+.container-btn-salvar {
+  margin-bottom: 35px;
+}
 .infos {
   display: flex;
   width: 100%;
@@ -226,3 +247,4 @@
   height: 140px;
   margin: 12px 0 12px 0;
 }
+
