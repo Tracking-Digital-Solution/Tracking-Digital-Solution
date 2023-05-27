@@ -227,6 +227,69 @@ function cadastrarEndereco(req, res) {
     }
 }
 
+function alterarParametroCPU(req, res) {
+    var parametroCPU = req.body.parametroCpuServer;
+     var idPerfilAdmin = req.body.idPerfilAdminServer;
+
+    maquinaModel.alterarParametroCPU(parametroCPU, idPerfilAdmin)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function alterarParametroRAM(req, res) {
+    var parametroRAM = req.body.parametroRamServer;
+     var idPerfilAdmin = req.body.idPerfilAdminServer;
+
+    maquinaModel.alterarParametroRAM(parametroRAM, idPerfilAdmin)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function alterarParametroDisco(req, res) {
+    var parametroDisco = req.body.parametroDiscoServer;
+     var idPerfilAdmin = req.body.idPerfilAdminServer;
+
+    maquinaModel.alterarParametroDisco(parametroDisco, idPerfilAdmin)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     listar,
     testar,
@@ -236,5 +299,9 @@ module.exports = {
     buscarDadosTi,
     deletarMaquina,
     buscarDadosMaquina,
-    buscarDadosDinamicos
+    buscarDadosDinamicos,
+    alterarParametroCPU,
+    alterarParametroRAM,
+    alterarParametroDisco
+
 }
