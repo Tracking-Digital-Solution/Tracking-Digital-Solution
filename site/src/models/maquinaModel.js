@@ -89,6 +89,39 @@ function cadastrarEndereco(cep, estado, cidade, bairro, logradouro, numero, comp
     return database.executar(instrucao);
 }
 
+function alterarParametroCPU(parametroCPU, idPerfilAdmin) {
+    var instrucao = `
+    UPDATE CpuDadosEstaticos SET riscoCPU = ${parametroCPU} where idCpuDadosEstaticos in(Select idCpuDadosEstaticos from MaquinaCorporativa mc
+            JOIN ColetaCPU cc on mc.idMaquinaCorporativa = cc.idCPU
+            JOIN CpuDadosEstaticos ce on cc.idCPU = ce.idCpuDadosEstaticos
+            JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
+            where perfilAdministrador = ${idPerfilAdmin})`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function alterarParametroRAM(parametroRAM, idPerfilAdmin) {
+    var instrucao = `
+    UPDATE RamDadosEstaticos SET riscoRAM = ${parametroRAM} where idRamdadosEstaticos in(Select idRamdadosEstaticos from MaquinaCorporativa mc
+            JOIN coletaRAM cc on mc.idMaquinaCorporativa = cc.idRAM
+            JOIN RamDadosEstaticos ce on cc.idRAM = ce.idRamdadosEstaticos
+            JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
+            where perfilAdministrador = ${idPerfilAdmin})`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function alterarParametroDisco(parametroDisco, idPerfilAdmin) {
+    var instrucao = `
+    UPDATE HdDadosEstaticos SET riscoHD = ${parametroDisco} where idHdDadosEstaticos in(Select idHdDadosEstaticos from MaquinaCorporativa mc
+            JOIN coletaHD cc on mc.idMaquinaCorporativa = cc.idHD
+            JOIN HdDadosEstaticos ce on cc.idHD = ce.idHdDadosEstaticos
+            JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
+            where perfilAdministrador = ${idPerfilAdmin})`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarEndereco,
     cadastrarMaquina,
@@ -96,5 +129,8 @@ module.exports = {
     buscarDadosTi,
     deletarMaquina,
     buscarDadosMaquina,
-    buscarDadosDinamicos
+    buscarDadosDinamicos,
+    alterarParametroCPU,
+    alterarParametroRAM,
+    alterarParametroDisco
 };

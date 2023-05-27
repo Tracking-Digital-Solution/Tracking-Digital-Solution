@@ -124,7 +124,7 @@
                             RAM
                         </span>
                         <span style="font-size: 40px; color: black;" id="spanRam">
-                
+
                         </span>
 
                     </div>
@@ -133,7 +133,7 @@
                             HD
                         </span>
                         <span style="font-size: 40px; color: black;" id="spanHd">
-                    
+
                         </span>
                     </div>
                 </div>
@@ -312,40 +312,35 @@
                         &#171;
                     </button>
                 </div>
-                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
-                    <div class="bloco-hardware">
-                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
-                            <Span>
-                                Cpu:
-                            </Span>
-                            <Span>
-                                Ram:
-                            </Span>
-                            <Span>
-                                Ssd:
-                            </Span>
-                        </div>
-                    </div>
-                    <div class="bloco-hardware">
-                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
-                            Limite %
-                        </Span>
-                        <div class="nome-hardware">
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                        </div>
-                    </div>
+                <div class="bloco-hardware">
+                    <span class="limite-par">LIMITE (%)</span>
                 </div>
-
+                <div class="input-porcentagem">
+                    <span>
+                        CPU
+                        <input id="ipt_porcento_cpu" placeholder="Porcentagem">
+                    </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroCPU()" class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
+                    <span>
+                        RAM
+                        <input id="ipt_porcento_ram" placeholder="Porcentagem">
+                    </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroRAM()" class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
+                    <span>
+                        DISCO
+                        <input id="ipt_porcento_disco" placeholder="Porcentagem">
+                    </span>
+                </div>
                 <div class="container-btn-salvar" id="btnConfig">
-                    <button class="btn-salvar">
+                    <button onclick="alterarParametroDisco()" class="btn-salvar">
                         salvar
                     </button>
                 </div>
@@ -446,6 +441,63 @@
         } else {
             throw ("Buscar dados dinamicos falhou");
         }
+    }
+
+
+    // function alterarParametroDisco() {
+    //     var parametroDiscoServer = ipt_porcento_disco.value;
+    //     var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+    //     fetch(`/maquina/alterarParametroDisco`, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             parametroDiscoServer,
+    //             idPerfilAdminServer
+    //         })
+    //     }).then(function (resposta) {
+
+    //         if (resposta.ok) {
+    //             window.alert("Parâmetro atualizado com sucesso.");
+    //         } else if (resposta.status == 404) {
+    //             window.alert("Deu 404!");
+    //         } else {
+    //             throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+    //         }
+    //     }); if (resposta.ok) {
+    //         return resultadoConvertido = await resposta.json();
+    //     } else {
+    //         throw ("Buscar dados dinamicos falhou");
+    //     }
+    // }
+
+    function alterarParametroCPU() {
+        var parametroCpuServer = ipt_porcento_cpu.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+        fetch(`/maquina/alterarParametroCPU`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroCpuServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 

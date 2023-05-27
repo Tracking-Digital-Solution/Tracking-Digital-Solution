@@ -35,8 +35,21 @@ router.post("/buscarDadosTi/:IDTI/:IDADMIN", function (req, res) {
     maquinaController.buscarDadosTi(req, res);
 })
 
+router.put("/alterarParametroCPU", function (req, res) {
+    maquinaController.alterarParametroCPU(req, res);
+});
+
+router.put("/alterarParametroRAM", function (req, res) {
+    maquinaController.alterarParametroRAM(req, res);
+});
+
+router.put("/alterarParametroDisco", function (req, res) {
+    maquinaController.alterarParametroDisco(req, res);
+});
+
 router.post("/buscarDadosDinamicos/:id", function (req, res) {
     maquinaController.buscarDadosDinamicos(req, res);
 })
+
 
 module.exports = router;
