@@ -85,17 +85,9 @@
 
         <!-- Main -->
         <main class="main-container" id="mainDash" style="display: none !important">
-            <div style="width: 100%;" id="alertas">
-                <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
-                    <span class="material-icons-outlined btn-add">
-                        settings
-                    </span>
-                    Alertas
-                </div>
-            </div>
             <div style="width: 100%; margin-bottom: 20px;" id="btnVoltar">
                 <button class="btn-voltar" onclick="mostrarPainelDeControle()">
-                    &#171;
+                    <span class="material-icons-outlined">keyboard_backspace</span>
                 </button>
             </div>
             <div class="bloco-identificacao" id="identificacaoMaquina">
@@ -210,6 +202,14 @@
         </main>
 
         <main id="mainMaquinas" class="main-container">
+            <div style="width: 100%;" id="alertas">
+                <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
+                    <span class="material-icons-outlined btn-add">
+                        settings
+                    </span>
+                    Configurações
+                </div>
+            </div>
             <div class="container-maquinas" id="containerMaquinas">
                 <!-- <div class="caixa-maquina" onclick="mostrarDashboard()">
                         <Span style="font-size: 20px;"></Span>
@@ -309,7 +309,7 @@
             <div class="container-config" id="containerConfig">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarPainelDeControle()">
-                        &#171;
+                        <span class="material-icons-outlined">keyboard_backspace</span>
                     </button>
                 </div>
                 <div class="bloco-hardware">
@@ -444,34 +444,30 @@
     }
 
 
-    // function alterarParametroDisco() {
-    //     var parametroDiscoServer = ipt_porcento_disco.value;
-    //     var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+    function alterarParametroDisco() {
+        var parametroDiscoServer = ipt_porcento_disco.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
 
-    //     fetch(`/maquina/alterarParametroDisco`, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             parametroDiscoServer,
-    //             idPerfilAdminServer
-    //         })
-    //     }).then(function (resposta) {
+        fetch(`/maquina/alterarParametroDisco`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroDiscoServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
 
-    //         if (resposta.ok) {
-    //             window.alert("Parâmetro atualizado com sucesso.");
-    //         } else if (resposta.status == 404) {
-    //             window.alert("Deu 404!");
-    //         } else {
-    //             throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
-    //         }
-    //     }); if (resposta.ok) {
-    //         return resultadoConvertido = await resposta.json();
-    //     } else {
-    //         throw ("Buscar dados dinamicos falhou");
-    //     }
-    // }
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        });
+    }
 
     function alterarParametroCPU() {
         var parametroCpuServer = ipt_porcento_cpu.value;

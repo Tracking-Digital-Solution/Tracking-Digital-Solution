@@ -1,5 +1,5 @@
 .container-cadastro {
-  display: none;
+  display: flex;
   width: 100%;
   height: auto;
 }
@@ -12,9 +12,8 @@
   padding: 5px;
   cursor: pointer;
   margin: 10px 0px 15px 0px;
-  background-color: #ffc300;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  color: #fff;
+  box-shadow: rgb(169, 161, 161) 3px 3px 10px 2px;
+  color: #000000;
 }
 
 .caixa-botao-add-n {
@@ -67,7 +66,7 @@
 }
 
 .form-cadastro {
-  display: none;
+  display: flex;
   background-color: #fff;
   align-items: center;
   justify-content: center;
@@ -104,16 +103,15 @@
 }
 
 .btn-voltar{
+  box-shadow: rgb(169, 161, 161) 3px 3px 10px 2px;
   display: flex;
-  width:45px ;
+  width: 60px;
   border: none;
   border-radius: 2px;
-  background-color: #d6d5d5;
-  color: #fff;
+  color: #000000;
   font-size: 30px;
   margin-left: 15px;
   cursor: pointer;
-  background-color: #ffc300;
   justify-content: center;
 }
 

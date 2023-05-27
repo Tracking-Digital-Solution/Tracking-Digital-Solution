@@ -94,7 +94,7 @@
         <!-- End Sidebar -->
 
         <!-- Main -->
-        <main class="main-container">
+        <main class="main-container" id="mainMaquinas" style="display: flex !important;">
             <!-- Container dashboard -->
             <div class="caixa-botao-add-n" id="botaoMaquina" onclick="adicionarMaquina() ">
                 Cadastrar Máquina
@@ -106,9 +106,11 @@
             <div class="container-maquinas" id="containerMaquinas">
 
             </div>
+        </main>
 
-            <!-- Container perfil -->
-            <div class="box_account" id="containerPerfil">
+        <!-- Container perfil -->
+        <main class="main-container" id="mainPerfil" style="display: none;">
+            <div class="box_account">
                 <div class="account_left">
                     <div class="box_users">
                         <svg id="svg-users" height="100" viewBox="0 0 100 100" width="100"
@@ -151,14 +153,14 @@
                             <button onclick="deletar()" class="btn_delete">Excluir</button>
                         </div> -->
                     </div>
-
                 </div>
             </div>
+        </main>
+        <!-- Fim perfil -->
 
-            <!-- Fim perfil -->
-
-            <!-- Container cadastar func -->
-            <div class="caixa-botao-add-n" style="display: none;" id="botaoFuncionario" onclick="adicionarFunc()">
+        <!-- Container cadastar func -->
+        <main class="main-container" id="mainFunc" style="display: none;">
+            <div class=" caixa-botao-add-n" id="botaoFuncionario" onclick="adicionarFunc()">
                 Cadastrar funcionário
                 <span class="material-icons-outlined" style="font-size: 25px;">
                     add_box
@@ -169,7 +171,9 @@
 
                 </div>
             </div>
-            <!-- Container formulario de cadastros Máquina-->
+        </main>
+        <!-- Container formulario de cadastros Máquina-->
+        <main class="main-container" id="mainFormMaq" style="display: none;">
             <div class="form-cadastro" id="mostrarFormMaq">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarCadastroMaq()">
@@ -218,13 +222,9 @@
                     </button>
                 </div>
             </div>
-            <!-- Container formulario de cadastros Funcionário -->
-            <!-- <div class="form-cadastro" id="mostrarFormFunc">
-                <div class="div-voltar">
-                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
-                        voltar
-                    </button>
-                </div> -->
+        </main>
+        <!-- Container formulario de cadastros Funcionário -->
+        <main class="main-container" id="mainFormFunc" style="display: none;">
             <div class="form-cadastro" id="mostrarFormFunc">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarCadastroFunc()">
@@ -255,8 +255,9 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Container relatorios -->
+        </main>
+        <!-- Container relatorios -->
+        <main class="main-container" id="mainRelatorios" style="display: none;">
             <div class="container-relatorios" id="containerRelatorios">
                 <table>
                     <caption>Relatórios</caption>
@@ -307,8 +308,9 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Container suporte -->
+        </main>
+        <!-- Container suporte -->
+        <main class="main-container" id="mainSuporte" style="display: none;">
             <div class="container-suporte" id="containerSuporte">
                 <table>
                     <caption>Suporte</caption>
@@ -327,18 +329,19 @@
                 </table>
             </div>
 
-            <!-- container suporte -->
-            <!-- End Main -->
+        </main>
+        <!-- container suporte -->
+        <!-- End Main -->
 
 
-            <!-- Scripts -->
+        <!-- Scripts -->
 
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-            <!-- ApexCharts -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-            <!-- Custom JS -->
-            <script src="./js/sidebarGerente.js"></script>
-            <script src="./js/validation.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <!-- ApexCharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+        <!-- Custom JS -->
+        <script src="./js/sidebarGerente.js"></script>
+        <script src="./js/validation.js"></script>
 </body>
 
 </html>
@@ -752,7 +755,7 @@
 
                     alert("Usuário deletado com sucesso! Faça o login com outro usuário")
 
-                
+
 
                 });
 

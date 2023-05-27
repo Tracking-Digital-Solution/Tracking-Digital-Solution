@@ -52,9 +52,9 @@ async function mostrarDashboard(id) {
   var usoHd = listaDados[0].disponivelHD;
   var usoRam = listaDados[0].usoRAM;
 
-  spanNomeMaquina.innerHTML = nomeMaquina;
-  spanSistema.innerHTML = sistemaOperacional;
-  spanId.innerHTML = idMaquina;
+  spanNomeMaquina.innerHTML = "Nome da máquina: " + nomeMaquina;
+  spanSistema.innerHTML = "Sistema operacional " + sistemaOperacional;
+  spanId.innerHTML = "ID da máquina: " + idMaquina;
   spanCpu.innerHTML = usoCpu;
   spanRam.innerHTML = usoRam;
   spanHd.innerHTML = usoHd;
