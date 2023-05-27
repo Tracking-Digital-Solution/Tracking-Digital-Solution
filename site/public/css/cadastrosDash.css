@@ -104,6 +104,7 @@
 }
 
 .btn-voltar{
+  display: none;
   width:45px ;
   border: none;
   border-radius: 2px;
@@ -113,6 +114,7 @@
   margin-left: 15px;
   cursor: pointer;
   background-color: #ffc300;
+  justify-content: center;
 }
 
 .div-confirmar-cadastro{

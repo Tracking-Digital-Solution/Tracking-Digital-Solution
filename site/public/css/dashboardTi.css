@@ -7,6 +7,23 @@
   transition: none;
 }
 
+#lineChart{
+width: 50% !important;
+height: 300px !important;
+}
+
+#lineChart2{
+width: 50% !important;
+height: 300px !important;
+}
+
+#containerChart{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 35px;
+}
+
 /* teste */
 /* ---------- MAIN ---------- */
 
@@ -15,7 +32,6 @@
   flex-direction: column;
   height: auto;
   border-radius: 30px;
-  box-shadow: 3px 3px 10px 2px #a9a1a1;
   padding: 10px;
 }
 
@@ -38,7 +54,20 @@
   width: 100%;
   gap: 20px;
   margin-bottom: 20px;
-  border-top: 1px black solid;
+}
+
+.containerInfos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+}
+
+.caixaInfoMaquina{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+
 }
 
 .flex-tam1 {
@@ -62,9 +91,8 @@
   /* border: 1px solid #d2d2d3; */
   /* border-radius: 10px; */
   /* box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2); */
-  height: auto;
+  height: 100px;
   gap: 10px;
-  border-right: 1px black solid;
 }
 
 .identificacao-maquina {
@@ -77,9 +105,15 @@
 }
 
 .bloco-identificacao {
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
+  display: none;
+  flex-direction: row;
+  width: 90%;
+  height: 40px;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .infos {
@@ -97,7 +131,7 @@
   font-size: 1.5rem;
 }
 
-/* 
+
   .card:first-child {
     border-left: 7px solid #246dec;
   }
@@ -110,9 +144,6 @@
     border-left: 7px solid #367952;
   }
   
-  .card:nth-child(4) {
-    border-left: 7px solid #cc3c43;
-  } */
 
 .card>span {
   font-size: 20px;
@@ -204,13 +235,8 @@
 
 .chart-svg {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  max-width: 90px;
-  min-width: 40px;
-  flex: 1;
-  height: 80px;
+  flex-direction: row-reverse;
+  width: 50%;
 }
 
 .circle-bg {

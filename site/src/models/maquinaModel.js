@@ -12,7 +12,8 @@ function buscarDadosFuncionario(fkPerfil) {
 function buscarDadosMaquina(fkPerfil) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT * FROM MaquinaCorporativa where fkPerfil = ${fkPerfil};
+    SELECT * FROM [dbo].[MaquinaCorporativa] as m
+    left join [dbo].[ColetaCPU] as cp on cp.fkMaquina = ${fkPerfil} where m.fkPerfil = ${fkPerfil};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -22,8 +23,8 @@ function buscarDadosDinamicos(id) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
     select top(1) m.idMaquinaCorporativa, m.sistemaOperacional, 
-    cp.usoAtual as usoCPU,
-    hd.disponivel as disponivelHD,
+    cp.usoAtual as usoCPU, cp.dataHota,
+    hd.disponivel as disponivelHD, 
     rm.usoAtual usoRAM, rm.disponivel as disponivelRAM
     from [dbo].[MaquinaCorporativa] as m 
     join [dbo].[ColetaCPU] as cp on cp.fkMaquina = m.idMaquinaCorporativa

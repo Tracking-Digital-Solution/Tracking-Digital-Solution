@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Dashboard | Bem vindo(a)!</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Montserrat Font -->
     <link
@@ -84,7 +86,7 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
-            <div style="width: 100%;">
+            <div style="width: 100%;" id="alertas">
                 <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
                     <span class="material-icons-outlined btn-add">
                         settings
@@ -92,14 +94,130 @@
                     Alertas
                 </div>
             </div>
-
-            <div class="container-maquinas" id="containerMaquinas">
+            <div style="width: 100%; margin-bottom: 20px;" id="btnVoltar">
+                <button class="btn-voltar" onclick="mostrarPainelDeControle()">
+                    &#171;
+                </button>
+            </div>
+            <div class="bloco-identificacao" id="identificacaoMaquina">
+                <span class="tam1">
+                    Nome da máquina:
+                </span>
+                <span class="tam1">
+                    Sistema operacional:
+                </span>
+                <span class="tam1">
+                    ID:
+                </span>
             </div>
 
+            <div class="container-maquinas" id="containerMaquinas">
+                <!-- <div class="caixa-maquina" onclick="mostrarDashboard()">
+                    <Span style="font-size: 20px;"></Span>
+                    <div class="kpi"></div>
+                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                    <span>Estado de operação: </span>
+                    <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
 
-
+                </div> -->
+            </div>
             <!-- Container dashboard TI -->
             <div class="container-dashboard" id="containerDashboard">
+                <div class="container-cards">
+                    <div class="card flex">
+                        <span class="name-card">
+                            CPU
+                        </span>
+                        <span style="font-size: 40px; color: black;">
+                        </span>
+                    </div>
+                    <div class="card flex">
+                        <span class="name-card">
+                            RAM
+                        </span>
+                        <span style="font-size: 40px; color: black;">
+                            0%
+                        </span>
+
+                    </div>
+                    <div class="card flex">
+                        <span class="name-card">
+                            HD
+                        </span>
+                        <span style="font-size: 40px; color: black;">
+                            0%
+                        </span>
+                    </div>
+                </div>
+                <div id="containerChart">
+                    <canvas id="lineChart" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
+                    <script>
+
+                        // Dados para o gráfico
+                        const data = {
+                            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                            datasets: [{
+                                label: 'Vendas',
+                                data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 2
+                            }]
+                        };
+
+                        // Configuração do gráfico
+                        const config = {
+                            type: 'line',
+                            data: data,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        };
+
+                        // Renderizar o gráfico
+                        const ctx = document.getElementById('lineChart').getContext('2d');
+                        new Chart(ctx, config);
+                    </script>
+                    <!-- // Line chart 2 -->
+                    <canvas id="lineChart2" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
+                    <script>
+
+                        // Dados para o gráfico
+                        const data2 = {
+                            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                            datasets: [{
+                                label: 'Vendas',
+                                data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 2
+                            }]
+                        };
+
+                        // Configuração do gráfico
+                        const config2 = {
+                            type: 'line',
+                            data: data2,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        };
+
+                        // Renderizar o gráfico
+                        const ctx2 = document.getElementById('lineChart2').getContext('2d');
+                        new Chart(ctx2, config2);
+                    </script>
+                </div>
 
             </div>
 
@@ -266,7 +384,6 @@
 </html>
 
 <script>
-    const idMaquinaDadosDinamicos = 0;
     function buscarDados(IDTI, IDADMIN) {
         fetch(`/maquina/buscarDadosTi/${IDTI}/${IDADMIN}`, {
             method: "POST",
@@ -285,10 +402,13 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
+
                     for (let i = 0; i < resposta.length; i++) {
                         const maquina = resposta.IdMaquina;
+
                         containerMaquinas.innerHTML += `
-            <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa})">
+            <div class="caixa-maquina" onclick=" const lista = mostrarDashboard(${resposta[i].idMaquinaCorporativa})">
+
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
@@ -310,154 +430,44 @@
         });
     }
 
-    function buscarDadosDinamicos(id) {
-        // if (containerDashboard.style.display == "none") {
-        //     containerDashboard.style.display = "flex";
-        //     buscarDadosDinamicos();
-        //     containerMaquinas.style.display = "none";
-        //     containerRelatorios.style.display = "none";
-        //     containerConfig.style.display = "none";
-        //     containerSuporte.style.display = "none";
-        // } else {
-        //     containerDashboard.style.display = "none";
-        //     containerMaquinas.style.display = "flex";
-        //     containerRelatorios.style.display = "none";
-        //     containerConfig.style.display = "none";
-        //     containerSuporte.style.display = "none";
-        // }
-        fetch(`/maquina/buscarDadosDinamicos`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                IDTI: id
-            })
-        }).then(function (resposta) {
+    async function buscarDadosDinamicos(id) {
+        try {
+            const resposta = await fetch(`/maquina/buscarDadosDinamicos`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    IDTI: id
+                })
+            });
 
             console.log("resposta: ", resposta);
 
+            var usoAtualCpu = 0;
+            var usoAtualHd = 0;
+            var usoAtualRam = 0;
+
             if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                const dados = await resposta.json();
 
-                    for (let i = 0; i < resposta.length; i++) {
+                console.log("Dados recebidos: ", JSON.stringify(dados));
 
-                        if (resposta[i].idMaquinaCorporativa) {
+                for (let i = 0; i < dados.length; i++) {
+                    usoAtualCpu = dados[0].usoCPU;
+                    usoAtualHd = dados[0].disponivelHD;
+                    usoAtualRam = dados[0].usoRAM;
+                }
 
-                        }
-
-
-                        containerDashboard.innerHTML += `
-                        <div class="titulo">
-                    DASHBOARD
-                </div>
-                <div class="identificacao-maquina">
-                    <div class="bloco-identificacao">
-                        <span>
-                            Nome da máquina:
-                        </span>
-                        <span>
-                            Sistema oeracional:
-                        </span>
-                        <span>
-                            Ip:
-                        </span>
-                    </div>
-                    <div class="material-icons-outlined" style="font-size: 75px;">
-                        desktop_windows
-                    </div>
-                </div>
-                <div class="container-cards">
-                    <div class="card flex-tam1">
-                        <span class="name-card">
-                            CPU
-                        </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">${resposta[i].usoCPU}%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
-                    </div>
-                    <div class="card flex-tam1">
-                        <span class="name-card">
-                            RAM
-                        </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
-                    </div>
-                    <div class="card flex-tam1" style="border: none;">
-                        <span class="name-card">
-                            HD
-                        </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade: ${resposta[i].disponivel}
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
-                    </div>
-                </div>
-                        `;
-
-                    }
-                });
-
-
-                console.log(resposta);
+                console.log(dados);
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
             }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+
+            return [usoAtualCpu, usoAtualHd, usoAtualRam];
+        } catch (error) {
+            console.log(`#ERRO: ${error}`);
+        }
     }
 
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);

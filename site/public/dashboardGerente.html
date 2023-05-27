@@ -589,13 +589,15 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     for (let i = 0; i < resposta.length; i++) {
-                        const maquina = resposta.IdMaquina;
+
+                        const dataHora = resposta[i].dataHota;
+
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                <span>Estado de operação: </span>
+                <span>Estado de operação: ${dataHora} </span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
                 <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
                         <span class="material-icons-outlined btn-add">
