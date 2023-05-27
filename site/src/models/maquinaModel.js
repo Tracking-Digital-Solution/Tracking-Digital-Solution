@@ -71,18 +71,39 @@ function cadastrarEndereco(cep, estado, cidade, bairro, logradouro, numero, comp
     return database.executar(instrucao);
 }
 
-function alterarParametroCPU(riscoCPU) {
-    // console.log("Acessando MaquinaCorporativa modal L \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, cpf);
-
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
+function alterarParametroCPU(parametroCPU, idPerfilAdmin) {
     var instrucao = `
-        INSERT INTO CpuDadosEstaticos VALUES 
-        ('${riscoCPU}');
-    `;
+    UPDATE CpuDadosEstaticos SET riscoCPU = ${parametroCPU} where idCpuDadosEstaticos in(Select idCpuDadosEstaticos from MaquinaCorporativa mc
+            JOIN ColetaCPU cc on mc.idMaquinaCorporativa = cc.idCPU
+            JOIN CpuDadosEstaticos ce on cc.idCPU = ce.idCpuDadosEstaticos
+            JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
+            where perfilAdministrador = ${idPerfilAdmin})`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
+function alterarParametroRAM(parametroRAM, idPerfilAdmin) {
+    var instrucao = `
+    UPDATE RamDadosEstaticos SET riscoRAM = ${parametroRAM} where idRamdadosEstaticos in(Select idRamdadosEstaticos from MaquinaCorporativa mc
+            JOIN coletaRAM cc on mc.idMaquinaCorporativa = cc.idRAM
+            JOIN RamDadosEstaticos ce on cc.idRAM = ce.idRamdadosEstaticos
+            JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
+            where perfilAdministrador = ${idPerfilAdmin})`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function alterarParametroDisco(parametroDisco, idPerfilAdmin) {
+    var instrucao = `
+    UPDATE HdDadosEstaticos SET riscoHD = ${parametroDisco} where idHdDadosEstaticos in(Select idHdDadosEstaticos from MaquinaCorporativa mc
+            JOIN coletaHD cc on mc.idMaquinaCorporativa = cc.idHD
+            JOIN HdDadosEstaticos ce on cc.idHD = ce.idHdDadosEstaticos
+            JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
+            where perfilAdministrador = ${idPerfilAdmin})`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarEndereco,
     cadastrarMaquina,
@@ -90,5 +111,7 @@ module.exports = {
     buscarDadosTi,
     deletarMaquina,
     buscarDadosMaquina,
-    alterarParametroCPU
+    alterarParametroCPU,
+    alterarParametroRAM,
+    alterarParametroDisco
 };

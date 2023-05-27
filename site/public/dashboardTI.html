@@ -298,7 +298,7 @@
                 <div class="input-porcentagem">
                     <span>
                         CPU
-                        <input class="ipt_porcento_cpu" placeholder="Porcentagem">
+                        <input id="ipt_porcento_cpu" placeholder="Porcentagem">
                     </span>
                     <div class="container-btn-salvar" id="btnConfig">
                         <button onclick="alterarParametroCPU()"class="btn-salvar">
@@ -307,20 +307,20 @@
                     </div>
                     <span>
                         RAM
-                        <input class="ipt-porcento" placeholder="Porcentagem">
+                        <input id="ipt_porcento_ram" placeholder="Porcentagem">
                     </span>
                     <div class="container-btn-salvar" id="btnConfig">
-                        <button class="btn-salvar">
+                        <button onclick="alterarParametroRAM()" class="btn-salvar">
                             salvar
                         </button>
                     </div>
                     <span>
                         DISCO
-                        <input class="ipt-porcento" placeholder="Porcentagem">
+                        <input id="ipt_porcento_disco" placeholder="Porcentagem">
                     </span>
                 </div>
                 <div class="container-btn-salvar" id="btnConfig">
-                    <button class="btn-salvar">
+                    <button onclick="alterarParametroDisco()" class="btn-salvar">
                         salvar
                     </button>
                 </div>
@@ -405,34 +405,84 @@
 
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
-    function alterarParametroCPU(){
-        var parametroCpuServer = ipt_porcento_cpu.value;
+    function alterarParametroRAM(){
+        var parametroRamServer = ipt_porcento_ram.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
 
-        {
-        // Enviando o valor da nova input
-        fetch("/maquina/alterarParametroCPU", {
-            method: "POST",
+        fetch(`/maquina/alterarParametroRAM`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                parametroCpuServer
+                parametroRamServer,
+                idPerfilAdminServer
             })
         }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
-
             if (resposta.ok) {
-                alert("Parâmetro alterado com sucesso.")
-
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar alterar os parâmetros.");
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
-
-        return false;
     }
+
+    function alterarParametroDisco(){
+        var parametroDiscoServer = ipt_porcento_disco.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+        fetch(`/maquina/alterarParametroDisco`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroDiscoServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function alterarParametroCPU(){
+        var parametroCpuServer = ipt_porcento_cpu.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+        fetch(`/maquina/alterarParametroCPU`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroCpuServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 </script>
