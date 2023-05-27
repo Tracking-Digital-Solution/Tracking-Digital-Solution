@@ -47,4 +47,8 @@ router.put("/alterarParametroDisco", function (req, res) {
     maquinaController.alterarParametroDisco(req, res);
 });
 
+router.post("/buscarDadosDinamicos", function (req, res) {
+    maquinaController.buscarDadosDinamicos(req, res);
+})
+
 module.exports = router;

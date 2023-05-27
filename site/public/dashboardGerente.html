@@ -145,11 +145,11 @@
 
                     <div class="deletar_conta">
                         <h2 class="tittle" id="tittle_delete">Deseja excluir sua conta?</h2>
-                        <button id="btn_delete" class="btn_del" onclick="deleteAcc()">Excluir conta</button>
-                        <div id="are_sure" style="display: none;" class="are_you_sure">
+                        <button id="btn_delete" class="btn_del" onclick="deletar()">Excluir conta</button>
+                        <!-- <div id="are_sure" style="display: none;" class="are_you_sure">
                             <button onclick="cancel()" class="btn_cancel">Cancelar</button>
                             <button onclick="deletar()" class="btn_delete">Excluir</button>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -673,4 +673,102 @@
 
     buscarDadosMaquina()
     buscarDadosFuncionario()
+</script>
+
+<!-- funções de alterar -->
+<script>
+    function alterarSenha() {
+        var senhaAntigaServer = ipt_senha_antiga.value;
+        var senhaNovaServer = ipt_senha_nova.value;
+        var senhaNovaConfirmServer = ipt_senha_nova_confirm.value;
+
+
+        if (senhaNovaServer !== senhaNovaConfirmServer) {
+            alert("As senhas não conferem");
+            return false;
+        }
+
+        fetch("/perfil/alterarsenha/" + sessionStorage.ID_PERFIL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                senhaNovaServer,
+                senhaAntigaServer
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO atualizar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    alert("Senha alterada com sucesso! Faça o login novamente")
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar alterar a senha");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
+
+
+
+    function deletar() {
+
+        fetch("/perfil/deletar" + sessionStorage.ID_PERFIL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO deletar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    alert("Usuário deletado com sucesso! Faça o login com outro usuário")
+
+                
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar deletar o usuário");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
 </script>

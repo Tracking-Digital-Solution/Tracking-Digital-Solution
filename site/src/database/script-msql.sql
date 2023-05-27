@@ -1,32 +1,20 @@
-CREATE SCHEMA IF NOT EXISTS trackingdigitalsolution ;
-GO
-USE trackingdigitalsolution;
+CREATE SCHEMA IF NOT EXISTS banco1 ;
+
+USE banco1;
 
 -- Table Perfil
 CREATE TABLE IF NOT EXISTS Perfil (
-idPerfil INT NOT NULL auto_increment,
+idPerfil INT NOT NULL,
 nome VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL,
 senha VARCHAR(255) NOT NULL,
 cpf CHAR(14) NOT NULL,
-cargo VARCHAR(45) NULL,
 perfilAdministrador INT NULL,
 PRIMARY KEY (idPerfil),
 CONSTRAINT fk_Perfil_Perfil1
 FOREIGN KEY (perfilAdministrador)
 REFERENCES Perfil (idPerfil));
 
--- Table EnderecoMaquina
-CREATE TABLE IF NOT EXISTS EnderecoMaquina (
-idEndereco INT NOT NULL auto_increment,
-cep CHAR(9) NOT NULL,
-estado VARCHAR(255) NOT NULL,
-cidade VARCHAR(255) NOT NULL,
-bairro VARCHAR(255) NOT NULL,
-logradouro VARCHAR(255) NOT NULL,
-numero INT NOT NULL,
-complemento VARCHAR(255) NULL,
-PRIMARY KEY (idEndereco));
 
 -- Table MaquinaCorporativa
 CREATE TABLE IF NOT EXISTS MaquinaCorporativa (
@@ -35,22 +23,19 @@ IP VARCHAR(255) NULL,
 sistemaOperacional VARCHAR(255) NULL,
 nomeMaquina VARCHAR(255) NULL,
 fkPerfil INT NOT NULL,
-fkEndereco INT NOT NULL,
 PRIMARY KEY (idMaquinaCorporativa),
 CONSTRAINT fk_MaquinaCorporativa_Perfil1
-FOREIGN KEY (fkPerfil) REFERENCES Perfil (idPerfil),
-CONSTRAINT fk_MaquinaCorporativa_EnderecoServidor1
-FOREIGN KEY (fkEndereco) REFERENCES EnderecoMaquina (idEndereco));
+FOREIGN KEY (fkPerfil) REFERENCES Perfil (idPerfil));
 
 -- Table RamDadosEstaticos
 CREATE TABLE IF NOT EXISTS RamDadosEstaticos (
-idRamdadosEstaticos INT NOT NULL auto_increment,
+idRamdadosEstaticos INT NOT NULL,
 riscoRAM INT NULL,
-total VARCHAR(45) NULL,
+total BIGINT NULL,
 PRIMARY KEY (idRamdadosEstaticos));
 
 -- Table coletaRAM
-CREATE TABLE IF NOT EXISTS coletaRAM (
+CREATE TABLE IF NOT EXISTS ColetaRAM (
 idRAM INT NOT NULL auto_increment,
 usoAtual BIGINT NULL,
 disponivel BIGINT NULL,
@@ -67,7 +52,7 @@ REFERENCES RamDadosEstaticos (idRamdadosEstaticos));
 
 -- Table CpuDadosEstaticos
 CREATE TABLE IF NOT EXISTS CpuDadosEstaticos (
-idCpuDadosEstaticos INT NOT NULL auto_increment,
+idCpuDadosEstaticos INT NOT NULL,
 riscoCPU INT NULL,
 nomeProcessador VARCHAR(255) NULL,
 PRIMARY KEY (idCpuDadosEstaticos));
@@ -87,20 +72,9 @@ CONSTRAINT fk_ColetaCPU_CpuMaquinaCorporativa1
 FOREIGN KEY (fkEstaticaCPU)
 REFERENCES CpuDadosEstaticos (idCpuDadosEstaticos));
 
--- Table Logs
-CREATE TABLE Logs (
-idLogs INT NOT NULL auto_increment,
-descricao VARCHAR(255) NULL,
-dtLog DATETIME NULL,
-fkMaquina INT NOT NULL,
-PRIMARY KEY (idLogs),
-CONSTRAINT fk_Logs_MaquinaCorporativa1
-FOREIGN KEY (fkMaquina)
-REFERENCES MaquinaCorporativa (idMaquinaCorporativa));
-
 -- Table HdDadosEstaticos
 CREATE TABLE HdDadosEstaticos (
-idHdDadosEstaticos INT NOT NULL auto_increment,
+idHdDadosEstaticos INT NOT NULL,
 riscoHD INT NULL,
 modelo VARCHAR(255) NULL,
 tamanho BIGINT NULL,

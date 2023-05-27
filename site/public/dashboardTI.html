@@ -84,124 +84,23 @@
         <!-- Main -->
         <main class="main-container">
             <!-- Container dashboard -->
+            <div style="width: 100%;">
+                <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
+                    <span class="material-icons-outlined btn-add">
+                        settings
+                    </span>
+                    Alertas
+                </div>
+            </div>
+
             <div class="container-maquinas" id="containerMaquinas">
-                <div style="width: 100%;">
-                    <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
-                        <span class="material-icons-outlined btn-add">
-                            settings
-                        </span>
-                        Alertas
-                    </div>
-                </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()">
-                    <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado de operação: </span>
-                    <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-                </div>
             </div>
 
 
 
             <!-- Container dashboard TI -->
             <div class="container-dashboard" id="containerDashboard">
-                <div class="titulo">
-                    DASHBOARD
-                </div>
-                <div class="identificacao-maquina">
-                    <div class="bloco-identificacao">
-                        <span>
-                            Nome da máquina:
-                        </span>
-                        <span>
-                            Sistema oeracional:
-                        </span>
-                        <span>
-                            Ip:
-                        </span>
-                    </div>
-                    <div class="material-icons-outlined" style="font-size: 75px;">
-                        desktop_windows
-                    </div>
-                </div>
-                <div class="container-cards">
-                    <div class="card flex-tam1">
-                        <span class="name-card">
-                            CPU
-                        </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
-                    </div>
-                    <div class="card flex-tam1">
-                        <span class="name-card">
-                            RAM
-                        </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
-                    </div>
-                    <div class="card flex-tam1" style="border: none;">
-                        <span class="name-card">
-                            HD
-                        </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
-                    </div>
-                </div>
+
             </div>
 
 
@@ -360,6 +259,7 @@
 </html>
 
 <script>
+        const idMaquinaDadosDinamicos = 0;
     function buscarDados(IDTI, IDADMIN) {
         fetch(`/maquina/buscarDadosTi/${IDTI}/${IDADMIN}`, {
             method: "POST",
@@ -381,7 +281,7 @@
                     for (let i = 0; i < resposta.length; i++) {
                         const maquina = resposta.IdMaquina;
                         containerMaquinas.innerHTML += `
-            <div class="caixa-maquina" onclick="mostrarDashboard()">
+            <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa})">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
@@ -403,34 +303,157 @@
         });
     }
 
-    buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
-
-    function alterarParametroRAM(){
-        var parametroRamServer = ipt_porcento_ram.value;
-        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
-
-        fetch(`/maquina/alterarParametroRAM`, {
-            method: "PUT",
+    function buscarDadosDinamicos(id) {
+        // if (containerDashboard.style.display == "none") {
+        //     containerDashboard.style.display = "flex";
+        //     buscarDadosDinamicos();
+        //     containerMaquinas.style.display = "none";
+        //     containerRelatorios.style.display = "none";
+        //     containerConfig.style.display = "none";
+        //     containerSuporte.style.display = "none";
+        // } else {
+        //     containerDashboard.style.display = "none";
+        //     containerMaquinas.style.display = "flex";
+        //     containerRelatorios.style.display = "none";
+        //     containerConfig.style.display = "none";
+        //     containerSuporte.style.display = "none";
+        // }
+        fetch(`/maquina/buscarDadosDinamicos`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                parametroRamServer,
-                idPerfilAdminServer
+                IDTI: id
             })
         }).then(function (resposta) {
 
+            console.log("resposta: ", resposta);
+
             if (resposta.ok) {
-                window.alert("Parâmetro atualizado com sucesso.");
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+
+                        if (resposta[i].idMaquinaCorporativa) {
+
+                        }
+
+
+                        containerDashboard.innerHTML += `
+                        <div class="titulo">
+                    DASHBOARD
+                </div>
+                <div class="identificacao-maquina">
+                    <div class="bloco-identificacao">
+                        <span>
+                            Nome da máquina:
+                        </span>
+                        <span>
+                            Sistema oeracional:
+                        </span>
+                        <span>
+                            Ip:
+                        </span>
+                    </div>
+                    <div class="material-icons-outlined" style="font-size: 75px;">
+                        desktop_windows
+                    </div>
+                </div>
+                <div class="container-cards">
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            CPU
+                        </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">${resposta[i].usoCPU}%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
+                    </div>
+                    <div class="card flex-tam1">
+                        <span class="name-card">
+                            RAM
+                        </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade:
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
+                    </div>
+                    <div class="card flex-tam1" style="border: none;">
+                        <span class="name-card">
+                            HD
+                        </span>
+                        <div class="chart-svg">
+                            <svg viewBox="0 0 36 36" class="circular-chart pink">
+                                <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                                <text x="18" y="20.35" class="percentage">30%</text>
+                            </svg>
+                        </div>
+                        <Span class="infos">
+                            Modelo:
+                        </Span>
+                        <Span class="infos">
+                            Capacidade: ${resposta[i].disponivel}
+                        </Span>
+                        <Span class="infos">
+                            Temperatura:
+                        </Span>
+                    </div>
+                </div>
+                        `;
+
+                    }
+                });
+
+
+                console.log(resposta);
             } else {
-                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
     }
+
+    buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
     function alterarParametroDisco(){
         var parametroDiscoServer = ipt_porcento_disco.value;

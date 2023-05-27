@@ -158,11 +158,70 @@ function cadastrarFuncionario(req, res) {
     }
 }
 
+function alterarSenha(req, res) {
+    const idPerfil = req.params.idPerfil
+    const senhaNova = req.body.senhaNovaServer;
+    const senhaAntiga = req.body.senhaAntigaServer;
+
+
+    if (idPerfil == undefined) {
+        res.status(400).send("id do usuario está undefined!");
+    } else if (senhaNova == undefined) {
+        res.status(400).send("Sua senha nova está undefined!");
+    } else if (senhaAntiga == undefined) {
+        res.status(400).send("Sua senha antiga está undefined!");
+    } else {
+
+        perfilModel.alterarSenha(idPerfil, senhaNova, senhaAntiga)
+            .then(
+                function (resultado) {
+                    res.json({ message: "Senha alterada com sucesso" });
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function deletar(req, res) {
+    const idPerfil= req.params.idPerfil
+
+    if (idPerfil == undefined) {
+        res.status(400).send("id do usuario está undefined!");
+    } else {
+        perfilModel.deletar(idPerfil)
+            .then(
+                function (resultado) {
+                    res.json({ message: "Usuário deletado com sucesso" });
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao deletar usuário! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
     cadastrarFuncionario,
+    alterarSenha,
+    deletar,
     deletarFunc
 }
