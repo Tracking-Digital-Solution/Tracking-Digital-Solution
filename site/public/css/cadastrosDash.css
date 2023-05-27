@@ -104,7 +104,7 @@
 }
 
 .btn-voltar{
-  display: none;
+  display: flex;
   width:45px ;
   border: none;
   border-radius: 2px;

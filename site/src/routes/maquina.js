@@ -35,7 +35,7 @@ router.post("/buscarDadosTi/:IDTI/:IDADMIN", function (req, res) {
     maquinaController.buscarDadosTi(req, res);
 })
 
-router.post("/buscarDadosDinamicos", function (req, res) {
+router.post("/buscarDadosDinamicos/:id", function (req, res) {
     maquinaController.buscarDadosDinamicos(req, res);
 })
 

@@ -80,7 +80,7 @@ function deletarMaquina(req, res) {
 function buscarDadosDinamicos(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     //Cadastrar lugar 
-    var id = req.body.IDTI;
+    var id = req.params.id;
     // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
     maquinaModel.buscarDadosDinamicos(id)
         .then(

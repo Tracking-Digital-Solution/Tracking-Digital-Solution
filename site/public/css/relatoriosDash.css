@@ -1,5 +1,5 @@
 .container-relatorios {
-    display: none;
+    display: flex;
     background-color: rgb(236, 236, 236);
     height: 300px;
     width: 100%;

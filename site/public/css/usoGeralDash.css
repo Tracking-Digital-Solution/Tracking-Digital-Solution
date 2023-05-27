@@ -178,7 +178,7 @@ body {
   height: auto;
 }
 .container-suporte{
-  display: none;
+  display: flex;
 }
 
 .kpi {
