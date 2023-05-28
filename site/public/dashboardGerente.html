@@ -71,13 +71,7 @@
                         Cadastrar funcionário
                     </div>
                 </li>
-                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">description</span>
-                        Relatórios
-                    </div>
-                </li>
-                <li class="sidebar-list-item" onclick="mostrarSuporte()">
+                <li class="sidebar-list-item" onclick="redirecionarSuporte()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">call</span>
                         Suporte
@@ -255,80 +249,6 @@
                     </button>
                 </div>
             </div>
-        </main>
-        <!-- Container relatorios -->
-        <main class="main-container" id="mainRelatorios" style="display: none;">
-            <div class="container-relatorios" id="containerRelatorios">
-                <table>
-                    <caption>Relatórios</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Data</th>
-                            <th scope="col">Qtd máquinas que atingiram o limite</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
-        <!-- Container suporte -->
-        <main class="main-container" id="mainSuporte" style="display: none;">
-            <div class="container-suporte" id="containerSuporte">
-                <table>
-                    <caption>Suporte</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID Chamado</th>
-                            <th scope="col">Hostname</th>
-                            <th scope="col">Localidade</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Situação</th>
-                            <th scope="col">Overview</th>
-
-                        </tr>
-                    </thead>
-
-                </table>
-            </div>
-
         </main>
         <!-- container suporte -->
         <!-- End Main -->
@@ -734,6 +654,9 @@
 
     }
 
+    function redirecionarSuporte() {
+        window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
+    }
 
 
     function deletar() {
