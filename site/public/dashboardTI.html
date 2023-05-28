@@ -61,13 +61,6 @@
                         Painel de controle
                     </div>
                 </li>
-                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">description</span>
-                        Relatórios
-                    </div>
-                </li>
-
                 <li class="sidebar-list-item" onclick="mostrarSuporte()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">call</span>
@@ -131,6 +124,7 @@
                 </div>
                 <div id="containerChart">
                     <canvas id="lineChart" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
+                    <canvas id="lineChart2" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
                     <!-- <script>
 
                         // Dados para o gráfico
@@ -221,89 +215,6 @@
                     </div> -->
             </div>
         </main>
-
-        <main id="mainRelatorios" class="main-container" style="display: none !important">
-            <!-- Container relatorios -->
-            <div class="container-relatorios" id="containerRelatorios">
-                <table>
-                    <caption>Relatórios</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Ip Máquina</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Max CPU</th>
-                            <th scope="col">Max RAM</th>
-                            <th scope="col">Max HD</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
-
         <!-- Container configurações -->
         <main id="mainConfig" style="display: none !important" class="main-container">
             <div class="container-config" id="containerConfig">
@@ -347,26 +258,6 @@
             </div>
         </main>
 
-        <!-- Container suporte -->
-        <main id="mainSuporte" style="display: none !important" class="main-container">
-            <div class="container-suporte" id="containerSuporte">
-                <table>
-                    <caption>Suporte</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID Chamado</th>
-                            <th scope="col">Hostname</th>
-                            <th scope="col">Localidade</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Situação</th>
-                            <th scope="col">Overview</th>
-
-                        </tr>
-                    </thead>
-
-                </table>
-            </div>
-        </main>
         <!-- End Main -->
 
 
@@ -467,6 +358,10 @@
                 throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
             }
         });
+    }
+
+    function mostrarSuporte() {
+        window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
     }
 
     function alterarParametroCPU() {

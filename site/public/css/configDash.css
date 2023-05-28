@@ -1,6 +1,6 @@
 .container-config {
     display: flex;
-    height:400px;
+    height:auto;
     width: 350px;
     box-shadow: 3px 3px 10px 2px #d6d6d6;
     border-radius: 20px;
