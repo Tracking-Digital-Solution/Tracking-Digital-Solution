@@ -84,42 +84,22 @@
         </aside>
 
         <!-- Main -->
-        <main class="main-container">
-            <!-- Container dashboard -->
-            <div style="width: 100%;" id="alertas">
-                <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
-                    <span class="material-icons-outlined btn-add">
-                        settings
-                    </span>
-                    Alertas
-                </div>
-            </div>
+        <main class="main-container" id="mainDash" style="display: none !important">
             <div style="width: 100%; margin-bottom: 20px;" id="btnVoltar">
                 <button class="btn-voltar" onclick="mostrarPainelDeControle()">
-                    &#171;
+                    <span class="material-icons-outlined">keyboard_backspace</span>
                 </button>
             </div>
             <div class="bloco-identificacao" id="identificacaoMaquina">
-                <span class="tam1">
+                <span class="tam1" id="spanNomeMaquina">
                     Nome da máquina:
                 </span>
-                <span class="tam1">
+                <span class="tam1" id="spanSistema">
                     Sistema operacional:
                 </span>
-                <span class="tam1">
+                <span class="tam1" id="spanId">
                     ID:
                 </span>
-            </div>
-
-            <div class="container-maquinas" id="containerMaquinas">
-                <!-- <div class="caixa-maquina" onclick="mostrarDashboard()">
-                    <Span style="font-size: 20px;"></Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado de operação: </span>
-                    <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-
-                </div> -->
             </div>
             <!-- Container dashboard TI -->
             <div class="container-dashboard" id="containerDashboard">
@@ -128,15 +108,15 @@
                         <span class="name-card">
                             CPU
                         </span>
-                        <span style="font-size: 40px; color: black;">
+                        <span style="font-size: 40px; color: black;" id="spanCpu">
                         </span>
                     </div>
                     <div class="card flex">
                         <span class="name-card">
                             RAM
                         </span>
-                        <span style="font-size: 40px; color: black;">
-                            0%
+                        <span style="font-size: 40px; color: black;" id="spanRam">
+
                         </span>
 
                     </div>
@@ -144,47 +124,47 @@
                         <span class="name-card">
                             HD
                         </span>
-                        <span style="font-size: 40px; color: black;">
-                            0%
+                        <span style="font-size: 40px; color: black;" id="spanHd">
+
                         </span>
                     </div>
                 </div>
                 <div id="containerChart">
                     <canvas id="lineChart" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
-                    <script>
+                    <!-- <script>
 
                         // Dados para o gráfico
-                        const data = {
-                            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-                            datasets: [{
-                                label: 'Vendas',
-                                data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                                borderColor: 'rgba(54, 162, 235, 1)',
-                                borderWidth: 2
-                            }]
-                        };
+                        // const data = {
+                        //     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                        //     datasets: [{
+                        //         label: 'CPU',
+                        //         data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                        //         backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        //         borderColor: 'rgba(54, 162, 235, 1)',
+                        //         borderWidth: 2
+                        //     }]
+                        // };
 
-                        // Configuração do gráfico
-                        const config = {
-                            type: 'line',
-                            data: data,
-                            options: {
-                                responsive: true,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        };
+                        // // Configuração do gráfico
+                        // const config = {
+                        //     type: 'line',
+                        //     data: data,
+                        //     options: {
+                        //         responsive: true,
+                        //         scales: {
+                        //             y: {
+                        //                 beginAtZero: true
+                        //             }
+                        //         }
+                        //     }
+                        // };
 
-                        // Renderizar o gráfico
-                        const ctx = document.getElementById('lineChart').getContext('2d');
-                        new Chart(ctx, config);
-                    </script>
+                        // // Renderizar o gráfico
+                        // const ctx = document.getElementById('lineChart').getContext('2d');
+                        // new Chart(ctx, config);
+                    </script> -->
                     <!-- // Line chart 2 -->
-                    <canvas id="lineChart2" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
+                    <!-- <canvas id="lineChart2" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
                     <script>
 
                         // Dados para o gráfico
@@ -216,12 +196,33 @@
                         // Renderizar o gráfico
                         const ctx2 = document.getElementById('lineChart2').getContext('2d');
                         new Chart(ctx2, config2);
-                    </script>
+                    </script> -->
                 </div>
-
             </div>
+        </main>
 
+        <main id="mainMaquinas" class="main-container">
+            <div style="width: 100%;" id="alertas">
+                <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
+                    <span class="material-icons-outlined btn-add">
+                        settings
+                    </span>
+                    Configurações
+                </div>
+            </div>
+            <div class="container-maquinas" id="containerMaquinas">
+                <!-- <div class="caixa-maquina" onclick="mostrarDashboard()">
+                        <Span style="font-size: 20px;"></Span>
+                        <div class="kpi"></div>
+                        <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                        <span>Estado de operação: </span>
+                        <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+    
+                    </div> -->
+            </div>
+        </main>
 
+        <main id="mainRelatorios" class="main-container" style="display: none !important">
             <!-- Container relatorios -->
             <div class="container-relatorios" id="containerRelatorios">
                 <table>
@@ -301,54 +302,53 @@
                     </tbody>
                 </table>
             </div>
+        </main>
 
-            <!-- Container configurações -->
+        <!-- Container configurações -->
+        <main id="mainConfig" style="display: none !important" class="main-container">
             <div class="container-config" id="containerConfig">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarPainelDeControle()">
-                        &#171;
+                        <span class="material-icons-outlined">keyboard_backspace</span>
                     </button>
                 </div>
-                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
-                    <div class="bloco-hardware">
-                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
-                            <Span>
-                                Cpu:
-                            </Span>
-                            <Span>
-                                Ram:
-                            </Span>
-                            <Span>
-                                Ssd:
-                            </Span>
-                        </div>
-                    </div>
-                    <div class="bloco-hardware">
-                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
-                            Limite %
-                        </Span>
-                        <div class="nome-hardware">
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                        </div>
-                    </div>
+                <div class="bloco-hardware">
+                    <span class="limite-par">LIMITE (%)</span>
                 </div>
-
+                <div class="input-porcentagem">
+                    <span>
+                        CPU
+                        <input id="ipt_porcento_cpu" placeholder="Porcentagem">
+                    </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroCPU()" class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
+                    <span>
+                        RAM
+                        <input id="ipt_porcento_ram" placeholder="Porcentagem">
+                    </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroRAM()" class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
+                    <span>
+                        DISCO
+                        <input id="ipt_porcento_disco" placeholder="Porcentagem">
+                    </span>
+                </div>
                 <div class="container-btn-salvar" id="btnConfig">
-                    <button class="btn-salvar">
+                    <button onclick="alterarParametroDisco()" class="btn-salvar">
                         salvar
                     </button>
                 </div>
             </div>
+        </main>
 
-            <!-- Container suporte -->
+        <!-- Container suporte -->
+        <main id="mainSuporte" style="display: none !important" class="main-container">
             <div class="container-suporte" id="containerSuporte">
                 <table>
                     <caption>Suporte</caption>
@@ -366,19 +366,19 @@
 
                 </table>
             </div>
+        </main>
+        <!-- End Main -->
 
-            <!-- End Main -->
 
-
-            <!-- Scripts -->
-            <!-- ApexCharts -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-            <!-- Custom JS -->
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-            <script src="./js/sidebarTi.js"></script>
-            <script>
-                clientName.innerHTML = sessionStorage.NOME_PERFIL;
-            </script>
+        <!-- Scripts -->
+        <!-- ApexCharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+        <!-- Custom JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <script src="./js/sidebarTi.js"></script>
+        <script>
+            clientName.innerHTML = sessionStorage.NOME_PERFIL;
+        </script>
 </body>
 
 </html>
@@ -431,45 +431,70 @@
     }
 
     async function buscarDadosDinamicos(id) {
-        try {
-            const resposta = await fetch(`/maquina/buscarDadosDinamicos`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    IDTI: id
-                })
-            });
-
-            console.log("resposta: ", resposta);
-
-            var usoAtualCpu = 0;
-            var usoAtualHd = 0;
-            var usoAtualRam = 0;
-
-            if (resposta.ok) {
-                const dados = await resposta.json();
-
-                console.log("Dados recebidos: ", JSON.stringify(dados));
-
-                for (let i = 0; i < dados.length; i++) {
-                    usoAtualCpu = dados[0].usoCPU;
-                    usoAtualHd = dados[0].disponivelHD;
-                    usoAtualRam = dados[0].usoRAM;
-                }
-
-                console.log(dados);
-            } else {
-                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+        const resposta = await fetch(`/maquina/buscarDadosDinamicos/${id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             }
-
-            return [usoAtualCpu, usoAtualHd, usoAtualRam];
-        } catch (error) {
-            console.log(`#ERRO: ${error}`);
+        }); if (resposta.ok) {
+            return resultadoConvertido = await resposta.json();
+        } else {
+            throw ("Buscar dados dinamicos falhou");
         }
     }
 
+
+    function alterarParametroDisco() {
+        var parametroDiscoServer = ipt_porcento_disco.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+        fetch(`/maquina/alterarParametroDisco`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroDiscoServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        });
+    }
+
+    function alterarParametroCPU() {
+        var parametroCpuServer = ipt_porcento_cpu.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+        fetch(`/maquina/alterarParametroCPU`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroCpuServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
 </script>

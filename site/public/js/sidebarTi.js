@@ -3,6 +3,15 @@ function mostrarPainelDeControle() {
   mainDash.style.display = "none";
   mainConfig.style.display = "none";
   mainRelatorios.style.display = "none";
+  mainSuporte.style.display = "none";
+}
+
+function mostrarRelatorios() {
+  mainMaquinas.style.display = "none";
+  mainDash.style.display = "none";
+  mainConfig.style.display = "none";
+  mainRelatorios.style.display = "flex";
+  mainSuporte.style.display = "none";
 }
 
 function mostrarConfig() {
@@ -10,6 +19,15 @@ function mostrarConfig() {
   mainDash.style.display = "none";
   mainConfig.style.display = "flex";
   mainRelatorios.style.display = "none";
+  mainSuporte.style.display = "none";
+}
+
+function mostrarSuporte() {
+  mainMaquinas.style.display = "none";
+  mainDash.style.display = "none";
+  mainConfig.style.display = "none";
+  mainRelatorios.style.display = "none";
+  mainSuporte.style.display = "flex";
 }
 
 async function mostrarDashboard(id) {
@@ -18,11 +36,13 @@ async function mostrarDashboard(id) {
     mainMaquinas.style.display = "none";
     mainConfig.style.display = "none";
     mainRelatorios.style.display = "none";
+    mainSuporte.style.display = "none";
   } else {
     mainMaquinas.style.display = "flex";
     mainDash.style.display = "none";
     mainConfig.style.display = "none";
     mainRelatorios.style.display = "none";
+    mainSuporte.style.display = "none";
   }
   var listaDados = await buscarDadosDinamicos(id);
   var nomeMaquina = listaDados[0].nomeMaquina;
