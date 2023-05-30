@@ -4,7 +4,7 @@
 /* Dashboard */
 
 
-.campo{
+.campo {
   display: flex;
   flex-direction: column;
   font-size: 18px;
@@ -12,14 +12,14 @@
   color: #ffc300;
 }
 
-.campo-input{
+.campo-input {
   padding: 10px 12px;
   border: none;
   border-bottom: 2px solid #ffc300;
   background-color: white;
 }
 
-.material-icons-outlined{
+.material-icons-outlined {
   line-height: normal;
   text-transform: none;
   transform: none;
@@ -28,11 +28,12 @@
   transition: none;
 }
 
-.func{
+.func {
   position: relative;
   height: 130px;
   margin: 20px 0 40px 0;
 }
+
 /* Cadastrar Máquinas */
 
 
@@ -167,3 +168,38 @@
   gap: 30px;
 
 }
+
+/* legendas */
+.container-legenda{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.legenda {
+ gap: 15px;
+ margin-right: 10px;
+ margin-left: 10px;
+}
+
+
+.legenda {
+  display: flex;
+  align-items: center;
+ 
+ 
+}
+
+.bolinha {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+}
+
+
+.amarelo { background-color: yellow; }
+.verde { background-color: green; }
+.vermelho { background-color: red; }
+.laranja { background-color: orange; }
