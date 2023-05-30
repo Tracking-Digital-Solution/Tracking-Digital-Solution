@@ -2,6 +2,13 @@ function mostrarPainelDeControle() {
   mainMaquinas.style.display = "flex";
   mainDash.style.display = "none";
   mainConfig.style.display = "none";
+  var canvas = document.getElementById("lineChart");
+  var canvas1 = document.getElementById("lineChart2");
+  var containerChart = document.getElementById("containerChart");
+  canvas.remove();
+  canvas1.remove();
+  containerChart.innerHTML += `<canvas id="lineChart" style="box-shadow: 3px 3px 10px 2px #a9a1a1";></canvas>
+  <canvas id="lineChart2" style="box-shadow: 3px 3px 10px 2px #a9a1a1";></canvas>`;
 }
 
 function mostrarRelatorios() {
@@ -103,12 +110,12 @@ async function mostrarDashboard(id) {
     mainConfig.style.display = "none";
   }
 
+  // $('#lineChart').appned(');
+
   const ctx = document.getElementById('lineChart').getContext('2d');
   new Chart(ctx, config);
   const ctx2 = document.getElementById('lineChart2').getContext('2d');
   new Chart(ctx2, config2);
-
-
 }
 
 function logout() {
