@@ -102,9 +102,9 @@ function alterarParametroCPU(parametroCPU, idPerfilAdmin) {
 
 function alterarParametroRAM(parametroRAM, idPerfilAdmin) {
     var instrucao = `
-    UPDATE RamDadosEstaticos SET riscoRAM = ${parametroRAM} where idRamdadosEstaticos in(Select idRamdadosEstaticos from MaquinaCorporativa mc
+    UPDATE RamDadosEstaticos SET riscoRAM = ${parametroRAM} where idRamDadosEstaticos in(Select idRamDadosEstaticos from MaquinaCorporativa mc
             JOIN coletaRAM cc on mc.idMaquinaCorporativa = cc.idRAM
-            JOIN RamDadosEstaticos ce on cc.idRAM = ce.idRamdadosEstaticos
+            JOIN RamDadosEstaticos ce on cc.idRAM = ce.idRamDadosEstaticos
             JOIN Perfil p on p.perfilAdministrador = mc.fkPerfil
             where perfilAdministrador = ${idPerfilAdmin})`
     console.log("Executando a instrução SQL: \n" + instrucao);

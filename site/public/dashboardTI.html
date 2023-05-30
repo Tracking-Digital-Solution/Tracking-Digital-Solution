@@ -343,4 +343,31 @@
     }
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
+    function alterarParametroRAM() {
+        var parametroRamServer = ipt_porcento_ram.value;
+        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+        fetch(`/maquina/alterarParametroRAM`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parametroRamServer,
+                idPerfilAdminServer
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Parâmetro atualizado com sucesso.");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
 </script>
