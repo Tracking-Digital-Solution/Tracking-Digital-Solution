@@ -272,19 +272,6 @@
         });
     }
 
-    async function buscarDadosDinamicos(id) {
-        const resposta = await fetch(`/maquina/buscarDadosDinamicos/${id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }); if (resposta.ok) {
-            return resultadoConvertido = await resposta.json();
-        } else {
-            throw ("Buscar dados dinamicos falhou");
-        }
-    }
-
 
     function alterarParametroDisco() {
         var parametroDiscoServer = ipt_porcento_disco.value;

@@ -29,8 +29,22 @@ function mostrarSuporte() {
   mainConfig.style.display = "none";
 }
 
+async function buscarDadosDinamicos(id) {
+  const resposta = await fetch(`/maquina/buscarDadosDinamicos/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }); if (resposta.ok) {
+    return resultadoConvertido = await resposta.json();
+  } else {
+    throw ("Buscar dados dinamicos falhou");
+  }
+}
+
 async function mostrarDashboard(id) {
   var listaDados = await buscarDadosDinamicos(id);
+
   console.log("Aquiii: ", listaDados)
   var nomeMaq = listaDados[0].nomeMaquina;
   var sistemaOperacional = listaDados[0].sistemaOperacional;
@@ -39,6 +53,7 @@ async function mostrarDashboard(id) {
   var usoHd = listaDados[0].disponivelHD.substring(0, 2);
   var usoRam = parseInt(listaDados[0].usoRAM.substring(0, 2));
 
+  // plotagem
   spanNomeMaquina.innerHTML = "Nome da máquina: " + nomeMaq;
   spanSistema.innerHTML = "Sistema operacional " + sistemaOperacional;
   spanId.innerHTML = "ID da máquina: " + idMaquina;
@@ -50,12 +65,17 @@ async function mostrarDashboard(id) {
     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
     datasets: [{
       label: 'Consumo atual de cpu:',
-      data: [usoCpu, usoCpu + 10, usoCpu + 20, usoCpu + 30, usoCpu + 40, usoCpu + 70],
+      data: [],
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 2
     }]
   };
+
+  for (i = 0; i < listaDados.length; i++) {
+    data.datasets[0].data.push(listaDados[i].usoCPU);
+  }
+
 
   // Configuração do gráfico
   const config = {
@@ -73,32 +93,32 @@ async function mostrarDashboard(id) {
     }
   }
 
-  const data2 = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-    datasets: [{
-      label: 'Consumo atual de memória ram:',
-      data: [usoRam, usoRam - 10, usoRam - 20, usoRam + 30, usoRam + 40, usoRam - 70],
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 2
-    }]
-  };
+  // const data2 = {
+  //   labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+  //   datasets: [{
+  //     label: 'Consumo atual de memória ram:',
+  //     data: [usoRam, usoRam - 10, usoRam - 20, usoRam + 30, usoRam + 40, usoRam - 70],
+  //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
+  //     borderColor: 'rgba(54, 162, 235, 1)',
+  //     borderWidth: 2
+  //   }]
+  // };
 
   // Configuração do gráfico 2
-  const config2 = {
-    type: 'line',
-    data: data2,
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          min: 0,
-          max: 100,
-          beginAtZero: true
-        }
-      }
-    }
-  };
+  // const config2 = {
+  //   type: 'line',
+  //   data: data2,
+  //   options: {
+  //     responsive: true,
+  //     scales: {
+  //       y: {
+  //         min: 0,
+  //         max: 100,
+  //         beginAtZero: true
+  //       }
+  //     }
+  //   }
+  // };
 
   if (mainDash.style.display == "none") {
     mainDash.style.display = "flex";
@@ -113,10 +133,27 @@ async function mostrarDashboard(id) {
   // $('#lineChart').appned(');
 
   const ctx = document.getElementById('lineChart').getContext('2d');
-  new Chart(ctx, config);
-  const ctx2 = document.getElementById('lineChart2').getContext('2d');
-  new Chart(ctx2, config2);
+  const grafico01 = new Chart(ctx, config);
+  // const ctx2 = document.getElementById('lineChart2').getContext('2d');
+  // new Chart(ctx2, config2);
+
+  const dadosDoGrafico = data.datasets[0].data;
+
+  setTimeout(() => atualizarGrafico(id, dadosDoGrafico, grafico01), 5000);
 }
+
+async function atualizarGrafico(id, dadosDoGrafico, grafico) {
+  console.log("Caiu na atualizar gráficos");
+  console.log("ID da máquina: " + id);
+  console.log("Dados da máquina: " + dadosDoGrafico);
+  console.log("Grafico da máquina: " + grafico);
+
+  const respostaNovo = await buscarDadosDinamicos(id);
+  dadosDoGrafico.shift();
+  dadosDoGrafico.push(respostaNovo[5].usoCPU);
+  grafico.update();
+  proximaAtualizacao = setTimeout(() => atualizarGrafico(id, dadosDoGrafico, grafico), 2000);
+};
 
 function logout() {
   Swal.fire({

@@ -22,7 +22,7 @@ function buscarDadosMaquina(fkPerfil) {
 function buscarDadosDinamicos(id) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    select top(1) m.idMaquinaCorporativa, m.nomeMaquina, m.sistemaOperacional, 
+    select top(6) m.idMaquinaCorporativa, m.nomeMaquina, m.sistemaOperacional, 
     cp.usoAtual as usoCPU, cp.dataHota,
     hd.disponivel as disponivelHD, 
     rm.usoAtual usoRAM, rm.disponivel as disponivelRAM
