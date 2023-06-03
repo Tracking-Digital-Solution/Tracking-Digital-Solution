@@ -7,17 +7,17 @@
   transition: none;
 }
 
-#lineChart{
-width: 50% !important;
-height: 300px !important;
+#lineChart {
+  width: 50% !important;
+  height: 300px !important;
 }
 
-#lineChart2{
-width: 50% !important;
-height: 300px !important;
+#lineChart2 {
+  width: 50% !important;
+  height: 300px !important;
 }
 
-#containerChart{
+#containerChart {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -33,6 +33,21 @@ height: 300px !important;
   height: auto;
   border-radius: 30px;
   padding: 10px;
+}
+
+.bloco-legenda {
+  display: flex;
+  flex-direction: row;
+  width: 83%;
+  height: 40px;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 50px;
+  gap: 70px;
 }
 
 .titulo {
@@ -63,7 +78,7 @@ height: 300px !important;
   height: auto;
 }
 
-.caixaInfoMaquina{
+.caixaInfoMaquina {
   display: flex;
   width: 50%;
   flex-direction: column;
@@ -122,11 +137,11 @@ height: 300px !important;
   color: #000000;
 }
 
-.ipt-porcento{
+.ipt-porcento {
   width: 40px;
 }
-  
-.input-porcentagem{
+
+.input-porcentagem {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,6 +152,7 @@ height: 300px !important;
 .container-btn-salvar {
   margin-bottom: 35px;
 }
+
 .infos {
   display: flex;
   width: 100%;
@@ -153,18 +169,18 @@ height: 300px !important;
 }
 
 
-  .card:first-child {
-    border-left: 7px solid #246dec;
-  }
-  
-  .card:nth-child(2) {
-    border-left: 7px solid #f5b74f;
-  }
-  
-  .card:nth-child(3) {
-    border-left: 7px solid #367952;
-  }
-  
+.card:first-child {
+  border-left: 7px solid #246dec;
+}
+
+.card:nth-child(2) {
+  border-left: 7px solid #f5b74f;
+}
+
+.card:nth-child(3) {
+  border-left: 7px solid #367952;
+}
+
 
 .card>span {
   font-size: 20px;
@@ -276,7 +292,7 @@ height: 300px !important;
 
 
 /* legendas */
-.container-legenda{
+.container-legenda {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -285,28 +301,39 @@ height: 300px !important;
 }
 
 .legenda {
- gap: 15px;
- margin-right: 10px;
- margin-left: 10px;
+  gap: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 
 .legenda {
   display: flex;
   align-items: center;
- 
- 
+
+
 }
 
 .bolinha {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 
 }
 
 
-.amarelo { background-color: yellow; }
-.verde { background-color: green; }
-.vermelho { background-color: red; }
-.laranja { background-color: orange; }
+.amarelo {
+  background-color: yellow;
+}
+
+.verde {
+  background-color: green;
+}
+
+.vermelho {
+  background-color: red;
+}
+
+.laranja {
+  background-color: orange;
+}

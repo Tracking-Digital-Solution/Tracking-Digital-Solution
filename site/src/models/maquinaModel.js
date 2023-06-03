@@ -22,15 +22,42 @@ function buscarDadosMaquina(fkPerfil) {
 function buscarDadosDinamicos(id) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    select top(6) m.idMaquinaCorporativa, m.nomeMaquina, m.sistemaOperacional, 
-    cp.usoAtual as usoCPU, cp.dataHota,
-    hd.disponivel as disponivelHD, 
-    rm.usoAtual usoRAM, rm.disponivel as disponivelRAM
-    from [dbo].[MaquinaCorporativa] as m 
-    join [dbo].[ColetaCPU] as cp on cp.fkMaquina = m.idMaquinaCorporativa
-    join [dbo].[ColetaHD] as hd on hd.fkMaquina = m.idMaquinaCorporativa 
-    join [dbo].[coletaRAM] as rm on rm.fkMaquina = m.idMaquinaCorporativa where m.idMaquinaCorporativa = ${id};  
-    `;
+SELECT  TOP 6 cp.contagem
+    ,hd.contagem
+    ,ram.contagem
+    ,cp.usoAtual
+    ,hd.disponivel
+    ,ram.usoAtual
+    ,cp.dtCPU
+    ,ram.dtRAM
+    ,hd.idHD
+FROM (
+  SELECT ROW_NUMBER() OVER(ORDER BY idCPU DESC) AS contagem
+        ,usoAtual
+        ,fkMaquina
+		,dataHota as dtCPU
+  FROM coletaCPU
+  ) AS cp
+JOIN (
+  SELECT ROW_NUMBER() OVER(ORDER BY idRAM DESC) AS contagem
+        ,usoAtual
+        ,fkMaquina
+		,dataHora as dtRAM
+  FROM coletaRAM
+  ) as ram 
+on cp.contagem = ram.contagem 
+and cp.fkMaquina = ram.fkMaquina
+  JOIN (
+      SELECT ROW_NUMBER() OVER(ORDER BY idHD DESC) AS contagem
+          ,disponivel
+          ,fkMaquina
+          ,idHD
+      FROM coletaHD
+  ) AS hd 
+ON ram.contagem = hd.contagem 
+AND ram.fkMaquina = hd.fkMaquina
+WHERE ram.fkMaquina = ${id};  
+`;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

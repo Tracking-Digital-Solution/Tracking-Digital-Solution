@@ -3,6 +3,9 @@ function mostrarPainelDeControle() {
   mainDash.style.display = "none";
   mainConfig.style.display = "none";
   pararAtualizacao();
+  spanCpu.innerHTML = "";
+  spanRam.innerHTML = ""
+  spanHd.innerHTML = "";
   var canvas = document.getElementById("lineChart");
   var canvas1 = document.getElementById("lineChart2");
   var containerChart = document.getElementById("containerChart");
@@ -30,6 +33,17 @@ function mostrarSuporte() {
   mainConfig.style.display = "none";
 }
 
+function formatarStringDataHora(dataHoraString) {
+  let dataHora = new Date(dataHoraString);
+  const opcoesFormato = {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZone: 'UTC'
+  };
+  return dataHora.toLocaleString('pt-br', opcoesFormato);
+}
+
 async function buscarDadosDinamicos(id) {
   const resposta = await fetch(`/maquina/buscarDadosDinamicos/${id}`, {
     method: "POST",
@@ -43,11 +57,13 @@ async function buscarDadosDinamicos(id) {
   }
 }
 
-async function mostrarDashboard(id) {
-  var listaDados = await buscarDadosDinamicos(id);
+async function mostrarDashboard(idMaquina, nomeMaquina, sistemaOperacional) {
+  var listaDados = await buscarDadosDinamicos(idMaquina);
+  console.log("Os dados estão aqui :" + listaDados);
 
+  let label = [];
   const data = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+    labels: label,
     datasets: [{
       label: 'Consumo atual de cpu:',
       data: [],
@@ -58,7 +74,10 @@ async function mostrarDashboard(id) {
   };
 
   for (i = 0; i < listaDados.length; i++) {
-    data.datasets[0].data.push(listaDados[i].usoCPU);
+    label.push(
+      formatarStringDataHora(listaDados[i].dtCPU)
+    );
+    data.datasets[0].data.push(listaDados[i].usoAtual[0]);
   }
 
   // Configuração do gráfico
@@ -77,8 +96,9 @@ async function mostrarDashboard(id) {
     }
   }
 
+  let label2 = [];
   const data2 = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+    labels: label2,
     datasets: [{
       label: 'Consumo atual de memória ram:',
       data: [],
@@ -89,7 +109,10 @@ async function mostrarDashboard(id) {
   };
 
   for (i = 0; i < listaDados.length; i++) {
-    data2.datasets[0].data.push(parseInt(listaDados[0].usoRAM.substring(0, 2)));
+    label2.push(
+      formatarStringDataHora(listaDados[i].dtRAM)
+    )
+    data2.datasets[0].data.push(parseInt(listaDados[0].usoAtual[1].substring(0, 2)));
   }
 
   const config2 = {
@@ -107,21 +130,16 @@ async function mostrarDashboard(id) {
     }
   };
 
-  var nomeMaq = listaDados[0].nomeMaquina;
-  var sistemaOperacional = listaDados[0].sistemaOperacional;
-  var idMaquina = listaDados[0].idMaquinaCorporativa;
+  // var usoCpu = listaDados[0].usoAtual[0];
+  // var usoHd = listaDados[0].disponivelHD.substring(0, 2);
+  // var usoRam = parseInt(listaDados[0].usoRAM.substring(0, 2));
 
-  var usoCpu = listaDados[0].usoCPU;
-  var usoHd = listaDados[0].disponivelHD.substring(0, 2);
-  var usoRam = parseInt(listaDados[0].usoRAM.substring(0, 2));
-
-  // plotagem
-  spanNomeMaquina.innerHTML = "Nome da máquina: " + nomeMaq;
-  spanSistema.innerHTML = "Sistema operacional " + sistemaOperacional;
+  spanNomeMaquina.innerHTML = "Nome da máquina: " + nomeMaquina;
+  spanSistema.innerHTML = "Sistema operacional: " + sistemaOperacional;
   spanId.innerHTML = "ID da máquina: " + idMaquina;
-  spanCpu.innerHTML = usoCpu;
-  spanRam.innerHTML = usoRam;
-  spanHd.innerHTML = usoHd;
+  // spanCpu.innerHTML = usoCpu;
+  // spanRam.innerHTML = usoRam;
+  // spanHd.innerHTML = usoHd;
 
 
   if (mainDash.style.display == "none") {
@@ -141,34 +159,43 @@ async function mostrarDashboard(id) {
   const ctx2 = document.getElementById('lineChart2').getContext('2d');
   const grafico02 = new Chart(ctx2, config2);
 
+  const labelGrafico01 = label;
+  const labelGrafico02 = label2;
   const dadosDoGrafico01 = data.datasets[0].data;
   const dadosDoGrafico02 = data2.datasets[0].data;
 
-  setTimeout(() => atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02,
-    grafico01, grafico02), 5000);
+  setTimeout(() => atualizarGrafico(idMaquina, dadosDoGrafico01, dadosDoGrafico02,
+    labelGrafico01, labelGrafico02, grafico01, grafico02), 4000);
 }
 
 let proximaAtualizacao;
-async function atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, grafico01, grafico02) {
-  
+async function atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGrafico01, labelGrafico02, grafico01, grafico02) {
+
   const listaNovosDados = await buscarDadosDinamicos(id);
-  var usoCpu = listaNovosDados[5].usoCPU;
-  var usoHd = listaNovosDados[5].disponivelHD.substring(0, 2);
-  var usoRam = parseInt(listaNovosDados[5].usoRAM.substring(0, 2));
+  const ultimoObjetoDaLista = listaNovosDados[listaNovosDados.length - 1];
+  var usoCpu = ultimoObjetoDaLista.usoAtual[0];
+  var usoRam = parseInt(ultimoObjetoDaLista.usoAtual[1].substring(0, 2));
 
   // plotagem
-  spanCpu.innerHTML = usoCpu;
-  spanRam.innerHTML = usoRam;
-  spanHd.innerHTML = usoHd;
+  spanCpu.innerHTML = usoCpu + "%";
+  spanRam.innerHTML = usoRam + "%";
+  spanHd.innerHTML = 0 + "%";
 
+  labelGrafico01.shift();
+  labelGrafico02.shift();
   dadosDoGrafico01.shift();
-  dadosDoGrafico01.push(usoCpu);
-  grafico01.update();
   dadosDoGrafico02.shift();
+  labelGrafico01.push(
+    formatarStringDataHora(ultimoObjetoDaLista.dtCPU)
+  );
+  labelGrafico02.push(
+    formatarStringDataHora(ultimoObjetoDaLista.dtRAM)
+  );
+  dadosDoGrafico01.push(usoCpu);
   dadosDoGrafico02.push(usoRam);
+  grafico01.update();
   grafico02.update();
-  proximaAtualizacao = setTimeout(() => atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02,
-    grafico01, grafico02), 5000);
+  proximaAtualizacao = setTimeout(() => atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGrafico01, labelGrafico02, grafico01, grafico02), 3500);
 };
 
 function pararAtualizacao() {

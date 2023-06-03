@@ -115,7 +115,7 @@
                     </div>
                     <div class="card flex">
                         <span class="name-card">
-                            HD
+                            HD disponivel:
                         </span>
                         <span style="font-size: 40px; color: black;" id="spanHd">
 
@@ -137,22 +137,18 @@
                     </span>
                     Configurações
                 </div>
-
-
-                <div style="display: flex; align-items: center; justify-content: center;">
-                    <div class="container-legenda">
-                        <div class="legenda">
-                            <div class="bolinha verde"></div>
-                            <span>Máquina em produção</span>
-                        </div>
-
-                        <div class="legenda">
-                            <div class="bolinha vermelho"></div>
-                            <span>Máquina fora de produção</span>
-                        </div>
-
-                        </p>
+                <div class="bloco-legenda">
+                    <div class="legenda">
+                        <div class="bolinha verde"></div>
+                        <span>Máquina em produção</span>
                     </div>
+
+                    <div class="legenda">
+                        <div class="bolinha vermelho"></div>
+                        <span>Máquina fora de produção</span>
+                    </div>
+
+                    </p>
                 </div>
             </div>
             <div class="container-maquinas" id="containerMaquinas">
@@ -242,15 +238,12 @@
 
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    console.log("Dados recebidos da function buscar dados: ", JSON.stringify(resposta));
 
 
                     for (let i = 0; i < resposta.length; i++) {
-                        const maquina = resposta.IdMaquina;
-
                         containerMaquinas.innerHTML += `
-            <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa})">
-
+            <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa}, '${resposta[i].nomeMaquina}', '${resposta[i].sistemaOperacional}')">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
