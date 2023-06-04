@@ -107,16 +107,16 @@
                 <div class="container-cards">
                     <div class="card flex" id="cardCp">
                         <span class="name-card">
-                            Utiização atual do processador
+                            Utilização atual do processador
                         </span>
-                        <span style="font-size: 40px; color: black;" id="spanCpu">
+                        <span style="font-size: 40px; color:rgb(6 87 209 / 78%);" id="spanCpu">
                         </span>
                     </div>
                     <div class="card flex" id="cardRm">
                         <span class="name-card">
                             Utiização atual da memória ram
                         </span>
-                        <span style="font-size: 40px; color: black;" id="spanRam">
+                        <span style="font-size: 40px; color: rgb(6 87 209 / 78%);" id="spanRam">
 
                         </span>
 
@@ -125,7 +125,7 @@
                         <span class="name-card">
                             Espaço disponivel no disco:
                         </span>
-                        <span style="font-size: 40px; color: black;" id="spanHd">
+                        <span style="font-size: 40px; color:rgb(6 87 209 / 78%);" id="spanHd">
 
                         </span>
                     </div>
@@ -156,7 +156,20 @@
                         <span>Máquina fora de produção</span>
                     </div>
 
-                    </p>
+
+                    <div class="divRisco">
+                        Porcentagem de risco CPU:<span id="riscoCPU"></span>
+                    </div>
+
+                    <div class="divRisco">
+                        Porcentagem de risco RAM:
+                        <span id="riscoRAM"></span>
+                    </div>
+
+                    <div class="divRisco">
+                        Porcentagem de risco HD:
+                        <span id="riscoHD"></span>
+                    </div>
                 </div>
             </div>
             <div class="container-maquinas" id="containerMaquinas">
@@ -230,49 +243,7 @@
 </html>
 
 <script>
-    function buscarDados(IDTI, IDADMIN) {
-        fetch(`/maquina/buscarDadosTi/${IDTI}/${IDADMIN}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                IDTI: IDTI,
-                IDADMIN: IDADMIN
-            })
-        }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos da function buscar dados: ", JSON.stringify(resposta));
-
-
-                    for (let i = 0; i < resposta.length; i++) {
-                        let elementoDaVez = resposta
-
-                        containerMaquinas.innerHTML += `
-            <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa}, '${resposta[i].nomeMaquina}', '${resposta[i].sistemaOperacional}')">
-                <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                <div class="kpi" id="kpi${i}"></div>
-                <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                <span>Estado de operação: </span>
-                <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-            </div>
-                        `
-                    }
-                });
-
-
-                console.log(resposta);
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
 </script>

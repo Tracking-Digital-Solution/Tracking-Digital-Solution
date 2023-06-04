@@ -43,11 +43,10 @@
   box-shadow: 3px 3px 10px 2px #a9a1a1;
   margin-bottom: 20px;
   align-items: center;
-  justify-content: center;
   padding: 10px;
   border-radius: 10px;
   margin-left: 50px;
-  gap: 70px;
+  gap: 5px;
 }
 
 .titulo {
@@ -88,12 +87,17 @@
 .flex-tam1 {
   flex-grow: 1;
 }
+/* 
+.divRisco{
+  display: flex;
+  width: 100%;
+} */
 
 .name-card {
   display: flex;
   flex-direction: row;
   width: auto;
-  color: blue;
+  color: rgba(0, 0, 0, 0.568);
   font-size: 22px !important;
 }
 
@@ -166,19 +170,6 @@
 
 .card .hard-info .metric {
   font-size: 1.5rem;
-}
-
-
-.card:nth-child(1) {
-  border-left: 7px solid green;
-}
-
-.card:nth-child(2) {
-  border-left: 7px solid green;
-}
-
-.card:nth-child(3) {
-  border-left: 7px solid green;
 }
 
 .vermelho2{
@@ -309,16 +300,12 @@ border-left-color: green !important;
 
 .legenda {
   gap: 15px;
-  margin-right: 10px;
-  margin-left: 10px;
 }
 
 
 .legenda {
   display: flex;
   align-items: center;
-
-
 }
 
 .bolinha {

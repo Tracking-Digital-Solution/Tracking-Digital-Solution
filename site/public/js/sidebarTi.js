@@ -1,4 +1,6 @@
 function mostrarPainelDeControle() {
+  containerMaquinas.innerHTML = "";
+  buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
   mainMaquinas.style.display = "flex";
   mainDash.style.display = "none";
   mainConfig.style.display = "none";
@@ -42,45 +44,6 @@ function formatarStringDataHora(dataHoraString) {
     timeZone: 'UTC'
   };
   return dataHora.toLocaleString('pt-br', opcoesFormato);
-}
-
-function alterarCorElementoCpu(valor) {
-  const elemento = document.getElementById('cardCp');
-  if (!(parametroCpuServer <= 0 || parametroCpuServer == null)) {
-    if (valor <= parametroCpuServer) {
-      elemento.style.borderLeftColor = 'green';
-    } else {
-      elemento.style.borderLeftColor = 'red';
-    }
-  } else {
-    elemento.style.borderLeftColor = 'white';
-  }
-}
-
-function alterarCorElementoRam(valor) {
-  const elemento = document.getElementById('cardRm');
-  if (!(parametroRamServer <= 0 || parametroRamServer == null)) {
-    if (valor <= parametroRamServer) {
-      elemento.style.borderLeftColor = 'green';
-    } else {
-      elemento.style.borderLeftColor = 'red';
-    }
-  } else {
-    elemento.style.borderLeftColor = 'white';
-  }
-}
-
-function alterarCorElementoHd(valor) {
-  const elemento = document.getElementById('cardHd');
-  if (!(parametroDiscoServer <= 0 || parametroDiscoServer == null)) {
-    if (valor <= parametroDiscoServer) {
-      elemento.style.borderLeftColor = 'green';
-    } else {
-      elemento.style.borderLeftColor = 'red';
-    }
-  } else {
-    elemento.style.borderLeftColor = 'white';
-  }
 }
 
 async function buscarDadosDinamicos(id) {
@@ -203,12 +166,12 @@ async function mostrarDashboard(idMaquina, nomeMaquina, sistemaOperacional) {
   const dadosDoGrafico01 = data.datasets[0].data;
   const dadosDoGrafico02 = data2.datasets[0].data;
 
-  alterarCorElementoCpu(listaDados[listaDados.length - 1].usoAtual[0]);
-  alterarCorElementoRam(listaDados[listaDados.length - 1].usoAtual[0]);
-  alterarCorElementoHd(listaDados[listaDados.length - 1].usoAtual[0]);
+  // alterarCorElementoCpu(listaDados[listaDados.length - 1].usoAtual[0], idMaquina);
+  // alterarCorElementoRam(listaDados[listaDados.length - 1].usoAtual[0]);
+  // alterarCorElementoHd(listaDados[listaDados.length - 1].usoAtual[0]);
 
   setTimeout(() => atualizarGrafico(idMaquina, dadosDoGrafico01, dadosDoGrafico02,
-    labelGrafico01, labelGrafico02, grafico01, grafico02), 4000);
+    labelGrafico01, labelGrafico02, grafico01, grafico02), 3000);
 }
 
 let proximaAtualizacao;
@@ -238,7 +201,7 @@ async function atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGra
   dadosDoGrafico02.push(usoRam);
   grafico01.update();
   grafico02.update();
-  alterarCorElementoCpu(listaNovosDados[listaNovosDados.length - 1].usoAtual[0]);
+  // alterarCorElementoCpu(listaNovosDados[listaNovosDados.length - 1].usoAtual[0]);
   proximaAtualizacao = setTimeout(() => atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGrafico01, labelGrafico02, grafico01, grafico02), 3500);
 };
 
@@ -262,7 +225,6 @@ function logout() {
     }
   })
 }
-
 
 let parametroCpuServer = 0;
 function alterarParametroCPU() {
@@ -348,6 +310,69 @@ function alterarParametroDisco() {
 
 function mostrarSuporte() {
   window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
+}
+
+let listaDeMaquinas = [];
+function buscarDados(IDTI, IDADMIN) {
+  fetch(`/maquina/buscarDadosTi/${IDTI}/${IDADMIN}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      IDTI: IDTI,
+      IDADMIN: IDADMIN
+    })
+  }).then(function (resposta) {
+
+    console.log("resposta: ", resposta);
+
+    if (resposta.ok) {
+      resposta.json().then(async function (resposta) {
+        console.log("Dados recebidos da function buscar dados: ", JSON.stringify(resposta));
+
+        listaDeMaquinas = resposta;
+        // alterarCorElementoCpu(resposta)
+        riscoCPU.innerHTML = `
+        ${resposta[0].riscoCPU}%
+        `;
+        riscoRAM.innerHTML = `
+        ${resposta[0].riscoRAM}%
+        `;
+        riscoHD.innerHTML = `
+        ${resposta[0].riscoHD}%
+        `;
+        for (let i = 0; i < resposta.length; i++) {
+          let listaDeDadosDaVez = await buscarDadosDinamicos(resposta[i].idMaquinaCorporativa);
+          containerMaquinas.innerHTML += `
+        <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa}, '${resposta[i].nomeMaquina}', '${resposta[i].sistemaOperacional}')">
+            <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
+            <div class="kpi" id="kpi${resposta[i].idMaquinaCorporativa}"></div>
+            <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+            <span>Estado de operação: </span>
+            <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+        </div>
+                    `
+          let kpi = document.getElementById(`kpi${resposta[i].idMaquinaCorporativa}`)
+          if (listaDeDadosDaVez != 0) {
+            let dCPU = listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[0];
+            if (dCPU <= resposta[i].riscoCPU) {
+              kpi.style.display = 'flex';
+              kpi.style.backgroundColor = 'green';
+            } else {
+              kpi.style.display = 'flex';
+              kpi.style.backgroundColor = 'red';
+            }
+          }
+        }
+      });
+      console.log(resposta);
+    } else {
+      throw ("Houve um erro ao tentar realizar o cadastro!");
+    }
+  }).catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+  });
 }
 
 
