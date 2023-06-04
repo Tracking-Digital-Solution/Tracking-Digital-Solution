@@ -99,18 +99,37 @@
             <div style="display: flex; align-items: center; justify-content: center;">
                 <div class="container-legenda">
                     <div class="legenda">
-                        <div class="bolinha verde"></div>
+                        <div class="bolinha verde" onmouseenter="mensagemBolinhaVerde()" onmouseleave="sumirMensagem()" ></div>
                         <span>Máquina em produção</span>
                     </div>
 
                     <div class="legenda">
-                        <div class="bolinha vermelho"></div>
+                        <div class="bolinha vermelho" onmouseenter="mensagemBolinhaVermelha()" onmouseleave="sumirMensagem()"></div>
                         <span>Máquina fora de produção</span>
                     </div>
 
                     </p>
                 </div>
+               
             </div>
+            <span id="mensagemLegenda" style="margin-bottom: 20px;"></span>
+            <script>
+                function mensagemBolinhaVerde(){
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML="Máquinas dentro dos limites estabelecidos"
+                }
+                
+                function mensagemBolinhaVermelha(){
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML="Máquinas fora dos limites estabelecidos"
+                }
+
+                function sumirMensagem(){
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML=" "
+                }
+
+            </script>
 
 
             <div class="container-maquinas" id="containerMaquinas">
@@ -714,4 +733,54 @@
         return false;
 
     }
+// Essa função altera a cor da bolinha (verde ou vermelha) com  base no IP da máquina
+    function alterarKPI(){
+        fetch(`/maquina/buscarDadosMaquina`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+
+                        const dataHora = resposta[i].dataHota;
+
+                        containerMaquinas.innerHTML += `
+            <div class="caixa-maquina">
+                <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
+                <div class="kpi"></div>
+                <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                <span>Estado de operação: ${dataHora} </span>
+                <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+                <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
+                        <span class="material-icons-outlined btn-add">
+                            delete
+                        </span>
+                        Excluir Máquina
+                 </div>
+            </div>
+                        `
+                    }
+                });
+
+
+                console.log(resposta);
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 </script>
+
