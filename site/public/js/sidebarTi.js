@@ -44,6 +44,45 @@ function formatarStringDataHora(dataHoraString) {
   return dataHora.toLocaleString('pt-br', opcoesFormato);
 }
 
+function alterarCorElementoCpu(valor) {
+  const elemento = document.getElementById('cardCp');
+  if (!(parametroCpuServer <= 0 || parametroCpuServer == null)) {
+    if (valor <= parametroCpuServer) {
+      elemento.style.borderLeftColor = 'green';
+    } else {
+      elemento.style.borderLeftColor = 'red';
+    }
+  } else {
+    elemento.style.borderLeftColor = 'white';
+  }
+}
+
+function alterarCorElementoRam(valor) {
+  const elemento = document.getElementById('cardRm');
+  if (!(parametroRamServer <= 0 || parametroRamServer == null)) {
+    if (valor <= parametroRamServer) {
+      elemento.style.borderLeftColor = 'green';
+    } else {
+      elemento.style.borderLeftColor = 'red';
+    }
+  } else {
+    elemento.style.borderLeftColor = 'white';
+  }
+}
+
+function alterarCorElementoHd(valor) {
+  const elemento = document.getElementById('cardHd');
+  if (!(parametroDiscoServer <= 0 || parametroDiscoServer == null)) {
+    if (valor <= parametroDiscoServer) {
+      elemento.style.borderLeftColor = 'green';
+    } else {
+      elemento.style.borderLeftColor = 'red';
+    }
+  } else {
+    elemento.style.borderLeftColor = 'white';
+  }
+}
+
 async function buscarDadosDinamicos(id) {
   const resposta = await fetch(`/maquina/buscarDadosDinamicos/${id}`, {
     method: "POST",
@@ -112,7 +151,7 @@ async function mostrarDashboard(idMaquina, nomeMaquina, sistemaOperacional) {
     label2.push(
       formatarStringDataHora(listaDados[i].dtRAM)
     )
-    data2.datasets[0].data.push(parseInt(listaDados[0].usoAtual[1].substring(0, 2)));
+    data2.datasets[0].data.push(parseInt(listaDados[i].usoAtual[1].substring(0, 2)));
   }
 
   const config2 = {
@@ -137,9 +176,9 @@ async function mostrarDashboard(idMaquina, nomeMaquina, sistemaOperacional) {
   spanNomeMaquina.innerHTML = "Nome da máquina: " + nomeMaquina;
   spanSistema.innerHTML = "Sistema operacional: " + sistemaOperacional;
   spanId.innerHTML = "ID da máquina: " + idMaquina;
-  // spanCpu.innerHTML = usoCpu;
-  // spanRam.innerHTML = usoRam;
-  // spanHd.innerHTML = usoHd;
+  spanCpu.innerHTML = listaDados[listaDados.length - 1].usoAtual[0] + "%";
+  spanRam.innerHTML = parseInt(listaDados[listaDados.length - 1].usoAtual[1].substring(0, 2)) + "%";
+  spanHd.innerHTML = parseInt(listaDados[listaDados.length - 1].disponivel.substring(0, 2)) + "%";
 
 
   if (mainDash.style.display == "none") {
@@ -164,6 +203,10 @@ async function mostrarDashboard(idMaquina, nomeMaquina, sistemaOperacional) {
   const dadosDoGrafico01 = data.datasets[0].data;
   const dadosDoGrafico02 = data2.datasets[0].data;
 
+  alterarCorElementoCpu(listaDados[listaDados.length - 1].usoAtual[0]);
+  alterarCorElementoRam(listaDados[listaDados.length - 1].usoAtual[0]);
+  alterarCorElementoHd(listaDados[listaDados.length - 1].usoAtual[0]);
+
   setTimeout(() => atualizarGrafico(idMaquina, dadosDoGrafico01, dadosDoGrafico02,
     labelGrafico01, labelGrafico02, grafico01, grafico02), 4000);
 }
@@ -179,7 +222,7 @@ async function atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGra
   // plotagem
   spanCpu.innerHTML = usoCpu + "%";
   spanRam.innerHTML = usoRam + "%";
-  spanHd.innerHTML = 0 + "%";
+  spanHd.innerHTML = ultimoObjetoDaLista.disponivel.substring(0, 2) + "%";
 
   labelGrafico01.shift();
   labelGrafico02.shift();
@@ -195,6 +238,7 @@ async function atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGra
   dadosDoGrafico02.push(usoRam);
   grafico01.update();
   grafico02.update();
+  alterarCorElementoCpu(listaNovosDados[listaNovosDados.length - 1].usoAtual[0]);
   proximaAtualizacao = setTimeout(() => atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGrafico01, labelGrafico02, grafico01, grafico02), 3500);
 };
 
@@ -217,6 +261,93 @@ function logout() {
       window.location = "index.html"
     }
   })
+}
+
+
+let parametroCpuServer = 0;
+function alterarParametroCPU() {
+  parametroCpuServer = ipt_porcento_cpu.value;
+  var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+  fetch(`/maquina/alterarParametroCPU`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      parametroCpuServer,
+      idPerfilAdminServer
+    })
+  }).then(function (resposta) {
+
+    if (resposta.ok) {
+      window.alert("Parâmetro atualizado com sucesso.");
+    } else if (resposta.status == 404) {
+      window.alert("Deu 404!");
+    } else {
+      throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+    }
+  }).catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+  });
+}
+
+let parametroRamServer = 0;
+function alterarParametroRAM() {
+  parametroRamServer = ipt_porcento_ram.value;
+  var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+  fetch(`/maquina/alterarParametroRAM`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      parametroRamServer,
+      idPerfilAdminServer
+    })
+  }).then(function (resposta) {
+
+    if (resposta.ok) {
+      window.alert("Parâmetro atualizado com sucesso.");
+    } else if (resposta.status == 404) {
+      window.alert("Deu 404!");
+    } else {
+      throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+    }
+  }).catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+  });
+}
+
+let parametroDiscoServer = 0;
+function alterarParametroDisco() {
+  parametroDiscoServer = ipt_porcento_disco.value;
+  var idPerfilAdminServer = sessionStorage.FK_ADMIN;
+
+  fetch(`/maquina/alterarParametroDisco`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      parametroDiscoServer,
+      idPerfilAdminServer
+    })
+  }).then(function (resposta) {
+
+    if (resposta.ok) {
+      window.alert("Parâmetro atualizado com sucesso.");
+    } else if (resposta.status == 404) {
+      window.alert("Deu 404!");
+    } else {
+      throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
+    }
+  });
+}
+
+function mostrarSuporte() {
+  window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
 }
 
 

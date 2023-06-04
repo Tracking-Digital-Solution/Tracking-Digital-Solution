@@ -94,7 +94,7 @@
   flex-direction: row;
   width: auto;
   color: blue;
-  font-size: 30px !important;
+  font-size: 22px !important;
 }
 
 .card {
@@ -169,18 +169,25 @@
 }
 
 
-.card:first-child {
-  border-left: 7px solid #246dec;
+.card:nth-child(1) {
+  border-left: 7px solid green;
 }
 
 .card:nth-child(2) {
-  border-left: 7px solid #f5b74f;
+  border-left: 7px solid green;
 }
 
 .card:nth-child(3) {
-  border-left: 7px solid #367952;
+  border-left: 7px solid green;
 }
 
+.vermelho2{
+border-left-color: red !important;
+}
+
+.verde2{
+border-left-color: green !important;
+}
 
 .card>span {
   font-size: 20px;

@@ -71,12 +71,10 @@
                 <li class="sidebar-list-item" id="from1">
                     <div class="btn-side">
                         <span class="material-icons-outlined">upload</span>
-                        <a href="https://github.com/Tracking-Digital-Solution/Install-Updates.git" style="text-decoration: none;  color: #9799ab ;" target="_blank">InstallUpdates</a>
-                      
+                        <a href="https://github.com/Tracking-Digital-Solution/Install-Updates.git"
+                            style="text-decoration: none;  color: #9799ab ;" target="_blank">InstallUpdates</a>
                     </div>
                 </li>
-
-
                 <li class="sidebar-list-item">
                     <div class="btn-side">
                         <span class="material-icons-outlined">logout</span>
@@ -84,10 +82,6 @@
                     </div>
                 </li>
             </ul>
-
-
-
-
         </aside>
 
         <!-- Main -->
@@ -111,25 +105,25 @@
             <!-- Container dashboard TI -->
             <div class="container-dashboard" id="containerDashboard">
                 <div class="container-cards">
-                    <div class="card flex">
+                    <div class="card flex" id="cardCp">
                         <span class="name-card">
-                            CPU
+                            Utiização atual do processador
                         </span>
                         <span style="font-size: 40px; color: black;" id="spanCpu">
                         </span>
                     </div>
-                    <div class="card flex">
+                    <div class="card flex" id="cardRm">
                         <span class="name-card">
-                            RAM
+                            Utiização atual da memória ram
                         </span>
                         <span style="font-size: 40px; color: black;" id="spanRam">
 
                         </span>
 
                     </div>
-                    <div class="card flex">
+                    <div class="card flex" id="cardHd">
                         <span class="name-card">
-                            HD disponivel:
+                            Espaço disponivel no disco:
                         </span>
                         <span style="font-size: 40px; color: black;" id="spanHd">
 
@@ -256,14 +250,15 @@
 
 
                     for (let i = 0; i < resposta.length; i++) {
+                        let elementoDaVez = resposta
+
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa}, '${resposta[i].nomeMaquina}', '${resposta[i].sistemaOperacional}')">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                <div class="kpi"></div>
+                <div class="kpi" id="kpi${i}"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                 <span>Estado de operação: </span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-               
             </div>
                         `
                     }
@@ -278,90 +273,6 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
-
-
-    function alterarParametroDisco() {
-        var parametroDiscoServer = ipt_porcento_disco.value;
-        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
-
-        fetch(`/maquina/alterarParametroDisco`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                parametroDiscoServer,
-                idPerfilAdminServer
-            })
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Parâmetro atualizado com sucesso.");
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
-            }
-        });
-    }
-
-    function mostrarSuporte() {
-        window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
-    }
-
-    function alterarParametroCPU() {
-        var parametroCpuServer = ipt_porcento_cpu.value;
-        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
-
-        fetch(`/maquina/alterarParametroCPU`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                parametroCpuServer,
-                idPerfilAdminServer
-            })
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Parâmetro atualizado com sucesso.");
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
     buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
-
-    function alterarParametroRAM() {
-        var parametroRamServer = ipt_porcento_ram.value;
-        var idPerfilAdminServer = sessionStorage.FK_ADMIN;
-
-        fetch(`/maquina/alterarParametroRAM`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                parametroRamServer,
-                idPerfilAdminServer
-            })
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Parâmetro atualizado com sucesso.");
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a alteração! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
 
 </script>
