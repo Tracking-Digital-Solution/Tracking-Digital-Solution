@@ -162,7 +162,7 @@
             <div class="container-maquinas" id="containerMaquinas">
                 <!-- <div class="caixa-maquina" onclick="mostrarDashboard()">
                         <Span style="font-size: 20px;"></Span>
-                        <div class="kpi"></div>
+                        <div class="kpi" id="kpi "></div>
                         <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                         <span>Estado de operação: </span>
                         <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
@@ -255,7 +255,7 @@
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina" onclick="mostrarDashboard(${resposta[i].idMaquinaCorporativa}, '${resposta[i].nomeMaquina}', '${resposta[i].sistemaOperacional}')">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                <div class="kpi" id="kpi${i}"></div>
+                <div class="kpi" id="kpi${i}"  style="background-color: #9799ab;"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
                 <span>Estado de operação: </span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>

@@ -45,16 +45,24 @@ function formatarStringDataHora(dataHoraString) {
 }
 
 function alterarCorElementoCpu(valor) {
-  const elemento = document.getElementById('cardCp');
-  if (!(parametroCpuServer <= 0 || parametroCpuServer == null)) {
-    if (valor <= parametroCpuServer) {
-      elemento.style.borderLeftColor = 'green';
+  for (let i = 0; i < 5; i++) {
+    const elemento = document.getElementById('cardCp');
+    const kpi = document.getElementById(`kpi${i}`);
+
+    if (!(parametroCpuServer <= 0 || parametroCpuServer == null)) {
+      if (valor <= parametroCpuServer) {
+        elemento.style.borderLeftColor = 'green';
+        kpi.style.backgroundColor = 'green';
+      } else {
+        elemento.style.borderLeftColor = 'red';
+        kpi.style.backgroundColor = 'red';
+      }
     } else {
-      elemento.style.borderLeftColor = 'red';
+      elemento.style.borderLeftColor = 'white';
+
     }
-  } else {
-    elemento.style.borderLeftColor = 'white';
   }
+
 }
 
 function alterarCorElementoRam(valor) {
