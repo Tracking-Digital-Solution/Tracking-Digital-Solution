@@ -38,15 +38,15 @@
 .bloco-legenda {
   display: flex;
   flex-direction: row;
-  width: 83%;
-  height: 40px;
+  width: 85%;
+  height: auto;
   box-shadow: 3px 3px 10px 2px #a9a1a1;
   margin-bottom: 20px;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
   margin-left: 50px;
-  gap: 5px;
+  gap: 15px;
 }
 
 .titulo {
