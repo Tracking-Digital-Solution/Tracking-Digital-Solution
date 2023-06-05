@@ -99,34 +99,36 @@
             <div style="display: flex; align-items: center; justify-content: center;">
                 <div class="container-legenda">
                     <div class="legenda">
-                        <div class="bolinha verde" onmouseenter="mensagemBolinhaVerde()" onmouseleave="sumirMensagem()" ></div>
+                        <div class="bolinha verde" onmouseenter="mensagemBolinhaVerde()" onmouseleave="sumirMensagem()">
+                        </div>
                         <span>Máquina em produção</span>
                     </div>
 
                     <div class="legenda">
-                        <div class="bolinha vermelho" onmouseenter="mensagemBolinhaVermelha()" onmouseleave="sumirMensagem()"></div>
+                        <div class="bolinha vermelho" onmouseenter="mensagemBolinhaVermelha()"
+                            onmouseleave="sumirMensagem()"></div>
                         <span>Máquina fora de produção</span>
                     </div>
 
                     </p>
                 </div>
-               
+
             </div>
             <span id="mensagemLegenda" style="margin-bottom: 20px;"></span>
             <script>
-                function mensagemBolinhaVerde(){
+                function mensagemBolinhaVerde() {
                     const mensagem = document.getElementById('mensagemLegenda');
-                    mensagem.innerHTML="Máquinas dentro dos limites estabelecidos"
-                }
-                
-                function mensagemBolinhaVermelha(){
-                    const mensagem = document.getElementById('mensagemLegenda');
-                    mensagem.innerHTML="Máquinas fora dos limites estabelecidos"
+                    mensagem.innerHTML = "Máquinas dentro dos limites estabelecidos"
                 }
 
-                function sumirMensagem(){
+                function mensagemBolinhaVermelha() {
                     const mensagem = document.getElementById('mensagemLegenda');
-                    mensagem.innerHTML=" "
+                    mensagem.innerHTML = "Máquinas fora dos limites estabelecidos"
+                }
+
+                function sumirMensagem() {
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML = " "
                 }
 
             </script>
@@ -295,6 +297,7 @@
         <!-- Custom JS -->
         <script src="./js/sidebarGerente.js"></script>
         <script src="./js/validation.js"></script>
+        <script src="./js/sidebarTi.js"></script>
 </body>
 
 </html>
@@ -541,19 +544,18 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                resposta.json().then(function (resposta) {
+                resposta.json().then(async function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     for (let i = 0; i < resposta.length; i++) {
-
-                        const dataHora = resposta[i].dataHota;
+                        let listaDeDadosDaVez = await buscarDadosDinamicos(resposta[i].idMaquinaCorporativa);
 
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                <div class="kpi"></div>
+                <div class="kpi" id="kpi${resposta[i].idMaquinaCorporativa}"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                <span>Estado de operação: ${dataHora} </span>
+                <span>Estado de operação: </span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
                 <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
                         <span class="material-icons-outlined btn-add">
@@ -563,6 +565,17 @@
                  </div>
             </div>
                         `
+                        let kpi = document.getElementById(`kpi${resposta[i].idMaquinaCorporativa}`)
+                        if (listaDeDadosDaVez != 0) {
+                            let dCPU = listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[0];
+                            if (dCPU <= resposta[i].riscoCPU) {
+                                kpi.style.display = 'flex';
+                                kpi.style.backgroundColor = 'green';
+                            } else {
+                                kpi.style.display = 'flex';
+                                kpi.style.backgroundColor = 'red';
+                            }
+                        }
                     }
                 });
 
@@ -733,15 +746,15 @@
         return false;
 
     }
-// Essa função altera a cor da bolinha (verde ou vermelha) com  base no IP da máquina
-    function alterarKPI(){
+    // Essa função altera a cor da bolinha (verde ou vermelha) com  base no IP da máquina
+    function alterarKPI() {
         fetch(`/maquina/buscarDadosMaquina`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-              
+
             })
         }).then(function (resposta) {
 
@@ -783,4 +796,3 @@
         });
     }
 </script>
-

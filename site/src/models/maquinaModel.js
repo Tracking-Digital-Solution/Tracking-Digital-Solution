@@ -12,8 +12,18 @@ function buscarDadosFuncionario(fkPerfil) {
 function buscarDadosMaquina(fkPerfil) {
     // console.log("Acessando MaquinaCorporativa modal \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    SELECT * FROM [dbo].[MaquinaCorporativa] as m
-    left join [dbo].[ColetaCPU] as cp on cp.fkMaquina = ${fkPerfil} where m.fkPerfil = ${fkPerfil};
+    SELECT DISTINCT m.idMaquinaCorporativa,
+    m.sistemaOperacional,
+    m.nomeMaquina,
+    cpe.riscoCPU,
+    hde.riscoHD,
+    rme.riscoRAM
+    FROM MaquinaCorporativa as m 
+    INNER JOIN [dbo].[ColetaCPU] AS cp on cp.fkMaquina = m.idMaquinaCorporativa
+    INNER JOIN [dbo].[CpuDadosEstaticos] AS cpe on cp.fkEstaticaCPU = cpe.idCpuDadosEstaticos
+    INNER JOIN [dbo].[RamDadosEstaticos] AS rme on cp.fkEstaticaCPU = rme.idRamDadosEstaticos
+    INNER JOIN [dbo].[HdDadosEstaticos] AS hde on cp.fkEstaticaCPU = hde.idHdDadosEstaticos
+    inner join Perfil as p ON m.fkPerfil = ${fkPerfil}
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
