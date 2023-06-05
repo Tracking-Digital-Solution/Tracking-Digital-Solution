@@ -1,4 +1,4 @@
-function mostrarPainelDeControle() {
+function mostrarPainelDeControlee() {
     mainPerfil.style.display = "none";
     mainFormFunc.style.display = "none";
     mainFormMaq.style.display = "none";

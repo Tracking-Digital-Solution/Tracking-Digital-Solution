@@ -1,6 +1,6 @@
 .container-cadastro {
   display: flex;
-  width: 100%;
+  width: 90%;
   height: auto;
 }
 
@@ -38,12 +38,11 @@
   width: 100%;
   gap: 20px;
   height: auto;
-  justify-content: center;
 }
 
 .caixa-infos {
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
   width: 30%;
   height: auto;
   flex-direction: column;

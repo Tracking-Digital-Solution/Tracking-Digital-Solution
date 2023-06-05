@@ -312,7 +312,6 @@ function mostrarSuporte() {
   window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
 }
 
-let listaDeMaquinas = [];
 function buscarDados(IDTI, IDADMIN) {
   fetch(`/maquina/buscarDadosTi/${IDTI}/${IDADMIN}`, {
     method: "POST",
@@ -331,7 +330,6 @@ function buscarDados(IDTI, IDADMIN) {
       resposta.json().then(async function (resposta) {
         console.log("Dados recebidos da function buscar dados: ", JSON.stringify(resposta));
 
-        listaDeMaquinas = resposta;
         // alterarCorElementoCpu(resposta)
         riscoCPU.innerHTML = `
         ${resposta[0].riscoCPU}%
@@ -356,7 +354,9 @@ function buscarDados(IDTI, IDADMIN) {
           let kpi = document.getElementById(`kpi${resposta[i].idMaquinaCorporativa}`)
           if (listaDeDadosDaVez != 0) {
             let dCPU = listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[0];
-            if (dCPU <= resposta[i].riscoCPU) {
+            let dRAM = parseInt(listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[1].substring(0, 2));
+            let dHD = parseInt(listaDeDadosDaVez[listaDeDadosDaVez.length - 1].disponivel.substring(0, 2));
+            if (dCPU <= resposta[i].riscoCPU && dRAM <= resposta[i].riscoRAM && dHD <= resposta[i].riscoHD) {
               kpi.style.display = 'flex';
               kpi.style.backgroundColor = 'green';
             } else {

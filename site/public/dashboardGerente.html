@@ -59,7 +59,7 @@
 
             <!-- :BARRA DE NAVEGAÇÃO -->
             <ul class="sidebar-list">
-                <li class="sidebar-list-item" onclick="mostrarPainelDeControle()">
+                <li class="sidebar-list-item" onclick="mostrarPainelDeControlee()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">poll</span>
                         Painel de controle
@@ -568,7 +568,9 @@
                         let kpi = document.getElementById(`kpi${resposta[i].idMaquinaCorporativa}`)
                         if (listaDeDadosDaVez != 0) {
                             let dCPU = listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[0];
-                            if (dCPU <= resposta[i].riscoCPU) {
+                            let dRAM = parseInt(listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[1].substring(0, 2));
+                            let dHD = parseInt(listaDeDadosDaVez[listaDeDadosDaVez.length - 1].disponivel.substring(0, 2));
+                            if (dCPU <= resposta[i].riscoCPU && dRAM <= resposta[i].riscoRAM && dHD <= resposta[i].riscoHD) {
                                 kpi.style.display = 'flex';
                                 kpi.style.backgroundColor = 'green';
                             } else {
