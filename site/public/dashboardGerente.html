@@ -59,7 +59,7 @@
 
             <!-- :BARRA DE NAVEGAÇÃO -->
             <ul class="sidebar-list">
-                <li class="sidebar-list-item" onclick="mostrarPainelDeControle()">
+                <li class="sidebar-list-item" onclick="mostrarPainelDeControlee()">
                     <div class="btn-side">
                         <span class="material-icons-outlined">poll</span>
                         Painel de controle
@@ -69,12 +69,6 @@
                     <div class="btn-side">
                         <span class="material-icons-outlined">person_add</span>
                         Cadastrar funcionário
-                    </div>
-                </li>
-                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">description</span>
-                        Relatórios
                     </div>
                 </li>
                 <li class="sidebar-list-item" onclick="mostrarSuporte()">
@@ -94,30 +88,58 @@
         <!-- End Sidebar -->
 
         <!-- Main -->
-        <main class="main-container">
+        <main class="main-container" id="mainMaquinas" style="display: flex !important;">
             <!-- Container dashboard -->
-            <div class="container-maquinas">
-                <div style="width: 100%;">
-                    <div class="caixa-botao-add" id="botaoMaquina" onclick="adicionarMaquina() ">
-                        <span class="material-icons-outlined btn-add">
-                            add_box
-                        </span>
-                        Cadastrar Máquina
+            <div class="caixa-botao-add-n" id="botaoMaquina" onclick="adicionarMaquina() ">
+                Cadastrar Máquina
+                <span class="material-icons-outlined btn-add">
+                    add_box
+                </span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div class="container-legenda">
+                    <div class="legenda">
+                        <div class="bolinha verde" onmouseenter="mensagemBolinhaVerde()" onmouseleave="sumirMensagem()">
+                        </div>
+                        <span>Máquina em produção</span>
                     </div>
-                    <div class="caixa-botao-add" id="btn-excluir-maquina">
-                        <span class="material-icons-outlined btn-add">
-                            delete
-                        </span>
-                        Excluir
+
+                    <div class="legenda">
+                        <div class="bolinha vermelho" onmouseenter="mensagemBolinhaVermelha()"
+                            onmouseleave="sumirMensagem()"></div>
+                        <span>Máquina fora de produção</span>
                     </div>
-                    <div id="excluir-maquina-form"></div>
+
+                    </p>
                 </div>
 
             </div>
-            <div class="container-maquinas" id="containerMaquinas"></div>
+            <span id="mensagemLegenda" style="margin-bottom: 20px;"></span>
+            <script>
+                function mensagemBolinhaVerde() {
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML = "Máquinas dentro dos limites estabelecidos"
+                }
 
-            <!-- Container perfil -->
-            <div class="box_account" id="containerPerfil">
+                function mensagemBolinhaVermelha() {
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML = "Máquinas fora dos limites estabelecidos"
+                }
+
+                function sumirMensagem() {
+                    const mensagem = document.getElementById('mensagemLegenda');
+                    mensagem.innerHTML = " "
+                }
+
+            </script>
+
+
+            <div class="container-maquinas" id="containerMaquinas">
+            </div>
+        </main>
+        <!-- Container perfil -->
+        <main class="main-container" id="mainPerfil" style="display: none;">
+            <div class="box_account">
                 <div class="account_left">
                     <div class="box_users">
                         <svg id="svg-users" height="100" viewBox="0 0 100 100" width="100"
@@ -154,31 +176,33 @@
 
                     <div class="deletar_conta">
                         <h2 class="tittle" id="tittle_delete">Deseja excluir sua conta?</h2>
-                        <button id="btn_delete" class="btn_del" onclick="deleteAcc()">Excluir conta</button>
-                        <div id="are_sure" style="display: none;" class="are_you_sure">
+                        <button id="btn_delete" class="btn_del" onclick="deletar()">Excluir conta</button>
+                        <!-- <div id="are_sure" style="display: none;" class="are_you_sure">
                             <button onclick="cancel()" class="btn_cancel">Cancelar</button>
                             <button onclick="deletar()" class="btn_delete">Excluir</button>
-                        </div>
+                        </div> -->
                     </div>
-
                 </div>
             </div>
+        </main>
+        <!-- Fim perfil -->
 
-            <!-- Fim perfil -->
-
-            <!-- Container cadastar func -->
+        <!-- Container cadastar func -->
+        <main class="main-container" id="mainFunc" style="display: none;">
+            <div class=" caixa-botao-add-n" id="botaoFuncionario" onclick="adicionarFunc()">
+                Cadastrar funcionário
+                <span class="material-icons-outlined" style="font-size: 25px;">
+                    add_box
+                </span>
+            </div>
             <div class="container-cadastro" id="containerCadastroFunc">
-                <div class="caixa-botao-add" onclick="adicionarFunc()">
-                    <span class="material-icons-outlined btn-add">
-                        add_box
-                    </span>
-                    Cadastrar funcionário
-                </div>
                 <div class="container-das-infos" id="containerFuncionario">
 
                 </div>
             </div>
-            <!-- Container formulario de cadastros Máquina-->
+        </main>
+        <!-- Container formulario de cadastros Máquina-->
+        <main class="main-container" id="mainFormMaq" style="display: none;">
             <div class="form-cadastro" id="mostrarFormMaq">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarCadastroMaq()">
@@ -227,13 +251,9 @@
                     </button>
                 </div>
             </div>
-            <!-- Container formulario de cadastros Funcionário -->
-            <!-- <div class="form-cadastro" id="mostrarFormFunc">
-                <div class="div-voltar">
-                    <button class="btn-voltar" onclick="mostrarCadastroFunc()">
-                        voltar
-                    </button>
-                </div> -->
+        </main>
+        <!-- Container formulario de cadastros Funcionário -->
+        <main class="main-container" id="mainFormFunc" style="display: none;">
             <div class="form-cadastro" id="mostrarFormFunc">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarCadastroFunc()">
@@ -264,90 +284,20 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Container relatorios -->
-            <div class="container-relatorios" id="containerRelatorios">
-                <table>
-                    <caption>Relatórios</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Data</th>
-                            <th scope="col">Qtd máquinas que atingiram o limite</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Due Date">26/04/2023</td>
-                            <td data-label="Amount">7</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Container suporte -->
-            <div class="container-suporte" id="containerSuporte">
-                <table>
-                    <caption>Suporte</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID Chamado</th>
-                            <th scope="col">Hostname</th>
-                            <th scope="col">Localidade</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Situação</th>
-                            <th scope="col">Overview</th>
-
-                        </tr>
-                    </thead>
-
-                </table>
-            </div>
-
-            <!-- container suporte -->
-            <!-- End Main -->
+        </main>
+        <!-- container suporte -->
+        <!-- End Main -->
 
 
-            <!-- Scripts -->
+        <!-- Scripts -->
 
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-            <!-- ApexCharts -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-            <!-- Custom JS -->
-            <!-- <script src="./js/sidebarGerente.js"></script> -->
-            <script src="./js/validation.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <!-- ApexCharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+        <!-- Custom JS -->
+        <script src="./js/sidebarGerente.js"></script>
+        <script src="./js/validation.js"></script>
+        <script src="./js/sidebarTi.js"></script>
 </body>
 
 </html>
@@ -508,7 +458,7 @@
 
                 if (resposta.ok) {
                     setTimeout(() => {
-                        window.location = "login.html";
+                        window.location.reload();
                     }, "1600")
 
                     // limparFormulario();
@@ -550,18 +500,24 @@
 
                         containerFuncionario.innerHTML += `
                             <div class="caixa-infos">
+                                ${resposta[i].nome}
                                 <img src="https://moodle.sptech.school/theme/image.php/degrade/core/1643201436/u/f1"
                                     class="func">
-                                    <span class="caracteristicas">
+                                    <span>
                                         id: ${resposta[i].idPerfil}
                                     </span>
 
-                                    <span class="caracteristicas">
+                                    <span>
                                         
-                                        Nome:${resposta[i].nome}
                                     </span>
                                 </span>
-                            </div >
+                                <div class="caixa-botao-add" onclick="deletarFunc(${resposta[i].idPerfil}) ">
+                                        <span class="material-icons-outlined btn-add">
+                                            delete
+                                        </span>
+                                        Excluir funcionário
+                                </div>
+                            </div > 
                             `;
                     }
                 });
@@ -575,7 +531,6 @@
     }
 
     function buscarDadosMaquina() {
-        console.log('html')
         fetch(`/maquina/buscarDadosMaquina/${sessionStorage.ID_PERFIL}`, {
             method: "POST",
             headers: {
@@ -589,19 +544,245 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
+                resposta.json().then(async function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        let listaDeDadosDaVez = await buscarDadosDinamicos(resposta[i].idMaquinaCorporativa);
+
+                        containerMaquinas.innerHTML += `
+            <div class="caixa-maquina">
+                <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
+                <div class="kpi" id="kpi${resposta[i].idMaquinaCorporativa}"></div>
+                <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                <span>Estado de operação: </span>
+                <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+                <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
+                        <span class="material-icons-outlined btn-add">
+                            delete
+                        </span>
+                        Excluir Máquina
+                 </div>
+            </div>
+                        `
+                        let kpi = document.getElementById(`kpi${resposta[i].idMaquinaCorporativa}`)
+                        if (listaDeDadosDaVez != 0) {
+                            let dCPU = listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[0];
+                            let dRAM = parseInt(listaDeDadosDaVez[listaDeDadosDaVez.length - 1].usoAtual[1].substring(0, 2));
+                            let dHD = parseInt(listaDeDadosDaVez[listaDeDadosDaVez.length - 1].disponivel.substring(0, 2));
+                            if (dCPU <= resposta[i].riscoCPU && dRAM <= resposta[i].riscoRAM && dHD <= resposta[i].riscoHD) {
+                                kpi.style.display = 'flex';
+                                kpi.style.backgroundColor = 'green';
+                            } else {
+                                kpi.style.display = 'flex';
+                                kpi.style.backgroundColor = 'red';
+                            }
+                        }
+                    }
+                });
+
+
+                console.log(resposta);
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function deletarMaquina(idMaquina) {
+        if (confirm("Deseja mesmo deletar está máquina???")) {
+
+            fetch(`/maquina/deletar/${idMaquina}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    ID: idMaquina
+
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    location.reload();
+                } else {
+                    throw ("Houve um erro ao tentar deletar a máquina");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+    }
+
+    function mostrarSuporte() {
+        window.location.href = "https://suportetrackingmonitor.auvo.com.br/Login#signin";
+    }
+
+    function deletarFunc(idFunc) {
+        if (confirm("Deseja mesmo deletar este funcionário???")) {
+
+            fetch(`/perfil/deletar/${idFunc}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    IDF: idFunc
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    location.reload();
+                } else {
+                    throw ("Houve um erro ao tentar deletar o funcionário");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+    }
+
+    buscarDadosMaquina()
+    buscarDadosFuncionario()
+</script>
+
+<!-- funções de alterar -->
+<script>
+    function alterarSenha() {
+        var senhaAntigaServer = ipt_senha_antiga.value;
+        var senhaNovaServer = ipt_senha_nova.value;
+        var senhaNovaConfirmServer = ipt_senha_nova_confirm.value;
+
+
+        if (senhaNovaServer !== senhaNovaConfirmServer) {
+            alert("As senhas não conferem");
+            return false;
+        }
+
+        fetch("/perfil/alterarsenha/" + sessionStorage.ID_PERFIL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                senhaNovaServer,
+                senhaAntigaServer
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO atualizar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    alert("Senha alterada com sucesso! Faça o login novamente")
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar alterar a senha");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
+
+
+
+    function deletar() {
+
+        fetch("/perfil/deletar" + sessionStorage.ID_PERFIL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO deletar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    alert("Usuário deletado com sucesso! Faça o login com outro usuário")
+
+
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar deletar o usuário");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
+    // Essa função altera a cor da bolinha (verde ou vermelha) com  base no IP da máquina
+    function alterarKPI() {
+        fetch(`/maquina/buscarDadosMaquina`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     for (let i = 0; i < resposta.length; i++) {
+
+                        const dataHora = resposta[i].dataHota;
 
                         containerMaquinas.innerHTML += `
             <div class="caixa-maquina">
                 <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
                 <div class="kpi"></div>
                 <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
-                <span>IP: ${resposta[i].IP}</span>
+                <span>Estado de operação: ${dataHora} </span>
                 <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+                <div class="caixa-botao-add" onclick="deletarMaquina( ${resposta[i].idMaquinaCorporativa}) ">
+                        <span class="material-icons-outlined btn-add">
+                            delete
+                        </span>
+                        Excluir Máquina
+                 </div>
             </div>
                         `
                     }
@@ -616,101 +797,4 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
-
-
-    // function botaoDeletar() {
-        // if()
-        const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
-        const formExcluirMaquina = document.getElementById("excluir-maquina-form");
-
-        btnExcluirMaquina.addEventListener("click", function () {
-            // Exibe o formulário de exclusão de máquina
-            formExcluirMaquina.innerHTML = "";
-            if (formExcluirMaquina.style.display == "none") {
-                formExcluirMaquina.style.display = "block";
-                // Cria um campo de texto para o ID da máquina
-                const inputIdMaquina = document.createElement("input");
-                inputIdMaquina.setAttribute("type", "text");
-                inputIdMaquina.setAttribute("placeholder", "Digite o ID");
-                // Cria um botão para confirmar a exclusão da máquina
-                const btnConfirmarExclusao = document.createElement("button");
-                btnConfirmarExclusao.textContent = "Confirmar Exclusão";
-
-                // Adiciona o campo de texto e o botão ao formulário
-                formExcluirMaquina.appendChild(inputIdMaquina);
-                formExcluirMaquina.appendChild(btnConfirmarExclusao);
-                btnConfirmarExclusao.addEventListener("click", function () {
-                    const IdMaquina = inputIdMaquina.value;
-                    if(opcao == 0){
-                        deletarMaquina(IdMaquina);
-                    }else{
-                        deletarFunc(idMaquina);
-                    }
-                });
-            } else {
-                formExcluirMaquina.style.display = "none";
-            }
-        });
-    // }
-
-    function deletarMaquina(idMaquina) {
-        console.log("função")
-        fetch(`/maquina/deletar/${idMaquina}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                ID: idMaquina
-
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-
-                location.reload(); 
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-                });
-                console.log(resposta);
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
-
-    function deletarFunc(idFunc) {
-        fetch(`/perfil/deletarFunc`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                ID: idFunc
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-
-                location.reload(); s
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-                });
-                console.log(resposta);
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
-
-    buscarDadosMaquina()
-    buscarDadosFuncionario()
 </script>

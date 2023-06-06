@@ -1,117 +1,67 @@
-function mostrarPainelDeControle() {
-    btnExcluirMaquina.style.display = "flex"
-    containerSuporte.style.display = "none";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "flex";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "flex";
-    containerPerfil.style.display = "none";
+function mostrarPainelDeControlee() {
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "flex";
+    mainFunc.style.display = "none";
 }
 
 function mostrarPerfil() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerPerfil.style.display = "flex";
-    containerSuporte.style.display = "none";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "none";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "none";
+    mainPerfil.style.display = "flex";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "none";
+    mainFunc.style.display = "none";
 }
 
 
 function mostrarCadastroMaq() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerSuporte.style.display = "none";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "flex";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "flex";
-    containerPerfil.style.display = "none";
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "flex";
+    mainFunc.style.display = "none";
 }
 
 function mostrarCadastroFunc() {
-    formExcluirMaquina.style.display = "flex"
-    btnExcluirMaquina.style.display = "flex"
-    containerSuporte.style.display = "none";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "none";
-    containerCadastroFunc.style.display = "block";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "none";
-    containerPerfil.style.display = "none";
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "none";
+    mainFunc.style.display = "flex";
 }
 
 function mostrarRelatorios() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerSuporte.style.display = "none";
-    containerRelatorios.style.display = "flex";
-    containerMaquinas.style.display = "none";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "none";
-    containerPerfil.style.display = "none";
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "none";
+    mainFunc.style.display = "none";
 }
 
-function mostrarConfig() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerSuporte.style.display = "none";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "none";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "none";
-    containerPerfil.style.display = "none";
-}
 
 function mostrarSuporte() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerSuporte.style.display = "flex";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "none";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormMaq.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "none";
-    containerPerfil.style.display = "none";
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "none";
+    mainFunc.style.display = "none";
 }
 
 function adicionarMaquina() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerSuporte.style.display = "none";
-    mostrarFormMaq.style.display = "flex";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "none";
-    containerCadastroFunc.style.display = "none";
-    mostrarFormFunc.style.display = "none";
-    botaoMaquina.style.display = "none";
-    containerPerfil.style.display = "none";
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "none";
+    mainFormMaq.style.display = "flex";
+    mainMaquinas.style.display = "none";
+    mainFunc.style.display = "none";
 }
 
 function adicionarFunc() {
-    formExcluirMaquina.style.display = "none"
-    btnExcluirMaquina.style.display = "none"
-    containerSuporte.style.display = "none";
-    mostrarFormFunc.style.display = "flex";
-    containerCadastroFunc.style.display = "none";
-    containerRelatorios.style.display = "none";
-    containerMaquinas.style.display = "none";
-    botaoMaquina.style.display = "none";
-    containerPerfil.style.display = "none";
+    mainPerfil.style.display = "none";
+    mainFormFunc.style.display = "flex";
+    mainFormMaq.style.display = "none";
+    mainMaquinas.style.display = "none";
+    mainFunc.style.display = "none";
 }
 
 function logout() {

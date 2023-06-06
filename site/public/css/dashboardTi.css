@@ -7,16 +7,46 @@
   transition: none;
 }
 
+#lineChart {
+  width: 50% !important;
+  height: 300px !important;
+}
+
+#lineChart2 {
+  width: 50% !important;
+  height: 300px !important;
+}
+
+#containerChart {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 35px;
+}
+
 /* teste */
 /* ---------- MAIN ---------- */
 
 .container-dashboard {
-  display: none;
+  display: flex;
   flex-direction: column;
   height: auto;
   border-radius: 30px;
-  box-shadow: 3px 3px 10px 2px #a9a1a1;
   padding: 10px;
+}
+
+.bloco-legenda {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  height: auto;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 50px;
+  gap: 15px;
 }
 
 .titulo {
@@ -38,19 +68,37 @@
   width: 100%;
   gap: 20px;
   margin-bottom: 20px;
-  border-top: 1px black solid;
+}
+
+.containerInfos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+}
+
+.caixaInfoMaquina {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+
 }
 
 .flex-tam1 {
   flex-grow: 1;
 }
+/* 
+.divRisco{
+  display: flex;
+  width: 100%;
+} */
 
 .name-card {
   display: flex;
   flex-direction: row;
   width: auto;
-  color: blue;
-  font-size: 30px !important;
+  color: rgba(0, 0, 0, 0.568);
+  font-size: 22px !important;
 }
 
 .card {
@@ -62,9 +110,8 @@
   /* border: 1px solid #d2d2d3; */
   /* border-radius: 10px; */
   /* box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2); */
-  height: auto;
+  height: 100px;
   gap: 10px;
-  border-right: 1px black solid;
 }
 
 .identificacao-maquina {
@@ -77,9 +124,37 @@
 }
 
 .bloco-identificacao {
-  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 40px;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.limite-par {
+  margin-left: 140px;
+  margin-bottom: 220px;
+  color: #000000;
+}
+
+.ipt-porcento {
+  width: 40px;
+}
+
+.input-porcentagem {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: -200px;
+  margin-left: 55px;
+}
+
+.container-btn-salvar {
+  margin-bottom: 35px;
 }
 
 .infos {
@@ -97,22 +172,13 @@
   font-size: 1.5rem;
 }
 
-/* 
-  .card:first-child {
-    border-left: 7px solid #246dec;
-  }
-  
-  .card:nth-child(2) {
-    border-left: 7px solid #f5b74f;
-  }
-  
-  .card:nth-child(3) {
-    border-left: 7px solid #367952;
-  }
-  
-  .card:nth-child(4) {
-    border-left: 7px solid #cc3c43;
-  } */
+.vermelho2{
+border-left-color: red !important;
+}
+
+.verde2{
+border-left-color: green !important;
+}
 
 .card>span {
   font-size: 20px;
@@ -204,13 +270,8 @@
 
 .chart-svg {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  max-width: 90px;
-  min-width: 40px;
-  flex: 1;
-  height: 80px;
+  flex-direction: row-reverse;
+  width: 50%;
 }
 
 .circle-bg {
@@ -225,4 +286,48 @@
   padding: 10px;
   height: 140px;
   margin: 12px 0 12px 0;
+}
+
+
+/* legendas */
+.container-legenda {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  width: 50%;
+}
+
+.legenda {
+  gap: 15px;
+}
+
+
+.legenda {
+  display: flex;
+  align-items: center;
+}
+
+.bolinha {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+
+}
+
+
+.amarelo {
+  background-color: yellow;
+}
+
+.verde {
+  background-color: green;
+}
+
+.vermelho {
+  background-color: red;
+}
+
+.laranja {
+  background-color: orange;
 }

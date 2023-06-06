@@ -23,19 +23,24 @@ function listar(req, res) {
             }
         );
 }
+
 function deletarFunc(req, res) {
-    var id = req.body.IDde
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    //Cadastrar lugar 
+    var id = req.body.IDF
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
     perfilModel.deletarFunc(id)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
+        .then(
+            function (resultado) {
+                res.json(resultado);
             }
-        }).catch(
+        ).catch(
             function (erro) {
                 console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
                 res.status(500).json(erro.sqlMessage);
             }
         );
@@ -44,14 +49,14 @@ function deletarFunc(req, res) {
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-  
+
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         perfilModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -93,10 +98,10 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if(cpf == undefined){
+    } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
-    }else {
-        
+    } else {
+
         // Passe os valores como parâmetro e vá para o arquivo perfilModel.js
         perfilModel.cadastrar(nome, email, senha, cpf, perfilAdministrador)
             .then(
@@ -123,7 +128,7 @@ function cadastrarFuncionario(req, res) {
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
     var fkPerfil = req.body.fkPerfilServer;
-    
+
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -131,9 +136,9 @@ function cadastrarFuncionario(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if(cpf == undefined){
+    } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
-    }else {
+    } else {
         // Passe os valores como parâmetro e vá para o arquivo perfilModel.js
         perfilModel.cadastrarFuncionario(nome, email, senha, cpf, fkPerfil)
             .then(
@@ -153,11 +158,70 @@ function cadastrarFuncionario(req, res) {
     }
 }
 
+function alterarSenha(req, res) {
+    const idPerfil = req.params.idPerfil
+    const senhaNova = req.body.senhaNovaServer;
+    const senhaAntiga = req.body.senhaAntigaServer;
+
+
+    if (idPerfil == undefined) {
+        res.status(400).send("id do usuario está undefined!");
+    } else if (senhaNova == undefined) {
+        res.status(400).send("Sua senha nova está undefined!");
+    } else if (senhaAntiga == undefined) {
+        res.status(400).send("Sua senha antiga está undefined!");
+    } else {
+
+        perfilModel.alterarSenha(idPerfil, senhaNova, senhaAntiga)
+            .then(
+                function (resultado) {
+                    res.json({ message: "Senha alterada com sucesso" });
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function deletar(req, res) {
+    const idPerfil= req.params.idPerfil
+
+    if (idPerfil == undefined) {
+        res.status(400).send("id do usuario está undefined!");
+    } else {
+        perfilModel.deletar(idPerfil)
+            .then(
+                function (resultado) {
+                    res.json({ message: "Usuário deletado com sucesso" });
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao deletar usuário! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
     cadastrarFuncionario,
+    alterarSenha,
+    deletar,
     deletarFunc
 }

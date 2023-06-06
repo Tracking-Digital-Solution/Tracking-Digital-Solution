@@ -57,11 +57,32 @@ function cadastrarMaquina(req, res) {
 
 function deletarMaquina(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-console.log("Controller")
     //Cadastrar lugar 
-    var idFunc = req.body.ID;
+    var id = req.body.ID;
     // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-    maquinaModel.deletarMaquina(idFunc)
+    maquinaModel.deletarMaquina(id)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function buscarDadosDinamicos(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    //Cadastrar lugar 
+    var id = req.params.id;
+    // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
+    maquinaModel.buscarDadosDinamicos(id)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -101,7 +122,6 @@ function buscarDadosFuncionario(req, res) {
 }
 
 function buscarDadosMaquina(req, res) {
-    console.log('controller')
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
@@ -128,9 +148,10 @@ function buscarDadosTi(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     //Cadastrar lugar 
-    var fkPerfil = req.body.fkIdTi;
+    var ID = req.params.IDTI;
+    var IDADM = req.params.IDADMIN;
     // Passe os valores como parâmetro e vá para o arquivo maquinaController.js
-    maquinaModel.buscarDadosTi(fkPerfil)
+    maquinaModel.buscarDadosTi(ID, IDADM)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -206,6 +227,69 @@ function cadastrarEndereco(req, res) {
     }
 }
 
+function alterarParametroCPU(req, res) {
+    var parametroCPU = req.body.parametroCpuServer;
+     var idPerfilAdmin = req.body.idPerfilAdminServer;
+
+    maquinaModel.alterarParametroCPU(parametroCPU, idPerfilAdmin)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function alterarParametroRAM(req, res) {
+    var parametroRAM = req.body.parametroRamServer;
+     var idPerfilAdmin = req.body.idPerfilAdminServer;
+
+    maquinaModel.alterarParametroRAM(parametroRAM, idPerfilAdmin)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function alterarParametroDisco(req, res) {
+    var parametroDisco = req.body.parametroDiscoServer;
+     var idPerfilAdmin = req.body.idPerfilAdminServer;
+
+    maquinaModel.alterarParametroDisco(parametroDisco, idPerfilAdmin)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a alteração! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     listar,
     testar,
@@ -214,5 +298,10 @@ module.exports = {
     buscarDadosFuncionario,
     buscarDadosTi,
     deletarMaquina,
-    buscarDadosMaquina
+    buscarDadosMaquina,
+    buscarDadosDinamicos,
+    alterarParametroCPU,
+    alterarParametroRAM,
+    alterarParametroDisco
+
 }

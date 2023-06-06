@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Dashboard | Bem vindo(a)!</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Montserrat Font -->
     <link
@@ -26,7 +28,7 @@
     <link rel="shortcut icon" href="./assets/Symbol_tracking.png" type="image/x-icon">
 </head>
 
-<body onload="buscarDados()">
+<body>
     <div class="grid-container">
         <!-- Header -->
         <header class="header">
@@ -59,12 +61,6 @@
                         Painel de controle
                     </div>
                 </li>
-                <li class="sidebar-list-item" onclick="mostrarRelatorios()">
-                    <div class="btn-side">
-                        <span class="material-icons-outlined">description</span>
-                        Relatórios
-                    </div>
-                </li>
 
                 <li class="sidebar-list-item" onclick="mostrarSuporte()">
                     <div class="btn-side">
@@ -72,7 +68,14 @@
                         Suporte
                     </div>
                 </li>
-                <li class="sidebar-list-item" id="from1" onclick="logout()">
+                <li class="sidebar-list-item" id="from1">
+                    <div class="btn-side">
+                        <span class="material-icons-outlined">upload</span>
+                        <a href="https://github.com/Tracking-Digital-Solution/Install-Updates.git"
+                            style="text-decoration: none;  color: #9799ab ;" target="_blank">InstallUpdates</a>
+                    </div>
+                </li>
+                <li class="sidebar-list-item">
                     <div class="btn-side">
                         <span class="material-icons-outlined">logout</span>
                         Sair
@@ -82,383 +85,164 @@
         </aside>
 
         <!-- Main -->
-        <main class="main-container">
-            <!-- Container dashboard -->
-            <div class="container-maquinas" id="containerMaquinas">
-                <div style="width: 100%;">
-                    <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
-                        <span class="material-icons-outlined btn-add">
-                            settings
-                        </span>
-                        Alertas
-                    </div>
-                    <button id="btn-excluir-maquina">Excluir Máquina</button>
-                    <div id="excluir-maquina-form"></div>
-                </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Ok</span>
-                </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Ok</span>
-                </div>
-                <div class="caixa-maquina" onclick="mostrarDashboard()" style="cursor: pointer;">
-                    <Span style="font-size: 20px;">Caixa 01</Span>
-                    <div class="kpi"></div>
-                    <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                    <span>Estado: Inativo</span>
-                    <span>Internet: Ok</span>
-                </div>
+        <main class="main-container" id="mainDash" style="display: none !important">
+            <div style="width: 100%; margin-bottom: 20px;" id="btnVoltar">
+                <button class="btn-voltar" onclick="mostrarPainelDeControle()">
+                    <span class="material-icons-outlined">keyboard_backspace</span>
+                </button>
+            </div>
+            <div class="bloco-identificacao" id="identificacaoMaquina">
+                <span class="tam1" id="spanNomeMaquina">
+                    Nome da máquina:
+                </span>
+                <span class="tam1" id="spanSistema">
+                    Sistema operacional:
+                </span>
+                <span class="tam1" id="spanId">
+                    ID:
+                </span>
             </div>
             <!-- Container dashboard TI -->
-            <div class="container-dashboard" id="containerDashboard" onclick="mostrarDashboard()">
-                <div class="titulo">
-                    DASHBOARD
-                </div>
-                <div class="identificacao-maquina">
-                    <div class="bloco-identificacao">
-                        <span>
-                            Nome da máquina:
-                        </span>
-                        <span>
-                            Sistema oeracional:
-                        </span>
-                        <span>
-                            Ip:
-                        </span>
-                    </div>
-                    <div class="material-icons-outlined" style="font-size: 75px;">
-                        desktop_windows
-                    </div>
-                </div>
+            <div class="container-dashboard" id="containerDashboard">
                 <div class="container-cards">
-                    <div class="card flex-tam1">
+                    <div class="card flex" id="cardCp">
                         <span class="name-card">
-                            CPU
+                            Utilização atual do processador
                         </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
+                        <span style="font-size: 40px; color:rgb(6 87 209 / 78%);" id="spanCpu">
+                        </span>
                     </div>
-                    <div class="card flex-tam1">
+                    <div class="card flex" id="cardRm">
                         <span class="name-card">
-                            RAM
+                            Utiização atual da memória ram
                         </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
+                        <span style="font-size: 40px; color: rgb(6 87 209 / 78%);" id="spanRam">
+
+                        </span>
+
                     </div>
-                    <div class="card flex-tam1" style="border: none;">
+                    <div class="card flex" id="cardHd">
                         <span class="name-card">
-                            HD
+                            Espaço disponivel no disco:
                         </span>
-                        <div class="chart-svg">
-                            <svg viewBox="0 0 36 36" class="circular-chart pink">
-                                <path class="circle-bg" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                                <text x="18" y="20.35" class="percentage">30%</text>
-                            </svg>
-                        </div>
-                        <Span class="infos">
-                            Modelo:
-                        </Span>
-                        <Span class="infos">
-                            Capacidade:
-                        </Span>
-                        <Span class="infos">
-                            Temperatura:
-                        </Span>
+                        <span style="font-size: 40px; color:rgb(6 87 209 / 78%);" id="spanHd">
+
+                        </span>
+                    </div>
+                </div>
+                <div id="containerChart">
+                    <canvas id="lineChart" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
+                    <canvas id="lineChart2" style="box-shadow: 3px 3px 10px 2px #a9a1a1;"></canvas>
+                </div>
+            </div>
+        </main>
+
+        <main id="mainMaquinas" class="main-container">
+            <div style="width: 100%;" id="alertas">
+                <div class="caixa-botao-add" id="botaoMaquina" onclick="mostrarConfig() ">
+                    <span class="material-icons-outlined btn-add">
+                        settings
+                    </span>
+                    Configurações
+                </div>
+                <div class="bloco-legenda">
+                    <div class="legenda">
+                        <div class="bolinha verde"></div>
+                        <span>Não está ultrapassando limites de uso</span>
+                    </div>
+
+                    <div class="legenda">
+                        <div class="bolinha vermelho"></div>
+                        <span>Está ultrapassando limites de uso</span>
+                    </div>
+
+
+                    <div class="divRisco">
+                        Porcentagem de risco CPU:<span id="riscoCPU"></span>
+                    </div>
+
+                    <div class="divRisco">
+                        Porcentagem de risco RAM:
+                        <span id="riscoRAM"></span>
+                    </div>
+
+                    <div class="divRisco">
+                        Porcentagem de risco HD:
+                        <span id="riscoHD"></span>
                     </div>
                 </div>
             </div>
-
-
-            <!-- Container relatorios -->
-            <div class="container-relatorios" id="containerRelatorios">
-                <table>
-                    <caption>Relatórios</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Ip Máquina</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Max CPU</th>
-                            <th scope="col">Max RAM</th>
-                            <th scope="col">Max HD</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Account">001</td>
-                            <td data-label="Due Date">04/01/2016</td>
-                            <td data-label="Amount">90%</td>
-                            <td data-label="Period">15%</td>
-                            <td data-label="Period">15%</td>
-                        </tr>
-
-                    </tbody>
-                </table>
+            <div class="container-maquinas" id="containerMaquinas">
+                <!-- <div class="caixa-maquina" onclick="mostrarDashboard()">
+                        <Span style="font-size: 20px;"></Span>
+                        <div class="kpi" id="kpi "></div>
+                        <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
+                        <span>Estado de operação: </span>
+                        <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
+    
+                    </div> -->
             </div>
-
-            <!-- Container configurações -->
+        </main>
+        <!-- Container configurações -->
+        <main id="mainConfig" style="display: none !important" class="main-container">
             <div class="container-config" id="containerConfig">
                 <div class="div-voltar">
                     <button class="btn-voltar" onclick="mostrarPainelDeControle()">
-                        &#171;
+                        <span class="material-icons-outlined">keyboard_backspace</span>
                     </button>
                 </div>
-                <div style="display: flex; justify-content: center; width: 100%; gap: 15px;">
-                    <div class="bloco-hardware">
-                        <div class="nome-hardware" style="gap: 35px; margin-top: 20px;">
-                            <Span>
-                                Cpu:
-                            </Span>
-                            <Span>
-                                Ram:
-                            </Span>
-                            <Span>
-                                Ssd:
-                            </Span>
-                        </div>
-                    </div>
-                    <div class="bloco-hardware">
-                        <Span style="font-size: 20px; font-weight: 600; color: tomato; ">
-                            Limite %
-                        </Span>
-                        <div class="nome-hardware">
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                            <Span>
-                                <input class="input" placeholder="Porcentagem">
-                            </Span>
-                        </div>
-                    </div>
+                <div class="bloco-hardware">
+                    <span class="limite-par">LIMITE (%)</span>
                 </div>
-
+                <div class="input-porcentagem">
+                    <span>
+                        CPU
+                        <input id="ipt_porcento_cpu" placeholder="Porcentagem">
+                    </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroCPU()" class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
+                    <span>
+                        RAM
+                        <input id="ipt_porcento_ram" placeholder="Porcentagem">
+                    </span>
+                    <div class="container-btn-salvar" id="btnConfig">
+                        <button onclick="alterarParametroRAM()" class="btn-salvar">
+                            salvar
+                        </button>
+                    </div>
+                    <span>
+                        DISCO
+                        <input id="ipt_porcento_disco" placeholder="Porcentagem">
+                    </span>
+                </div>
                 <div class="container-btn-salvar" id="btnConfig">
-                    <button class="btn-salvar">
+                    <button onclick="alterarParametroDisco()" class="btn-salvar">
                         salvar
                     </button>
                 </div>
             </div>
+        </main>
 
-            <!-- Container suporte -->
-            <div class="container-suporte" id="containerSuporte">
-                <table>
-                    <caption>Suporte</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID Chamado</th>
-                            <th scope="col">Hostname</th>
-                            <th scope="col">Localidade</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Situação</th>
-                            <th scope="col">Overview</th>
-
-                        </tr>
-                    </thead>
-
-                </table>
-            </div>
-
-            <!-- End Main -->
+        <!-- End Main -->
 
 
-            <!-- Scripts -->
-            <!-- ApexCharts -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-            <!-- Custom JS -->
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-            <script src="./js/sidebarTi.js"></script>
-            <script>
-                clientName.innerHTML = sessionStorage.NOME_PERFIL;
-            </script>
+        <!-- Scripts -->
+        <!-- ApexCharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+        <!-- Custom JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <script src="./js/sidebarTi.js"></script>
+        <script>
+            clientName.innerHTML = sessionStorage.NOME_PERFIL;
+        </script>
 </body>
 
 </html>
 
 <script>
-    function buscarDados() {
-        fetch(`/maquina/buscarDadosTi/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkIdTi: sessionStorage.ID_PERFIL
-            })
-        }).then(function (resposta) {
+    buscarDados(sessionStorage.ID_PERFIL, sessionStorage.FK_ADMIN);
 
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    for (let i = 0; i < resposta.length; i++) {
-
-                        containerMaquinas.innerHTML += `
-            <div class="caixa-maquina tam01">
-                <Span style="font-size: 20px;">${resposta[i].nomeMaquina}</Span>
-                <div class="kpi"></div>
-                <img src="./assets/img-computer-tracking-removebg-preview.png" class="computer" alt="">
-                <span>Id: ${resposta[i].idMaquinaCorporativa}</span>
-                <span>IP: ${resposta[i].IP}</span>
-                <span>Sitema operacional: ${resposta[i].sistemaOperacional}</span>
-            </div>
-                        `
-                        // var idCluster = resposta[i].id
-
-                        // buscarDadosMaquina(idCluster);
-                    }
-                });
-
-
-                console.log(resposta);
-                // limparFormulario();
-                // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
-    }
-
-    // const btnExcluirMaquina = document.getElementById("btn-excluir-maquina");
-    // const formExcluirMaquina = document.getElementById("excluir-maquina-form");
-
-    // btnExcluirMaquina.addEventListener("click", function () {
-    //     // Exibe o formulário de exclusão de máquina
-    //     formExcluirMaquina.innerHTML = "";
-    //     if (formExcluirMaquina.style.display == "none") {
-    //         formExcluirMaquina.style.display = "block";
-    //         // Cria um campo de texto para o ID da máquina
-    //         const inputIdMaquina = document.createElement("input");
-    //         inputIdMaquina.setAttribute("type", "text");
-    //         inputIdMaquina.setAttribute("placeholder", "Digite o ID da máquina");
-    //         // Cria um botão para confirmar a exclusão da máquina
-    //         const btnConfirmarExclusao = document.createElement("button");
-    //         btnConfirmarExclusao.textContent = "Confirmar Exclusão";
-
-    //         // Adiciona o campo de texto e o botão ao formulário
-    //         formExcluirMaquina.appendChild(inputIdMaquina);
-    //         formExcluirMaquina.appendChild(btnConfirmarExclusao);
-    //         btnConfirmarExclusao.addEventListener("click", function () {
-    //             const idMaquina = inputIdMaquina.value;
-    //             if (idMaquina) {
-    //                 // Coloque aqui o código que executa a função de excluir a máquina com o ID fornecido pelo usuário
-    //                 console.log(`Máquina com ID ${idMaquina} excluída com sucesso!`);
-    //                 formExcluirMaquina.style.display = "none";
-    //                 inputIdMaquina.value = "";
-    //             }
-    //         });
-    //     } else {
-    //         formExcluirMaquina.style.display = "none";
-    //     }
-    // });
 </script>

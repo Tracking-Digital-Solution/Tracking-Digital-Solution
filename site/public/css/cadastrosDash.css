@@ -1,6 +1,6 @@
 .container-cadastro {
-  display: none;
-  width: 100%;
+  display: flex;
+  width: 90%;
   height: auto;
 }
 
@@ -12,36 +12,45 @@
   padding: 5px;
   cursor: pointer;
   margin: 10px 0px 15px 0px;
-  background-color: #ffc300;
+  box-shadow: rgb(169, 161, 161) 3px 3px 10px 2px;
+  color: #000000;
+}
+
+.caixa-botao-add-n {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 10px 0px 15px 0px;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  color: #fff;
+  color: black;
+  align-items: center;
+  font-size: 25px;
 }
 
 .container-das-infos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   width: 100%;
-  height: auto;
   gap: 20px;
+  height: auto;
 }
 
 .caixa-infos {
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: 3px 3px 10px 2px #a9a1a1;
+  width: 30%;
   height: auto;
-  width: 410px;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 10px 0 10px 0;
   border-radius: 5px;
-}
-
-.caracteristicas {
-  font-size: 20px;
-  color: black;
-  width: 100%;
 }
 
 .tam01 {
@@ -56,7 +65,7 @@
 }
 
 .form-cadastro {
-  display: none;
+  display: flex;
   background-color: #fff;
   align-items: center;
   justify-content: center;
@@ -93,15 +102,16 @@
 }
 
 .btn-voltar{
-  width:45px ;
+  box-shadow: rgb(169, 161, 161) 3px 3px 10px 2px;
+  display: flex;
+  width: 60px;
   border: none;
   border-radius: 2px;
-  background-color: #d6d5d5;
-  color: #fff;
+  color: #000000;
   font-size: 30px;
   margin-left: 15px;
   cursor: pointer;
-  background-color: #ffc300;
+  justify-content: center;
 }
 
 .div-confirmar-cadastro{
