@@ -50,7 +50,7 @@ total VARCHAR(45) NULL,
 PRIMARY KEY (idRamdadosEstaticos));
 
 -- Table coletaRAM
-CREATE TABLE IF NOT EXISTS coletaRAM (
+CREATE TABLE IF NOT EXISTS ColetaRAM (
 idRAM INT NOT NULL IDENTITY(1,1),
 usoAtual BIGINT NULL,
 disponivel BIGINT NULL,

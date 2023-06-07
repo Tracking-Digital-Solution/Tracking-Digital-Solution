@@ -141,7 +141,7 @@ async function mostrarDashboard(idMaquina, nomeMaquina, sistemaOperacional) {
   spanId.innerHTML = "ID da máquina: " + idMaquina;
   spanCpu.innerHTML = listaDados[listaDados.length - 1].usoAtual[0] + "%";
   spanRam.innerHTML = parseInt(listaDados[listaDados.length - 1].usoAtual[1].substring(0, 2)) + "%";
-  spanHd.innerHTML = parseInt(listaDados[listaDados.length - 1].disponivel.substring(0, 2)) + "%";
+  spanHd.innerHTML = 100 - (parseInt(listaDados[listaDados.length - 1].disponivel.substring(0, 2))) + "%";
 
 
   if (mainDash.style.display == "none") {
@@ -185,7 +185,7 @@ async function atualizarGrafico(id, dadosDoGrafico01, dadosDoGrafico02, labelGra
   // plotagem
   spanCpu.innerHTML = usoCpu + "%";
   spanRam.innerHTML = usoRam + "%";
-  spanHd.innerHTML = ultimoObjetoDaLista.disponivel.substring(0, 2) + "%";
+  spanHd.innerHTML = 100 - (ultimoObjetoDaLista.disponivel.substring(0, 2)) + "%";
 
   labelGrafico01.shift();
   labelGrafico02.shift();
